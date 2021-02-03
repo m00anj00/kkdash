@@ -51,12 +51,6 @@ namespace dashconfigurator
 
 
 
-
-
-
-
-
-
         //=======================================================================WRITE SECTION============================================================================
 
         private void btnNext_Click(object sender, EventArgs e)
@@ -71,18 +65,6 @@ namespace dashconfigurator
             WriteCSVfile(3);  // write csv panel3
 
         }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
