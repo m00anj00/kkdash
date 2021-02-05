@@ -331,7 +331,6 @@
             this.cmbCanAddressP1 = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.cmbSerCanP1P3CanInter = new System.Windows.Forms.ComboBox();
-            this.comboBox7 = new System.Windows.Forms.ComboBox();
             this.cmbSerCanP1P3CanSpeed = new System.Windows.Forms.ComboBox();
             this.cmbSerCanP1P3 = new System.Windows.Forms.ComboBox();
             this.cmbSerCanP1ECUCanInter = new System.Windows.Forms.ComboBox();
@@ -348,8 +347,8 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label27 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtP2Height = new System.Windows.Forms.TextBox();
+            this.txtP2Width = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
             this.lblP2Path = new System.Windows.Forms.Label();
             this.btnP2BG = new System.Windows.Forms.Button();
@@ -360,8 +359,8 @@
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label43 = new System.Windows.Forms.Label();
             this.label44 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtP3Height = new System.Windows.Forms.TextBox();
+            this.txtP3Width = new System.Windows.Forms.TextBox();
             this.label45 = new System.Windows.Forms.Label();
             this.lblP3Path = new System.Windows.Forms.Label();
             this.btnP3BG = new System.Windows.Forms.Button();
@@ -537,6 +536,7 @@
             this.btnPanel1BG.TabIndex = 18;
             this.btnPanel1BG.Text = "Background:";
             this.btnPanel1BG.UseVisualStyleBackColor = true;
+            this.btnPanel1BG.Click += new System.EventHandler(this.btnPanel1BG_Click);
             // 
             // label15
             // 
@@ -3928,14 +3928,13 @@
             "Ethernet",
             "CAN Pcan",
             "CAN slcan"});
-            this.cmbSerCanP1P2.Location = new System.Drawing.Point(196, 183);
+            this.cmbSerCanP1P2.Location = new System.Drawing.Point(195, 183);
             this.cmbSerCanP1P2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbSerCanP1P2.Name = "cmbSerCanP1P2";
             this.cmbSerCanP1P2.Size = new System.Drawing.Size(86, 24);
             this.cmbSerCanP1P2.TabIndex = 142;
             this.cmbSerCanP1P2.Text = "Serial3";
-            this.cmbSerCanP1P2.Visible = false;
-            this.cmbSerCanP1P2.SelectedIndexChanged += new System.EventHandler(this.cmbComms_SelectedIndexChanged);
+            this.cmbSerCanP1P2.SelectedIndexChanged += new System.EventHandler(this.cmbSerCanP1P2_SelectedIndexChanged);
             // 
             // cmbSerCanP1P2SerSpeed
             // 
@@ -3948,13 +3947,12 @@
             "57600",
             "115200",
             "230400"});
-            this.cmbSerCanP1P2SerSpeed.Location = new System.Drawing.Point(290, 183);
+            this.cmbSerCanP1P2SerSpeed.Location = new System.Drawing.Point(289, 184);
             this.cmbSerCanP1P2SerSpeed.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbSerCanP1P2SerSpeed.Name = "cmbSerCanP1P2SerSpeed";
             this.cmbSerCanP1P2SerSpeed.Size = new System.Drawing.Size(80, 24);
             this.cmbSerCanP1P2SerSpeed.TabIndex = 144;
             this.cmbSerCanP1P2SerSpeed.Text = "115200";
-            this.cmbSerCanP1P2SerSpeed.Visible = false;
             // 
             // cmbSerCanP1P2CanSpeed
             // 
@@ -3991,7 +3989,6 @@
             this.cmbSerCanP1P2SerInter.Size = new System.Drawing.Size(122, 24);
             this.cmbSerCanP1P2SerInter.TabIndex = 149;
             this.cmbSerCanP1P2SerInter.Text = "/dev/ttyAMA0";
-            this.cmbSerCanP1P2SerInter.Visible = false;
             // 
             // cmbSerCanP1P2CanInter
             // 
@@ -4068,7 +4065,6 @@
             this.panel3.Controls.Add(this.cmbCanAddressP1);
             this.panel3.Controls.Add(this.label14);
             this.panel3.Controls.Add(this.cmbSerCanP1P3CanInter);
-            this.panel3.Controls.Add(this.comboBox7);
             this.panel3.Controls.Add(this.cmbSerCanP1P3CanSpeed);
             this.panel3.Controls.Add(this.cmbSerCanP1P3);
             this.panel3.Controls.Add(this.cmbSerCanP1ECUCanInter);
@@ -4168,26 +4164,6 @@
             this.cmbSerCanP1P3CanInter.Size = new System.Drawing.Size(122, 24);
             this.cmbSerCanP1P3CanInter.TabIndex = 160;
             this.cmbSerCanP1P3CanInter.Text = "can0";
-            this.cmbSerCanP1P3CanInter.Visible = false;
-            // 
-            // comboBox7
-            // 
-            this.comboBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.comboBox7.FormattingEnabled = true;
-            this.comboBox7.Items.AddRange(new object[] {
-            "/dev/ttyAMA0",
-            "/dev/ttyUSB0",
-            "/dev/ttyUSB1",
-            "/dev/ttyS0",
-            "/dev/ttyACM0",
-            "/dev/serial0",
-            "/dev/serial1"});
-            this.comboBox7.Location = new System.Drawing.Point(377, 218);
-            this.comboBox7.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(122, 24);
-            this.comboBox7.TabIndex = 159;
-            this.comboBox7.Text = "/dev/ttyAMA0";
             // 
             // cmbSerCanP1P3CanSpeed
             // 
@@ -4204,7 +4180,6 @@
             this.cmbSerCanP1P3CanSpeed.Size = new System.Drawing.Size(80, 24);
             this.cmbSerCanP1P3CanSpeed.TabIndex = 158;
             this.cmbSerCanP1P3CanSpeed.Text = "250K";
-            this.cmbSerCanP1P3CanSpeed.Visible = false;
             // 
             // cmbSerCanP1P3
             // 
@@ -4222,6 +4197,7 @@
             this.cmbSerCanP1P3.Size = new System.Drawing.Size(86, 24);
             this.cmbSerCanP1P3.TabIndex = 156;
             this.cmbSerCanP1P3.Text = "pcan";
+            this.cmbSerCanP1P3.SelectedIndexChanged += new System.EventHandler(this.cmbSerCanP1P3_SelectedIndexChanged);
             // 
             // cmbSerCanP1ECUCanInter
             // 
@@ -4268,7 +4244,6 @@
             this.cmbSerCanP1ECUSerInter.Size = new System.Drawing.Size(122, 24);
             this.cmbSerCanP1ECUSerInter.TabIndex = 153;
             this.cmbSerCanP1ECUSerInter.Text = "/dev/ttyAMA0";
-            this.cmbSerCanP1ECUSerInter.Visible = false;
             // 
             // label6
             // 
@@ -4298,7 +4273,6 @@
             this.cmbSerCanP1ECUSerSpeed.Size = new System.Drawing.Size(80, 24);
             this.cmbSerCanP1ECUSerSpeed.TabIndex = 151;
             this.cmbSerCanP1ECUSerSpeed.Text = "115200";
-            this.cmbSerCanP1ECUSerSpeed.Visible = false;
             // 
             // cmbSerCanP1ECUCanSpeed
             // 
@@ -4342,7 +4316,7 @@
             this.cmbSerCanP1ECU.Size = new System.Drawing.Size(86, 24);
             this.cmbSerCanP1ECU.TabIndex = 144;
             this.cmbSerCanP1ECU.Text = "Serial3";
-            this.cmbSerCanP1ECU.Visible = false;
+            this.cmbSerCanP1ECU.SelectedIndexChanged += new System.EventHandler(this.cmbSerCanP1ECU_SelectedIndexChanged);
             // 
             // panel4
             // 
@@ -4352,8 +4326,8 @@
             this.panel4.Controls.Add(this.comboBox1);
             this.panel4.Controls.Add(this.label27);
             this.panel4.Controls.Add(this.label29);
-            this.panel4.Controls.Add(this.textBox1);
-            this.panel4.Controls.Add(this.textBox2);
+            this.panel4.Controls.Add(this.txtP2Height);
+            this.panel4.Controls.Add(this.txtP2Width);
             this.panel4.Controls.Add(this.label31);
             this.panel4.Controls.Add(this.lblP2Path);
             this.panel4.Controls.Add(this.btnP2BG);
@@ -4429,25 +4403,25 @@
             this.label29.Size = new System.Drawing.Size(117, 27);
             this.label29.TabIndex = 151;
             // 
-            // textBox1
+            // txtP2Height
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(294, 107);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(56, 22);
-            this.textBox1.TabIndex = 4;
-            this.textBox1.Text = "768";
+            this.txtP2Height.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtP2Height.Location = new System.Drawing.Point(294, 107);
+            this.txtP2Height.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtP2Height.Name = "txtP2Height";
+            this.txtP2Height.Size = new System.Drawing.Size(56, 22);
+            this.txtP2Height.TabIndex = 4;
+            this.txtP2Height.Text = "768";
             // 
-            // textBox2
+            // txtP2Width
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox2.Location = new System.Drawing.Point(196, 107);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(56, 22);
-            this.textBox2.TabIndex = 2;
-            this.textBox2.Text = "1024";
+            this.txtP2Width.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtP2Width.Location = new System.Drawing.Point(196, 107);
+            this.txtP2Width.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtP2Width.Name = "txtP2Width";
+            this.txtP2Width.Size = new System.Drawing.Size(56, 22);
+            this.txtP2Width.TabIndex = 2;
+            this.txtP2Width.Text = "1024";
             // 
             // label31
             // 
@@ -4511,8 +4485,8 @@
             this.panel5.Controls.Add(this.comboBox2);
             this.panel5.Controls.Add(this.label43);
             this.panel5.Controls.Add(this.label44);
-            this.panel5.Controls.Add(this.textBox4);
-            this.panel5.Controls.Add(this.textBox5);
+            this.panel5.Controls.Add(this.txtP3Height);
+            this.panel5.Controls.Add(this.txtP3Width);
             this.panel5.Controls.Add(this.label45);
             this.panel5.Controls.Add(this.lblP3Path);
             this.panel5.Controls.Add(this.btnP3BG);
@@ -4580,25 +4554,25 @@
             this.label44.TabIndex = 111;
             this.label44.Text = "Panel 3:";
             // 
-            // textBox4
+            // txtP3Height
             // 
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox4.Location = new System.Drawing.Point(294, 107);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(56, 22);
-            this.textBox4.TabIndex = 4;
-            this.textBox4.Text = "768";
+            this.txtP3Height.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtP3Height.Location = new System.Drawing.Point(294, 107);
+            this.txtP3Height.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtP3Height.Name = "txtP3Height";
+            this.txtP3Height.Size = new System.Drawing.Size(56, 22);
+            this.txtP3Height.TabIndex = 4;
+            this.txtP3Height.Text = "768";
             // 
-            // textBox5
+            // txtP3Width
             // 
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox5.Location = new System.Drawing.Point(196, 107);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(56, 22);
-            this.textBox5.TabIndex = 2;
-            this.textBox5.Text = "1024";
+            this.txtP3Width.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtP3Width.Location = new System.Drawing.Point(196, 107);
+            this.txtP3Width.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtP3Width.Name = "txtP3Width";
+            this.txtP3Width.Size = new System.Drawing.Size(56, 22);
+            this.txtP3Width.TabIndex = 2;
+            this.txtP3Width.Text = "1024";
             // 
             // label45
             // 
@@ -4904,8 +4878,8 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtP2Height;
+        private System.Windows.Forms.TextBox txtP2Width;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label lblP2Path;
         private System.Windows.Forms.Button btnP2BG;
@@ -4914,8 +4888,8 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.Label label44;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtP3Height;
+        private System.Windows.Forms.TextBox txtP3Width;
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.Label lblP3Path;
         private System.Windows.Forms.Button btnP3BG;
@@ -4923,7 +4897,6 @@
         private System.Windows.Forms.Label label47;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox cmbSerCanP1P3CanInter;
-        private System.Windows.Forms.ComboBox comboBox7;
         private System.Windows.Forms.ComboBox cmbSerCanP1P3CanSpeed;
         private System.Windows.Forms.ComboBox cmbSerCanP1P3;
         private System.Windows.Forms.TextBox txtUser4;

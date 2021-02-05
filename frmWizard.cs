@@ -34,67 +34,57 @@ namespace kkdash
         private void btnLoad_Click_1(object sender, EventArgs e)
         {
             //-------------------------------------------------------------------------Open file(s) and load all data---------------------------------------------------------------
+            TS1.Text = ("Ready    ");
+            TS2.Text = ("Ready    ");
+            TS3.Text = ("Ready    ");
             ResetGlobals();
-
+            TS1.Text = ("Reading config    ");
+            TS2.Text = ("Ready    ");
+            TS3.Text = ("Ready    ");
             ReadTheCSV(1);   //populate panel 1 global configs
+            TS1.Text = ("Ready    ");
+            TS2.Text = ("Reading config    ");
+            TS3.Text = ("Ready    ");
+
             ReadTheCSV(2);   //populate panel 2 global configs
+            TS1.Text = ("Ready    ");
+            TS2.Text = ("Ready    ");
+            TS3.Text = ("Reading config    ");
             ReadTheCSV(3);   //populate panel 3 global configs
 
             //poplulate the config page
             resolveFromVars();
         }
 
-
-
-
-
-
-
-
         //=======================================================================SAVE SECTION============================================================================
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            ResetGlobals();
+            Globals.flocation = "";
 
             //-----------------------------------------------------------save all fields------------------------------------------------------------------
+            TS1.Text = ("Ready    ");
+            TS2.Text = ("Ready    ");
+            TS3.Text = ("Ready    ");
             resolveToVars(); //this takes all text except which panel indicators to global vars
             resolvePanelToVars(); //this takes the panel number to global vars
-
+            TS1.Text = ("Writing config    ");
+            TS2.Text = ("Ready    ");
+            TS3.Text = ("Ready    ");
             WriteCSVfile(1);  // write csv panel1 from globals
+            TS1.Text = ("Ready    ");
+            TS2.Text = ("Writing config    ");
+            TS3.Text = ("Ready    ");
             WriteCSVfile(2);  // write csv panel2 from globals
+            TS1.Text = ("Ready    ");
+            TS2.Text = ("Ready    ");
+            TS3.Text = ("Writing config    ");
             WriteCSVfile(3);  // write csv panel3 from globals
-
+            //ResetGlobals();
+            TS1.Text = ("Ready    ");
+            TS2.Text = ("Ready    ");
+            TS3.Text = ("Ready    ");
         }
-
-
-
-
-
-
-
-
-
-        //--------------------------------------change the serial / can listings -------------------------------------------------------------------
-        private void cmbComms_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbSerCanP1P2.Text == "Serial3")
-            {
-                cmbSerCanP1P2SerSpeed.Visible = true;
-                cmbSerCanP1P2CanSpeed.Visible = false;
-                cmbSerCanP1P2CanInter.Visible = false;
-            }
-            else
-            {
-                cmbSerCanP1P2SerSpeed.Visible = false;
-                cmbSerCanP1P2CanSpeed.Visible = true;
-                cmbSerCanP1P2CanInter.Visible = true;
-            }
-        }
-
-
-
-
 
 
         //--------------------------------------------------------------------------------Guage / barV / BarH -------------------------------------------------------------------------------------
@@ -448,20 +438,8 @@ namespace kkdash
 
         //------------------------------------------------------------------------------
 
-
-
-
-
-
-
-
-
-
-
-
-
         //-----------------------------------------------------------------------------Backgrounds-----------------------------------------------------------------------------------------
-        private void btnP1BG_Click(object sender, EventArgs e)
+        private void btnPanel1BG_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
@@ -478,6 +456,7 @@ namespace kkdash
                 }
             }
         }
+
         private void btnP2BG_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -516,13 +495,38 @@ namespace kkdash
 
 
 
-
-
-
         //-------------------------------------------------------------------------------send textboxes to variables ----------------------------------------------------------------------------------
 
         private void resolvePanelToVars()
         {
+
+//=======================================================================items held in the config==================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            Globals.p1DispWidth = txtP1Width.Text;
+            Globals.p1DispHeight = txtP1Height.Text;
+
+            Globals.p2DispWidth = txtP2Width.Text;
+            Globals.p2DispHeight = txtP2Height.Text;
+
+            Globals.p3DispWidth = txtP3Width.Text;
+            Globals.p3DispHeight = txtP3Height.Text;
+
             //Speedo
             Globals.gaugename = ""; Globals.SpeedoShow = "n"; Globals.SpeedoTextShow = "n";  //reset to no values
             if (cmbShowSpeedo.Text == "N") { Globals.SpeedoShow = "n"; }
@@ -1151,7 +1155,25 @@ namespace kkdash
         // --------------------------------------------------------------------------------populate screen from global variables----------------------------------------------------------
         private void resolveFromVars()
         {
-             lblUser1.Text = Globals.User1name;
+            //=======================================================================items held in the config==================================================================
+
+
+
+
+
+
+
+
+
+
+            txtP1Width.Text = Globals.p1DispWidth;
+            txtP2Width.Text = Globals.p2DispWidth;
+            txtP3Width.Text = Globals.p3DispWidth;
+            txtP1Height.Text = Globals.p1DispHeight;
+            txtP2Height.Text = Globals.p2DispHeight;
+            txtP3Height.Text = Globals.p3DispHeight;
+
+            lblUser1.Text = Globals.User1name;
              lblUser2.Text = Globals.User2name;
              lblUser3.Text = Globals.User3name;
              lblUser4.Text = Globals.User4name;
@@ -2119,6 +2141,7 @@ namespace kkdash
             Globals.flocationName = "";
             Globals.SpeedoNeedleWidth = ""; Globals.SpeedoNeedleLength = ""; Globals.SpeedoNeedleX = ""; Globals.SpeedoNeedleY = ""; Globals.SpeedoOffset = ""; Globals.SpeedoEnd = ""; Globals.SpeedoTop = ""; Globals.SpeedoTextX = ""; Globals.SpeedoTextY = ""; Globals.SpeedoFontSize = ""; Globals.SpeedoTextStyle = ""; Globals.SpeedoNeedle = "";
             Globals.TachoNeedleWidth = ""; Globals.TachoNeedleLength = ""; Globals.TachoNeedleX = ""; Globals.TachoNeedleY = ""; Globals.TachoOffset = ""; Globals.TachoEnd = ""; Globals.TachoTop = ""; Globals.TachoTextX = ""; Globals.TachoTextY = ""; Globals.TachoFontSize = ""; Globals.TachoTextStyle = ""; Globals.TachoNeedle = "";
+            Globals.BoostNeedleWidth = ""; Globals.BoostNeedleLength = ""; Globals.BoostNeedleX = ""; Globals.BoostNeedleY = ""; Globals.BoostOffset = ""; Globals.BoostEnd = ""; Globals.BoostTop = ""; Globals.BoostTextX = ""; Globals.BoostTextY = ""; Globals.BoostFontSize = ""; Globals.BoostTextStyle = ""; Globals.BoostNeedle = "";
             Globals.TempNeedleWidth = ""; Globals.TempNeedleLength = ""; Globals.TempNeedleX = ""; Globals.TempNeedleY = ""; Globals.TempOffset = ""; Globals.TempEnd = ""; Globals.TempTop = ""; Globals.TempTextX = ""; Globals.TempTextY = ""; Globals.TempFontSize = ""; Globals.TempTextStyle = ""; Globals.TempNeedle = "";
             Globals.OilNeedleWidth = ""; Globals.OilNeedleLength = ""; Globals.OilNeedleX = ""; Globals.OilNeedleY = ""; Globals.OilOffset = ""; Globals.OilEnd = ""; Globals.OilTop = ""; Globals.OilTextX = ""; Globals.OilTextY = ""; Globals.OilFontSize = ""; Globals.OilTextStyle = ""; Globals.OilNeedle = "";
             Globals.OilTNeedleWidth = ""; Globals.OilTNeedleLength = ""; Globals.OilTNeedleX = ""; Globals.OilTNeedleY = ""; Globals.OilTOffset = ""; Globals.OilTEnd = ""; Globals.OilTTop = ""; Globals.OilTTextX = ""; Globals.OilTTextY = ""; Globals.OilTFontSize = ""; Globals.OilTTextStyle = ""; Globals.OilTNeedle = "";
@@ -2310,6 +2333,139 @@ namespace kkdash
                     lblUser4.Text = txtUser4.Text;
                     txtUser4.Visible = false;
                 }
+            }
+
+        }
+
+        //--------------------------------------change the serial / can listings -------------------------------------------------------------------
+        private void cmbSerCanP1ECU_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cmbSerCanP1ECU.Text)
+            {
+                case "Serial3":
+                    cmbSerCanP1ECUSerSpeed.Visible = true;
+                    cmbSerCanP1ECUSerInter.Visible = true;
+                    cmbSerCanP1ECUCanSpeed.Visible = false;
+                    cmbSerCanP1ECUCanInter.Visible = false;
+                    break;
+
+                case "CAN Pcan":
+                    Globals.difCanP1 = "pcan";
+                    cmbSerCanP1ECUSerSpeed.Visible = false;
+                    cmbSerCanP1ECUSerInter.Visible = false;
+                    cmbSerCanP1ECUCanSpeed.Visible = true;
+                    cmbSerCanP1ECUCanInter.Visible = true;
+                    break;
+
+                case "CAN slcan":
+                    Globals.difCanP1 = "slcan";
+                    cmbSerCanP1ECUSerSpeed.Visible = false;
+                    cmbSerCanP1ECUSerInter.Visible = false;
+
+                    cmbSerCanP1ECUCanSpeed.Visible = true;
+                    cmbSerCanP1ECUCanInter.Visible = true;
+                    break;
+
+                default:
+                    Globals.difCanP1 = cmbSerCanP1ECU.Text;
+                    cmbSerCanP1ECUSerSpeed.Visible = false;
+                    cmbSerCanP1ECUSerInter.Visible = false;
+
+                    cmbSerCanP1ECUCanSpeed.Visible = true;
+                    cmbSerCanP1ECUCanInter.Visible = true;
+                    break;
+            }
+        }
+
+        private void cmbSerCanP1P2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Globals.SerCanAddressP1P2 	// 0x102 --both Panel 1 and Panel 2 config				
+            //Globals.SerCanEnabledP1P2    //yn flag
+            //Globals.SerCanP1P2           // serial3 / can / ethernet  ---   cmbSerCanP1P2
+            //Globals.SerCanPortP1P2       // /dev/ttyS0 can0  --both Panel 1 and Panel 2 config
+            //Globals.SerCanSpeedP1P2       // 115200	125k    --both Panel 1 and Panel 2 config
+            switch (cmbSerCanP1P2.Text)
+            {
+                case "Serial3":
+                    Globals.difCanP2 = "seraial3";
+                    cmbSerCanP1P2SerSpeed.Visible = true;
+                    cmbSerCanP1P2SerInter.Visible = true;
+
+                    cmbSerCanP1P2CanSpeed.Visible = false;
+                    cmbSerCanP1P2CanInter.Visible = false;
+                    break;
+
+                case "Ethernet":
+                    Globals.difCanP2 = "ethernet";
+                    cmbSerCanP1P2SerSpeed.Visible = false;
+                    cmbSerCanP1P2SerInter.Visible = false;
+
+                    cmbSerCanP1P2CanSpeed.Visible = false;
+                    cmbSerCanP1P2CanInter.Visible = false;
+                    break;
+
+                case "CAN Pcan":
+                    Globals.difCanP2 = "pcan";
+                    cmbSerCanP1P2SerSpeed.Visible = false;
+                    cmbSerCanP1P2SerInter.Visible = false;
+
+                    cmbSerCanP1P2CanSpeed.Visible = true;
+                    cmbSerCanP1P2CanInter.Visible = true;
+                    break;
+
+                case "CAN slcan":
+                    Globals.difCanP2 = "slcan";
+                    cmbSerCanP1P2SerSpeed.Visible = false;
+                    cmbSerCanP1ECUSerInter.Visible = false;
+
+                    cmbSerCanP1P2CanSpeed.Visible = true;
+                    cmbSerCanP1P2CanInter.Visible = true;
+                    break;
+
+                default:
+                    Globals.difCanP2 = cmbSerCanP1P2.Text;
+                    cmbSerCanP1P2SerSpeed.Visible = false;
+                    cmbSerCanP1ECUSerInter.Visible = false;
+
+                    cmbSerCanP1P2CanSpeed.Visible = true;
+                    cmbSerCanP1P2CanInter.Visible = true;
+                    break;
+            }
+
+        }
+
+        private void cmbSerCanP1P3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Globals.SerCanEnabledP1P3     // yn flag
+            //Globals.SerCanP1P3            // can / ethernet            ---   cmbSerCanP1P3
+            //Globals.SerCanPortP1P3        // can0             --both Panel 1 and Panel 3 config     
+            //Globals.SerCanSpeedP1P3      // 125k             --both Panel 1 and Panel 3 config
+            //Globals.SerCanAddressP1P3 	// 0x103 --both Panel 1 and Panel 3 config				
+            switch (cmbSerCanP1P3.Text)
+            {
+                case "Ethernet":
+                    Globals.difCanP3 = "ethernet";
+                    cmbSerCanP1P3CanSpeed.Visible = false;
+                    cmbSerCanP1P3CanInter.Visible = false;
+                    break;
+
+                case "CAN Pcan":
+                    Globals.difCanP3 = "pcan";
+                    cmbSerCanP1P3CanSpeed.Visible = true;
+                    cmbSerCanP1P3CanInter.Visible = true;
+                    break;
+
+                case "CAN slcan":
+                    Globals.difCanP3 = "slcan";
+                    cmbSerCanP1P3CanSpeed.Visible = true;
+                    cmbSerCanP1P3CanInter.Visible = true;
+                    break;
+
+                default:
+                    Globals.difCanP3 = cmbSerCanP1P3.Text;
+                    cmbSerCanP1P3CanSpeed.Visible = true;
+                    cmbSerCanP1P3CanInter.Visible = true;
+                    break;
             }
 
         }

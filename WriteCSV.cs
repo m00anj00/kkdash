@@ -46,6 +46,7 @@ namespace kkdash
                     {
                         ShowSave(1);
                     }
+                    disptxt = "1," + Globals.p1DispWidth + "," + Globals.p1DispHeight + ",60,,,,,,,,,,,";
                     strFilePath = Globals.flocation + "\\Panel1.csv";
                     PNO = PanelNo.ToString();
                     speedoval = Globals.Speedovalp1;
@@ -57,7 +58,6 @@ namespace kkdash
                     fuelval = Globals.Fuelvalp1;
                     fueltval = Globals.FuelTvalp1;
                     fuelpval = Globals.FuelPvalp1;
-                    disptxt = Globals.p1disptxt;
 
                     canser = Globals.canser1;
                     vcanval = Globals.canval1; 
@@ -75,6 +75,7 @@ namespace kkdash
                     {
                         ShowSave(2);
                     }
+                    disptxt = "2," + Globals.p2DispWidth + "," + Globals.p2DispHeight + ",60,,,,,,,,,,,";
                     strFilePath = Globals.flocation + "\\Panel2.csv";
                     PNO = PanelNo.ToString();
                     speedoval = Globals.Speedovalp2;
@@ -86,7 +87,6 @@ namespace kkdash
                     fuelval = Globals.Fuelvalp2;
                     fueltval = Globals.FuelTvalp2;
                     fuelpval = Globals.FuelPvalp2;
-                    disptxt = Globals.p2disptxt;
 
                     canser = Globals.canser2;
                     vcanval = Globals.canval2;
@@ -103,6 +103,7 @@ namespace kkdash
                     {
                         ShowSave(3);
                     }
+                    disptxt = "3," + Globals.p3DispWidth + "," + Globals.p3DispHeight + ",60,,,,,,,,,,,";
                     strFilePath = Globals.flocation + "\\Panel3.csv";
                     PNO = PanelNo.ToString();
                     speedoval = Globals.Speedovalp3;
@@ -114,7 +115,6 @@ namespace kkdash
                     fuelval = Globals.Fuelvalp3;
                     fueltval = Globals.FuelTvalp3;
                     fuelpval = Globals.FuelPvalp3;
-                    disptxt = Globals.p3disptxt;
 
                     canser = Globals.canser3;
                     vcanval = Globals.canval3;
