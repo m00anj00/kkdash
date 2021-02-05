@@ -1,4 +1,4 @@
-﻿namespace dashconfigurator
+﻿namespace kkdash
 {
     class Globals
     {
@@ -6,6 +6,8 @@
         public static string gaugename { get; set; }
         public static string ConfigFileName { get; set; }
         public static string flocation { get; set; }
+        public static string flocationName { get; set; }
+
         //can/serial3/ethernet
         //Panel 1
         public static string SerCanP1Ecu { get; set; }          // Serial3 / can        ---   cmbSerCanP1ECU
@@ -27,21 +29,27 @@
 
         //user gauge names
         public static string User1name { get; set; }
+        public static string User2name { get; set; }
+        public static string User3name { get; set; }
+        public static string User4name { get; set; }
+
         public static string User1valp1 { get; set; }
         public static string User1valp2 { get; set; }
         public static string User1valp3 { get; set; }
-        public static string User2name { get; set; }
+        public static string User1valp4 { get; set; }
         public static string User2valp1 { get; set; }
         public static string User2valp2 { get; set; }
         public static string User2valp3 { get; set; }
-        public static string User3name { get; set; }
+        public static string User2valp4 { get; set; }
         public static string User3valp1 { get; set; }
         public static string User3valp2 { get; set; }
         public static string User3valp3 { get; set; }
-        public static string User4name { get; set; }
+        public static string User3valp4 { get; set; }
         public static string User4valp1 { get; set; }
         public static string User4valp2 { get; set; }
         public static string User4valp3 { get; set; }
+        public static string User4valp4 { get; set; }
+
         //speedo
         public static string SpeedoShow { get; set; }
         public static string SpeedoNeedle { get; set; }
