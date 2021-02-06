@@ -2,6 +2,10 @@
 {
     class Globals
     {
+        public static string showP1 { get; set; }
+        public static string showP2 { get; set; }
+        public static string showP3 { get; set; }
+
         //General
         public static string gaugename { get; set; }
         public static string ConfigFileName { get; set; }
@@ -16,29 +20,26 @@
         public static string p3DispHeight { get; set; }
 
         //can/serial3/ethernet
-        //Panel 1
+        //Panel 1        
+        public static string p1connection { get; set; }
+        public static string p2connection { get; set; }
+        public static string p3connection { get; set; }
+
         public static string SerCanP1Ecu { get; set; }          // Serial3 / can        ---   cmbSerCanP1ECU
-        public static string SerCanPortP1EcuInter { get; set; } 
         public static string SerCanPortP1Ecu { get; set; }	    // /dev/ttyS0 can0
         public static string SerCanSpeedP1Ecu { get; set; }	    // 115200	125k
-
         public static string SerCanAddressP1Ecu { get; set; }   // 0x101 --both Panel 1 and ECU config
-        public static string SerCanAddressP1P2 { get; set; }	// 0x102 --both Panel 1 and Panel 2 config				
-        public static string SerCanAddressP1P3 { get; set; }	// 0x103 --both Panel 1 and Panel 3 config				
+        public static string SerCanAddressP1 { get; set; }   // 0x101 --both Panel 1 and ECU config
 
-        public static string SerCanEnabledP1P2 { get; set; }    //yn flag
         public static string SerCanP1P2 { get; set; }           // serial3 / can / ethernet  ---   cmbSerCanP1P2
         public static string SerCanPortP1P2 { get; set; }       // /dev/ttyS0 can0  --both Panel 1 and Panel 2 config
         public static string SerCanSpeedP1P2 { get; set; }      // 115200	125k    --both Panel 1 and Panel 2 config
+        public static string SerCanAddressP1P2 { get; set; }	// 0x102 --both Panel 1 and Panel 2 config				
 
-        public static string SerCanEnabledP1P3 { get; set; }    // yn flag
         public static string SerCanP1P3 { get; set; }           // can / ethernet            ---   cmbSerCanP1P3
         public static string SerCanPortP1P3 { get; set; }       // can0             --both Panel 1 and Panel 3 config     
         public static string SerCanSpeedP1P3 { get; set; }      // 125k             --both Panel 1 and Panel 3 config
-
-        public static string difCanP1 { get; set; }      // unlisted can driver
-        public static string difCanP2 { get; set; }      // unlisted can driver
-        public static string difCanP3 { get; set; }      // unlisted can driver
+        public static string SerCanAddressP1P3 { get; set; }	// 0x103 --both Panel 1 and Panel 3 config				
 
         //user gauge names
         public static string User1name { get; set; }

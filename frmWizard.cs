@@ -26,6 +26,23 @@ namespace kkdash
             TS1.Text = ("Ready    ");
             TS2.Text = ("Ready    ");
             TS3.Text = ("Ready    ");
+
+            MessageBox.Show("Please select the current working director");
+            using (var fbd = new FolderBrowserDialog())
+            {
+                DialogResult result = fbd.ShowDialog();
+
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                {
+                    string[] files = Directory.GetFiles(fbd.SelectedPath);
+                    Globals.flocation = fbd.SelectedPath;
+                    //System.Windows.Forms.MessageBox.Show("Files found: " + files.Length.ToString(), "Message");
+                }
+                else
+                {
+                    this.Close();
+                }
+            }
         }
 
 
@@ -51,17 +68,16 @@ namespace kkdash
             TS2.Text = ("Ready    ");
             TS3.Text = ("Reading config    ");
             ReadTheCSV(3);   //populate panel 3 global configs
+            TS1.Text = ("Ready    ");
+            TS2.Text = ("Ready    ");
+            TS3.Text = ("Ready    ");
 
-            //poplulate the config page
-            resolveFromVars();
         }
 
         //=======================================================================SAVE SECTION============================================================================
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            Globals.flocation = "";
-
             //-----------------------------------------------------------save all fields------------------------------------------------------------------
             TS1.Text = ("Ready    ");
             TS2.Text = ("Ready    ");
@@ -84,6 +100,15 @@ namespace kkdash
             TS1.Text = ("Ready    ");
             TS2.Text = ("Ready    ");
             TS3.Text = ("Ready    ");
+
+            //display the dash to edit
+            // Create a new instance of the Form2 class
+            frmGraphic frmG = new frmGraphic();
+
+            // Show the settings form
+            frmG.Show();
+            //this.Hide();
+            this.Close();
         }
 
 
@@ -443,8 +468,8 @@ namespace kkdash
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                openFileDialog.InitialDirectory = "c:\\";
-                openFileDialog.Filter = "Picture files All files (*.*)|*.*|(*.gif)|*.gif|(*.bmp)|*.bmp|(*.jpg)|*.jpg";
+                openFileDialog.InitialDirectory = Globals.flocation;
+                openFileDialog.Filter = "Picture files All files (*.*)|*.*|(*.jpg)|*.jpg|(*.bmp)|*.bmp|(*.gif)|*.gif";
                 openFileDialog.FilterIndex = 2;
                 openFileDialog.RestoreDirectory = true;
 
@@ -461,8 +486,8 @@ namespace kkdash
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                openFileDialog.InitialDirectory = "c:\\";
-                openFileDialog.Filter = "Picture files All files (*.*)|*.*|(*.gif)|*.gif|(*.bmp)|*.bmp|(*.jpg)|*.jpg";
+                openFileDialog.InitialDirectory = Globals.flocation;
+                openFileDialog.Filter = "Picture files All files (*.*)|*.*|(*.jpg)|*.jpg|(*.bmp)|*.bmp|(*.gif)|*.gif";
                 openFileDialog.FilterIndex = 2;
                 openFileDialog.RestoreDirectory = true;
 
@@ -479,8 +504,8 @@ namespace kkdash
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                openFileDialog.InitialDirectory = "c:\\";
-                openFileDialog.Filter = "Picture files All files (*.*)|*.*|(*.gif)|*.gif|(*.bmp)|*.bmp|(*.jpg)|*.jpg";
+                openFileDialog.InitialDirectory = Globals.flocation;
+                openFileDialog.Filter = "Picture files All files (*.*)|*.*|(*.jpg)|*.jpg|(*.bmp)|*.bmp|(*.gif)|*.gif";
                 openFileDialog.FilterIndex = 2;
                 openFileDialog.RestoreDirectory = true;
 
@@ -501,19 +526,6 @@ namespace kkdash
         {
 
 //=======================================================================items held in the config==================================================================
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -541,6 +553,7 @@ namespace kkdash
             if ((Globals.SpeedoShow == "1") || (Globals.SpeedoTextShow == "1"))
             {
                 Globals.gaugename = "speedo";
+                Globals.showP1 = "Y";
                 if ((Globals.SpeedoShow == "1") && (Globals.SpeedoTextShow != "1"))
                 {
                     Globals.Speedovalp1 = Globals.gaugename + "," + Globals.SpeedoShow + "," + Globals.SpeedoNeedleWidth + "," + Globals.SpeedoNeedleLength + "," + Globals.SpeedoNeedleX + "," + Globals.SpeedoNeedleY + "," + Globals.SpeedoOffset + "," + Globals.SpeedoEnd + "," + Globals.SpeedoTop + "," + "n" + "," + Globals.SpeedoTextX + "," + Globals.SpeedoTextY + "," + Globals.SpeedoFontSize + "," + Globals.SpeedoTextStyle + "," + Globals.SpeedoNeedleType + "," + Globals.SpeedoNeedle;
@@ -553,6 +566,7 @@ namespace kkdash
             if ((Globals.SpeedoShow == "2") || (Globals.SpeedoTextShow == "2"))
             {
                 Globals.gaugename = "speedo";
+                Globals.showP2 = "Y";
                 if ((Globals.SpeedoShow == "2") && (Globals.SpeedoTextShow != "2"))
                 {
                     Globals.Speedovalp2 = Globals.gaugename + "," + Globals.SpeedoShow + "," + Globals.SpeedoNeedleWidth + "," + Globals.SpeedoNeedleLength + "," + Globals.SpeedoNeedleX + "," + Globals.SpeedoNeedleY + "," + Globals.SpeedoOffset + "," + Globals.SpeedoEnd + "," + Globals.SpeedoTop + "," + "n" + "," + Globals.SpeedoTextX + "," + Globals.SpeedoTextY + "," + Globals.SpeedoFontSize + "," + Globals.SpeedoTextStyle + "," + Globals.SpeedoNeedleType + "," + Globals.SpeedoNeedle;
@@ -564,6 +578,7 @@ namespace kkdash
             }
             if ((Globals.SpeedoShow == "3") || (Globals.SpeedoTextShow == "3"))
             {
+                Globals.showP3 = "Y";
                 Globals.gaugename = "speedo";
                 if ((Globals.SpeedoShow == "3") && (Globals.SpeedoTextShow != "3"))
                 {
@@ -588,6 +603,7 @@ namespace kkdash
 
             if ((Globals.TachoShow == "1") || (Globals.TachoTextShow == "1"))
             {
+                Globals.showP1 = "Y";
                 Globals.gaugename = "Tacho";
                 if ((Globals.TachoShow == "1") && (Globals.TachoTextShow != "1"))
                 {
@@ -600,6 +616,7 @@ namespace kkdash
             }
             if ((Globals.TachoShow == "2") || (Globals.TachoTextShow == "2"))
             {
+                Globals.showP2 = "Y";
                 Globals.gaugename = "Tacho";
                 if ((Globals.TachoShow == "2") && (Globals.TachoTextShow != "2"))
                 {
@@ -612,6 +629,7 @@ namespace kkdash
             }
             if ((Globals.TachoShow == "3") || (Globals.TachoTextShow == "3"))
             {
+                Globals.showP3 = "Y";
                 Globals.gaugename = "Tacho";
                 if ((Globals.TachoShow == "3") && (Globals.TachoTextShow != "3"))
                 {
@@ -1155,15 +1173,70 @@ namespace kkdash
         // --------------------------------------------------------------------------------populate screen from global variables----------------------------------------------------------
         private void resolveFromVars()
         {
-            //=======================================================================items held in the config==================================================================
+            //======================================================================= get items held in the config==================================================================
 
 
 
+            //Globals.p1connection = "ecuconnection," + Globals.SerCanP1Ecu + "," + Globals.SerCanPortP1Ecu + "," + Globals.SerCanSpeedP1Ecu + "," + Globals.SerCanAddressP1Ecu + "," + Globals.PanelIP1 + "," + Globals.SerCanAddressP1;
+            //Globals.p2connection = "p2connection " + Globals.SerCanP1P2 + "," + Globals.SerCanPortP1P2 + "," + Globals.SerCanSpeedP1P2 + "," + Globals.SerCanAddressP1P2 + "," + Globals.PanelIP2;
+            //Globals.p3connection = "p3connection" + Globals.SerCanP1P3 + "," + Globals.SerCanPortP1P3 + "," + Globals.SerCanSpeedP1P3 + "," + Globals.SerCanAddressP1P3 + "," + Globals.PanelIP3;
+
+            //Connectivity
+            txtPanel1IP.Text = Globals.PanelIP1;
+            txtPaneI2IP.Text  = Globals.PanelIP2;
+            txtPanel3IP.Text = Globals.PanelIP3;
+
+            cmbSerCanP1ECU.Text = Globals.SerCanP1Ecu;
+            if (cmbSerCanP1ECU.Text == "Serial3")
+            {
+                cmbSerCanP1ECUSerInter.Visible = true;
+                cmbSerCanP1ECUSerSpeed.Visible = true;
+                cmbSerCanP1ECUCanInter.Visible = false;
+                cmbSerCanP1ECUCanSpeed.Visible = false;
+                cmbSerCanP1ECUSerInter.Text = Globals.SerCanPortP1Ecu;
+                cmbSerCanP1ECUSerSpeed.Text = Globals.SerCanSpeedP1Ecu;
+                cmbCanAddressEcu.Text = Globals.SerCanAddressP1Ecu;
+                cmbCanAddressP1.Text = Globals.SerCanAddressP1;
+            }
+            else
+            {
+                cmbSerCanP1ECUSerInter.Visible = false;
+                cmbSerCanP1ECUSerSpeed.Visible = false;
+                cmbSerCanP1ECUCanInter.Visible = true;
+                cmbSerCanP1ECUCanSpeed.Visible = true;
+                cmbSerCanP1ECUCanInter.Text = Globals.SerCanPortP1Ecu;
+                cmbSerCanP1ECUCanSpeed.Text = Globals.SerCanSpeedP1Ecu;
+                cmbCanAddressEcu.Text = Globals.SerCanAddressP1Ecu;
+                cmbCanAddressP1.Text = Globals.SerCanAddressP1;
+            }
+
+            cmbSerCanP1P2.Text = Globals.SerCanP1P2;
+            if (cmbSerCanP1P2.Text == "Serial3")
+            {
+                cmbSerCanP1P2SerInter.Visible = true;
+                cmbSerCanP1P2SerSpeed.Visible = true;
+                cmbSerCanP1P2CanInter.Visible = false;
+                cmbSerCanP1P2CanSpeed.Visible = false;
+                cmbSerCanP1P2SerInter.Text = Globals.SerCanPortP1P2;
+                cmbSerCanP1P2SerSpeed.Text = Globals.SerCanSpeedP1P2;
+                cmbSerCanP2Address.Text = Globals.SerCanAddressP1P2;
+            }
+            else
+            {
+                cmbSerCanP1P2SerInter.Visible = false;
+                cmbSerCanP1P2SerSpeed.Visible = false;
+                cmbSerCanP1P2CanInter.Visible = true;
+                cmbSerCanP1P2CanSpeed.Visible = true;
+                cmbSerCanP1P2CanInter.Text = Globals.SerCanPortP1P2;
+                cmbSerCanP1P2CanSpeed.Text = Globals.SerCanSpeedP1P2;
+                cmbSerCanP2Address.Text  = Globals.SerCanAddressP1P2;
+            }
 
 
-
-
-
+            cmbSerCanP1P3.Text = Globals.SerCanP1P3;
+            cmbSerCanP1P3CanInter.Text = Globals.SerCanPortP1P3;
+            cmbSerCanP1P3CanSpeed.Text = Globals.SerCanSpeedP1P3;
+            cmbSerCanP3Address.Text = Globals.SerCanAddressP1P3;
 
 
             txtP1Width.Text = Globals.p1DispWidth;
@@ -1785,6 +1858,157 @@ namespace kkdash
         //------------------------------------------------------------------------------- poplulate variable from textboxes ----------------------------------------------------------------------------------
         private void resolveToVars()
         {
+            //Connectivity (This is only instigated from Panel 1)
+            Globals.PanelIP1 = txtPanel1IP.Text;
+            Globals.PanelIP2 = txtPaneI2IP.Text;
+            Globals.PanelIP3 = txtPanel3IP.Text;
+
+            switch (cmbSerCanP1ECU.Text)
+            {
+                case "Serial3":
+                    Globals.SerCanP1Ecu = "serial3";         // Serial3 / can        ---   cmbSerCanP1ECU
+                    Globals.SerCanPortP1Ecu = cmbSerCanP1ECUSerInter.Text;  // /dev/ttyS0 can0
+                    Globals.SerCanSpeedP1Ecu = cmbSerCanP1ECUSerSpeed.Text;	    // 115200	125k
+                    Globals.SerCanAddressP1Ecu = "";   // 0x101 --both Panel 1 and ECU config
+                    break;
+
+                case "pcan":
+                    Globals.SerCanP1Ecu = "pcan";          // Serial3 / can        ---   cmbSerCanP1ECU
+                    Globals.SerCanPortP1Ecu = cmbSerCanP1ECUCanInter.Text;	    // /dev/ttyS0 can0
+                    Globals.SerCanSpeedP1Ecu = cmbSerCanP1ECUCanSpeed.Text;	    // 115200	125k
+                    Globals.SerCanAddressP1 = cmbCanAddressP1.Text;   // 0x101 --both Panel 1 and ECU config
+                    Globals.SerCanAddressP1Ecu = cmbCanAddressEcu.Text;   // 0x101 --both Panel 1 and ECU config
+                    break;
+
+                case "slcan":
+                    Globals.SerCanP1Ecu = "slcan";          // Serial3 / can        ---   cmbSerCanP1ECU
+                    Globals.SerCanPortP1Ecu = cmbSerCanP1ECUCanInter.Text;	    // /dev/ttyS0 can0
+                    Globals.SerCanSpeedP1Ecu = cmbSerCanP1ECUCanSpeed.Text;	    // 115200	125k
+                    Globals.SerCanAddressP1 = cmbCanAddressP1.Text;   // 0x101 --both Panel 1 and ECU config
+                    Globals.SerCanAddressP1Ecu = cmbCanAddressEcu.Text;   // 0x101 --both Panel 1 and ECU config
+                    break;
+
+                case "vcan":
+                    Globals.SerCanP1Ecu = "vcan";          // Serial3 / can        ---   cmbSerCanP1ECU
+                    Globals.SerCanPortP1Ecu = cmbSerCanP1ECUCanInter.Text;	    // /dev/ttyS0 can0
+                    Globals.SerCanSpeedP1Ecu = cmbSerCanP1ECUCanSpeed.Text;	    // 115200	125k
+                    Globals.SerCanAddressP1 = cmbCanAddressP1.Text;   // 0x101 --both Panel 1 and ECU config
+                    Globals.SerCanAddressP1Ecu = cmbCanAddressEcu.Text;   // 0x101 --both Panel 1 and ECU config
+                    break;
+
+                case "serialcan":
+                    Globals.SerCanP1Ecu = "serialcan";          // Serial3 / can        ---   cmbSerCanP1ECU
+                    Globals.SerCanPortP1Ecu = cmbSerCanP1ECUCanInter.Text;	    // /dev/ttyS0 can0
+                    Globals.SerCanSpeedP1Ecu = cmbSerCanP1ECUCanSpeed.Text;	    // 115200	125k
+                    Globals.SerCanAddressP1 = cmbCanAddressP1.Text;   // 0x101 --both Panel 1 and ECU config
+                    Globals.SerCanAddressP1Ecu = cmbCanAddressEcu.Text;   // 0x101 --both Panel 1 and ECU config
+                    break;
+
+                case "obd":
+                    Globals.SerCanP1Ecu = "obd";          // Serial3 / can        ---   cmbSerCanP1ECU
+                    Globals.SerCanPortP1Ecu = cmbSerCanP1ECUCanInter.Text;	    // /dev/ttyS0 can0
+                    Globals.SerCanSpeedP1Ecu = cmbSerCanP1ECUCanSpeed.Text;	    // 115200	125k
+                    Globals.SerCanAddressP1 = cmbCanAddressP1.Text;   // 0x101 --both Panel 1 and ECU config
+                    Globals.SerCanAddressP1Ecu = cmbCanAddressEcu.Text;   // 0x101 --both Panel 1 and ECU config                    break;
+                    break;            
+            }
+
+            switch (cmbSerCanP1P2.Text)
+            {
+                case "Ethernet":
+                    Globals.SerCanP1P2 = "Ethernet";
+                    Globals.SerCanPortP1P2 = "";
+                    Globals.SerCanSpeedP1P2 = "";
+                    Globals.SerCanAddressP1P2 = "";
+                    break;
+
+                case "Serial3":
+                    Globals.SerCanP1P2 = "Serial3";
+                    Globals.SerCanPortP1P2 = cmbSerCanP1P2SerInter.Text;
+                    Globals.SerCanSpeedP1P2 = cmbSerCanP1P2SerSpeed.Text;
+                    Globals.SerCanAddressP1P2 = "";
+                    break;
+
+                case "pcan":
+                    Globals.SerCanP1P2 = "pcan";
+                    Globals.SerCanPortP1P2 = cmbSerCanP1P2CanInter.Text;
+                    Globals.SerCanSpeedP1P2 = cmbSerCanP1P2CanSpeed.Text;
+                    Globals.SerCanAddressP1P2 = cmbSerCanP2Address.Text;
+                    break;
+
+                case "slcan":
+                    Globals.SerCanP1P2 = "slcan";
+                    Globals.SerCanPortP1P2 = cmbSerCanP1P2CanInter.Text;
+                    Globals.SerCanSpeedP1P2 = cmbSerCanP1P2CanSpeed.Text;
+                    Globals.SerCanAddressP1P2 = cmbSerCanP2Address.Text;
+                    break;
+
+                case "vcan":
+                    Globals.SerCanP1P2 = "vcan";
+                    Globals.SerCanPortP1P2 = cmbSerCanP1P2CanInter.Text;
+                    Globals.SerCanSpeedP1P2 = cmbSerCanP1P2CanSpeed.Text;
+                    Globals.SerCanAddressP1P2 = cmbSerCanP2Address.Text;
+                    break;
+
+                case "serialcan":
+                    Globals.SerCanP1P2 = "serialcan";
+                    Globals.SerCanPortP1P2 = cmbSerCanP1P2CanInter.Text;
+                    Globals.SerCanSpeedP1P2 = cmbSerCanP1P2CanSpeed.Text;
+                    Globals.SerCanAddressP1P2 = cmbSerCanP2Address.Text;
+                    break;
+
+                case "obd":
+                    Globals.SerCanP1P2 = "odb";
+                    Globals.SerCanPortP1P2 = cmbSerCanP1P2CanInter.Text;
+                    Globals.SerCanSpeedP1P2 = cmbSerCanP1P2CanSpeed.Text;
+                    Globals.SerCanAddressP1P2 = cmbSerCanP2Address.Text;
+                    break;
+            }
+
+            switch (cmbSerCanP1P3.Text)
+            {
+                case "Ethernet":
+                    Globals.SerCanP1P3 = "ethernet";
+                    Globals.SerCanPortP1P3 = "";
+                    Globals.SerCanSpeedP1P3 = "";
+                    Globals.SerCanAddressP1P3 = "";
+                    break;
+                case "pcan":
+                    Globals.SerCanP1P3 = "pcan";
+                    Globals.SerCanPortP1P3 = cmbSerCanP1P3CanInter.Text;
+                    Globals.SerCanSpeedP1P3 = cmbSerCanP1P3CanSpeed.Text;
+                    Globals.SerCanAddressP1P3 = cmbSerCanP3Address.Text;
+                    break;
+                case "slcan":
+                    Globals.SerCanP1P3 = "slcan";
+                    Globals.SerCanPortP1P3 = cmbSerCanP1P3CanInter.Text;
+                    Globals.SerCanSpeedP1P3 = cmbSerCanP1P3CanSpeed.Text;
+                    Globals.SerCanAddressP1P3 = cmbSerCanP3Address.Text;
+                    break;
+                case "vcan":
+                    Globals.SerCanP1P3 = "vcan";
+                    Globals.SerCanPortP1P3 = cmbSerCanP1P3CanInter.Text;
+                    Globals.SerCanSpeedP1P3 = cmbSerCanP1P3CanSpeed.Text;
+                    Globals.SerCanAddressP1P3 = cmbSerCanP3Address.Text;
+                    break;
+                case "serialcan":
+                    Globals.SerCanP1P3 = "serialcan";
+                    Globals.SerCanPortP1P3 = cmbSerCanP1P3CanInter.Text;
+                    Globals.SerCanSpeedP1P3 = cmbSerCanP1P3CanSpeed.Text;
+                    Globals.SerCanAddressP1P3 = cmbSerCanP3Address.Text;
+                    break;
+                case "obd":
+                    Globals.SerCanP1P3 = "odb";
+                    Globals.SerCanPortP1P3 = cmbSerCanP1P3CanInter.Text;
+                    Globals.SerCanSpeedP1P3 = cmbSerCanP1P3CanSpeed.Text;
+                    Globals.SerCanAddressP1P3 = cmbSerCanP3Address.Text;
+                    break;
+            }
+
+            Globals.p1connection = "ecuconnection," + Globals.SerCanP1Ecu + "," + Globals.SerCanPortP1Ecu + "," + Globals.SerCanSpeedP1Ecu + "," + Globals.SerCanAddressP1Ecu + "," + Globals.PanelIP1 + "," + Globals.SerCanAddressP1;
+            Globals.p2connection = "p2connection," + Globals.SerCanP1P2 + "," + Globals.SerCanPortP1P2 + "," + Globals.SerCanSpeedP1P2 + "," + Globals.SerCanAddressP1P2 + "," + Globals.PanelIP2;
+            Globals.p3connection = "p3connection," + Globals.SerCanP1P3 + "," + Globals.SerCanPortP1P3 + "," + Globals.SerCanSpeedP1P3 + "," + Globals.SerCanAddressP1P3 + "," + Globals.PanelIP3;
+
             //user gauge names
             Globals.User1name = lblUser1.Text ;
             Globals.User2name = lblUser2.Text;
@@ -2137,8 +2361,10 @@ namespace kkdash
             lblUser2.Text = "User2";
             lblUser3.Text = "User3";
             lblUser4.Text = "User4";
-            Globals.flocation = "";
-            Globals.flocationName = "";
+            Globals.showP1 = "None";
+            Globals.showP2 = "None";
+            Globals.showP3 = "None";
+
             Globals.SpeedoNeedleWidth = ""; Globals.SpeedoNeedleLength = ""; Globals.SpeedoNeedleX = ""; Globals.SpeedoNeedleY = ""; Globals.SpeedoOffset = ""; Globals.SpeedoEnd = ""; Globals.SpeedoTop = ""; Globals.SpeedoTextX = ""; Globals.SpeedoTextY = ""; Globals.SpeedoFontSize = ""; Globals.SpeedoTextStyle = ""; Globals.SpeedoNeedle = "";
             Globals.TachoNeedleWidth = ""; Globals.TachoNeedleLength = ""; Globals.TachoNeedleX = ""; Globals.TachoNeedleY = ""; Globals.TachoOffset = ""; Globals.TachoEnd = ""; Globals.TachoTop = ""; Globals.TachoTextX = ""; Globals.TachoTextY = ""; Globals.TachoFontSize = ""; Globals.TachoTextStyle = ""; Globals.TachoNeedle = "";
             Globals.BoostNeedleWidth = ""; Globals.BoostNeedleLength = ""; Globals.BoostNeedleX = ""; Globals.BoostNeedleY = ""; Globals.BoostOffset = ""; Globals.BoostEnd = ""; Globals.BoostTop = ""; Globals.BoostTextX = ""; Globals.BoostTextY = ""; Globals.BoostFontSize = ""; Globals.BoostTextStyle = ""; Globals.BoostNeedle = "";
@@ -2350,7 +2576,6 @@ namespace kkdash
                     break;
 
                 case "CAN Pcan":
-                    Globals.difCanP1 = "pcan";
                     cmbSerCanP1ECUSerSpeed.Visible = false;
                     cmbSerCanP1ECUSerInter.Visible = false;
                     cmbSerCanP1ECUCanSpeed.Visible = true;
@@ -2358,7 +2583,6 @@ namespace kkdash
                     break;
 
                 case "CAN slcan":
-                    Globals.difCanP1 = "slcan";
                     cmbSerCanP1ECUSerSpeed.Visible = false;
                     cmbSerCanP1ECUSerInter.Visible = false;
 
@@ -2367,7 +2591,6 @@ namespace kkdash
                     break;
 
                 default:
-                    Globals.difCanP1 = cmbSerCanP1ECU.Text;
                     cmbSerCanP1ECUSerSpeed.Visible = false;
                     cmbSerCanP1ECUSerInter.Visible = false;
 
@@ -2379,15 +2602,10 @@ namespace kkdash
 
         private void cmbSerCanP1P2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //Globals.SerCanAddressP1P2 	// 0x102 --both Panel 1 and Panel 2 config				
-            //Globals.SerCanEnabledP1P2    //yn flag
-            //Globals.SerCanP1P2           // serial3 / can / ethernet  ---   cmbSerCanP1P2
-            //Globals.SerCanPortP1P2       // /dev/ttyS0 can0  --both Panel 1 and Panel 2 config
-            //Globals.SerCanSpeedP1P2       // 115200	125k    --both Panel 1 and Panel 2 config
             switch (cmbSerCanP1P2.Text)
             {
                 case "Serial3":
-                    Globals.difCanP2 = "seraial3";
+                    Globals.SerCanP1P2 = "seraial3";
                     cmbSerCanP1P2SerSpeed.Visible = true;
                     cmbSerCanP1P2SerInter.Visible = true;
 
@@ -2396,7 +2614,7 @@ namespace kkdash
                     break;
 
                 case "Ethernet":
-                    Globals.difCanP2 = "ethernet";
+                    Globals.SerCanP1P2 = "ethernet";
                     cmbSerCanP1P2SerSpeed.Visible = false;
                     cmbSerCanP1P2SerInter.Visible = false;
 
@@ -2405,7 +2623,7 @@ namespace kkdash
                     break;
 
                 case "CAN Pcan":
-                    Globals.difCanP2 = "pcan";
+                    Globals.SerCanP1P2 = "pcan";
                     cmbSerCanP1P2SerSpeed.Visible = false;
                     cmbSerCanP1P2SerInter.Visible = false;
 
@@ -2414,7 +2632,7 @@ namespace kkdash
                     break;
 
                 case "CAN slcan":
-                    Globals.difCanP2 = "slcan";
+                    Globals.SerCanP1P2 = "slcan";
                     cmbSerCanP1P2SerSpeed.Visible = false;
                     cmbSerCanP1ECUSerInter.Visible = false;
 
@@ -2423,7 +2641,7 @@ namespace kkdash
                     break;
 
                 default:
-                    Globals.difCanP2 = cmbSerCanP1P2.Text;
+                    Globals.SerCanP1P2 = cmbSerCanP1P2.Text;
                     cmbSerCanP1P2SerSpeed.Visible = false;
                     cmbSerCanP1ECUSerInter.Visible = false;
 
@@ -2436,33 +2654,24 @@ namespace kkdash
 
         private void cmbSerCanP1P3_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //Globals.SerCanEnabledP1P3     // yn flag
-            //Globals.SerCanP1P3            // can / ethernet            ---   cmbSerCanP1P3
-            //Globals.SerCanPortP1P3        // can0             --both Panel 1 and Panel 3 config     
-            //Globals.SerCanSpeedP1P3      // 125k             --both Panel 1 and Panel 3 config
-            //Globals.SerCanAddressP1P3 	// 0x103 --both Panel 1 and Panel 3 config				
             switch (cmbSerCanP1P3.Text)
             {
                 case "Ethernet":
-                    Globals.difCanP3 = "ethernet";
                     cmbSerCanP1P3CanSpeed.Visible = false;
                     cmbSerCanP1P3CanInter.Visible = false;
                     break;
 
                 case "CAN Pcan":
-                    Globals.difCanP3 = "pcan";
                     cmbSerCanP1P3CanSpeed.Visible = true;
                     cmbSerCanP1P3CanInter.Visible = true;
                     break;
 
                 case "CAN slcan":
-                    Globals.difCanP3 = "slcan";
                     cmbSerCanP1P3CanSpeed.Visible = true;
                     cmbSerCanP1P3CanInter.Visible = true;
                     break;
 
                 default:
-                    Globals.difCanP3 = cmbSerCanP1P3.Text;
                     cmbSerCanP1P3CanSpeed.Visible = true;
                     cmbSerCanP1P3CanInter.Visible = true;
                     break;
@@ -2470,5 +2679,9 @@ namespace kkdash
 
         }
 
+        private void txtPanelIP3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

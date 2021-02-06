@@ -12,73 +12,56 @@ namespace kkdash
         {
             if (PanelNo == 1)
             {
-                using (OpenFileDialog openFileDialog = new OpenFileDialog())
+                try
                 {
-                    openFileDialog.InitialDirectory = "c:\\";
-                    openFileDialog.Filter = "panel1 configuration file (*.*)|*.*|(*.csv)|*.csv";
-                    openFileDialog.FilterIndex = 2;
-                    openFileDialog.RestoreDirectory = true;
-                    openFileDialog.FileName = "panel1.csv";
-                    try
+                    //Get the filename only from the path of specified file
+                    using (StreamReader sr = new StreamReader(Globals.flocation + "\\panel1.csv"))
                     {
-                        if (openFileDialog.ShowDialog() == DialogResult.OK)
+                        string currentLine;
+                        while ((currentLine = sr.ReadLine()) != null)
                         {
-                            string currentDirectory = Path.GetDirectoryName(openFileDialog.FileName);
-                            Globals.flocation = Path.GetFullPath(currentDirectory);
-                            Console.WriteLine("reading panel1.csv");
-
-                            //Get the filename only from the path of specified file
-                            Globals.ConfigFileName = openFileDialog.FileName;
-                            using (StreamReader sr = new StreamReader(Globals.ConfigFileName))
+                            int count = currentLine.Split(',').Length - 1;
+                            if (count > 2)
                             {
-                                string currentLine;
-                                while ((currentLine = sr.ReadLine()) != null)
+                                string[] items = currentLine.Split(',');
+                                //gauges and bars
+                                if ((items[0].ToLower() == "speedo") || (items[0].ToLower() == "tacho") || (items[0].ToLower() == "boost") || (items[0].ToLower() == "temp") || (items[0].ToLower() == "oil") || (items[0].ToLower() == "oilt") || (items[0].ToLower() == "fuel"))
                                 {
-                                    int count = currentLine.Split(',').Length - 1;
-                                    if (count > 2)
-                                    {
-                                        string[] items = currentLine.Split(',');
-                                        //gauges and bars
-                                        if ((items[0].ToLower() == "speedo") || (items[0].ToLower() == "tacho") || (items[0].ToLower() == "boost") || (items[0].ToLower() == "temp") || (items[0].ToLower() == "oil") || (items[0].ToLower() == "oilt") || (items[0].ToLower() == "fuel"))
-                                        {
-                                            popReadGauges(items[0], items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13], items[14], items[15]);
-                                        }
-                                        if ((items[0].ToLower() == "fuelt") || (items[0].ToLower() == "fuelp") || (items[0].ToLower() == "user1") || (items[0].ToLower() == "user2") || (items[0].ToLower() == "user3") || (items[0].ToLower() == "user4"))
-                                        {
-                                            popReadGauges(items[0], items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13], items[14], items[15]);
-                                        }
-                                        if (items[0] == "Userdefined")
-                                        {
-                                            Globals.User1name = items[1];
-                                            Globals.User2name = items[2];
-                                            Globals.User3name = items[3];
-                                            Globals.User4name = items[4];
-                                        }
-                                        if (items[0].ToLower() == "SerCanP1Ecu")
-                                        {
-                                            //ECU connection: SerCanP1Ecu, SerCanPortP1Ecu, SerCanSpeedP1Ecu, SerCanAddressP1Ecu, SerCanEnabledP1P2, SerCanP1P2, SerCanPortP1P2, SerCanSpeedP1P2, SerCanAddressP1P2, SerCanEnabledP1P3, SerCanP1P3, SerCanPortP1P3, SerCanSpeedP1P3, SerCanAddressP1P3,,                 
-
-                                        }
-                                        if (items[0].ToLower() == "SerCanP1P2")
-                                        {
-                                            //Panel 2 connection: SerCanP2P1, SerCanPortP2P1, SerCanSpeedP2P1, SerCanAddressP2P1      
-
-                                        }
-                                        if (items[0].ToLower() == "SerCanP1P3")
-                                        {
-                                            //Panel 3 connection
-
-                                        }
-                                    }
+                                    popReadGauges(items[0], items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13], items[14], items[15]);
+                                }
+                                if ((items[0].ToLower() == "fuelt") || (items[0].ToLower() == "fuelp") || (items[0].ToLower() == "user1") || (items[0].ToLower() == "user2") || (items[0].ToLower() == "user3") || (items[0].ToLower() == "user4"))
+                                {
+                                    popReadGauges(items[0], items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13], items[14], items[15]);
+                                }
+                                if (items[0] == "Userdefined")
+                                {
+                                    Globals.User1name = items[1];
+                                    Globals.User2name = items[2];
+                                    Globals.User3name = items[3];
+                                    Globals.User4name = items[4];
+                                }
+                                if (items[0].ToLower() == "ecuconnection")
+                                {
+                                    //Globals.p1connection = "ecuconnection," + Globals.SerCanP1Ecu + "," + Globals.SerCanPortP1Ecu + "," + Globals.SerCanSpeedP1Ecu + "," + Globals.SerCanAddressP1Ecu + "," + Globals.PanelIP1 + "," + Globals.SerCanAddressP1;
+                                    Globals.SerCanP1Ecu = items[1]; Globals.SerCanPortP1Ecu = items[2]; Globals.SerCanSpeedP1Ecu = items[3]; Globals.SerCanAddressP1Ecu = items[4]; Globals.PanelIP1 = items[5]; Globals.SerCanAddressP1 = items[6];
+                                }
+                                if (items[0].ToLower() == "p2connection")
+                                {
+                                    //Globals.p2connection = "p2connection " + Globals.SerCanP1P2 + "," + Globals.SerCanPortP1P2 + "," + Globals.SerCanSpeedP1P2 + "," + Globals.SerCanAddressP1P2 + "," + Globals.PanelIP2;
+                                    Globals.SerCanP1P2 = items[1]; Globals.SerCanPortP1P2 = items[2]; Globals.SerCanSpeedP1P2 = items[3]; Globals.SerCanAddressP1P2 = items[4]; Globals.PanelIP2 = items[5];
+                                }
+                                if (items[0].ToLower() == "p3connection")
+                                {
+                                    //Globals.p3connection = "p3connection" + Globals.SerCanP1P3 + "," + Globals.SerCanPortP1P3 + "," + Globals.SerCanSpeedP1P3 + "," + Globals.SerCanAddressP1P3 + "," + Globals.PanelIP3;
+                                    Globals.SerCanP1P3 = items[1]; Globals.SerCanPortP1P3 = items[2]; Globals.SerCanSpeedP1P3 = items[3]; Globals.SerCanAddressP1P3 = items[4]; Globals.PanelIP3 = items[5];
                                 }
                             }
                         }
                     }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("Cannot open panel1.csv file.");
-                    }
-
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Cannot open panel1.csv file.");
                 }
             }
 

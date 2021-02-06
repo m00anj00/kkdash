@@ -11,7 +11,7 @@ namespace kkdash
         {
             using (SaveFileDialog saveFileDialog = new SaveFileDialog())
             {
-                saveFileDialog.InitialDirectory = "c:\\";
+                saveFileDialog.InitialDirectory = Globals.flocation;
                 saveFileDialog.FilterIndex = 2;
                 saveFileDialog.RestoreDirectory = true;
                 saveFileDialog.FileName = "panel" + panelno + ".csv";
@@ -34,11 +34,11 @@ namespace kkdash
             string strSeperator = ",";
             string strFilePath = "";
             string disptxt = "";
-            string canser = ""; string vcanval = ""; string vserval = ""; string commsPS = ""; string commsPC = ""; string commsPSspeed = ""; string commsPCspeed = "";
+            string p1conn = ""; string p2conn = ""; string p3conn = "";
+            string pantxt = "";
 
             StringBuilder saOutput = new StringBuilder();
 
-            //ECU connection: SerCanP1Ecu, SerCanPortP1Ecu, SerCanSpeedP1Ecu, SerCanAddressP1Ecu, SerCanEnabledP1P2, SerCanP1P2, SerCanPortP1P2, SerCanSpeedP1P2, SerCanAddressP1P2, SerCanEnabledP1P3, SerCanP1P3, SerCanPortP1P3, SerCanSpeedP1P3, SerCanAddressP1P3,,                 
             switch (PanelNo)
             {
                 case 1:
@@ -58,14 +58,10 @@ namespace kkdash
                     fuelval = Globals.Fuelvalp1;
                     fueltval = Globals.FuelTvalp1;
                     fuelpval = Globals.FuelPvalp1;
+                    p1conn = Globals.p1connection;
+                    p2conn = Globals.p2connection;
+                    p3conn = Globals.p3connection;
 
-                    canser = Globals.canser1;
-                    vcanval = Globals.canval1; 
-                    vserval = Globals.serval1; 
-                    commsPS = Globals.commsP1S; 
-                    commsPC = Globals.commsP1C; 
-                    commsPSspeed = Globals.commsP1Sspeed; 
-                    commsPCspeed = Globals.commsP1Cspeed;
 
                     PNO = "1";
                     break;
@@ -88,13 +84,6 @@ namespace kkdash
                     fueltval = Globals.FuelTvalp2;
                     fuelpval = Globals.FuelPvalp2;
 
-                    canser = Globals.canser2;
-                    vcanval = Globals.canval2;
-                    vserval = Globals.serval2;
-                    commsPS = Globals.commsP2S;
-                    commsPC = Globals.commsP2C;
-                    commsPSspeed = Globals.commsP1Sspeed;
-                    commsPCspeed = Globals.commsP1Cspeed;
                     PNO = "2";
                     break;
 
@@ -116,13 +105,6 @@ namespace kkdash
                     fueltval = Globals.FuelTvalp3;
                     fuelpval = Globals.FuelPvalp3;
 
-                    canser = Globals.canser3;
-                    vcanval = Globals.canval3;
-                    vserval = Globals.serval3;
-                    commsPS = Globals.commsP3S;
-                    commsPC = Globals.commsP3C;
-                    commsPSspeed = Globals.commsP3Sspeed;
-                    commsPCspeed = Globals.commsP3Cspeed;
                     PNO = "3";
                     break;
             }
@@ -134,11 +116,15 @@ namespace kkdash
                 new string[] { "#pos x=0,y=0 is the center of the display,,,,,,,,,,,,," },
                 new string[] { "#displaysize,w,h,refresh rate,,,,,,,,,,," },
                 new string[] { disptxt },
+                new string[] { "#backgrounds,panel1,panel2,panel3" },
+                new string[] { pantxt },
                 new string[] { ",,,,,,,,,,,,,," },
-                new string[] { "#CAN type,port,speed:  options are: serial, /dev/ttyS0, 115200, slcan, /dev/ttyUSB0@115200, pcan,can0, 500k #see: https://python-can.readthedocs.io/en/stable/configuration.html" },
-                new string[] { "#can,serial,/dev/ttyS0,115200" },
-                new string[] { "#can,pcan,can0,500k,,,,,,,,,,," },
-                new string[] { canser, vcanval, vserval, commsPS, commsPC, commsPSspeed, commsPCspeed, ",,,,,,,," },
+                new string[] { "#CAN connection #see: https://python-can.readthedocs.io/en/stable/configuration.html" },
+                new string[] { "#All connections instigated from panel 1 only.  Panel1 pings for panel2/3 via ethernet.  if found will try autoconnection" },
+                new string[] { "#ECU con,ECU interface,ECU speed," },
+                new string[] { p1conn },
+                new string[] { p2conn },
+                new string[] { p3conn },
                 new string[] { ",,,,,,,,,,,,,," },
                 new string[] { "#GAUGE / BAR GRAPH,,,,,,,,,,,,,," },
                 new string[] { "#GAUGE STYLE:" },

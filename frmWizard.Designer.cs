@@ -344,7 +344,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.label48 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbSerCanP2Address = new System.Windows.Forms.ComboBox();
             this.label27 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.txtP2Height = new System.Windows.Forms.TextBox();
@@ -352,11 +352,11 @@
             this.label31 = new System.Windows.Forms.Label();
             this.lblP2Path = new System.Windows.Forms.Label();
             this.btnP2BG = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtPaneI2IP = new System.Windows.Forms.TextBox();
             this.label40 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label41 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cmbSerCanP3Address = new System.Windows.Forms.ComboBox();
             this.label43 = new System.Windows.Forms.Label();
             this.label44 = new System.Windows.Forms.Label();
             this.txtP3Height = new System.Windows.Forms.TextBox();
@@ -364,8 +364,10 @@
             this.label45 = new System.Windows.Forms.Label();
             this.lblP3Path = new System.Windows.Forms.Label();
             this.btnP3BG = new System.Windows.Forms.Button();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtPanel3IP = new System.Windows.Forms.TextBox();
             this.label47 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.cmbCanAddressEcu = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -3926,8 +3928,11 @@
             this.cmbSerCanP1P2.Items.AddRange(new object[] {
             "Serial3",
             "Ethernet",
-            "CAN Pcan",
-            "CAN slcan"});
+            "obd",
+            "pcan",
+            "slcan",
+            "vcan",
+            "serialcan"});
             this.cmbSerCanP1P2.Location = new System.Drawing.Point(195, 183);
             this.cmbSerCanP1P2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbSerCanP1P2.Name = "cmbSerCanP1P2";
@@ -3997,13 +4002,16 @@
             this.cmbSerCanP1P2CanInter.Items.AddRange(new object[] {
             "can0",
             "can1",
-            "can2"});
+            "can2",
+            "can3",
+            "can4",
+            "can5"});
             this.cmbSerCanP1P2CanInter.Location = new System.Drawing.Point(377, 183);
             this.cmbSerCanP1P2CanInter.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbSerCanP1P2CanInter.Name = "cmbSerCanP1P2CanInter";
             this.cmbSerCanP1P2CanInter.Size = new System.Drawing.Size(122, 24);
             this.cmbSerCanP1P2CanInter.TabIndex = 150;
-            this.cmbSerCanP1P2CanInter.Text = "can0";
+            this.cmbSerCanP1P2CanInter.Text = "can1";
             this.cmbSerCanP1P2CanInter.Visible = false;
             // 
             // statusStrip1
@@ -4060,6 +4068,8 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.panel3.Controls.Add(this.label26);
+            this.panel3.Controls.Add(this.cmbCanAddressEcu);
             this.panel3.Controls.Add(this.label49);
             this.panel3.Controls.Add(this.label28);
             this.panel3.Controls.Add(this.cmbCanAddressP1);
@@ -4109,7 +4119,7 @@
             // 
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.label28.Location = new System.Drawing.Point(374, 72);
+            this.label28.Location = new System.Drawing.Point(377, 71);
             this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(38, 16);
@@ -4157,13 +4167,16 @@
             this.cmbSerCanP1P3CanInter.Items.AddRange(new object[] {
             "can0",
             "can1",
-            "can2"});
+            "can2",
+            "can3",
+            "can4",
+            "can5"});
             this.cmbSerCanP1P3CanInter.Location = new System.Drawing.Point(378, 218);
             this.cmbSerCanP1P3CanInter.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbSerCanP1P3CanInter.Name = "cmbSerCanP1P3CanInter";
             this.cmbSerCanP1P3CanInter.Size = new System.Drawing.Size(122, 24);
             this.cmbSerCanP1P3CanInter.TabIndex = 160;
-            this.cmbSerCanP1P3CanInter.Text = "can0";
+            this.cmbSerCanP1P3CanInter.Text = "can2";
             // 
             // cmbSerCanP1P3CanSpeed
             // 
@@ -4187,6 +4200,7 @@
             this.cmbSerCanP1P3.FormattingEnabled = true;
             this.cmbSerCanP1P3.Items.AddRange(new object[] {
             "Ethernet",
+            "obd",
             "pcan",
             "slcan",
             "vcan",
@@ -4206,7 +4220,10 @@
             this.cmbSerCanP1ECUCanInter.Items.AddRange(new object[] {
             "can0",
             "can1",
-            "can2"});
+            "can2",
+            "can3",
+            "can4",
+            "can5"});
             this.cmbSerCanP1ECUCanInter.Location = new System.Drawing.Point(378, 149);
             this.cmbSerCanP1ECUCanInter.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbSerCanP1ECUCanInter.Name = "cmbSerCanP1ECUCanInter";
@@ -4308,8 +4325,11 @@
             this.cmbSerCanP1ECU.FormattingEnabled = true;
             this.cmbSerCanP1ECU.Items.AddRange(new object[] {
             "Serial3",
-            "CAN Pcan",
-            "CAN slcan"});
+            "obd",
+            "pcan",
+            "slcan",
+            "vcan",
+            "serialcan"});
             this.cmbSerCanP1ECU.Location = new System.Drawing.Point(196, 149);
             this.cmbSerCanP1ECU.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbSerCanP1ECU.Name = "cmbSerCanP1ECU";
@@ -4323,7 +4343,7 @@
             this.panel4.BackColor = System.Drawing.Color.MediumTurquoise;
             this.panel4.Controls.Add(this.label48);
             this.panel4.Controls.Add(this.label38);
-            this.panel4.Controls.Add(this.comboBox1);
+            this.panel4.Controls.Add(this.cmbSerCanP2Address);
             this.panel4.Controls.Add(this.label27);
             this.panel4.Controls.Add(this.label29);
             this.panel4.Controls.Add(this.txtP2Height);
@@ -4331,7 +4351,7 @@
             this.panel4.Controls.Add(this.label31);
             this.panel4.Controls.Add(this.lblP2Path);
             this.panel4.Controls.Add(this.btnP2BG);
-            this.panel4.Controls.Add(this.textBox3);
+            this.panel4.Controls.Add(this.txtPaneI2IP);
             this.panel4.Controls.Add(this.label40);
             this.panel4.Location = new System.Drawing.Point(544, 57);
             this.panel4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -4361,10 +4381,10 @@
             this.label38.TabIndex = 164;
             this.label38.Text = "CAN:";
             // 
-            // comboBox1
+            // cmbSerCanP2Address
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cmbSerCanP2Address.FormattingEnabled = true;
+            this.cmbSerCanP2Address.Items.AddRange(new object[] {
             "0x101",
             "0x102",
             "0x103",
@@ -4377,12 +4397,12 @@
             "0x714",
             "0x715",
             "0x716"});
-            this.comboBox1.Location = new System.Drawing.Point(435, 70);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(63, 23);
-            this.comboBox1.TabIndex = 163;
-            this.comboBox1.Text = "0x102";
+            this.cmbSerCanP2Address.Location = new System.Drawing.Point(435, 70);
+            this.cmbSerCanP2Address.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cmbSerCanP2Address.Name = "cmbSerCanP2Address";
+            this.cmbSerCanP2Address.Size = new System.Drawing.Size(63, 23);
+            this.cmbSerCanP2Address.TabIndex = 163;
+            this.cmbSerCanP2Address.Text = "0x102";
             // 
             // label27
             // 
@@ -4457,15 +4477,15 @@
             this.btnP2BG.UseVisualStyleBackColor = true;
             this.btnP2BG.Click += new System.EventHandler(this.btnP2BG_Click);
             // 
-            // textBox3
+            // txtPaneI2IP
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox3.Location = new System.Drawing.Point(196, 68);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(154, 22);
-            this.textBox3.TabIndex = 139;
-            this.textBox3.Text = "192.168.1.101";
+            this.txtPaneI2IP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtPaneI2IP.Location = new System.Drawing.Point(196, 68);
+            this.txtPaneI2IP.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtPaneI2IP.Name = "txtPaneI2IP";
+            this.txtPaneI2IP.Size = new System.Drawing.Size(154, 22);
+            this.txtPaneI2IP.TabIndex = 139;
+            this.txtPaneI2IP.Text = "192.168.1.101";
             // 
             // label40
             // 
@@ -4482,7 +4502,7 @@
             // 
             this.panel5.BackColor = System.Drawing.Color.MediumTurquoise;
             this.panel5.Controls.Add(this.label41);
-            this.panel5.Controls.Add(this.comboBox2);
+            this.panel5.Controls.Add(this.cmbSerCanP3Address);
             this.panel5.Controls.Add(this.label43);
             this.panel5.Controls.Add(this.label44);
             this.panel5.Controls.Add(this.txtP3Height);
@@ -4490,7 +4510,7 @@
             this.panel5.Controls.Add(this.label45);
             this.panel5.Controls.Add(this.lblP3Path);
             this.panel5.Controls.Add(this.btnP3BG);
-            this.panel5.Controls.Add(this.textBox6);
+            this.panel5.Controls.Add(this.txtPanel3IP);
             this.panel5.Controls.Add(this.label47);
             this.panel5.Location = new System.Drawing.Point(1069, 57);
             this.panel5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -4509,10 +4529,10 @@
             this.label41.TabIndex = 164;
             this.label41.Text = "CAN:";
             // 
-            // comboBox2
+            // cmbSerCanP3Address
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.cmbSerCanP3Address.FormattingEnabled = true;
+            this.cmbSerCanP3Address.Items.AddRange(new object[] {
             "0x101",
             "0x102",
             "0x103",
@@ -4525,12 +4545,12 @@
             "0x714",
             "0x715",
             "0x716"});
-            this.comboBox2.Location = new System.Drawing.Point(433, 70);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(66, 23);
-            this.comboBox2.TabIndex = 163;
-            this.comboBox2.Text = "0x103";
+            this.cmbSerCanP3Address.Location = new System.Drawing.Point(433, 70);
+            this.cmbSerCanP3Address.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cmbSerCanP3Address.Name = "cmbSerCanP3Address";
+            this.cmbSerCanP3Address.Size = new System.Drawing.Size(66, 23);
+            this.cmbSerCanP3Address.TabIndex = 163;
+            this.cmbSerCanP3Address.Text = "0x103";
             // 
             // label43
             // 
@@ -4608,15 +4628,16 @@
             this.btnP3BG.UseVisualStyleBackColor = true;
             this.btnP3BG.Click += new System.EventHandler(this.btnP3BG_Click);
             // 
-            // textBox6
+            // txtPanel3IP
             // 
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox6.Location = new System.Drawing.Point(196, 68);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(154, 22);
-            this.textBox6.TabIndex = 139;
-            this.textBox6.Text = "192.168.1.102";
+            this.txtPanel3IP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtPanel3IP.Location = new System.Drawing.Point(196, 68);
+            this.txtPanel3IP.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtPanel3IP.Name = "txtPanel3IP";
+            this.txtPanel3IP.Size = new System.Drawing.Size(154, 22);
+            this.txtPanel3IP.TabIndex = 139;
+            this.txtPanel3IP.Text = "192.168.1.102";
+            this.txtPanel3IP.TextChanged += new System.EventHandler(this.txtPanelIP3_TextChanged);
             // 
             // label47
             // 
@@ -4628,6 +4649,42 @@
             this.label47.Size = new System.Drawing.Size(61, 16);
             this.label47.TabIndex = 137;
             this.label47.Text = "Address:";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label26.Location = new System.Drawing.Point(377, 110);
+            this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(38, 16);
+            this.label26.TabIndex = 166;
+            this.label26.Text = "ECU:";
+            // 
+            // cmbCanAddressEcu
+            // 
+            this.cmbCanAddressEcu.FormattingEnabled = true;
+            this.cmbCanAddressEcu.Items.AddRange(new object[] {
+            "0x100",
+            "0x101",
+            "0x102",
+            "0x103",
+            "0x104",
+            "0x105",
+            "0x106",
+            "0x710",
+            "0x711",
+            "0x712",
+            "0x713",
+            "0x714",
+            "0x715",
+            "0x716"});
+            this.cmbCanAddressEcu.Location = new System.Drawing.Point(427, 108);
+            this.cmbCanAddressEcu.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cmbCanAddressEcu.Name = "cmbCanAddressEcu";
+            this.cmbCanAddressEcu.Size = new System.Drawing.Size(72, 23);
+            this.cmbCanAddressEcu.TabIndex = 165;
+            this.cmbCanAddressEcu.Text = "0x100";
             // 
             // frmWizard
             // 
@@ -4883,7 +4940,7 @@
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label lblP2Path;
         private System.Windows.Forms.Button btnP2BG;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtPaneI2IP;
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label43;
@@ -4893,7 +4950,7 @@
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.Label lblP3Path;
         private System.Windows.Forms.Button btnP3BG;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtPanel3IP;
         private System.Windows.Forms.Label label47;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox cmbSerCanP1P3CanInter;
@@ -4992,8 +5049,8 @@
         private System.Windows.Forms.ToolStripStatusLabel TS2;
         private System.Windows.Forms.ToolStripStatusLabel TS3;
         private System.Windows.Forms.ComboBox cmbCanAddressP1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cmbSerCanP2Address;
+        private System.Windows.Forms.ComboBox cmbSerCanP3Address;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label label41;
@@ -5004,5 +5061,7 @@
         private System.Windows.Forms.Label label46;
         private System.Windows.Forms.Label label49;
         private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.ComboBox cmbCanAddressEcu;
     }
 }
