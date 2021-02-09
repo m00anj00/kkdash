@@ -8,21 +8,11 @@ using System.Windows.Forms;
 
 namespace kkdash
 {
-    public partial class frmGraphic : Form
+    public partial class frmGraphic2 : Form
     {
-        public frmGraphic()
+        public frmGraphic2()
         {
             InitializeComponent();
-        }
-
-        private void pictureBG_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void frmGraphic_Load(object sender, EventArgs e)
-        {
-           
         }
     }
 }

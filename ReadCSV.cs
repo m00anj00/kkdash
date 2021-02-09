@@ -15,7 +15,7 @@ namespace kkdash
                 try
                 {
                     //Get the filename only from the path of specified file
-                    using (StreamReader sr = new StreamReader(Globals.flocation + "\\panel1.csv"))
+                    using (StreamReader sr = new StreamReader(Globals.flocation + "\\Panel1.csv"))
                     {
                         string currentLine;
                         while ((currentLine = sr.ReadLine()) != null)
@@ -33,12 +33,12 @@ namespace kkdash
                                 {
                                     popReadGauges(items[0], items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13], items[14], items[15]);
                                 }
+                                if (items[0] == "1") { Globals.p1DispWidth = items[1]; Globals.p1DispHeight = items[2]; }
+
+                                if (items[0] == "Background") { Globals.P1BG = items[1]; }
                                 if (items[0] == "Userdefined")
                                 {
-                                    Globals.User1name = items[1];
-                                    Globals.User2name = items[2];
-                                    Globals.User3name = items[3];
-                                    Globals.User4name = items[4];
+                                    Globals.User1name = items[1]; Globals.User2name = items[2]; Globals.User3name = items[3]; Globals.User4name = items[4]; Globals.User1CanOffset = items[5]; Globals.User2CanOffset = items[6]; Globals.User3CanOffset = items[7]; Globals.User4CanOffset = items[8];
                                 }
                                 if (items[0].ToLower() == "ecuconnection")
                                 {
@@ -73,7 +73,7 @@ namespace kkdash
                     {
                         Console.WriteLine("reading panel2.csv");
 
-                        using (StreamReader sr = new StreamReader(Globals.flocation + "\\panel2.csv"))
+                        using (StreamReader sr = new StreamReader(Globals.flocation + "\\Panel2.csv"))
                         {
                             string currentLine;
                             while ((currentLine = sr.ReadLine()) != null)
@@ -91,6 +91,8 @@ namespace kkdash
                                     {
                                         popReadGauges(items[0], items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13], items[14], items[15]);
                                     }
+                                    if (items[0] == "2") { Globals.p2DispWidth = items[1]; Globals.p2DispHeight = items[2]; }
+                                    if (items[0] == "Background") { Globals.P2BG = items[1]; }
                                     if (items[0] == "Userdefined")
                                     {
                                         Globals.User1name = items[1];
@@ -117,7 +119,7 @@ namespace kkdash
                     try
                     {
 
-                        using (StreamReader sr = new StreamReader(Globals.flocation + "\\panel3.csv"))
+                        using (StreamReader sr = new StreamReader(Globals.flocation + "\\Panel3.csv"))
                         {
                             string currentLine;
                             while ((currentLine = sr.ReadLine()) != null)
@@ -135,6 +137,8 @@ namespace kkdash
                                     {
                                         popReadGauges(items[0], items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13], items[14], items[15]);
                                     }
+                                    if (items[0] == "3") { Globals.p3DispWidth = items[1]; Globals.p3DispHeight = items[2]; }
+                                    if (items[0] == "Background") { Globals.P3BG = items[1]; }
                                     if (items[0] == "Userdefined")
                                     {
                                         Globals.User1name = items[1];
@@ -160,7 +164,6 @@ namespace kkdash
         {
             //                          0                           1                                 2                                 3                              4                             5                           6                              7                         8                           9                              10                         11                           12                              13                             14                              15                                                                                        
             //Globals.Speedovalp1 = Globals.gaugename + "," + Globals.SpeedoShow1 + "," + Globals.SpeedoNeedleWidth + "," + Globals.SpeedoNeedleLength + "," + Globals.SpeedoNeedleX + "," + Globals.SpeedoNeedleY + "," + Globals.SpeedoOffset + "," + Globals.SpeedoEnd + "," + Globals.SpeedoTop + "," + Globals.SpeedoTextShow1 + "," + Globals.SpeedoTextX + "," + Globals.SpeedoTextY + "," + Globals.SpeedoFontSize + "," + Globals.SpeedoTextStyle + "," + Globals.SpeedoNeedleType + "," + Globals.SpeedoNeedle;
-            Globals.gaugename = gaugename;
             switch (gaugename)
             {
                 case "speedo":

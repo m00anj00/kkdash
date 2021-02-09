@@ -6,7 +6,7 @@ using System.IO;
 //to call other class functions: 
 using static kkdash.WriteCSV;
 using static kkdash.ReadCSV;
-using static kkdash.CSVTools;
+
 
 
 namespace kkdash
@@ -36,6 +36,7 @@ namespace kkdash
                 {
                     string[] files = Directory.GetFiles(fbd.SelectedPath);
                     Globals.flocation = fbd.SelectedPath;
+                    this.Activate();
                     //System.Windows.Forms.MessageBox.Show("Files found: " + files.Length.ToString(), "Message");
                 }
                 else
@@ -72,6 +73,8 @@ namespace kkdash
             TS2.Text = ("Ready    ");
             TS3.Text = ("Ready    ");
 
+           
+            resolveFromVars();
         }
 
         //=======================================================================SAVE SECTION============================================================================
@@ -82,8 +85,10 @@ namespace kkdash
             TS1.Text = ("Ready    ");
             TS2.Text = ("Ready    ");
             TS3.Text = ("Ready    ");
+
             resolveToVars(); //this takes all text except which panel indicators to global vars
             resolvePanelToVars(); //this takes the panel number to global vars
+
             TS1.Text = ("Writing config    ");
             TS2.Text = ("Ready    ");
             TS3.Text = ("Ready    ");
@@ -101,14 +106,52 @@ namespace kkdash
             TS2.Text = ("Ready    ");
             TS3.Text = ("Ready    ");
 
+
+            //this.Hide();
+            //var form2 = new Form2();
+            //form2.Closed += (s, args) => this.Close();
+            //form2.Show();
+
             //display the dash to edit
             // Create a new instance of the Form2 class
-            frmGraphic frmG = new frmGraphic();
+            try
+            {
+                if (Globals.showP1 == "Y")
+                {
+                    frmGraphic1 frmG1 = new frmGraphic1();
 
-            // Show the settings form
-            frmG.Show();
-            //this.Hide();
-            this.Close();
+                    // Show the settings form
+                    frmG1.Show();
+                }
+
+                if (Globals.showP2 == "Y")
+                {
+                    frmGraphic2 frmG2 = new frmGraphic2();
+
+                    // Show the settings form
+                    frmG2.Show();
+                }
+
+                if (Globals.showP3 == "Y")
+                {
+                    frmGraphic3 frmG3 = new frmGraphic3();
+
+                    // Show the settings form
+                    frmG3.Show();
+                }
+
+                panel1.Hide();
+                panel2.Hide();
+                panel3.Hide();
+                panel4.Hide();
+                panel5.Hide();
+                btnLoad.Hide();
+                btnNext.Hide();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
 
@@ -118,13 +161,13 @@ namespace kkdash
             switch (gaugechoice)
             {
                 case "Speedo":
-                    if (cmbSpeedo.Text.ToLower() == "gauge")
+                    if ((cmbSpeedo.Text.ToLower() == "gauge")|| (cmbSpeedo.Text == ""))
                     {
                         lblWarn.Visible = false;
                         txtSpeedoNeedle.Text = "textures/instrument_needle.png";
                         Globals.SpeedoNeedle = txtSpeedoNeedle.Text;
                         Globals.SpeedoNeedleType = "gauge";
-
+                        cmbSpeedo.Text = "gauge";
                     }
 
                     if (cmbSpeedo.Text == "Vertical Bar")
@@ -144,13 +187,13 @@ namespace kkdash
                     break;
 
                 case "Tacho":
-                    if (cmbTacho.Text.ToLower() == "gauge")
+                    if ((cmbTacho.Text.ToLower() == "gauge") || (cmbTacho.Text == ""))
                     {
                         lblWarn.Visible = false;
                         txtTachoNeedle.Text = "textures/instrument_needle.png";
                         Globals.TachoNeedle = txtTachoNeedle.Text;
                         Globals.TachoNeedleType = "gauge";
-
+                        cmbTacho.Text = "gauge";
                     }
 
                     if (cmbTacho.Text == "Vertical Bar")
@@ -170,13 +213,13 @@ namespace kkdash
                     break;
 
                 case "Boost":
-                    if (cmbBoost.Text.ToLower() == "gauge")
+                    if ((cmbBoost.Text.ToLower() == "gauge") || (cmbBoost.Text == ""))
                     {
                         lblWarn.Visible = false;
                         txtBoostNeedle.Text = "textures/instrument_needle.png";
                         Globals.BoostNeedle = txtBoostNeedle.Text;
                         Globals.BoostNeedleType = "gauge";
-
+                        cmbBoost.Text = "gauge";
                     }
 
                     if (cmbBoost.Text == "Vertical Bar")
@@ -196,13 +239,13 @@ namespace kkdash
                     break;
 
                 case "Temp":
-                    if (cmbTemp.Text.ToLower() == "gauge")
+                    if ((cmbTemp.Text.ToLower() == "gauge")||(cmbTemp.Text == ""))
                     {
                         lblWarn.Visible = false;
                         txtTempNeedle.Text = "textures/instrument_needle.png";
                         Globals.TempNeedle = txtTempNeedle.Text;
                         Globals.TempNeedleType = "gauge";
-
+                        cmbTemp.Text = "gauge";
                     }
 
                     if (cmbTemp.Text == "Vertical Bar")
@@ -222,13 +265,13 @@ namespace kkdash
                     break;
 
                 case "Oil":
-                    if (cmbOil.Text.ToLower() == "gauge")
+                    if ((cmbOil.Text.ToLower() == "gauge") || (cmbOil.Text == ""))
                     {
                         lblWarn.Visible = false;
                         txtOilNeedle.Text = "textures/instrument_needle.png";
                         Globals.OilNeedle = txtOilNeedle.Text;
                         Globals.OilNeedleType = "gauge";
-
+                        cmbOil.Text = "gauge";
                     }
 
                     if (cmbOil.Text == "Vertical Bar")
@@ -249,13 +292,13 @@ namespace kkdash
 
 
                 case "OilT":
-                    if (cmbOilT.Text.ToLower() == "gauge")
+                    if ((cmbOilT.Text.ToLower() == "gauge") || (cmbOilT.Text == ""))
                     {
                         lblWarn.Visible = false;
                         txtOilTNeedle.Text = "textures/instrument_needle.png";
                         Globals.OilTNeedle = txtOilTNeedle.Text;
                         Globals.OilTNeedleType = "gauge";
-
+                        cmbOilT.Text = "gauge";
                     }
 
                     if (cmbOilT.Text == "Vertical Bar")
@@ -275,13 +318,13 @@ namespace kkdash
                     break;
 
                 case "Fuel":
-                    if (cmbFuel.Text.ToLower() == "gauge")
+                    if ((cmbFuel.Text.ToLower() == "gauge") || (cmbFuel.Text == ""))
                     {
                         lblWarn.Visible = false;
                         txtFuelNeedle.Text = "textures/instrument_needle.png";
                         Globals.FuelNeedle = txtFuelNeedle.Text;
                         Globals.FuelNeedleType = "gauge";
-
+                        cmbFuel.Text = "gauge";
                     }
 
                     if (cmbFuel.Text == "Vertical Bar")
@@ -301,13 +344,13 @@ namespace kkdash
                     break;
 
                 case "FuelT":
-                    if (cmbFuelT.Text.ToLower() == "gauge")
+                    if ((cmbFuelT.Text.ToLower() == "gauge") || (cmbFuelT.Text == ""))
                     {
                         lblWarn.Visible = false;
                         txtFuelTNeedle.Text = "textures/instrument_needle.png";
                         Globals.FuelTNeedle = txtFuelTNeedle.Text;
                         Globals.FuelTNeedleType = "gauge";
-
+                        cmbFuelT.Text = "gauge";
                     }
 
                     if (cmbFuelT.Text == "Vertical Bar")
@@ -327,13 +370,13 @@ namespace kkdash
                     break;
 
                 case "FuelP":
-                    if (cmbFuelP.Text.ToLower() == "gauge")
+                    if ((cmbFuelP.Text.ToLower() == "gauge") || (cmbFuelP.Text == ""))
                     {
                         lblWarn.Visible = false;
                         txtFuelPNeedle.Text = "textures/instrument_needle.png";
                         Globals.FuelPNeedle = txtFuelPNeedle.Text;
                         Globals.FuelPNeedleType = "gauge";
-
+                        cmbFuelP.Text = "gauge";
                     }
 
                     if (cmbFuelP.Text == "Vertical Bar")
@@ -353,13 +396,13 @@ namespace kkdash
                     break;
 
                 case "User1":
-                    if (cmbUser1.Text.ToLower() == "gauge")
+                    if ((cmbUser1.Text.ToLower() == "gauge") || (cmbUser1.Text == ""))
                     {
                         lblWarn.Visible = false;
                         txtUser1Needle.Text = "textures/instrument_needle.png";
                         Globals.User1Needle = txtUser1Needle.Text;
                         Globals.User1NeedleType = "gauge";
-
+                        cmbUser1.Text = "gauge";
                     }
 
                     if (cmbUser1.Text == "Vertical Bar")
@@ -379,13 +422,13 @@ namespace kkdash
                     break;
 
                 case "User2":
-                    if (cmbUser2.Text.ToLower() == "gauge")
+                    if ((cmbUser2.Text.ToLower() == "gauge") || (cmbUser2.Text == ""))
                     {
                         lblWarn.Visible = false;
                         txtUser2Needle.Text = "textures/instrument_needle.png";
                         Globals.User2Needle = txtUser2Needle.Text;
                         Globals.User2NeedleType = "gauge";
-
+                        cmbUser2.Text = "gauge";
                     }
 
                     if (cmbUser2.Text == "Vertical Bar")
@@ -405,13 +448,13 @@ namespace kkdash
                     break;
 
                 case "User3":
-                    if (cmbUser3.Text.ToLower() == "gauge")
+                    if ((cmbUser3.Text.ToLower() == "gauge") || (cmbUser3.Text == ""))
                     {
                         lblWarn.Visible = false;
                         txtUser3Needle.Text = "textures/instrument_needle.png";
                         Globals.User3Needle = txtUser3Needle.Text;
                         Globals.User3NeedleType = "gauge";
-
+                        cmbUser3.Text = "gauge";
                     }
 
                     if (cmbUser3.Text == "Vertical Bar")
@@ -431,13 +474,13 @@ namespace kkdash
                     break;
 
                 case "User4":
-                    if (cmbUser4.Text.ToLower() == "gauge")
+                    if ((cmbUser4.Text.ToLower() == "gauge") || (cmbUser4.Text == ""))
                     {
                         lblWarn.Visible = false;
                         txtUser4Needle.Text = "textures/instrument_needle.png";
                         Globals.User4Needle = txtUser4Needle.Text;
                         Globals.User4NeedleType = "gauge";
-
+                        cmbUser4.Text = "gauge";
                     }
 
                     if (cmbUser4.Text == "Vertical Bar")
@@ -525,10 +568,14 @@ namespace kkdash
         private void resolvePanelToVars()
         {
 
-//=======================================================================items held in the config==================================================================
+            //=======================================================================items held in the config==================================================================
 
 
 
+            Globals.User1CanOffset = txtUser1CanOffset.Text;
+            Globals.User2CanOffset = txtUser2CanOffset.Text;
+            Globals.User3CanOffset = txtUser3CanOffset.Text;
+            Globals.User4CanOffset = txtUser4CanOffset.Text;
 
             Globals.p1DispWidth = txtP1Width.Text;
             Globals.p1DispHeight = txtP1Height.Text;
@@ -538,6 +585,10 @@ namespace kkdash
 
             Globals.p3DispWidth = txtP3Width.Text;
             Globals.p3DispHeight = txtP3Height.Text;
+
+            Globals.P1BG = lblP1Path.Text;
+            Globals.P2BG = lblP2Path.Text;
+            Globals.P3BG = lblP3Path.Text;
 
             //Speedo
             Globals.gaugename = ""; Globals.SpeedoShow = "n"; Globals.SpeedoTextShow = "n";  //reset to no values
@@ -654,6 +705,7 @@ namespace kkdash
 
             if ((Globals.BoostShow == "1") || (Globals.BoostTextShow == "1"))
             {
+                Globals.showP1 = "Y";
                 Globals.gaugename = "Boost";
                 if ((Globals.BoostShow == "1") && (Globals.BoostTextShow != "1"))
                 {
@@ -666,6 +718,7 @@ namespace kkdash
             }
             if ((Globals.BoostShow == "2") || (Globals.BoostTextShow == "2"))
             {
+                Globals.showP2 = "Y";
                 Globals.gaugename = "Boost";
                 if ((Globals.BoostShow == "2") && (Globals.BoostTextShow != "2"))
                 {
@@ -678,6 +731,7 @@ namespace kkdash
             }
             if ((Globals.BoostShow == "3") || (Globals.BoostTextShow == "3"))
             {
+                Globals.showP3 = "Y";
                 Globals.gaugename = "Boost";
                 if ((Globals.BoostShow == "3") && (Globals.BoostTextShow != "3"))
                 {
@@ -702,6 +756,7 @@ namespace kkdash
 
             if ((Globals.TempShow == "1") || (Globals.TempTextShow == "1"))
             {
+                Globals.showP1 = "Y";
                 Globals.gaugename = "Temp";
                 if ((Globals.TempShow == "1") && (Globals.TempTextShow != "1"))
                 {
@@ -714,6 +769,7 @@ namespace kkdash
             }
             if ((Globals.TempShow == "2") || (Globals.TempTextShow == "2"))
             {
+                Globals.showP2 = "Y";
                 Globals.gaugename = "Temp";
                 if ((Globals.TempShow == "2") && (Globals.TempTextShow != "2"))
                 {
@@ -726,6 +782,7 @@ namespace kkdash
             }
             if ((Globals.TempShow == "3") || (Globals.TempTextShow == "3"))
             {
+                Globals.showP3 = "Y";
                 Globals.gaugename = "Temp";
                 if ((Globals.TempShow == "3") && (Globals.TempTextShow != "3"))
                 {
@@ -750,6 +807,7 @@ namespace kkdash
 
             if ((Globals.OilShow == "1") || (Globals.OilTextShow == "1"))
             {
+                Globals.showP1 = "Y";
                 Globals.gaugename = "Oil";
                 if ((Globals.OilShow == "1") && (Globals.OilTextShow != "1"))
                 {
@@ -762,6 +820,7 @@ namespace kkdash
             }
             if ((Globals.OilShow == "2") || (Globals.OilTextShow == "2"))
             {
+                Globals.showP2 = "Y";
                 Globals.gaugename = "Oil";
                 if ((Globals.OilShow == "2") && (Globals.OilTextShow != "2"))
                 {
@@ -774,6 +833,7 @@ namespace kkdash
             }
             if ((Globals.OilShow == "3") || (Globals.OilTextShow == "3"))
             {
+                Globals.showP3 = "Y";
                 Globals.gaugename = "Oil";
                 if ((Globals.OilShow == "3") && (Globals.OilTextShow != "3"))
                 {
@@ -798,6 +858,7 @@ namespace kkdash
 
             if ((Globals.OilTShow == "1") || (Globals.OilTTextShow == "1"))
             {
+                Globals.showP1 = "Y";
                 Globals.gaugename = "OilT";
                 if ((Globals.OilTShow == "1") && (Globals.OilTTextShow != "1"))
                 {
@@ -810,6 +871,7 @@ namespace kkdash
             }
             if ((Globals.OilTShow == "2") || (Globals.OilTTextShow == "2"))
             {
+                Globals.showP2 = "Y";
                 Globals.gaugename = "OilT";
                 if ((Globals.OilTShow == "2") && (Globals.OilTTextShow != "2"))
                 {
@@ -822,6 +884,7 @@ namespace kkdash
             }
             if ((Globals.OilTShow == "3") || (Globals.OilTTextShow == "3"))
             {
+                Globals.showP3 = "Y";
                 Globals.gaugename = "OilT";
                 if ((Globals.OilTShow == "3") && (Globals.OilTTextShow != "3"))
                 {
@@ -846,6 +909,7 @@ namespace kkdash
 
             if ((Globals.FuelShow == "1") || (Globals.FuelTextShow == "1"))
             {
+                Globals.showP1 = "Y";
                 Globals.gaugename = "Fuel";
                 if ((Globals.FuelShow == "1") && (Globals.FuelTextShow != "1"))
                 {
@@ -858,6 +922,7 @@ namespace kkdash
             }
             if ((Globals.FuelShow == "2") || (Globals.FuelTextShow == "2"))
             {
+                Globals.showP2 = "Y";
                 Globals.gaugename = "Fuel";
                 if ((Globals.FuelShow == "2") && (Globals.FuelTextShow != "2"))
                 {
@@ -870,6 +935,7 @@ namespace kkdash
             }
             if ((Globals.FuelShow == "3") || (Globals.FuelTextShow == "3"))
             {
+                Globals.showP3 = "Y";
                 Globals.gaugename = "Fuel";
                 if ((Globals.FuelShow == "3") && (Globals.FuelTextShow != "3"))
                 {
@@ -894,6 +960,7 @@ namespace kkdash
 
             if ((Globals.FuelTShow == "1") || (Globals.FuelTTextShow == "1"))
             {
+                Globals.showP1 = "Y";
                 Globals.gaugename = "FuelT";
                 if ((Globals.FuelTShow == "1") && (Globals.FuelTTextShow != "1"))
                 {
@@ -906,6 +973,7 @@ namespace kkdash
             }
             if ((Globals.FuelTShow == "2") || (Globals.FuelTTextShow == "2"))
             {
+                Globals.showP2 = "Y";
                 Globals.gaugename = "FuelT";
                 if ((Globals.FuelTShow == "2") && (Globals.FuelTTextShow != "2"))
                 {
@@ -918,6 +986,7 @@ namespace kkdash
             }
             if ((Globals.FuelTShow == "3") || (Globals.FuelTTextShow == "3"))
             {
+                Globals.showP3 = "Y";
                 Globals.gaugename = "FuelT";
                 if ((Globals.FuelTShow == "3") && (Globals.FuelTTextShow != "3"))
                 {
@@ -942,6 +1011,7 @@ namespace kkdash
 
             if ((Globals.FuelPShow == "1") || (Globals.FuelPTextShow == "1"))
             {
+                Globals.showP1 = "Y";
                 Globals.gaugename = "FuelP";
                 if ((Globals.FuelPShow == "1") && (Globals.FuelPTextShow != "1"))
                 {
@@ -954,6 +1024,7 @@ namespace kkdash
             }
             if ((Globals.FuelPShow == "2") || (Globals.FuelPTextShow == "2"))
             {
+                Globals.showP2 = "Y";
                 Globals.gaugename = "FuelP";
                 if ((Globals.FuelPShow == "2") && (Globals.FuelPTextShow != "2"))
                 {
@@ -966,6 +1037,7 @@ namespace kkdash
             }
             if ((Globals.FuelPShow == "3") || (Globals.FuelPTextShow == "3"))
             {
+                Globals.showP3 = "Y";
                 Globals.gaugename = "FuelP";
                 if ((Globals.FuelPShow == "3") && (Globals.FuelPTextShow != "3"))
                 {
@@ -990,6 +1062,7 @@ namespace kkdash
 
             if ((Globals.User1Show == "1") || (Globals.User1TextShow == "1"))
             {
+                Globals.showP1 = "Y";
                 Globals.gaugename = "User1";
                 if ((Globals.User1Show == "1") && (Globals.User1TextShow != "1"))
                 {
@@ -1002,6 +1075,7 @@ namespace kkdash
             }
             if ((Globals.User1Show == "2") || (Globals.User1TextShow == "2"))
             {
+                Globals.showP2 = "Y";
                 Globals.gaugename = "User1";
                 if ((Globals.User1Show == "2") && (Globals.User1TextShow != "2"))
                 {
@@ -1014,6 +1088,7 @@ namespace kkdash
             }
             if ((Globals.User1Show == "3") || (Globals.User1TextShow == "3"))
             {
+                Globals.showP3 = "Y";
                 Globals.gaugename = "User1";
                 if ((Globals.User1Show == "3") && (Globals.User1TextShow != "3"))
                 {
@@ -1038,6 +1113,7 @@ namespace kkdash
 
             if ((Globals.User2Show == "1") || (Globals.User2TextShow == "1"))
             {
+                Globals.showP1 = "Y";
                 Globals.gaugename = "User2";
                 if ((Globals.User2Show == "1") && (Globals.User2TextShow != "1"))
                 {
@@ -1050,6 +1126,7 @@ namespace kkdash
             }
             if ((Globals.User2Show == "2") || (Globals.User2TextShow == "2"))
             {
+                Globals.showP2 = "Y";
                 Globals.gaugename = "User2";
                 if ((Globals.User2Show == "2") && (Globals.User2TextShow != "2"))
                 {
@@ -1062,6 +1139,7 @@ namespace kkdash
             }
             if ((Globals.User2Show == "3") || (Globals.User2TextShow == "3"))
             {
+                Globals.showP3 = "Y";
                 Globals.gaugename = "User2";
                 if ((Globals.User2Show == "3") && (Globals.User2TextShow != "3"))
                 {
@@ -1086,6 +1164,7 @@ namespace kkdash
 
             if ((Globals.User3Show == "1") || (Globals.User3TextShow == "1"))
             {
+                Globals.showP1 = "Y";
                 Globals.gaugename = "User3";
                 if ((Globals.User3Show == "1") && (Globals.User3TextShow != "1"))
                 {
@@ -1098,6 +1177,7 @@ namespace kkdash
             }
             if ((Globals.User3Show == "2") || (Globals.User3TextShow == "2"))
             {
+                Globals.showP2 = "Y";
                 Globals.gaugename = "User3";
                 if ((Globals.User3Show == "2") && (Globals.User3TextShow != "2"))
                 {
@@ -1110,6 +1190,7 @@ namespace kkdash
             }
             if ((Globals.User3Show == "3") || (Globals.User3TextShow == "3"))
             {
+                Globals.showP3 = "Y";
                 Globals.gaugename = "User3";
                 if ((Globals.User3Show == "3") && (Globals.User3TextShow != "3"))
                 {
@@ -1134,6 +1215,7 @@ namespace kkdash
 
             if ((Globals.User4Show == "1") || (Globals.User4TextShow == "1"))
             {
+                Globals.showP1 = "Y";
                 Globals.gaugename = "User4";
                 if ((Globals.User4Show == "1") && (Globals.User4TextShow != "1"))
                 {
@@ -1146,6 +1228,7 @@ namespace kkdash
             }
             if ((Globals.User4Show == "2") || (Globals.User4TextShow == "2"))
             {
+                Globals.showP2 = "Y";
                 Globals.gaugename = "User4";
                 if ((Globals.User4Show == "2") && (Globals.User4TextShow != "2"))
                 {
@@ -1158,6 +1241,7 @@ namespace kkdash
             }
             if ((Globals.User4Show == "3") || (Globals.User4TextShow == "3"))
             {
+                Globals.showP3 = "Y";
                 Globals.gaugename = "User4";
                 if ((Globals.User4Show == "3") && (Globals.User4TextShow != "3"))
                 {
@@ -1175,11 +1259,14 @@ namespace kkdash
         {
             //======================================================================= get items held in the config==================================================================
 
+            txtUser1CanOffset.Text = Globals.User1CanOffset;
+            txtUser2CanOffset.Text = Globals.User2CanOffset;
+            txtUser3CanOffset.Text = Globals.User3CanOffset;
+            txtUser4CanOffset.Text = Globals.User4CanOffset;
 
-
-            //Globals.p1connection = "ecuconnection," + Globals.SerCanP1Ecu + "," + Globals.SerCanPortP1Ecu + "," + Globals.SerCanSpeedP1Ecu + "," + Globals.SerCanAddressP1Ecu + "," + Globals.PanelIP1 + "," + Globals.SerCanAddressP1;
-            //Globals.p2connection = "p2connection " + Globals.SerCanP1P2 + "," + Globals.SerCanPortP1P2 + "," + Globals.SerCanSpeedP1P2 + "," + Globals.SerCanAddressP1P2 + "," + Globals.PanelIP2;
-            //Globals.p3connection = "p3connection" + Globals.SerCanP1P3 + "," + Globals.SerCanPortP1P3 + "," + Globals.SerCanSpeedP1P3 + "," + Globals.SerCanAddressP1P3 + "," + Globals.PanelIP3;
+            lblP1Path.Text = Globals.P1BG;
+            lblP2Path.Text = Globals.P2BG;
+            lblP3Path.Text = Globals.P3BG;
 
             //Connectivity
             txtPanel1IP.Text = Globals.PanelIP1;
@@ -1247,9 +1334,9 @@ namespace kkdash
             txtP3Height.Text = Globals.p3DispHeight;
 
             lblUser1.Text = Globals.User1name;
-             lblUser2.Text = Globals.User2name;
-             lblUser3.Text = Globals.User3name;
-             lblUser4.Text = Globals.User4name;
+            lblUser2.Text = Globals.User2name;
+            lblUser3.Text = Globals.User3name;
+            lblUser4.Text = Globals.User4name;
 
             txtSpeedoNeedleWidth.Text = Globals.SpeedoNeedleWidth;
             txtSpeedoNeedleLength.Text = Globals.SpeedoNeedleLength;
@@ -1262,7 +1349,7 @@ namespace kkdash
             txtSpeedoFontSize.Text = Globals.SpeedoFontSize;
             cmbSpeedoTextStyle.Text = Globals.SpeedoTextStyle;
             txtSpeedoNeedle.Text = Globals.SpeedoNeedle;
-            cmbSpeedo.Text = Globals.SpeedoNeedleType;
+            cmbSpeedo.Text = Globals.SpeedoNeedleType; 
         
             if (Globals.SpeedoShow == "1") { cmbShowSpeedo.Text = "Panel 1"; }
             if (Globals.SpeedoShow == "2") { cmbShowSpeedo.Text = "Panel 2"; }
@@ -1862,6 +1949,12 @@ namespace kkdash
             Globals.PanelIP1 = txtPanel1IP.Text;
             Globals.PanelIP2 = txtPaneI2IP.Text;
             Globals.PanelIP3 = txtPanel3IP.Text;
+            Globals.p1DispWidth = txtP1Width.Text;
+            Globals.p1DispHeight = txtP1Height.Text;
+            Globals.p2DispWidth = txtP2Width.Text;
+            Globals.p2DispHeight = txtP2Height.Text;
+            Globals.p3DispWidth = txtP3Width.Text;
+            Globals.p3DispHeight = txtP3Height.Text;
 
             switch (cmbSerCanP1ECU.Text)
             {
@@ -2365,23 +2458,23 @@ namespace kkdash
             Globals.showP2 = "None";
             Globals.showP3 = "None";
 
-            Globals.SpeedoNeedleWidth = ""; Globals.SpeedoNeedleLength = ""; Globals.SpeedoNeedleX = ""; Globals.SpeedoNeedleY = ""; Globals.SpeedoOffset = ""; Globals.SpeedoEnd = ""; Globals.SpeedoTop = ""; Globals.SpeedoTextX = ""; Globals.SpeedoTextY = ""; Globals.SpeedoFontSize = ""; Globals.SpeedoTextStyle = ""; Globals.SpeedoNeedle = "";
-            Globals.TachoNeedleWidth = ""; Globals.TachoNeedleLength = ""; Globals.TachoNeedleX = ""; Globals.TachoNeedleY = ""; Globals.TachoOffset = ""; Globals.TachoEnd = ""; Globals.TachoTop = ""; Globals.TachoTextX = ""; Globals.TachoTextY = ""; Globals.TachoFontSize = ""; Globals.TachoTextStyle = ""; Globals.TachoNeedle = "";
-            Globals.BoostNeedleWidth = ""; Globals.BoostNeedleLength = ""; Globals.BoostNeedleX = ""; Globals.BoostNeedleY = ""; Globals.BoostOffset = ""; Globals.BoostEnd = ""; Globals.BoostTop = ""; Globals.BoostTextX = ""; Globals.BoostTextY = ""; Globals.BoostFontSize = ""; Globals.BoostTextStyle = ""; Globals.BoostNeedle = "";
-            Globals.TempNeedleWidth = ""; Globals.TempNeedleLength = ""; Globals.TempNeedleX = ""; Globals.TempNeedleY = ""; Globals.TempOffset = ""; Globals.TempEnd = ""; Globals.TempTop = ""; Globals.TempTextX = ""; Globals.TempTextY = ""; Globals.TempFontSize = ""; Globals.TempTextStyle = ""; Globals.TempNeedle = "";
-            Globals.OilNeedleWidth = ""; Globals.OilNeedleLength = ""; Globals.OilNeedleX = ""; Globals.OilNeedleY = ""; Globals.OilOffset = ""; Globals.OilEnd = ""; Globals.OilTop = ""; Globals.OilTextX = ""; Globals.OilTextY = ""; Globals.OilFontSize = ""; Globals.OilTextStyle = ""; Globals.OilNeedle = "";
-            Globals.OilTNeedleWidth = ""; Globals.OilTNeedleLength = ""; Globals.OilTNeedleX = ""; Globals.OilTNeedleY = ""; Globals.OilTOffset = ""; Globals.OilTEnd = ""; Globals.OilTTop = ""; Globals.OilTTextX = ""; Globals.OilTTextY = ""; Globals.OilTFontSize = ""; Globals.OilTTextStyle = ""; Globals.OilTNeedle = "";
-            Globals.FuelNeedleWidth = ""; Globals.FuelNeedleLength = ""; Globals.FuelNeedleX = ""; Globals.FuelNeedleY = ""; Globals.FuelOffset = ""; Globals.FuelEnd = ""; Globals.FuelTop = ""; Globals.FuelTextX = ""; Globals.FuelTextY = ""; Globals.FuelFontSize = ""; Globals.FuelTextStyle = ""; Globals.FuelNeedle = "";
-            Globals.FuelTNeedleWidth = ""; Globals.FuelTNeedleLength = ""; Globals.FuelTNeedleX = ""; Globals.FuelTNeedleY = ""; Globals.FuelTOffset = ""; Globals.FuelTEnd = ""; Globals.FuelTTop = ""; Globals.FuelTTextX = ""; Globals.FuelTTextY = ""; Globals.FuelTFontSize = ""; Globals.FuelTTextStyle = ""; Globals.FuelTNeedle = "";
-            Globals.FuelPNeedleWidth = ""; Globals.FuelPNeedleLength = ""; Globals.FuelPNeedleX = ""; Globals.FuelPNeedleY = ""; Globals.FuelPOffset = ""; Globals.FuelPEnd = ""; Globals.FuelPTop = ""; Globals.FuelPTextX = ""; Globals.FuelPTextY = ""; Globals.FuelPFontSize = ""; Globals.FuelPTextStyle = ""; Globals.FuelPNeedle = "";
-            Globals.User1NeedleWidth = ""; Globals.User1NeedleLength = ""; Globals.User1NeedleX = ""; Globals.User1NeedleY = ""; Globals.User1Offset = ""; Globals.User1End = ""; Globals.User1Top = ""; Globals.User1TextX = ""; Globals.User1TextY = ""; Globals.User1FontSize = ""; Globals.User1TextStyle = ""; Globals.User1Needle = "";
-            Globals.User2NeedleWidth = ""; Globals.User2NeedleLength = ""; Globals.User2NeedleX = ""; Globals.User2NeedleY = ""; Globals.User2Offset = ""; Globals.User2End = ""; Globals.User2Top = ""; Globals.User2TextX = ""; Globals.User2TextY = ""; Globals.User2FontSize = ""; Globals.User2TextStyle = ""; Globals.User2Needle = "";
-            Globals.User3NeedleWidth = ""; Globals.User3NeedleLength = ""; Globals.User3NeedleX = ""; Globals.User3NeedleY = ""; Globals.User3Offset = ""; Globals.User3End = ""; Globals.User3Top = ""; Globals.User3TextX = ""; Globals.User3TextY = ""; Globals.User3FontSize = ""; Globals.User3TextStyle = ""; Globals.User3Needle = "";
-            Globals.User4NeedleWidth = ""; Globals.User4NeedleLength = ""; Globals.User4NeedleX = ""; Globals.User4NeedleY = ""; Globals.User4Offset = ""; Globals.User4End = ""; Globals.User4Top = ""; Globals.User4TextX = ""; Globals.User4TextY = ""; Globals.User4FontSize = ""; Globals.User4TextStyle = ""; Globals.User4Needle = "";
+            Globals.SpeedoNeedleWidth = "0"; Globals.SpeedoNeedleLength = "1200"; Globals.SpeedoNeedleX = "0"; Globals.SpeedoNeedleY = "0"; Globals.SpeedoOffset = "0"; Globals.SpeedoEnd = "0"; Globals.SpeedoTop = "0"; Globals.SpeedoTextX = "0"; Globals.SpeedoTextY = "0"; Globals.SpeedoFontSize = "0"; Globals.SpeedoTextStyle = "smooth"; Globals.SpeedoNeedle = "textures/instrument_needle.png";
+            Globals.TachoNeedleWidth = "0"; Globals.TachoNeedleLength = "0"; Globals.TachoNeedleX = "0"; Globals.TachoNeedleY = "0"; Globals.TachoOffset = "0"; Globals.TachoEnd = "0"; Globals.TachoTop = "0"; Globals.TachoTextX = "0"; Globals.TachoTextY = "0"; Globals.TachoFontSize = "0"; Globals.TachoTextStyle = "smooth"; Globals.TachoNeedle = "textures/instrument_needle.png";
+            Globals.BoostNeedleWidth = "0"; Globals.BoostNeedleLength = "0"; Globals.BoostNeedleX = "0"; Globals.BoostNeedleY = "0"; Globals.BoostOffset = "0"; Globals.BoostEnd = "0"; Globals.BoostTop = "0"; Globals.BoostTextX = "0"; Globals.BoostTextY = "0"; Globals.BoostFontSize = "0"; Globals.BoostTextStyle = "smooth"; Globals.BoostNeedle = "textures/instrument_needle.png";
+            Globals.TempNeedleWidth = "0"; Globals.TempNeedleLength = "0"; Globals.TempNeedleX = "0"; Globals.TempNeedleY = "0"; Globals.TempOffset = "0"; Globals.TempEnd = "0"; Globals.TempTop = "0"; Globals.TempTextX = "0"; Globals.TempTextY = "0"; Globals.TempFontSize = "0"; Globals.TempTextStyle = "smooth"; Globals.TempNeedle = "textures/instrument_needle.png";
+            Globals.OilNeedleWidth = "0"; Globals.OilNeedleLength = "0"; Globals.OilNeedleX = "0"; Globals.OilNeedleY = "0"; Globals.OilOffset = "0"; Globals.OilEnd = "0"; Globals.OilTop = "0"; Globals.OilTextX = "0"; Globals.OilTextY = "0"; Globals.OilFontSize = "0"; Globals.OilTextStyle = "smooth"; Globals.OilNeedle = "textures/instrument_needle.png";
+            Globals.OilTNeedleWidth = "0"; Globals.OilTNeedleLength = "0"; Globals.OilTNeedleX = "0"; Globals.OilTNeedleY = "0"; Globals.OilTOffset = "0"; Globals.OilTEnd = "0"; Globals.OilTTop = "0"; Globals.OilTTextX = "0"; Globals.OilTTextY = "0"; Globals.OilTFontSize = "0"; Globals.OilTTextStyle = "smooth"; Globals.OilTNeedle = "textures/instrument_needle.png";
+            Globals.FuelNeedleWidth = "0"; Globals.FuelNeedleLength = "0"; Globals.FuelNeedleX = "0"; Globals.FuelNeedleY = "0"; Globals.FuelOffset = "0"; Globals.FuelEnd = "0"; Globals.FuelTop = "0"; Globals.FuelTextX = "0"; Globals.FuelTextY = "0"; Globals.FuelFontSize = "0"; Globals.FuelTextStyle = "smooth"; Globals.FuelNeedle = "textures/instrument_needle.png";
+            Globals.FuelTNeedleWidth = "0"; Globals.FuelTNeedleLength = "0"; Globals.FuelTNeedleX = "0"; Globals.FuelTNeedleY = "0"; Globals.FuelTOffset = "0"; Globals.FuelTEnd = "0"; Globals.FuelTTop = "0"; Globals.FuelTTextX = "0"; Globals.FuelTTextY = "0"; Globals.FuelTFontSize = "0"; Globals.FuelTTextStyle = "smooth"; Globals.FuelTNeedle = "textures/instrument_needle.png";
+            Globals.FuelPNeedleWidth = "0"; Globals.FuelPNeedleLength = "0"; Globals.FuelPNeedleX = "0"; Globals.FuelPNeedleY = "0"; Globals.FuelPOffset = "0"; Globals.FuelPEnd = "0"; Globals.FuelPTop = "0"; Globals.FuelPTextX = "0"; Globals.FuelPTextY = "0"; Globals.FuelPFontSize = "0"; Globals.FuelPTextStyle = "smooth"; Globals.FuelPNeedle = "textures/instrument_needle.png";
+            Globals.User1NeedleWidth = "0"; Globals.User1NeedleLength = "0"; Globals.User1NeedleX = "0"; Globals.User1NeedleY = "0"; Globals.User1Offset = "0"; Globals.User1End = "0"; Globals.User1Top = "0"; Globals.User1TextX = "0"; Globals.User1TextY = "0"; Globals.User1FontSize = "0"; Globals.User1TextStyle = "smooth"; Globals.User1Needle = "textures/instrument_needle.png";
+            Globals.User2NeedleWidth = "0"; Globals.User2NeedleLength = "0"; Globals.User2NeedleX = "0"; Globals.User2NeedleY = "0"; Globals.User2Offset = "0"; Globals.User2End = "0"; Globals.User2Top = "0"; Globals.User2TextX = "0"; Globals.User2TextY = "0"; Globals.User2FontSize = "0"; Globals.User2TextStyle = "smooth"; Globals.User2Needle = "textures/instrument_needle.png";
+            Globals.User3NeedleWidth = "0"; Globals.User3NeedleLength = "0"; Globals.User3NeedleX = "0"; Globals.User3NeedleY = "0"; Globals.User3Offset = "0"; Globals.User3End = "0"; Globals.User3Top = "0"; Globals.User3TextX = "0"; Globals.User3TextY = "0"; Globals.User3FontSize = "0"; Globals.User3TextStyle = "smooth"; Globals.User3Needle = "textures/instrument_needle.png";
+            Globals.User4NeedleWidth = "0"; Globals.User4NeedleLength = "0"; Globals.User4NeedleX = "0"; Globals.User4NeedleY = "0"; Globals.User4Offset = "0"; Globals.User4End = "0"; Globals.User4Top = "0"; Globals.User4TextX = "0"; Globals.User4TextY = "0"; Globals.User4FontSize = "0"; Globals.User4TextStyle = "smooth"; Globals.User4Needle = "textures/instrument_needle.png";
         }
 
-        //-----------------------------------------------------------------------show changes for gauge / bar----------------------------------------------------------------------------
-        private void cmbSpeedo_SelectedIndexChanged(object sender, EventArgs e)
+            //-----------------------------------------------------------------------show changes for gauge / bar----------------------------------------------------------------------------
+            private void cmbSpeedo_SelectedIndexChanged(object sender, EventArgs e)
         {
             setupgauges("Speedo");
         }
@@ -2681,6 +2774,26 @@ namespace kkdash
 
         private void txtPanelIP3_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+           if (File.Exists (Globals.flocation + "\\Panel1.csv")|| File.Exists(Globals.flocation + "\\Panel2.csv")|| File.Exists(Globals.flocation + "\\Panel3.csv"))
+                {
+                DialogResult dialogResult = MessageBox.Show("File(s) exist.  Do you wish to overwrite?", "Save changes", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    WriteCSVfile(1);
+                    WriteCSVfile(2);
+                    WriteCSVfile(3);
+                    this.Close();
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    this.Close();
+                }
+            }
 
         }
     }

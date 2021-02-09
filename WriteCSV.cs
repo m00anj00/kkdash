@@ -58,9 +58,15 @@ namespace kkdash
                     fuelval = Globals.Fuelvalp1;
                     fueltval = Globals.FuelTvalp1;
                     fuelpval = Globals.FuelPvalp1;
+                    user1val = Globals.FuelPvalp1;
+                    user2val = Globals.FuelPvalp1;
+                    user3val = Globals.FuelPvalp1;
+                    user4val = Globals.FuelPvalp1;
+
                     p1conn = Globals.p1connection;
                     p2conn = Globals.p2connection;
                     p3conn = Globals.p3connection;
+                    pantxt = "Background," + Globals.P1BG + ",,,,,,,,,,,,,,";
 
 
                     PNO = "1";
@@ -83,6 +89,11 @@ namespace kkdash
                     fuelval = Globals.Fuelvalp2;
                     fueltval = Globals.FuelTvalp2;
                     fuelpval = Globals.FuelPvalp2;
+                    user1val = Globals.FuelPvalp1;
+                    user2val = Globals.FuelPvalp1;
+                    user3val = Globals.FuelPvalp1;
+                    user4val = Globals.FuelPvalp1;
+                    pantxt = "Background," + Globals.P2BG + ",,,,,,,,,,,,,,";
 
                     PNO = "2";
                     break;
@@ -104,6 +115,11 @@ namespace kkdash
                     fuelval = Globals.Fuelvalp3;
                     fueltval = Globals.FuelTvalp3;
                     fuelpval = Globals.FuelPvalp3;
+                    user1val = Globals.FuelPvalp1;
+                    user2val = Globals.FuelPvalp1;
+                    user3val = Globals.FuelPvalp1;
+                    user4val = Globals.FuelPvalp1;
+                    pantxt = "Background," + Globals.P3BG + ",,,,,,,,,,,,,,";
 
                     PNO = "3";
                     break;
@@ -116,7 +132,7 @@ namespace kkdash
                 new string[] { "#pos x=0,y=0 is the center of the display,,,,,,,,,,,,," },
                 new string[] { "#displaysize,w,h,refresh rate,,,,,,,,,,," },
                 new string[] { disptxt },
-                new string[] { "#backgrounds,panel1,panel2,panel3" },
+                new string[] { "#background,pic" },
                 new string[] { pantxt },
                 new string[] { ",,,,,,,,,,,,,," },
                 new string[] { "#CAN connection #see: https://python-can.readthedocs.io/en/stable/configuration.html" },
@@ -132,7 +148,7 @@ namespace kkdash
                 new string[] { "#BAR GRAPH STYLE: (barV or barH)" },
                 new string[] { "#name,show,bar width(V),bar height(H),gaugex,gaugey,warn%,guageend,topval,textshow,textX,textY,fontsize,fontstyle,type (barV/barH),0=warn% below-1=warn% above" },
                 new string[] { ",,,,,,,,,,,,,," },
-                new string[] { "Userdefined", Globals.User1name, Globals.User2name, Globals.User3name, Globals.User4name,",,,,,,,,,," },
+                new string[] { "Userdefined", Globals.User1name, Globals.User2name, Globals.User3name, Globals.User4name, Globals.User1CanOffset, Globals.User2CanOffset, Globals.User3CanOffset, Globals.User4CanOffset, ",,,,,," },
                 new string[] { "#Speedo:",",,,,,,,,,,,,," },
                 new string[] { speedoval },
                 new string[] { "#Tacho:",",,,,,,,,,,,,," },

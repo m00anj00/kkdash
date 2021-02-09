@@ -326,6 +326,8 @@
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.btnLoad = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label26 = new System.Windows.Forms.Label();
+            this.cmbCanAddressEcu = new System.Windows.Forms.ComboBox();
             this.label49 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.cmbCanAddressP1 = new System.Windows.Forms.ComboBox();
@@ -366,8 +368,7 @@
             this.btnP3BG = new System.Windows.Forms.Button();
             this.txtPanel3IP = new System.Windows.Forms.TextBox();
             this.label47 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.cmbCanAddressEcu = new System.Windows.Forms.ComboBox();
+            this.btnQuit = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -586,7 +587,7 @@
             this.cmbSpeedo.Name = "cmbSpeedo";
             this.cmbSpeedo.Size = new System.Drawing.Size(138, 24);
             this.cmbSpeedo.TabIndex = 22;
-            this.cmbSpeedo.Text = "Gauge";
+            this.cmbSpeedo.Text = "gauge";
             this.cmbSpeedo.SelectedIndexChanged += new System.EventHandler(this.cmbSpeedo_SelectedIndexChanged);
             // 
             // cmbTacho
@@ -602,7 +603,7 @@
             this.cmbTacho.Name = "cmbTacho";
             this.cmbTacho.Size = new System.Drawing.Size(138, 24);
             this.cmbTacho.TabIndex = 23;
-            this.cmbTacho.Text = "Gauge";
+            this.cmbTacho.Text = "gauge";
             this.cmbTacho.SelectedIndexChanged += new System.EventHandler(this.cmbTacho_SelectedIndexChanged);
             // 
             // cmbBoost
@@ -618,7 +619,7 @@
             this.cmbBoost.Name = "cmbBoost";
             this.cmbBoost.Size = new System.Drawing.Size(138, 24);
             this.cmbBoost.TabIndex = 24;
-            this.cmbBoost.Text = "Gauge";
+            this.cmbBoost.Text = "gauge";
             this.cmbBoost.SelectedIndexChanged += new System.EventHandler(this.cmbBoost_SelectedIndexChanged);
             // 
             // cmbTemp
@@ -634,7 +635,7 @@
             this.cmbTemp.Name = "cmbTemp";
             this.cmbTemp.Size = new System.Drawing.Size(138, 24);
             this.cmbTemp.TabIndex = 25;
-            this.cmbTemp.Text = "Gauge";
+            this.cmbTemp.Text = "gauge";
             this.cmbTemp.SelectedIndexChanged += new System.EventHandler(this.cmbTemp_SelectedIndexChanged);
             // 
             // cmbOil
@@ -650,7 +651,7 @@
             this.cmbOil.Name = "cmbOil";
             this.cmbOil.Size = new System.Drawing.Size(138, 24);
             this.cmbOil.TabIndex = 26;
-            this.cmbOil.Text = "Gauge";
+            this.cmbOil.Text = "gauge";
             this.cmbOil.SelectedIndexChanged += new System.EventHandler(this.cmbOil_SelectedIndexChanged);
             // 
             // cmbOilT
@@ -666,7 +667,7 @@
             this.cmbOilT.Name = "cmbOilT";
             this.cmbOilT.Size = new System.Drawing.Size(138, 24);
             this.cmbOilT.TabIndex = 27;
-            this.cmbOilT.Text = "Gauge";
+            this.cmbOilT.Text = "gauge";
             this.cmbOilT.SelectedIndexChanged += new System.EventHandler(this.cmbOilT_SelectedIndexChanged);
             // 
             // cmbFuel
@@ -682,7 +683,7 @@
             this.cmbFuel.Name = "cmbFuel";
             this.cmbFuel.Size = new System.Drawing.Size(138, 24);
             this.cmbFuel.TabIndex = 28;
-            this.cmbFuel.Text = "Gauge";
+            this.cmbFuel.Text = "gauge";
             this.cmbFuel.SelectedIndexChanged += new System.EventHandler(this.cmbFuel_SelectedIndexChanged);
             // 
             // cmbFuelT
@@ -698,7 +699,7 @@
             this.cmbFuelT.Name = "cmbFuelT";
             this.cmbFuelT.Size = new System.Drawing.Size(138, 24);
             this.cmbFuelT.TabIndex = 29;
-            this.cmbFuelT.Text = "Gauge";
+            this.cmbFuelT.Text = "gauge";
             this.cmbFuelT.SelectedIndexChanged += new System.EventHandler(this.cmbFuelT_SelectedIndexChanged);
             // 
             // cmbFuelP
@@ -714,7 +715,7 @@
             this.cmbFuelP.Name = "cmbFuelP";
             this.cmbFuelP.Size = new System.Drawing.Size(138, 24);
             this.cmbFuelP.TabIndex = 30;
-            this.cmbFuelP.Text = "Gauge";
+            this.cmbFuelP.Text = "gauge";
             this.cmbFuelP.SelectedIndexChanged += new System.EventHandler(this.cmbFuelP_SelectedIndexChanged);
             // 
             // label18
@@ -1821,7 +1822,7 @@
             this.txtUser4CanOffset.Name = "txtUser4CanOffset";
             this.txtUser4CanOffset.Size = new System.Drawing.Size(52, 22);
             this.txtUser4CanOffset.TabIndex = 291;
-            this.txtUser4CanOffset.Visible = false;
+            this.txtUser4CanOffset.Text = "0";
             // 
             // txtUser3CanOffset
             // 
@@ -1831,7 +1832,7 @@
             this.txtUser3CanOffset.Name = "txtUser3CanOffset";
             this.txtUser3CanOffset.Size = new System.Drawing.Size(52, 22);
             this.txtUser3CanOffset.TabIndex = 290;
-            this.txtUser3CanOffset.Visible = false;
+            this.txtUser3CanOffset.Text = "0";
             // 
             // txtUser2CanOffset
             // 
@@ -1841,7 +1842,7 @@
             this.txtUser2CanOffset.Name = "txtUser2CanOffset";
             this.txtUser2CanOffset.Size = new System.Drawing.Size(52, 22);
             this.txtUser2CanOffset.TabIndex = 289;
-            this.txtUser2CanOffset.Visible = false;
+            this.txtUser2CanOffset.Text = "0";
             // 
             // txtUser1CanOffset
             // 
@@ -1851,7 +1852,7 @@
             this.txtUser1CanOffset.Name = "txtUser1CanOffset";
             this.txtUser1CanOffset.Size = new System.Drawing.Size(52, 22);
             this.txtUser1CanOffset.TabIndex = 288;
-            this.txtUser1CanOffset.Visible = false;
+            this.txtUser1CanOffset.Text = "0";
             // 
             // cmbUser4AboveBelow
             // 
@@ -2235,7 +2236,7 @@
             this.cmbUser4.Name = "cmbUser4";
             this.cmbUser4.Size = new System.Drawing.Size(138, 24);
             this.cmbUser4.TabIndex = 255;
-            this.cmbUser4.Text = "Gauge";
+            this.cmbUser4.Text = "gauge";
             this.cmbUser4.SelectedIndexChanged += new System.EventHandler(this.cmbUser4_SelectedIndexChanged);
             // 
             // txtUser4X
@@ -2370,7 +2371,7 @@
             this.cmbUser3.Name = "cmbUser3";
             this.cmbUser3.Size = new System.Drawing.Size(138, 24);
             this.cmbUser3.TabIndex = 242;
-            this.cmbUser3.Text = "Gauge";
+            this.cmbUser3.Text = "gauge";
             this.cmbUser3.SelectedIndexChanged += new System.EventHandler(this.cmbUser3_SelectedIndexChanged);
             // 
             // txtUser3X
@@ -2505,7 +2506,7 @@
             this.cmbUser2.Name = "cmbUser2";
             this.cmbUser2.Size = new System.Drawing.Size(138, 24);
             this.cmbUser2.TabIndex = 229;
-            this.cmbUser2.Text = "Gauge";
+            this.cmbUser2.Text = "gauge";
             this.cmbUser2.SelectedIndexChanged += new System.EventHandler(this.cmbUser2_SelectedIndexChanged);
             // 
             // txtUser2X
@@ -2640,7 +2641,7 @@
             this.cmbUser1.Name = "cmbUser1";
             this.cmbUser1.Size = new System.Drawing.Size(138, 24);
             this.cmbUser1.TabIndex = 216;
-            this.cmbUser1.Text = "Gauge";
+            this.cmbUser1.Text = "gauge";
             this.cmbUser1.SelectedIndexChanged += new System.EventHandler(this.cmbUser1_SelectedIndexChanged_1);
             // 
             // txtUser1X
@@ -4104,6 +4105,42 @@
             this.panel3.Size = new System.Drawing.Size(518, 269);
             this.panel3.TabIndex = 236;
             // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label26.Location = new System.Drawing.Point(377, 110);
+            this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(38, 16);
+            this.label26.TabIndex = 166;
+            this.label26.Text = "ECU:";
+            // 
+            // cmbCanAddressEcu
+            // 
+            this.cmbCanAddressEcu.FormattingEnabled = true;
+            this.cmbCanAddressEcu.Items.AddRange(new object[] {
+            "0x100",
+            "0x101",
+            "0x102",
+            "0x103",
+            "0x104",
+            "0x105",
+            "0x106",
+            "0x710",
+            "0x711",
+            "0x712",
+            "0x713",
+            "0x714",
+            "0x715",
+            "0x716"});
+            this.cmbCanAddressEcu.Location = new System.Drawing.Point(427, 108);
+            this.cmbCanAddressEcu.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cmbCanAddressEcu.Name = "cmbCanAddressEcu";
+            this.cmbCanAddressEcu.Size = new System.Drawing.Size(72, 23);
+            this.cmbCanAddressEcu.TabIndex = 165;
+            this.cmbCanAddressEcu.Text = "0x100";
+            // 
             // label49
             // 
             this.label49.AutoSize = true;
@@ -4650,41 +4687,18 @@
             this.label47.TabIndex = 137;
             this.label47.Text = "Address:";
             // 
-            // label26
+            // btnQuit
             // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.label26.Location = new System.Drawing.Point(377, 110);
-            this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(38, 16);
-            this.label26.TabIndex = 166;
-            this.label26.Text = "ECU:";
-            // 
-            // cmbCanAddressEcu
-            // 
-            this.cmbCanAddressEcu.FormattingEnabled = true;
-            this.cmbCanAddressEcu.Items.AddRange(new object[] {
-            "0x100",
-            "0x101",
-            "0x102",
-            "0x103",
-            "0x104",
-            "0x105",
-            "0x106",
-            "0x710",
-            "0x711",
-            "0x712",
-            "0x713",
-            "0x714",
-            "0x715",
-            "0x716"});
-            this.cmbCanAddressEcu.Location = new System.Drawing.Point(427, 108);
-            this.cmbCanAddressEcu.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.cmbCanAddressEcu.Name = "cmbCanAddressEcu";
-            this.cmbCanAddressEcu.Size = new System.Drawing.Size(72, 23);
-            this.cmbCanAddressEcu.TabIndex = 165;
-            this.cmbCanAddressEcu.Text = "0x100";
+            this.btnQuit.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.btnQuit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnQuit.Location = new System.Drawing.Point(1477, 6);
+            this.btnQuit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnQuit.Name = "btnQuit";
+            this.btnQuit.Size = new System.Drawing.Size(110, 45);
+            this.btnQuit.TabIndex = 240;
+            this.btnQuit.Text = "Exit";
+            this.btnQuit.UseVisualStyleBackColor = false;
+            this.btnQuit.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmWizard
             // 
@@ -4692,6 +4706,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1594, 989);
+            this.ControlBox = false;
+            this.Controls.Add(this.btnQuit);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
@@ -5063,5 +5079,6 @@
         private System.Windows.Forms.Label label48;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.ComboBox cmbCanAddressEcu;
+        private System.Windows.Forms.Button btnQuit;
     }
 }

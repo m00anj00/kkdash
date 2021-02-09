@@ -2,6 +2,13 @@
 {
     class Globals
     {
+        public static int mouseposX { get; set; }
+        public static int mouseposY { get; set; }
+
+        public static string P1BG { get; set; }
+        public static string P2BG { get; set; }
+        public static string P3BG { get; set; }
+
         public static string showP1 { get; set; }
         public static string showP2 { get; set; }
         public static string showP3 { get; set; }
@@ -40,6 +47,11 @@
         public static string SerCanPortP1P3 { get; set; }       // can0             --both Panel 1 and Panel 3 config     
         public static string SerCanSpeedP1P3 { get; set; }      // 125k             --both Panel 1 and Panel 3 config
         public static string SerCanAddressP1P3 { get; set; }	// 0x103 --both Panel 1 and Panel 3 config				
+
+        public static string User1CanOffset { get; set; }
+        public static string User2CanOffset { get; set; }
+        public static string User3CanOffset { get; set; }
+        public static string User4CanOffset { get; set; }
 
         //user gauge names
         public static string User1name { get; set; }
