@@ -101,7 +101,7 @@ namespace kkdash
             TS2.Text = ("Ready    ");
             TS3.Text = ("Writing config    ");
             WriteCSVfile(3);  // write csv panel3 from globals
-            //ResetGlobals();
+
             TS1.Text = ("Ready    ");
             TS2.Text = ("Ready    ");
             TS3.Text = ("Ready    ");
@@ -155,7 +155,7 @@ namespace kkdash
         }
 
 
-        //--------------------------------------------------------------------------------Guage / barV / BarH -------------------------------------------------------------------------------------
+        //--------------------------------------------------------------------------------Gauge / barV / BarH -------------------------------------------------------------------------------------
         private void setupgauges(string gaugechoice)
         {
             switch (gaugechoice)
@@ -395,6 +395,32 @@ namespace kkdash
                     }
                     break;
 
+                case "Battery":
+                    if ((cmbBattery.Text.ToLower() == "gauge") || (cmbBattery.Text == ""))
+                    {
+                        lblWarn.Visible = false;
+                        txtBatteryNeedle.Text = "textures/instrument_needle.png";
+                        Globals.BatteryNeedle = txtBatteryNeedle.Text;
+                        Globals.BatteryNeedleType = "gauge";
+                        cmbBattery.Text = "gauge";
+                    }
+
+                    if (cmbBattery.Text == "Vertical Bar")
+                    {
+                        lblWarn.Visible = true;
+                        txtBatteryNeedle.Text = "50";
+                        Globals.BatteryNeedle = txtBatteryNeedle.Text;
+                        Globals.BatteryNeedleType = "barV";
+                    }
+                    if (cmbBattery.Text == "Horizontal Bar")
+                    {
+                        lblWarn.Visible = true;
+                        txtBatteryNeedle.Text = "50";
+                        Globals.BatteryNeedle = txtBatteryNeedle.Text;
+                        Globals.BatteryNeedleType = "barH";
+                    }
+                    break;
+
                 case "User1":
                     if ((cmbUser1.Text.ToLower() == "gauge") || (cmbUser1.Text == ""))
                     {
@@ -498,9 +524,6 @@ namespace kkdash
                         Globals.User4NeedleType = "barH";
                     }
                     break;
-
-
-
             }
         }
 
@@ -571,12 +594,6 @@ namespace kkdash
             //=======================================================================items held in the config==================================================================
 
 
-
-            Globals.User1CanOffset = txtUser1CanOffset.Text;
-            Globals.User2CanOffset = txtUser2CanOffset.Text;
-            Globals.User3CanOffset = txtUser3CanOffset.Text;
-            Globals.User4CanOffset = txtUser4CanOffset.Text;
-
             Globals.p1DispWidth = txtP1Width.Text;
             Globals.p1DispHeight = txtP1Height.Text;
 
@@ -591,11 +608,11 @@ namespace kkdash
             Globals.P3BG = lblP3Path.Text;
 
             //Speedo
-            Globals.gaugename = ""; Globals.SpeedoShow = "n"; Globals.SpeedoTextShow = "n";  //reset to no values
-            if (cmbShowSpeedo.Text == "N") { Globals.SpeedoShow = "n"; }
-            if (cmbSpeedoTextShow.Text == "N") { Globals.SpeedoTextShow = "n"; }
+            //            Globals.gaugename = ""; Globals.SpeedoShow = "N"; Globals.SpeedoTextShow = "N";  //reset to no values
+            if (cmbShowSpeedo.Text == "N") { Globals.SpeedoShow = "N"; }
+            if (cmbSpeedoTextShow.Text == "N") { Globals.SpeedoTextShow = "N"; }
             if (cmbShowSpeedo.Text == "Panel 1") { Globals.SpeedoShow = "1"; }
-            if (cmbSpeedoTextShow.Text == "Panel 1")  { Globals.SpeedoTextShow = "1"; }
+            if (cmbSpeedoTextShow.Text == "Panel 1") { Globals.SpeedoTextShow = "1"; }
             if (cmbShowSpeedo.Text == "Panel 2") { Globals.SpeedoShow = "2"; }
             if (cmbSpeedoTextShow.Text == "Panel 2") { Globals.SpeedoTextShow = "2"; }
             if (cmbShowSpeedo.Text == "Panel 3") { Globals.SpeedoShow = "3"; }
@@ -607,24 +624,33 @@ namespace kkdash
                 Globals.showP1 = "Y";
                 if ((Globals.SpeedoShow == "1") && (Globals.SpeedoTextShow != "1"))
                 {
-                    Globals.Speedovalp1 = Globals.gaugename + "," + Globals.SpeedoShow + "," + Globals.SpeedoNeedleWidth + "," + Globals.SpeedoNeedleLength + "," + Globals.SpeedoNeedleX + "," + Globals.SpeedoNeedleY + "," + Globals.SpeedoOffset + "," + Globals.SpeedoEnd + "," + Globals.SpeedoTop + "," + "n" + "," + Globals.SpeedoTextX + "," + Globals.SpeedoTextY + "," + Globals.SpeedoFontSize + "," + Globals.SpeedoTextStyle + "," + Globals.SpeedoNeedleType + "," + Globals.SpeedoNeedle;
+                    Globals.Speedovalp1 = Globals.gaugename + "," + Globals.SpeedoShow + "," + Globals.SpeedoNeedleWidth + "," + Globals.SpeedoNeedleLength + "," + Globals.SpeedoNeedleX + "," + Globals.SpeedoNeedleY + "," + Globals.SpeedoOffset + "," + Globals.SpeedoEnd + "," + Globals.SpeedoTop + "," + "n" + "," + Globals.SpeedoTextX + "," + Globals.SpeedoTextY + "," + Globals.SpeedoFontSize + "," + Globals.SpeedoTextStyle + "," + Globals.SpeedoNeedleType + "," + Globals.SpeedoNeedle + "," + Globals.SpeedoGPIO;
                 }
                 if ((Globals.SpeedoShow != "1") && (Globals.SpeedoTextShow == "1"))
                 {
-                    Globals.Speedovalp1 = Globals.gaugename + "," + "n" + "," + Globals.SpeedoNeedleWidth + "," + Globals.SpeedoNeedleLength + "," + Globals.SpeedoNeedleX + "," + Globals.SpeedoNeedleY + "," + Globals.SpeedoOffset + "," + Globals.SpeedoEnd + "," + Globals.SpeedoTop + "," + Globals.SpeedoTextShow  + "," + Globals.SpeedoTextX + "," + Globals.SpeedoTextY + "," + Globals.SpeedoFontSize + "," + Globals.SpeedoTextStyle + "," + Globals.SpeedoNeedleType + "," + Globals.SpeedoNeedle;
+                    Globals.Speedovalp1 = Globals.gaugename + "," + "N" + "," + Globals.SpeedoNeedleWidth + "," + Globals.SpeedoNeedleLength + "," + Globals.SpeedoNeedleX + "," + Globals.SpeedoNeedleY + "," + Globals.SpeedoOffset + "," + Globals.SpeedoEnd + "," + Globals.SpeedoTop + "," + Globals.SpeedoTextShow + "," + Globals.SpeedoTextX + "," + Globals.SpeedoTextY + "," + Globals.SpeedoFontSize + "," + Globals.SpeedoTextStyle + "," + Globals.SpeedoNeedleType + "," + Globals.SpeedoNeedle + "," + Globals.SpeedoGPIO;
+                }
+                if ((Globals.SpeedoShow == "1") && (Globals.SpeedoTextShow == "1"))
+                {
+                    Globals.Speedovalp1 = Globals.gaugename + "," + Globals.SpeedoShow + "," + Globals.SpeedoNeedleWidth + "," + Globals.SpeedoNeedleLength + "," + Globals.SpeedoNeedleX + "," + Globals.SpeedoNeedleY + "," + Globals.SpeedoOffset + "," + Globals.SpeedoEnd + "," + Globals.SpeedoTop + "," + Globals.SpeedoTextShow + "," + Globals.SpeedoTextX + "," + Globals.SpeedoTextY + "," + Globals.SpeedoFontSize + "," + Globals.SpeedoTextStyle + "," + Globals.SpeedoNeedleType + "," + Globals.SpeedoNeedle + "," + Globals.SpeedoGPIO;
                 }
             }
+
             if ((Globals.SpeedoShow == "2") || (Globals.SpeedoTextShow == "2"))
             {
                 Globals.gaugename = "speedo";
                 Globals.showP2 = "Y";
                 if ((Globals.SpeedoShow == "2") && (Globals.SpeedoTextShow != "2"))
                 {
-                    Globals.Speedovalp2 = Globals.gaugename + "," + Globals.SpeedoShow + "," + Globals.SpeedoNeedleWidth + "," + Globals.SpeedoNeedleLength + "," + Globals.SpeedoNeedleX + "," + Globals.SpeedoNeedleY + "," + Globals.SpeedoOffset + "," + Globals.SpeedoEnd + "," + Globals.SpeedoTop + "," + "n" + "," + Globals.SpeedoTextX + "," + Globals.SpeedoTextY + "," + Globals.SpeedoFontSize + "," + Globals.SpeedoTextStyle + "," + Globals.SpeedoNeedleType + "," + Globals.SpeedoNeedle;
+                    Globals.Speedovalp2 = Globals.gaugename + "," + Globals.SpeedoShow + "," + Globals.SpeedoNeedleWidth + "," + Globals.SpeedoNeedleLength + "," + Globals.SpeedoNeedleX + "," + Globals.SpeedoNeedleY + "," + Globals.SpeedoOffset + "," + Globals.SpeedoEnd + "," + Globals.SpeedoTop + "," + "n" + "," + Globals.SpeedoTextX + "," + Globals.SpeedoTextY + "," + Globals.SpeedoFontSize + "," + Globals.SpeedoTextStyle + "," + Globals.SpeedoNeedleType + "," + Globals.SpeedoNeedle + "," + Globals.SpeedoGPIO;
                 }
                 if ((Globals.SpeedoShow != "2") && (Globals.SpeedoTextShow == "2"))
                 {
-                    Globals.Speedovalp2 = Globals.gaugename + "," + "n" + "," + Globals.SpeedoNeedleWidth + "," + Globals.SpeedoNeedleLength + "," + Globals.SpeedoNeedleX + "," + Globals.SpeedoNeedleY + "," + Globals.SpeedoOffset + "," + Globals.SpeedoEnd + "," + Globals.SpeedoTop + "," + Globals.SpeedoTextShow + "," + Globals.SpeedoTextX + "," + Globals.SpeedoTextY + "," + Globals.SpeedoFontSize + "," + Globals.SpeedoTextStyle + "," + Globals.SpeedoNeedleType + "," + Globals.SpeedoNeedle;
+                    Globals.Speedovalp2 = Globals.gaugename + "," + "N" + "," + Globals.SpeedoNeedleWidth + "," + Globals.SpeedoNeedleLength + "," + Globals.SpeedoNeedleX + "," + Globals.SpeedoNeedleY + "," + Globals.SpeedoOffset + "," + Globals.SpeedoEnd + "," + Globals.SpeedoTop + "," + Globals.SpeedoTextShow + "," + Globals.SpeedoTextX + "," + Globals.SpeedoTextY + "," + Globals.SpeedoFontSize + "," + Globals.SpeedoTextStyle + "," + Globals.SpeedoNeedleType + "," + Globals.SpeedoNeedle + "," + Globals.SpeedoGPIO;
+                }
+                if ((Globals.SpeedoShow == "2") && (Globals.SpeedoTextShow == "2"))
+                {
+                    Globals.Speedovalp2 = Globals.gaugename + "," + Globals.SpeedoShow + "," + Globals.SpeedoNeedleWidth + "," + Globals.SpeedoNeedleLength + "," + Globals.SpeedoNeedleX + "," + Globals.SpeedoNeedleY + "," + Globals.SpeedoOffset + "," + Globals.SpeedoEnd + "," + Globals.SpeedoTop + "," + Globals.SpeedoTextShow + "," + Globals.SpeedoTextX + "," + Globals.SpeedoTextY + "," + Globals.SpeedoFontSize + "," + Globals.SpeedoTextStyle + "," + Globals.SpeedoNeedleType + "," + Globals.SpeedoNeedle + "," + Globals.SpeedoGPIO;
                 }
             }
             if ((Globals.SpeedoShow == "3") || (Globals.SpeedoTextShow == "3"))
@@ -633,18 +659,22 @@ namespace kkdash
                 Globals.gaugename = "speedo";
                 if ((Globals.SpeedoShow == "3") && (Globals.SpeedoTextShow != "3"))
                 {
-                    Globals.Speedovalp3 = Globals.gaugename + "," + Globals.SpeedoShow + "," + Globals.SpeedoNeedleWidth + "," + Globals.SpeedoNeedleLength + "," + Globals.SpeedoNeedleX + "," + Globals.SpeedoNeedleY + "," + Globals.SpeedoOffset + "," + Globals.SpeedoEnd + "," + Globals.SpeedoTop + "," + "n" + "," + Globals.SpeedoTextX + "," + Globals.SpeedoTextY + "," + Globals.SpeedoFontSize + "," + Globals.SpeedoTextStyle + "," + Globals.SpeedoNeedleType + "," + Globals.SpeedoNeedle;
+                    Globals.Speedovalp3 = Globals.gaugename + "," + Globals.SpeedoShow + "," + Globals.SpeedoNeedleWidth + "," + Globals.SpeedoNeedleLength + "," + Globals.SpeedoNeedleX + "," + Globals.SpeedoNeedleY + "," + Globals.SpeedoOffset + "," + Globals.SpeedoEnd + "," + Globals.SpeedoTop + "," + "n" + "," + Globals.SpeedoTextX + "," + Globals.SpeedoTextY + "," + Globals.SpeedoFontSize + "," + Globals.SpeedoTextStyle + "," + Globals.SpeedoNeedleType + "," + Globals.SpeedoNeedle + "," + Globals.SpeedoGPIO;
                 }
                 if ((Globals.SpeedoShow != "3") && (Globals.SpeedoTextShow == "3"))
                 {
-                    Globals.Speedovalp3 = Globals.gaugename + "," + "n" + "," + Globals.SpeedoNeedleWidth + "," + Globals.SpeedoNeedleLength + "," + Globals.SpeedoNeedleX + "," + Globals.SpeedoNeedleY + "," + Globals.SpeedoOffset + "," + Globals.SpeedoEnd + "," + Globals.SpeedoTop + "," + Globals.SpeedoTextShow + "," + Globals.SpeedoTextX + "," + Globals.SpeedoTextY + "," + Globals.SpeedoFontSize + "," + Globals.SpeedoTextStyle + "," + Globals.SpeedoNeedleType + "," + Globals.SpeedoNeedle;
+                    Globals.Speedovalp3 = Globals.gaugename + "," + "N" + "," + Globals.SpeedoNeedleWidth + "," + Globals.SpeedoNeedleLength + "," + Globals.SpeedoNeedleX + "," + Globals.SpeedoNeedleY + "," + Globals.SpeedoOffset + "," + Globals.SpeedoEnd + "," + Globals.SpeedoTop + "," + Globals.SpeedoTextShow + "," + Globals.SpeedoTextX + "," + Globals.SpeedoTextY + "," + Globals.SpeedoFontSize + "," + Globals.SpeedoTextStyle + "," + Globals.SpeedoNeedleType + "," + Globals.SpeedoNeedle + "," + Globals.SpeedoGPIO;
+                }
+                if ((Globals.SpeedoShow == "3") && (Globals.SpeedoTextShow == "3"))
+                {
+                    Globals.Speedovalp3 = Globals.gaugename + "," + Globals.SpeedoShow + "," + Globals.SpeedoNeedleWidth + "," + Globals.SpeedoNeedleLength + "," + Globals.SpeedoNeedleX + "," + Globals.SpeedoNeedleY + "," + Globals.SpeedoOffset + "," + Globals.SpeedoEnd + "," + Globals.SpeedoTop + "," + Globals.SpeedoTextShow + "," + Globals.SpeedoTextX + "," + Globals.SpeedoTextY + "," + Globals.SpeedoFontSize + "," + Globals.SpeedoTextStyle + "," + Globals.SpeedoNeedleType + "," + Globals.SpeedoNeedle + "," + Globals.SpeedoGPIO;
                 }
             }
 
             //Tacho
-            Globals.gaugename = ""; Globals.TachoShow = "n"; Globals.TachoTextShow = "n";  //reset to no values
-            if (cmbShowTacho.Text == "N") { Globals.TachoShow = "n"; }
-            if (cmbTachoTextShow.Text == "N") { Globals.TachoTextShow = "n"; }
+            //            Globals.gaugename = ""; Globals.TachoShow = "N"; Globals.TachoTextShow = "N";  //reset to no values
+            if (cmbShowTacho.Text == "N") { Globals.TachoShow = "N"; }
+            if (cmbTachoTextShow.Text == "N") { Globals.TachoTextShow = "N"; }
             if (cmbShowTacho.Text == "Panel 1") { Globals.TachoShow = "1"; }
             if (cmbTachoTextShow.Text == "Panel 1") { Globals.TachoTextShow = "1"; }
             if (cmbShowTacho.Text == "Panel 2") { Globals.TachoShow = "2"; }
@@ -654,28 +684,37 @@ namespace kkdash
 
             if ((Globals.TachoShow == "1") || (Globals.TachoTextShow == "1"))
             {
-                Globals.showP1 = "Y";
                 Globals.gaugename = "Tacho";
+                Globals.showP1 = "Y";
                 if ((Globals.TachoShow == "1") && (Globals.TachoTextShow != "1"))
                 {
-                    Globals.Tachovalp1 = Globals.gaugename + "," + Globals.TachoShow + "," + Globals.TachoNeedleWidth + "," + Globals.TachoNeedleLength + "," + Globals.TachoNeedleX + "," + Globals.TachoNeedleY + "," + Globals.TachoOffset + "," + Globals.TachoEnd + "," + Globals.TachoTop + "," + "n" + "," + Globals.TachoTextX + "," + Globals.TachoTextY + "," + Globals.TachoFontSize + "," + Globals.TachoTextStyle + "," + Globals.TachoNeedleType + "," + Globals.TachoNeedle;
+                    Globals.Tachovalp1 = Globals.gaugename + "," + Globals.TachoShow + "," + Globals.TachoNeedleWidth + "," + Globals.TachoNeedleLength + "," + Globals.TachoNeedleX + "," + Globals.TachoNeedleY + "," + Globals.TachoOffset + "," + Globals.TachoEnd + "," + Globals.TachoTop + "," + "n" + "," + Globals.TachoTextX + "," + Globals.TachoTextY + "," + Globals.TachoFontSize + "," + Globals.TachoTextStyle + "," + Globals.TachoNeedleType + "," + Globals.TachoNeedle + "," + Globals.TachoGPIO;
                 }
                 if ((Globals.TachoShow != "1") && (Globals.TachoTextShow == "1"))
                 {
-                    Globals.Tachovalp1 = Globals.gaugename + "," + "n" + "," + Globals.TachoNeedleWidth + "," + Globals.TachoNeedleLength + "," + Globals.TachoNeedleX + "," + Globals.TachoNeedleY + "," + Globals.TachoOffset + "," + Globals.TachoEnd + "," + Globals.TachoTop + "," + Globals.TachoTextShow + "," + Globals.TachoTextX + "," + Globals.TachoTextY + "," + Globals.TachoFontSize + "," + Globals.TachoTextStyle + "," + Globals.TachoNeedleType + "," + Globals.TachoNeedle;
+                    Globals.Tachovalp1 = Globals.gaugename + "," + "N" + "," + Globals.TachoNeedleWidth + "," + Globals.TachoNeedleLength + "," + Globals.TachoNeedleX + "," + Globals.TachoNeedleY + "," + Globals.TachoOffset + "," + Globals.TachoEnd + "," + Globals.TachoTop + "," + Globals.TachoTextShow + "," + Globals.TachoTextX + "," + Globals.TachoTextY + "," + Globals.TachoFontSize + "," + Globals.TachoTextStyle + "," + Globals.TachoNeedleType + "," + Globals.TachoNeedle + "," + Globals.TachoGPIO;
+                }
+                if ((Globals.TachoShow == "1") && (Globals.TachoTextShow == "1"))
+                {
+                    Globals.Tachovalp1 = Globals.gaugename + "," + Globals.TachoShow + "," + Globals.TachoNeedleWidth + "," + Globals.TachoNeedleLength + "," + Globals.TachoNeedleX + "," + Globals.TachoNeedleY + "," + Globals.TachoOffset + "," + Globals.TachoEnd + "," + Globals.TachoTop + "," + Globals.TachoTextShow + "," + Globals.TachoTextX + "," + Globals.TachoTextY + "," + Globals.TachoFontSize + "," + Globals.TachoTextStyle + "," + Globals.TachoNeedleType + "," + Globals.TachoNeedle + "," + Globals.TachoGPIO;
                 }
             }
+
             if ((Globals.TachoShow == "2") || (Globals.TachoTextShow == "2"))
             {
-                Globals.showP2 = "Y";
                 Globals.gaugename = "Tacho";
+                Globals.showP2 = "Y";
                 if ((Globals.TachoShow == "2") && (Globals.TachoTextShow != "2"))
                 {
-                    Globals.Tachovalp2 = Globals.gaugename + "," + Globals.TachoShow + "," + Globals.TachoNeedleWidth + "," + Globals.TachoNeedleLength + "," + Globals.TachoNeedleX + "," + Globals.TachoNeedleY + "," + Globals.TachoOffset + "," + Globals.TachoEnd + "," + Globals.TachoTop + "," + "n" + "," + Globals.TachoTextX + "," + Globals.TachoTextY + "," + Globals.TachoFontSize + "," + Globals.TachoTextStyle + "," + Globals.TachoNeedleType + "," + Globals.TachoNeedle;
+                    Globals.Tachovalp2 = Globals.gaugename + "," + Globals.TachoShow + "," + Globals.TachoNeedleWidth + "," + Globals.TachoNeedleLength + "," + Globals.TachoNeedleX + "," + Globals.TachoNeedleY + "," + Globals.TachoOffset + "," + Globals.TachoEnd + "," + Globals.TachoTop + "," + "n" + "," + Globals.TachoTextX + "," + Globals.TachoTextY + "," + Globals.TachoFontSize + "," + Globals.TachoTextStyle + "," + Globals.TachoNeedleType + "," + Globals.TachoNeedle + "," + Globals.TachoGPIO;
                 }
                 if ((Globals.TachoShow != "2") && (Globals.TachoTextShow == "2"))
                 {
-                    Globals.Tachovalp2 = Globals.gaugename + "," + "n" + "," + Globals.TachoNeedleWidth + "," + Globals.TachoNeedleLength + "," + Globals.TachoNeedleX + "," + Globals.TachoNeedleY + "," + Globals.TachoOffset + "," + Globals.TachoEnd + "," + Globals.TachoTop + "," + Globals.TachoTextShow + "," + Globals.TachoTextX + "," + Globals.TachoTextY + "," + Globals.TachoFontSize + "," + Globals.TachoTextStyle + "," + Globals.TachoNeedleType + "," + Globals.TachoNeedle;
+                    Globals.Tachovalp2 = Globals.gaugename + "," + "N" + "," + Globals.TachoNeedleWidth + "," + Globals.TachoNeedleLength + "," + Globals.TachoNeedleX + "," + Globals.TachoNeedleY + "," + Globals.TachoOffset + "," + Globals.TachoEnd + "," + Globals.TachoTop + "," + Globals.TachoTextShow + "," + Globals.TachoTextX + "," + Globals.TachoTextY + "," + Globals.TachoFontSize + "," + Globals.TachoTextStyle + "," + Globals.TachoNeedleType + "," + Globals.TachoNeedle + "," + Globals.TachoGPIO;
+                }
+                if ((Globals.TachoShow == "2") && (Globals.TachoTextShow == "2"))
+                {
+                    Globals.Tachovalp2 = Globals.gaugename + "," + Globals.TachoShow + "," + Globals.TachoNeedleWidth + "," + Globals.TachoNeedleLength + "," + Globals.TachoNeedleX + "," + Globals.TachoNeedleY + "," + Globals.TachoOffset + "," + Globals.TachoEnd + "," + Globals.TachoTop + "," + Globals.TachoTextShow + "," + Globals.TachoTextX + "," + Globals.TachoTextY + "," + Globals.TachoFontSize + "," + Globals.TachoTextStyle + "," + Globals.TachoNeedleType + "," + Globals.TachoNeedle + "," + Globals.TachoGPIO;
                 }
             }
             if ((Globals.TachoShow == "3") || (Globals.TachoTextShow == "3"))
@@ -684,18 +723,23 @@ namespace kkdash
                 Globals.gaugename = "Tacho";
                 if ((Globals.TachoShow == "3") && (Globals.TachoTextShow != "3"))
                 {
-                    Globals.Tachovalp3 = Globals.gaugename + "," + Globals.TachoShow + "," + Globals.TachoNeedleWidth + "," + Globals.TachoNeedleLength + "," + Globals.TachoNeedleX + "," + Globals.TachoNeedleY + "," + Globals.TachoOffset + "," + Globals.TachoEnd + "," + Globals.TachoTop + "," + "n" + "," + Globals.TachoTextX + "," + Globals.TachoTextY + "," + Globals.TachoFontSize + "," + Globals.TachoTextStyle + "," + Globals.TachoNeedleType + "," + Globals.TachoNeedle;
+                    Globals.Tachovalp3 = Globals.gaugename + "," + Globals.TachoShow + "," + Globals.TachoNeedleWidth + "," + Globals.TachoNeedleLength + "," + Globals.TachoNeedleX + "," + Globals.TachoNeedleY + "," + Globals.TachoOffset + "," + Globals.TachoEnd + "," + Globals.TachoTop + "," + "n" + "," + Globals.TachoTextX + "," + Globals.TachoTextY + "," + Globals.TachoFontSize + "," + Globals.TachoTextStyle + "," + Globals.TachoNeedleType + "," + Globals.TachoNeedle + "," + Globals.TachoGPIO;
                 }
                 if ((Globals.TachoShow != "3") && (Globals.TachoTextShow == "3"))
                 {
-                    Globals.Tachovalp3 = Globals.gaugename + "," + "n" + "," + Globals.TachoNeedleWidth + "," + Globals.TachoNeedleLength + "," + Globals.TachoNeedleX + "," + Globals.TachoNeedleY + "," + Globals.TachoOffset + "," + Globals.TachoEnd + "," + Globals.TachoTop + "," + Globals.TachoTextShow + "," + Globals.TachoTextX + "," + Globals.TachoTextY + "," + Globals.TachoFontSize + "," + Globals.TachoTextStyle + "," + Globals.TachoNeedleType + "," + Globals.TachoNeedle;
+                    Globals.Tachovalp3 = Globals.gaugename + "," + "N" + "," + Globals.TachoNeedleWidth + "," + Globals.TachoNeedleLength + "," + Globals.TachoNeedleX + "," + Globals.TachoNeedleY + "," + Globals.TachoOffset + "," + Globals.TachoEnd + "," + Globals.TachoTop + "," + Globals.TachoTextShow + "," + Globals.TachoTextX + "," + Globals.TachoTextY + "," + Globals.TachoFontSize + "," + Globals.TachoTextStyle + "," + Globals.TachoNeedleType + "," + Globals.TachoNeedle + "," + Globals.TachoGPIO;
+                }
+                if ((Globals.TachoShow == "3") && (Globals.TachoTextShow == "3"))
+                {
+                    Globals.Tachovalp3 = Globals.gaugename + "," + Globals.TachoShow + "," + Globals.TachoNeedleWidth + "," + Globals.TachoNeedleLength + "," + Globals.TachoNeedleX + "," + Globals.TachoNeedleY + "," + Globals.TachoOffset + "," + Globals.TachoEnd + "," + Globals.TachoTop + "," + Globals.TachoTextShow + "," + Globals.TachoTextX + "," + Globals.TachoTextY + "," + Globals.TachoFontSize + "," + Globals.TachoTextStyle + "," + Globals.TachoNeedleType + "," + Globals.TachoNeedle + "," + Globals.TachoGPIO;
                 }
             }
 
+
             //Boost
-            Globals.gaugename = ""; Globals.BoostShow = "n"; Globals.BoostTextShow = "n";  //reset to no values
-            if (cmbShowBoost.Text == "N") { Globals.BoostShow = "n"; }
-            if (cmbBoostTextShow.Text == "N") { Globals.BoostTextShow = "n"; }
+            //            Globals.gaugename = ""; Globals.BoostShow = "N"; Globals.BoostTextShow = "N";  //reset to no values
+            if (cmbShowBoost.Text == "N") { Globals.BoostShow = "N"; }
+            if (cmbBoostTextShow.Text == "N") { Globals.BoostTextShow = "N"; }
             if (cmbShowBoost.Text == "Panel 1") { Globals.BoostShow = "1"; }
             if (cmbBoostTextShow.Text == "Panel 1") { Globals.BoostTextShow = "1"; }
             if (cmbShowBoost.Text == "Panel 2") { Globals.BoostShow = "2"; }
@@ -705,28 +749,37 @@ namespace kkdash
 
             if ((Globals.BoostShow == "1") || (Globals.BoostTextShow == "1"))
             {
-                Globals.showP1 = "Y";
                 Globals.gaugename = "Boost";
+                Globals.showP1 = "Y";
                 if ((Globals.BoostShow == "1") && (Globals.BoostTextShow != "1"))
                 {
-                    Globals.Boostvalp1 = Globals.gaugename + "," + Globals.BoostShow + "," + Globals.BoostNeedleWidth + "," + Globals.BoostNeedleLength + "," + Globals.BoostNeedleX + "," + Globals.BoostNeedleY + "," + Globals.BoostOffset + "," + Globals.BoostEnd + "," + Globals.BoostTop + "," + "n" + "," + Globals.BoostTextX + "," + Globals.BoostTextY + "," + Globals.BoostFontSize + "," + Globals.BoostTextStyle + "," + Globals.BoostNeedleType + "," + Globals.BoostNeedle;
+                    Globals.Boostvalp1 = Globals.gaugename + "," + Globals.BoostShow + "," + Globals.BoostNeedleWidth + "," + Globals.BoostNeedleLength + "," + Globals.BoostNeedleX + "," + Globals.BoostNeedleY + "," + Globals.BoostOffset + "," + Globals.BoostEnd + "," + Globals.BoostTop + "," + "n" + "," + Globals.BoostTextX + "," + Globals.BoostTextY + "," + Globals.BoostFontSize + "," + Globals.BoostTextStyle + "," + Globals.BoostNeedleType + "," + Globals.BoostNeedle + "," + Globals.BoostGPIO;
                 }
                 if ((Globals.BoostShow != "1") && (Globals.BoostTextShow == "1"))
                 {
-                    Globals.Boostvalp1 = Globals.gaugename + "," + "n" + "," + Globals.BoostNeedleWidth + "," + Globals.BoostNeedleLength + "," + Globals.BoostNeedleX + "," + Globals.BoostNeedleY + "," + Globals.BoostOffset + "," + Globals.BoostEnd + "," + Globals.BoostTop + "," + Globals.BoostTextShow + "," + Globals.BoostTextX + "," + Globals.BoostTextY + "," + Globals.BoostFontSize + "," + Globals.BoostTextStyle + "," + Globals.BoostNeedleType + "," + Globals.BoostNeedle;
+                    Globals.Boostvalp1 = Globals.gaugename + "," + "N" + "," + Globals.BoostNeedleWidth + "," + Globals.BoostNeedleLength + "," + Globals.BoostNeedleX + "," + Globals.BoostNeedleY + "," + Globals.BoostOffset + "," + Globals.BoostEnd + "," + Globals.BoostTop + "," + Globals.BoostTextShow + "," + Globals.BoostTextX + "," + Globals.BoostTextY + "," + Globals.BoostFontSize + "," + Globals.BoostTextStyle + "," + Globals.BoostNeedleType + "," + Globals.BoostNeedle + "," + Globals.BoostGPIO;
+                }
+                if ((Globals.BoostShow == "1") && (Globals.BoostTextShow == "1"))
+                {
+                    Globals.Boostvalp1 = Globals.gaugename + "," + Globals.BoostShow + "," + Globals.BoostNeedleWidth + "," + Globals.BoostNeedleLength + "," + Globals.BoostNeedleX + "," + Globals.BoostNeedleY + "," + Globals.BoostOffset + "," + Globals.BoostEnd + "," + Globals.BoostTop + "," + Globals.BoostTextShow + "," + Globals.BoostTextX + "," + Globals.BoostTextY + "," + Globals.BoostFontSize + "," + Globals.BoostTextStyle + "," + Globals.BoostNeedleType + "," + Globals.BoostNeedle + "," + Globals.BoostGPIO;
                 }
             }
+
             if ((Globals.BoostShow == "2") || (Globals.BoostTextShow == "2"))
             {
-                Globals.showP2 = "Y";
                 Globals.gaugename = "Boost";
+                Globals.showP2 = "Y";
                 if ((Globals.BoostShow == "2") && (Globals.BoostTextShow != "2"))
                 {
-                    Globals.Boostvalp2 = Globals.gaugename + "," + Globals.BoostShow + "," + Globals.BoostNeedleWidth + "," + Globals.BoostNeedleLength + "," + Globals.BoostNeedleX + "," + Globals.BoostNeedleY + "," + Globals.BoostOffset + "," + Globals.BoostEnd + "," + Globals.BoostTop + "," + "n" + "," + Globals.BoostTextX + "," + Globals.BoostTextY + "," + Globals.BoostFontSize + "," + Globals.BoostTextStyle + "," + Globals.BoostNeedleType + "," + Globals.BoostNeedle;
+                    Globals.Boostvalp2 = Globals.gaugename + "," + Globals.BoostShow + "," + Globals.BoostNeedleWidth + "," + Globals.BoostNeedleLength + "," + Globals.BoostNeedleX + "," + Globals.BoostNeedleY + "," + Globals.BoostOffset + "," + Globals.BoostEnd + "," + Globals.BoostTop + "," + "n" + "," + Globals.BoostTextX + "," + Globals.BoostTextY + "," + Globals.BoostFontSize + "," + Globals.BoostTextStyle + "," + Globals.BoostNeedleType + "," + Globals.BoostNeedle + "," + Globals.BoostGPIO;
                 }
                 if ((Globals.BoostShow != "2") && (Globals.BoostTextShow == "2"))
                 {
-                    Globals.Boostvalp2 = Globals.gaugename + "," + "n" + "," + Globals.BoostNeedleWidth + "," + Globals.BoostNeedleLength + "," + Globals.BoostNeedleX + "," + Globals.BoostNeedleY + "," + Globals.BoostOffset + "," + Globals.BoostEnd + "," + Globals.BoostTop + "," + Globals.BoostTextShow + "," + Globals.BoostTextX + "," + Globals.BoostTextY + "," + Globals.BoostFontSize + "," + Globals.BoostTextStyle + "," + Globals.BoostNeedleType + "," + Globals.BoostNeedle;
+                    Globals.Boostvalp2 = Globals.gaugename + "," + "N" + "," + Globals.BoostNeedleWidth + "," + Globals.BoostNeedleLength + "," + Globals.BoostNeedleX + "," + Globals.BoostNeedleY + "," + Globals.BoostOffset + "," + Globals.BoostEnd + "," + Globals.BoostTop + "," + Globals.BoostTextShow + "," + Globals.BoostTextX + "," + Globals.BoostTextY + "," + Globals.BoostFontSize + "," + Globals.BoostTextStyle + "," + Globals.BoostNeedleType + "," + Globals.BoostNeedle + "," + Globals.BoostGPIO;
+                }
+                if ((Globals.BoostShow == "2") && (Globals.BoostTextShow == "2"))
+                {
+                    Globals.Boostvalp2 = Globals.gaugename + "," + Globals.BoostShow + "," + Globals.BoostNeedleWidth + "," + Globals.BoostNeedleLength + "," + Globals.BoostNeedleX + "," + Globals.BoostNeedleY + "," + Globals.BoostOffset + "," + Globals.BoostEnd + "," + Globals.BoostTop + "," + Globals.BoostTextShow + "," + Globals.BoostTextX + "," + Globals.BoostTextY + "," + Globals.BoostFontSize + "," + Globals.BoostTextStyle + "," + Globals.BoostNeedleType + "," + Globals.BoostNeedle + "," + Globals.BoostGPIO;
                 }
             }
             if ((Globals.BoostShow == "3") || (Globals.BoostTextShow == "3"))
@@ -735,18 +788,22 @@ namespace kkdash
                 Globals.gaugename = "Boost";
                 if ((Globals.BoostShow == "3") && (Globals.BoostTextShow != "3"))
                 {
-                    Globals.Boostvalp3 = Globals.gaugename + "," + Globals.BoostShow + "," + Globals.BoostNeedleWidth + "," + Globals.BoostNeedleLength + "," + Globals.BoostNeedleX + "," + Globals.BoostNeedleY + "," + Globals.BoostOffset + "," + Globals.BoostEnd + "," + Globals.BoostTop + "," + "n" + "," + Globals.BoostTextX + "," + Globals.BoostTextY + "," + Globals.BoostFontSize + "," + Globals.BoostTextStyle + "," + Globals.BoostNeedleType + "," + Globals.BoostNeedle;
+                    Globals.Boostvalp3 = Globals.gaugename + "," + Globals.BoostShow + "," + Globals.BoostNeedleWidth + "," + Globals.BoostNeedleLength + "," + Globals.BoostNeedleX + "," + Globals.BoostNeedleY + "," + Globals.BoostOffset + "," + Globals.BoostEnd + "," + Globals.BoostTop + "," + "n" + "," + Globals.BoostTextX + "," + Globals.BoostTextY + "," + Globals.BoostFontSize + "," + Globals.BoostTextStyle + "," + Globals.BoostNeedleType + "," + Globals.BoostNeedle + "," + Globals.BoostGPIO;
                 }
                 if ((Globals.BoostShow != "3") && (Globals.BoostTextShow == "3"))
                 {
-                    Globals.Boostvalp3 = Globals.gaugename + "," + "n" + "," + Globals.BoostNeedleWidth + "," + Globals.BoostNeedleLength + "," + Globals.BoostNeedleX + "," + Globals.BoostNeedleY + "," + Globals.BoostOffset + "," + Globals.BoostEnd + "," + Globals.BoostTop + "," + Globals.BoostTextShow + "," + Globals.BoostTextX + "," + Globals.BoostTextY + "," + Globals.BoostFontSize + "," + Globals.BoostTextStyle + "," + Globals.BoostNeedleType + "," + Globals.BoostNeedle;
+                    Globals.Boostvalp3 = Globals.gaugename + "," + "N" + "," + Globals.BoostNeedleWidth + "," + Globals.BoostNeedleLength + "," + Globals.BoostNeedleX + "," + Globals.BoostNeedleY + "," + Globals.BoostOffset + "," + Globals.BoostEnd + "," + Globals.BoostTop + "," + Globals.BoostTextShow + "," + Globals.BoostTextX + "," + Globals.BoostTextY + "," + Globals.BoostFontSize + "," + Globals.BoostTextStyle + "," + Globals.BoostNeedleType + "," + Globals.BoostNeedle + "," + Globals.BoostGPIO;
+                }
+                if ((Globals.BoostShow == "3") && (Globals.BoostTextShow == "3"))
+                {
+                    Globals.Boostvalp3 = Globals.gaugename + "," + Globals.BoostShow + "," + Globals.BoostNeedleWidth + "," + Globals.BoostNeedleLength + "," + Globals.BoostNeedleX + "," + Globals.BoostNeedleY + "," + Globals.BoostOffset + "," + Globals.BoostEnd + "," + Globals.BoostTop + "," + Globals.BoostTextShow + "," + Globals.BoostTextX + "," + Globals.BoostTextY + "," + Globals.BoostFontSize + "," + Globals.BoostTextStyle + "," + Globals.BoostNeedleType + "," + Globals.BoostNeedle + "," + Globals.BoostGPIO;
                 }
             }
 
             //Temp
-            Globals.gaugename = ""; Globals.TempShow = "n"; Globals.TempTextShow = "n";  //reset to no values
-            if (cmbShowTemp.Text == "N") { Globals.TempShow = "n"; }
-            if (cmbTempTextShow.Text == "N") { Globals.TempTextShow = "n"; }
+            //            Globals.gaugename = ""; Globals.TempShow = "N"; Globals.TempTextShow = "N";  //reset to no values
+            if (cmbShowTemp.Text == "N") { Globals.TempShow = "N"; }
+            if (cmbTempTextShow.Text == "N") { Globals.TempTextShow = "N"; }
             if (cmbShowTemp.Text == "Panel 1") { Globals.TempShow = "1"; }
             if (cmbTempTextShow.Text == "Panel 1") { Globals.TempTextShow = "1"; }
             if (cmbShowTemp.Text == "Panel 2") { Globals.TempShow = "2"; }
@@ -756,28 +813,37 @@ namespace kkdash
 
             if ((Globals.TempShow == "1") || (Globals.TempTextShow == "1"))
             {
-                Globals.showP1 = "Y";
                 Globals.gaugename = "Temp";
+                Globals.showP1 = "Y";
                 if ((Globals.TempShow == "1") && (Globals.TempTextShow != "1"))
                 {
-                    Globals.Tempvalp1 = Globals.gaugename + "," + Globals.TempShow + "," + Globals.TempNeedleWidth + "," + Globals.TempNeedleLength + "," + Globals.TempNeedleX + "," + Globals.TempNeedleY + "," + Globals.TempOffset + "," + Globals.TempEnd + "," + Globals.TempTop + "," + "n" + "," + Globals.TempTextX + "," + Globals.TempTextY + "," + Globals.TempFontSize + "," + Globals.TempTextStyle + "," + Globals.TempNeedleType + "," + Globals.TempNeedle;
+                    Globals.Tempvalp1 = Globals.gaugename + "," + Globals.TempShow + "," + Globals.TempNeedleWidth + "," + Globals.TempNeedleLength + "," + Globals.TempNeedleX + "," + Globals.TempNeedleY + "," + Globals.TempOffset + "," + Globals.TempEnd + "," + Globals.TempTop + "," + "n" + "," + Globals.TempTextX + "," + Globals.TempTextY + "," + Globals.TempFontSize + "," + Globals.TempTextStyle + "," + Globals.TempNeedleType + "," + Globals.TempNeedle + "," + Globals.TempGPIO;
                 }
                 if ((Globals.TempShow != "1") && (Globals.TempTextShow == "1"))
                 {
-                    Globals.Tempvalp1 = Globals.gaugename + "," + "n" + "," + Globals.TempNeedleWidth + "," + Globals.TempNeedleLength + "," + Globals.TempNeedleX + "," + Globals.TempNeedleY + "," + Globals.TempOffset + "," + Globals.TempEnd + "," + Globals.TempTop + "," + Globals.TempTextShow + "," + Globals.TempTextX + "," + Globals.TempTextY + "," + Globals.TempFontSize + "," + Globals.TempTextStyle + "," + Globals.TempNeedleType + "," + Globals.TempNeedle;
+                    Globals.Tempvalp1 = Globals.gaugename + "," + "N" + "," + Globals.TempNeedleWidth + "," + Globals.TempNeedleLength + "," + Globals.TempNeedleX + "," + Globals.TempNeedleY + "," + Globals.TempOffset + "," + Globals.TempEnd + "," + Globals.TempTop + "," + Globals.TempTextShow + "," + Globals.TempTextX + "," + Globals.TempTextY + "," + Globals.TempFontSize + "," + Globals.TempTextStyle + "," + Globals.TempNeedleType + "," + Globals.TempNeedle + "," + Globals.TempGPIO;
+                }
+                if ((Globals.TempShow == "1") && (Globals.TempTextShow == "1"))
+                {
+                    Globals.Tempvalp1 = Globals.gaugename + "," + Globals.TempShow + "," + Globals.TempNeedleWidth + "," + Globals.TempNeedleLength + "," + Globals.TempNeedleX + "," + Globals.TempNeedleY + "," + Globals.TempOffset + "," + Globals.TempEnd + "," + Globals.TempTop + "," + Globals.TempTextShow + "," + Globals.TempTextX + "," + Globals.TempTextY + "," + Globals.TempFontSize + "," + Globals.TempTextStyle + "," + Globals.TempNeedleType + "," + Globals.TempNeedle + "," + Globals.TempGPIO;
                 }
             }
+
             if ((Globals.TempShow == "2") || (Globals.TempTextShow == "2"))
             {
-                Globals.showP2 = "Y";
                 Globals.gaugename = "Temp";
+                Globals.showP2 = "Y";
                 if ((Globals.TempShow == "2") && (Globals.TempTextShow != "2"))
                 {
-                    Globals.Tempvalp2 = Globals.gaugename + "," + Globals.TempShow + "," + Globals.TempNeedleWidth + "," + Globals.TempNeedleLength + "," + Globals.TempNeedleX + "," + Globals.TempNeedleY + "," + Globals.TempOffset + "," + Globals.TempEnd + "," + Globals.TempTop + "," + "n" + "," + Globals.TempTextX + "," + Globals.TempTextY + "," + Globals.TempFontSize + "," + Globals.TempTextStyle + "," + Globals.TempNeedleType + "," + Globals.TempNeedle;
+                    Globals.Tempvalp2 = Globals.gaugename + "," + Globals.TempShow + "," + Globals.TempNeedleWidth + "," + Globals.TempNeedleLength + "," + Globals.TempNeedleX + "," + Globals.TempNeedleY + "," + Globals.TempOffset + "," + Globals.TempEnd + "," + Globals.TempTop + "," + "n" + "," + Globals.TempTextX + "," + Globals.TempTextY + "," + Globals.TempFontSize + "," + Globals.TempTextStyle + "," + Globals.TempNeedleType + "," + Globals.TempNeedle + "," + Globals.TempGPIO;
                 }
                 if ((Globals.TempShow != "2") && (Globals.TempTextShow == "2"))
                 {
-                    Globals.Tempvalp2 = Globals.gaugename + "," + "n" + "," + Globals.TempNeedleWidth + "," + Globals.TempNeedleLength + "," + Globals.TempNeedleX + "," + Globals.TempNeedleY + "," + Globals.TempOffset + "," + Globals.TempEnd + "," + Globals.TempTop + "," + Globals.TempTextShow + "," + Globals.TempTextX + "," + Globals.TempTextY + "," + Globals.TempFontSize + "," + Globals.TempTextStyle + "," + Globals.TempNeedleType + "," + Globals.TempNeedle;
+                    Globals.Tempvalp2 = Globals.gaugename + "," + "N" + "," + Globals.TempNeedleWidth + "," + Globals.TempNeedleLength + "," + Globals.TempNeedleX + "," + Globals.TempNeedleY + "," + Globals.TempOffset + "," + Globals.TempEnd + "," + Globals.TempTop + "," + Globals.TempTextShow + "," + Globals.TempTextX + "," + Globals.TempTextY + "," + Globals.TempFontSize + "," + Globals.TempTextStyle + "," + Globals.TempNeedleType + "," + Globals.TempNeedle + "," + Globals.TempGPIO;
+                }
+                if ((Globals.TempShow == "2") && (Globals.TempTextShow == "2"))
+                {
+                    Globals.Tempvalp2 = Globals.gaugename + "," + Globals.TempShow + "," + Globals.TempNeedleWidth + "," + Globals.TempNeedleLength + "," + Globals.TempNeedleX + "," + Globals.TempNeedleY + "," + Globals.TempOffset + "," + Globals.TempEnd + "," + Globals.TempTop + "," + Globals.TempTextShow + "," + Globals.TempTextX + "," + Globals.TempTextY + "," + Globals.TempFontSize + "," + Globals.TempTextStyle + "," + Globals.TempNeedleType + "," + Globals.TempNeedle + "," + Globals.TempGPIO;
                 }
             }
             if ((Globals.TempShow == "3") || (Globals.TempTextShow == "3"))
@@ -786,18 +852,22 @@ namespace kkdash
                 Globals.gaugename = "Temp";
                 if ((Globals.TempShow == "3") && (Globals.TempTextShow != "3"))
                 {
-                    Globals.Tempvalp3 = Globals.gaugename + "," + Globals.TempShow + "," + Globals.TempNeedleWidth + "," + Globals.TempNeedleLength + "," + Globals.TempNeedleX + "," + Globals.TempNeedleY + "," + Globals.TempOffset + "," + Globals.TempEnd + "," + Globals.TempTop + "," + "n" + "," + Globals.TempTextX + "," + Globals.TempTextY + "," + Globals.TempFontSize + "," + Globals.TempTextStyle + "," + Globals.TempNeedleType + "," + Globals.TempNeedle;
+                    Globals.Tempvalp3 = Globals.gaugename + "," + Globals.TempShow + "," + Globals.TempNeedleWidth + "," + Globals.TempNeedleLength + "," + Globals.TempNeedleX + "," + Globals.TempNeedleY + "," + Globals.TempOffset + "," + Globals.TempEnd + "," + Globals.TempTop + "," + "n" + "," + Globals.TempTextX + "," + Globals.TempTextY + "," + Globals.TempFontSize + "," + Globals.TempTextStyle + "," + Globals.TempNeedleType + "," + Globals.TempNeedle + "," + Globals.TempGPIO;
                 }
                 if ((Globals.TempShow != "3") && (Globals.TempTextShow == "3"))
                 {
-                    Globals.Tempvalp3 = Globals.gaugename + "," + "n" + "," + Globals.TempNeedleWidth + "," + Globals.TempNeedleLength + "," + Globals.TempNeedleX + "," + Globals.TempNeedleY + "," + Globals.TempOffset + "," + Globals.TempEnd + "," + Globals.TempTop + "," + Globals.TempTextShow + "," + Globals.TempTextX + "," + Globals.TempTextY + "," + Globals.TempFontSize + "," + Globals.TempTextStyle + "," + Globals.TempNeedleType + "," + Globals.TempNeedle;
+                    Globals.Tempvalp3 = Globals.gaugename + "," + "N" + "," + Globals.TempNeedleWidth + "," + Globals.TempNeedleLength + "," + Globals.TempNeedleX + "," + Globals.TempNeedleY + "," + Globals.TempOffset + "," + Globals.TempEnd + "," + Globals.TempTop + "," + Globals.TempTextShow + "," + Globals.TempTextX + "," + Globals.TempTextY + "," + Globals.TempFontSize + "," + Globals.TempTextStyle + "," + Globals.TempNeedleType + "," + Globals.TempNeedle + "," + Globals.TempGPIO;
+                }
+                if ((Globals.TempShow == "3") && (Globals.TempTextShow == "3"))
+                {
+                    Globals.Tempvalp3 = Globals.gaugename + "," + Globals.TempShow + "," + Globals.TempNeedleWidth + "," + Globals.TempNeedleLength + "," + Globals.TempNeedleX + "," + Globals.TempNeedleY + "," + Globals.TempOffset + "," + Globals.TempEnd + "," + Globals.TempTop + "," + Globals.TempTextShow + "," + Globals.TempTextX + "," + Globals.TempTextY + "," + Globals.TempFontSize + "," + Globals.TempTextStyle + "," + Globals.TempNeedleType + "," + Globals.TempNeedle + "," + Globals.TempGPIO;
                 }
             }
 
             //Oil
-            Globals.gaugename = ""; Globals.OilShow = "n"; Globals.OilTextShow = "n";  //reset to no values
-            if (cmbShowOil.Text == "N") { Globals.OilShow = "n"; }
-            if (cmbOilTextShow.Text == "N") { Globals.OilTextShow = "n"; }
+            //            Globals.gaugename = ""; Globals.OilShow = "N"; Globals.OilTextShow = "N";  //reset to no values
+            if (cmbShowOil.Text == "N") { Globals.OilShow = "N"; }
+            if (cmbOilTextShow.Text == "N") { Globals.OilTextShow = "N"; }
             if (cmbShowOil.Text == "Panel 1") { Globals.OilShow = "1"; }
             if (cmbOilTextShow.Text == "Panel 1") { Globals.OilTextShow = "1"; }
             if (cmbShowOil.Text == "Panel 2") { Globals.OilShow = "2"; }
@@ -807,28 +877,37 @@ namespace kkdash
 
             if ((Globals.OilShow == "1") || (Globals.OilTextShow == "1"))
             {
-                Globals.showP1 = "Y";
                 Globals.gaugename = "Oil";
+                Globals.showP1 = "Y";
                 if ((Globals.OilShow == "1") && (Globals.OilTextShow != "1"))
                 {
-                    Globals.Oilvalp1 = Globals.gaugename + "," + Globals.OilShow + "," + Globals.OilNeedleWidth + "," + Globals.OilNeedleLength + "," + Globals.OilNeedleX + "," + Globals.OilNeedleY + "," + Globals.OilOffset + "," + Globals.OilEnd + "," + Globals.OilTop + "," + "n" + "," + Globals.OilTextX + "," + Globals.OilTextY + "," + Globals.OilFontSize + "," + Globals.OilTextStyle + "," + Globals.OilNeedleType + "," + Globals.OilNeedle;
+                    Globals.Oilvalp1 = Globals.gaugename + "," + Globals.OilShow + "," + Globals.OilNeedleWidth + "," + Globals.OilNeedleLength + "," + Globals.OilNeedleX + "," + Globals.OilNeedleY + "," + Globals.OilOffset + "," + Globals.OilEnd + "," + Globals.OilTop + "," + "n" + "," + Globals.OilTextX + "," + Globals.OilTextY + "," + Globals.OilFontSize + "," + Globals.OilTextStyle + "," + Globals.OilNeedleType + "," + Globals.OilNeedle + "," + Globals.OilGPIO;
                 }
                 if ((Globals.OilShow != "1") && (Globals.OilTextShow == "1"))
                 {
-                    Globals.Oilvalp1 = Globals.gaugename + "," + "n" + "," + Globals.OilNeedleWidth + "," + Globals.OilNeedleLength + "," + Globals.OilNeedleX + "," + Globals.OilNeedleY + "," + Globals.OilOffset + "," + Globals.OilEnd + "," + Globals.OilTop + "," + Globals.OilTextShow + "," + Globals.OilTextX + "," + Globals.OilTextY + "," + Globals.OilFontSize + "," + Globals.OilTextStyle + "," + Globals.OilNeedleType + "," + Globals.OilNeedle;
+                    Globals.Oilvalp1 = Globals.gaugename + "," + "N" + "," + Globals.OilNeedleWidth + "," + Globals.OilNeedleLength + "," + Globals.OilNeedleX + "," + Globals.OilNeedleY + "," + Globals.OilOffset + "," + Globals.OilEnd + "," + Globals.OilTop + "," + Globals.OilTextShow + "," + Globals.OilTextX + "," + Globals.OilTextY + "," + Globals.OilFontSize + "," + Globals.OilTextStyle + "," + Globals.OilNeedleType + "," + Globals.OilNeedle + "," + Globals.OilGPIO;
+                }
+                if ((Globals.OilShow == "1") && (Globals.OilTextShow == "1"))
+                {
+                    Globals.Oilvalp1 = Globals.gaugename + "," + Globals.OilShow + "," + Globals.OilNeedleWidth + "," + Globals.OilNeedleLength + "," + Globals.OilNeedleX + "," + Globals.OilNeedleY + "," + Globals.OilOffset + "," + Globals.OilEnd + "," + Globals.OilTop + "," + Globals.OilTextShow + "," + Globals.OilTextX + "," + Globals.OilTextY + "," + Globals.OilFontSize + "," + Globals.OilTextStyle + "," + Globals.OilNeedleType + "," + Globals.OilNeedle + "," + Globals.OilGPIO;
                 }
             }
+
             if ((Globals.OilShow == "2") || (Globals.OilTextShow == "2"))
             {
-                Globals.showP2 = "Y";
                 Globals.gaugename = "Oil";
+                Globals.showP2 = "Y";
                 if ((Globals.OilShow == "2") && (Globals.OilTextShow != "2"))
                 {
-                    Globals.Oilvalp2 = Globals.gaugename + "," + Globals.OilShow + "," + Globals.OilNeedleWidth + "," + Globals.OilNeedleLength + "," + Globals.OilNeedleX + "," + Globals.OilNeedleY + "," + Globals.OilOffset + "," + Globals.OilEnd + "," + Globals.OilTop + "," + "n" + "," + Globals.OilTextX + "," + Globals.OilTextY + "," + Globals.OilFontSize + "," + Globals.OilTextStyle + "," + Globals.OilNeedleType + "," + Globals.OilNeedle;
+                    Globals.Oilvalp2 = Globals.gaugename + "," + Globals.OilShow + "," + Globals.OilNeedleWidth + "," + Globals.OilNeedleLength + "," + Globals.OilNeedleX + "," + Globals.OilNeedleY + "," + Globals.OilOffset + "," + Globals.OilEnd + "," + Globals.OilTop + "," + "n" + "," + Globals.OilTextX + "," + Globals.OilTextY + "," + Globals.OilFontSize + "," + Globals.OilTextStyle + "," + Globals.OilNeedleType + "," + Globals.OilNeedle + "," + Globals.OilGPIO;
                 }
                 if ((Globals.OilShow != "2") && (Globals.OilTextShow == "2"))
                 {
-                    Globals.Oilvalp2 = Globals.gaugename + "," + "n" + "," + Globals.OilNeedleWidth + "," + Globals.OilNeedleLength + "," + Globals.OilNeedleX + "," + Globals.OilNeedleY + "," + Globals.OilOffset + "," + Globals.OilEnd + "," + Globals.OilTop + "," + Globals.OilTextShow + "," + Globals.OilTextX + "," + Globals.OilTextY + "," + Globals.OilFontSize + "," + Globals.OilTextStyle + "," + Globals.OilNeedleType + "," + Globals.OilNeedle;
+                    Globals.Oilvalp2 = Globals.gaugename + "," + "N" + "," + Globals.OilNeedleWidth + "," + Globals.OilNeedleLength + "," + Globals.OilNeedleX + "," + Globals.OilNeedleY + "," + Globals.OilOffset + "," + Globals.OilEnd + "," + Globals.OilTop + "," + Globals.OilTextShow + "," + Globals.OilTextX + "," + Globals.OilTextY + "," + Globals.OilFontSize + "," + Globals.OilTextStyle + "," + Globals.OilNeedleType + "," + Globals.OilNeedle + "," + Globals.OilGPIO;
+                }
+                if ((Globals.OilShow == "2") && (Globals.OilTextShow == "2"))
+                {
+                    Globals.Oilvalp2 = Globals.gaugename + "," + Globals.OilShow + "," + Globals.OilNeedleWidth + "," + Globals.OilNeedleLength + "," + Globals.OilNeedleX + "," + Globals.OilNeedleY + "," + Globals.OilOffset + "," + Globals.OilEnd + "," + Globals.OilTop + "," + Globals.OilTextShow + "," + Globals.OilTextX + "," + Globals.OilTextY + "," + Globals.OilFontSize + "," + Globals.OilTextStyle + "," + Globals.OilNeedleType + "," + Globals.OilNeedle + "," + Globals.OilGPIO;
                 }
             }
             if ((Globals.OilShow == "3") || (Globals.OilTextShow == "3"))
@@ -837,18 +916,22 @@ namespace kkdash
                 Globals.gaugename = "Oil";
                 if ((Globals.OilShow == "3") && (Globals.OilTextShow != "3"))
                 {
-                    Globals.Oilvalp3 = Globals.gaugename + "," + Globals.OilShow + "," + Globals.OilNeedleWidth + "," + Globals.OilNeedleLength + "," + Globals.OilNeedleX + "," + Globals.OilNeedleY + "," + Globals.OilOffset + "," + Globals.OilEnd + "," + Globals.OilTop + "," + "n" + "," + Globals.OilTextX + "," + Globals.OilTextY + "," + Globals.OilFontSize + "," + Globals.OilTextStyle + "," + Globals.OilNeedleType + "," + Globals.OilNeedle;
+                    Globals.Oilvalp3 = Globals.gaugename + "," + Globals.OilShow + "," + Globals.OilNeedleWidth + "," + Globals.OilNeedleLength + "," + Globals.OilNeedleX + "," + Globals.OilNeedleY + "," + Globals.OilOffset + "," + Globals.OilEnd + "," + Globals.OilTop + "," + "n" + "," + Globals.OilTextX + "," + Globals.OilTextY + "," + Globals.OilFontSize + "," + Globals.OilTextStyle + "," + Globals.OilNeedleType + "," + Globals.OilNeedle + "," + Globals.OilGPIO;
                 }
                 if ((Globals.OilShow != "3") && (Globals.OilTextShow == "3"))
                 {
-                    Globals.Oilvalp3 = Globals.gaugename + "," + "n" + "," + Globals.OilNeedleWidth + "," + Globals.OilNeedleLength + "," + Globals.OilNeedleX + "," + Globals.OilNeedleY + "," + Globals.OilOffset + "," + Globals.OilEnd + "," + Globals.OilTop + "," + Globals.OilTextShow + "," + Globals.OilTextX + "," + Globals.OilTextY + "," + Globals.OilFontSize + "," + Globals.OilTextStyle + "," + Globals.OilNeedleType + "," + Globals.OilNeedle;
+                    Globals.Oilvalp3 = Globals.gaugename + "," + "N" + "," + Globals.OilNeedleWidth + "," + Globals.OilNeedleLength + "," + Globals.OilNeedleX + "," + Globals.OilNeedleY + "," + Globals.OilOffset + "," + Globals.OilEnd + "," + Globals.OilTop + "," + Globals.OilTextShow + "," + Globals.OilTextX + "," + Globals.OilTextY + "," + Globals.OilFontSize + "," + Globals.OilTextStyle + "," + Globals.OilNeedleType + "," + Globals.OilNeedle + "," + Globals.OilGPIO;
+                }
+                if ((Globals.OilShow == "3") && (Globals.OilTextShow == "3"))
+                {
+                    Globals.Oilvalp3 = Globals.gaugename + "," + Globals.OilShow + "," + Globals.OilNeedleWidth + "," + Globals.OilNeedleLength + "," + Globals.OilNeedleX + "," + Globals.OilNeedleY + "," + Globals.OilOffset + "," + Globals.OilEnd + "," + Globals.OilTop + "," + Globals.OilTextShow + "," + Globals.OilTextX + "," + Globals.OilTextY + "," + Globals.OilFontSize + "," + Globals.OilTextStyle + "," + Globals.OilNeedleType + "," + Globals.OilNeedle + "," + Globals.OilGPIO;
                 }
             }
 
             //OilT
-            Globals.gaugename = ""; Globals.OilTShow = "n"; Globals.OilTTextShow = "n";  //reset to no values
-            if (cmbShowOilT.Text == "N") { Globals.OilTShow = "n"; }
-            if (cmbOilTTextShow.Text == "N") { Globals.OilTTextShow = "n"; }
+            //            Globals.gaugename = ""; Globals.OilTShow = "N"; Globals.OilTTextShow = "N";  //reset to no values
+            if (cmbShowOilT.Text == "N") { Globals.OilTShow = "N"; }
+            if (cmbOilTTextShow.Text == "N") { Globals.OilTTextShow = "N"; }
             if (cmbShowOilT.Text == "Panel 1") { Globals.OilTShow = "1"; }
             if (cmbOilTTextShow.Text == "Panel 1") { Globals.OilTTextShow = "1"; }
             if (cmbShowOilT.Text == "Panel 2") { Globals.OilTShow = "2"; }
@@ -858,28 +941,37 @@ namespace kkdash
 
             if ((Globals.OilTShow == "1") || (Globals.OilTTextShow == "1"))
             {
-                Globals.showP1 = "Y";
                 Globals.gaugename = "OilT";
+                Globals.showP1 = "Y";
                 if ((Globals.OilTShow == "1") && (Globals.OilTTextShow != "1"))
                 {
-                    Globals.OilTvalp1 = Globals.gaugename + "," + Globals.OilTShow + "," + Globals.OilTNeedleWidth + "," + Globals.OilTNeedleLength + "," + Globals.OilTNeedleX + "," + Globals.OilTNeedleY + "," + Globals.OilTOffset + "," + Globals.OilTEnd + "," + Globals.OilTTop + "," + "n" + "," + Globals.OilTTextX + "," + Globals.OilTTextY + "," + Globals.OilTFontSize + "," + Globals.OilTTextStyle + "," + Globals.OilTNeedleType + "," + Globals.OilTNeedle;
+                    Globals.OilTvalp1 = Globals.gaugename + "," + Globals.OilTShow + "," + Globals.OilTNeedleWidth + "," + Globals.OilTNeedleLength + "," + Globals.OilTNeedleX + "," + Globals.OilTNeedleY + "," + Globals.OilTOffset + "," + Globals.OilTEnd + "," + Globals.OilTTop + "," + "n" + "," + Globals.OilTTextX + "," + Globals.OilTTextY + "," + Globals.OilTFontSize + "," + Globals.OilTTextStyle + "," + Globals.OilTNeedleType + "," + Globals.OilTNeedle + "," + Globals.OilTGPIO;
                 }
                 if ((Globals.OilTShow != "1") && (Globals.OilTTextShow == "1"))
                 {
-                    Globals.OilTvalp1 = Globals.gaugename + "," + "n" + "," + Globals.OilTNeedleWidth + "," + Globals.OilTNeedleLength + "," + Globals.OilTNeedleX + "," + Globals.OilTNeedleY + "," + Globals.OilTOffset + "," + Globals.OilTEnd + "," + Globals.OilTTop + "," + Globals.OilTTextShow + "," + Globals.OilTTextX + "," + Globals.OilTTextY + "," + Globals.OilTFontSize + "," + Globals.OilTTextStyle + "," + Globals.OilTNeedleType + "," + Globals.OilTNeedle;
+                    Globals.OilTvalp1 = Globals.gaugename + "," + "N" + "," + Globals.OilTNeedleWidth + "," + Globals.OilTNeedleLength + "," + Globals.OilTNeedleX + "," + Globals.OilTNeedleY + "," + Globals.OilTOffset + "," + Globals.OilTEnd + "," + Globals.OilTTop + "," + Globals.OilTTextShow + "," + Globals.OilTTextX + "," + Globals.OilTTextY + "," + Globals.OilTFontSize + "," + Globals.OilTTextStyle + "," + Globals.OilTNeedleType + "," + Globals.OilTNeedle + "," + Globals.OilTGPIO;
+                }
+                if ((Globals.OilTShow == "1") && (Globals.OilTTextShow == "1"))
+                {
+                    Globals.OilTvalp1 = Globals.gaugename + "," + Globals.OilTShow + "," + Globals.OilTNeedleWidth + "," + Globals.OilTNeedleLength + "," + Globals.OilTNeedleX + "," + Globals.OilTNeedleY + "," + Globals.OilTOffset + "," + Globals.OilTEnd + "," + Globals.OilTTop + "," + Globals.OilTTextShow + "," + Globals.OilTTextX + "," + Globals.OilTTextY + "," + Globals.OilTFontSize + "," + Globals.OilTTextStyle + "," + Globals.OilTNeedleType + "," + Globals.OilTNeedle + "," + Globals.OilTGPIO;
                 }
             }
+
             if ((Globals.OilTShow == "2") || (Globals.OilTTextShow == "2"))
             {
-                Globals.showP2 = "Y";
                 Globals.gaugename = "OilT";
+                Globals.showP2 = "Y";
                 if ((Globals.OilTShow == "2") && (Globals.OilTTextShow != "2"))
                 {
-                    Globals.OilTvalp2 = Globals.gaugename + "," + Globals.OilTShow + "," + Globals.OilTNeedleWidth + "," + Globals.OilTNeedleLength + "," + Globals.OilTNeedleX + "," + Globals.OilTNeedleY + "," + Globals.OilTOffset + "," + Globals.OilTEnd + "," + Globals.OilTTop + "," + "n" + "," + Globals.OilTTextX + "," + Globals.OilTTextY + "," + Globals.OilTFontSize + "," + Globals.OilTTextStyle + "," + Globals.OilTNeedleType + "," + Globals.OilTNeedle;
+                    Globals.OilTvalp2 = Globals.gaugename + "," + Globals.OilTShow + "," + Globals.OilTNeedleWidth + "," + Globals.OilTNeedleLength + "," + Globals.OilTNeedleX + "," + Globals.OilTNeedleY + "," + Globals.OilTOffset + "," + Globals.OilTEnd + "," + Globals.OilTTop + "," + "n" + "," + Globals.OilTTextX + "," + Globals.OilTTextY + "," + Globals.OilTFontSize + "," + Globals.OilTTextStyle + "," + Globals.OilTNeedleType + "," + Globals.OilTNeedle + "," + Globals.OilTGPIO;
                 }
                 if ((Globals.OilTShow != "2") && (Globals.OilTTextShow == "2"))
                 {
-                    Globals.OilTvalp2 = Globals.gaugename + "," + "n" + "," + Globals.OilTNeedleWidth + "," + Globals.OilTNeedleLength + "," + Globals.OilTNeedleX + "," + Globals.OilTNeedleY + "," + Globals.OilTOffset + "," + Globals.OilTEnd + "," + Globals.OilTTop + "," + Globals.OilTTextShow + "," + Globals.OilTTextX + "," + Globals.OilTTextY + "," + Globals.OilTFontSize + "," + Globals.OilTTextStyle + "," + Globals.OilTNeedleType + "," + Globals.OilTNeedle;
+                    Globals.OilTvalp2 = Globals.gaugename + "," + "N" + "," + Globals.OilTNeedleWidth + "," + Globals.OilTNeedleLength + "," + Globals.OilTNeedleX + "," + Globals.OilTNeedleY + "," + Globals.OilTOffset + "," + Globals.OilTEnd + "," + Globals.OilTTop + "," + Globals.OilTTextShow + "," + Globals.OilTTextX + "," + Globals.OilTTextY + "," + Globals.OilTFontSize + "," + Globals.OilTTextStyle + "," + Globals.OilTNeedleType + "," + Globals.OilTNeedle + "," + Globals.OilTGPIO;
+                }
+                if ((Globals.OilTShow == "2") && (Globals.OilTTextShow == "2"))
+                {
+                    Globals.OilTvalp2 = Globals.gaugename + "," + Globals.OilTShow + "," + Globals.OilTNeedleWidth + "," + Globals.OilTNeedleLength + "," + Globals.OilTNeedleX + "," + Globals.OilTNeedleY + "," + Globals.OilTOffset + "," + Globals.OilTEnd + "," + Globals.OilTTop + "," + Globals.OilTTextShow + "," + Globals.OilTTextX + "," + Globals.OilTTextY + "," + Globals.OilTFontSize + "," + Globals.OilTTextStyle + "," + Globals.OilTNeedleType + "," + Globals.OilTNeedle + "," + Globals.OilTGPIO;
                 }
             }
             if ((Globals.OilTShow == "3") || (Globals.OilTTextShow == "3"))
@@ -888,18 +980,22 @@ namespace kkdash
                 Globals.gaugename = "OilT";
                 if ((Globals.OilTShow == "3") && (Globals.OilTTextShow != "3"))
                 {
-                    Globals.OilTvalp3 = Globals.gaugename + "," + Globals.OilTShow + "," + Globals.OilTNeedleWidth + "," + Globals.OilTNeedleLength + "," + Globals.OilTNeedleX + "," + Globals.OilTNeedleY + "," + Globals.OilTOffset + "," + Globals.OilTEnd + "," + Globals.OilTTop + "," + "n" + "," + Globals.OilTTextX + "," + Globals.OilTTextY + "," + Globals.OilTFontSize + "," + Globals.OilTTextStyle + "," + Globals.OilTNeedleType + "," + Globals.OilTNeedle;
+                    Globals.OilTvalp3 = Globals.gaugename + "," + Globals.OilTShow + "," + Globals.OilTNeedleWidth + "," + Globals.OilTNeedleLength + "," + Globals.OilTNeedleX + "," + Globals.OilTNeedleY + "," + Globals.OilTOffset + "," + Globals.OilTEnd + "," + Globals.OilTTop + "," + "n" + "," + Globals.OilTTextX + "," + Globals.OilTTextY + "," + Globals.OilTFontSize + "," + Globals.OilTTextStyle + "," + Globals.OilTNeedleType + "," + Globals.OilTNeedle + "," + Globals.OilTGPIO;
                 }
                 if ((Globals.OilTShow != "3") && (Globals.OilTTextShow == "3"))
                 {
-                    Globals.OilTvalp3 = Globals.gaugename + "," + "n" + "," + Globals.OilTNeedleWidth + "," + Globals.OilTNeedleLength + "," + Globals.OilTNeedleX + "," + Globals.OilTNeedleY + "," + Globals.OilTOffset + "," + Globals.OilTEnd + "," + Globals.OilTTop + "," + Globals.OilTTextShow + "," + Globals.OilTTextX + "," + Globals.OilTTextY + "," + Globals.OilTFontSize + "," + Globals.OilTTextStyle + "," + Globals.OilTNeedleType + "," + Globals.OilTNeedle;
+                    Globals.OilTvalp3 = Globals.gaugename + "," + "N" + "," + Globals.OilTNeedleWidth + "," + Globals.OilTNeedleLength + "," + Globals.OilTNeedleX + "," + Globals.OilTNeedleY + "," + Globals.OilTOffset + "," + Globals.OilTEnd + "," + Globals.OilTTop + "," + Globals.OilTTextShow + "," + Globals.OilTTextX + "," + Globals.OilTTextY + "," + Globals.OilTFontSize + "," + Globals.OilTTextStyle + "," + Globals.OilTNeedleType + "," + Globals.OilTNeedle + "," + Globals.OilTGPIO;
+                }
+                if ((Globals.OilTShow == "3") && (Globals.OilTTextShow == "3"))
+                {
+                    Globals.OilTvalp3 = Globals.gaugename + "," + Globals.OilTShow + "," + Globals.OilTNeedleWidth + "," + Globals.OilTNeedleLength + "," + Globals.OilTNeedleX + "," + Globals.OilTNeedleY + "," + Globals.OilTOffset + "," + Globals.OilTEnd + "," + Globals.OilTTop + "," + Globals.OilTTextShow + "," + Globals.OilTTextX + "," + Globals.OilTTextY + "," + Globals.OilTFontSize + "," + Globals.OilTTextStyle + "," + Globals.OilTNeedleType + "," + Globals.OilTNeedle + "," + Globals.OilTGPIO;
                 }
             }
 
             //Fuel
-            Globals.gaugename = ""; Globals.FuelShow = "n"; Globals.FuelTextShow = "n";  //reset to no values
-            if (cmbShowFuel.Text == "N") { Globals.FuelShow = "n"; }
-            if (cmbFuelTextShow.Text == "N") { Globals.FuelTextShow = "n"; }
+            //            Globals.gaugename = ""; Globals.FuelShow = "N"; Globals.FuelTextShow = "N";  //reset to no values
+            if (cmbShowFuel.Text == "N") { Globals.FuelShow = "N"; }
+            if (cmbFuelTextShow.Text == "N") { Globals.FuelTextShow = "N"; }
             if (cmbShowFuel.Text == "Panel 1") { Globals.FuelShow = "1"; }
             if (cmbFuelTextShow.Text == "Panel 1") { Globals.FuelTextShow = "1"; }
             if (cmbShowFuel.Text == "Panel 2") { Globals.FuelShow = "2"; }
@@ -909,28 +1005,37 @@ namespace kkdash
 
             if ((Globals.FuelShow == "1") || (Globals.FuelTextShow == "1"))
             {
-                Globals.showP1 = "Y";
                 Globals.gaugename = "Fuel";
+                Globals.showP1 = "Y";
                 if ((Globals.FuelShow == "1") && (Globals.FuelTextShow != "1"))
                 {
-                    Globals.Fuelvalp1 = Globals.gaugename + "," + Globals.FuelShow + "," + Globals.FuelNeedleWidth + "," + Globals.FuelNeedleLength + "," + Globals.FuelNeedleX + "," + Globals.FuelNeedleY + "," + Globals.FuelOffset + "," + Globals.FuelEnd + "," + Globals.FuelTop + "," + "n" + "," + Globals.FuelTextX + "," + Globals.FuelTextY + "," + Globals.FuelFontSize + "," + Globals.FuelTextStyle + "," + Globals.FuelNeedleType + "," + Globals.FuelNeedle;
+                    Globals.Fuelvalp1 = Globals.gaugename + "," + Globals.FuelShow + "," + Globals.FuelNeedleWidth + "," + Globals.FuelNeedleLength + "," + Globals.FuelNeedleX + "," + Globals.FuelNeedleY + "," + Globals.FuelOffset + "," + Globals.FuelEnd + "," + Globals.FuelTop + "," + "n" + "," + Globals.FuelTextX + "," + Globals.FuelTextY + "," + Globals.FuelFontSize + "," + Globals.FuelTextStyle + "," + Globals.FuelNeedleType + "," + Globals.FuelNeedle + "," + Globals.FuelGPIO;
                 }
                 if ((Globals.FuelShow != "1") && (Globals.FuelTextShow == "1"))
                 {
-                    Globals.Fuelvalp1 = Globals.gaugename + "," + "n" + "," + Globals.FuelNeedleWidth + "," + Globals.FuelNeedleLength + "," + Globals.FuelNeedleX + "," + Globals.FuelNeedleY + "," + Globals.FuelOffset + "," + Globals.FuelEnd + "," + Globals.FuelTop + "," + Globals.FuelTextShow + "," + Globals.FuelTextX + "," + Globals.FuelTextY + "," + Globals.FuelFontSize + "," + Globals.FuelTextStyle + "," + Globals.FuelNeedleType + "," + Globals.FuelNeedle;
+                    Globals.Fuelvalp1 = Globals.gaugename + "," + "N" + "," + Globals.FuelNeedleWidth + "," + Globals.FuelNeedleLength + "," + Globals.FuelNeedleX + "," + Globals.FuelNeedleY + "," + Globals.FuelOffset + "," + Globals.FuelEnd + "," + Globals.FuelTop + "," + Globals.FuelTextShow + "," + Globals.FuelTextX + "," + Globals.FuelTextY + "," + Globals.FuelFontSize + "," + Globals.FuelTextStyle + "," + Globals.FuelNeedleType + "," + Globals.FuelNeedle + "," + Globals.FuelGPIO;
+                }
+                if ((Globals.FuelShow == "1") && (Globals.FuelTextShow == "1"))
+                {
+                    Globals.Fuelvalp1 = Globals.gaugename + "," + Globals.FuelShow + "," + Globals.FuelNeedleWidth + "," + Globals.FuelNeedleLength + "," + Globals.FuelNeedleX + "," + Globals.FuelNeedleY + "," + Globals.FuelOffset + "," + Globals.FuelEnd + "," + Globals.FuelTop + "," + Globals.FuelTextShow + "," + Globals.FuelTextX + "," + Globals.FuelTextY + "," + Globals.FuelFontSize + "," + Globals.FuelTextStyle + "," + Globals.FuelNeedleType + "," + Globals.FuelNeedle + "," + Globals.FuelGPIO;
                 }
             }
+
             if ((Globals.FuelShow == "2") || (Globals.FuelTextShow == "2"))
             {
-                Globals.showP2 = "Y";
                 Globals.gaugename = "Fuel";
+                Globals.showP2 = "Y";
                 if ((Globals.FuelShow == "2") && (Globals.FuelTextShow != "2"))
                 {
-                    Globals.Fuelvalp2 = Globals.gaugename + "," + Globals.FuelShow + "," + Globals.FuelNeedleWidth + "," + Globals.FuelNeedleLength + "," + Globals.FuelNeedleX + "," + Globals.FuelNeedleY + "," + Globals.FuelOffset + "," + Globals.FuelEnd + "," + Globals.FuelTop + "," + "n" + "," + Globals.FuelTextX + "," + Globals.FuelTextY + "," + Globals.FuelFontSize + "," + Globals.FuelTextStyle + "," + Globals.FuelNeedleType + "," + Globals.FuelNeedle;
+                    Globals.Fuelvalp2 = Globals.gaugename + "," + Globals.FuelShow + "," + Globals.FuelNeedleWidth + "," + Globals.FuelNeedleLength + "," + Globals.FuelNeedleX + "," + Globals.FuelNeedleY + "," + Globals.FuelOffset + "," + Globals.FuelEnd + "," + Globals.FuelTop + "," + "n" + "," + Globals.FuelTextX + "," + Globals.FuelTextY + "," + Globals.FuelFontSize + "," + Globals.FuelTextStyle + "," + Globals.FuelNeedleType + "," + Globals.FuelNeedle + "," + Globals.FuelGPIO;
                 }
                 if ((Globals.FuelShow != "2") && (Globals.FuelTextShow == "2"))
                 {
-                    Globals.Fuelvalp2 = Globals.gaugename + "," + "n" + "," + Globals.FuelNeedleWidth + "," + Globals.FuelNeedleLength + "," + Globals.FuelNeedleX + "," + Globals.FuelNeedleY + "," + Globals.FuelOffset + "," + Globals.FuelEnd + "," + Globals.FuelTop + "," + Globals.FuelTextShow + "," + Globals.FuelTextX + "," + Globals.FuelTextY + "," + Globals.FuelFontSize + "," + Globals.FuelTextStyle + "," + Globals.FuelNeedleType + "," + Globals.FuelNeedle;
+                    Globals.Fuelvalp2 = Globals.gaugename + "," + "N" + "," + Globals.FuelNeedleWidth + "," + Globals.FuelNeedleLength + "," + Globals.FuelNeedleX + "," + Globals.FuelNeedleY + "," + Globals.FuelOffset + "," + Globals.FuelEnd + "," + Globals.FuelTop + "," + Globals.FuelTextShow + "," + Globals.FuelTextX + "," + Globals.FuelTextY + "," + Globals.FuelFontSize + "," + Globals.FuelTextStyle + "," + Globals.FuelNeedleType + "," + Globals.FuelNeedle + "," + Globals.FuelGPIO;
+                }
+                if ((Globals.FuelShow == "2") && (Globals.FuelTextShow == "2"))
+                {
+                    Globals.Fuelvalp2 = Globals.gaugename + "," + Globals.FuelShow + "," + Globals.FuelNeedleWidth + "," + Globals.FuelNeedleLength + "," + Globals.FuelNeedleX + "," + Globals.FuelNeedleY + "," + Globals.FuelOffset + "," + Globals.FuelEnd + "," + Globals.FuelTop + "," + Globals.FuelTextShow + "," + Globals.FuelTextX + "," + Globals.FuelTextY + "," + Globals.FuelFontSize + "," + Globals.FuelTextStyle + "," + Globals.FuelNeedleType + "," + Globals.FuelNeedle + "," + Globals.FuelGPIO;
                 }
             }
             if ((Globals.FuelShow == "3") || (Globals.FuelTextShow == "3"))
@@ -939,18 +1044,22 @@ namespace kkdash
                 Globals.gaugename = "Fuel";
                 if ((Globals.FuelShow == "3") && (Globals.FuelTextShow != "3"))
                 {
-                    Globals.Fuelvalp3 = Globals.gaugename + "," + Globals.FuelShow + "," + Globals.FuelNeedleWidth + "," + Globals.FuelNeedleLength + "," + Globals.FuelNeedleX + "," + Globals.FuelNeedleY + "," + Globals.FuelOffset + "," + Globals.FuelEnd + "," + Globals.FuelTop + "," + "n" + "," + Globals.FuelTextX + "," + Globals.FuelTextY + "," + Globals.FuelFontSize + "," + Globals.FuelTextStyle + "," + Globals.FuelNeedleType + "," + Globals.FuelNeedle;
+                    Globals.Fuelvalp3 = Globals.gaugename + "," + Globals.FuelShow + "," + Globals.FuelNeedleWidth + "," + Globals.FuelNeedleLength + "," + Globals.FuelNeedleX + "," + Globals.FuelNeedleY + "," + Globals.FuelOffset + "," + Globals.FuelEnd + "," + Globals.FuelTop + "," + "n" + "," + Globals.FuelTextX + "," + Globals.FuelTextY + "," + Globals.FuelFontSize + "," + Globals.FuelTextStyle + "," + Globals.FuelNeedleType + "," + Globals.FuelNeedle + "," + Globals.FuelGPIO;
                 }
                 if ((Globals.FuelShow != "3") && (Globals.FuelTextShow == "3"))
                 {
-                    Globals.Fuelvalp3 = Globals.gaugename + "," + "n" + "," + Globals.FuelNeedleWidth + "," + Globals.FuelNeedleLength + "," + Globals.FuelNeedleX + "," + Globals.FuelNeedleY + "," + Globals.FuelOffset + "," + Globals.FuelEnd + "," + Globals.FuelTop + "," + Globals.FuelTextShow + "," + Globals.FuelTextX + "," + Globals.FuelTextY + "," + Globals.FuelFontSize + "," + Globals.FuelTextStyle + "," + Globals.FuelNeedleType + "," + Globals.FuelNeedle;
+                    Globals.Fuelvalp3 = Globals.gaugename + "," + "N" + "," + Globals.FuelNeedleWidth + "," + Globals.FuelNeedleLength + "," + Globals.FuelNeedleX + "," + Globals.FuelNeedleY + "," + Globals.FuelOffset + "," + Globals.FuelEnd + "," + Globals.FuelTop + "," + Globals.FuelTextShow + "," + Globals.FuelTextX + "," + Globals.FuelTextY + "," + Globals.FuelFontSize + "," + Globals.FuelTextStyle + "," + Globals.FuelNeedleType + "," + Globals.FuelNeedle + "," + Globals.FuelGPIO;
+                }
+                if ((Globals.FuelShow == "3") && (Globals.FuelTextShow == "3"))
+                {
+                    Globals.Fuelvalp3 = Globals.gaugename + "," + Globals.FuelShow + "," + Globals.FuelNeedleWidth + "," + Globals.FuelNeedleLength + "," + Globals.FuelNeedleX + "," + Globals.FuelNeedleY + "," + Globals.FuelOffset + "," + Globals.FuelEnd + "," + Globals.FuelTop + "," + Globals.FuelTextShow + "," + Globals.FuelTextX + "," + Globals.FuelTextY + "," + Globals.FuelFontSize + "," + Globals.FuelTextStyle + "," + Globals.FuelNeedleType + "," + Globals.FuelNeedle + "," + Globals.FuelGPIO;
                 }
             }
 
             //FuelT
-            Globals.gaugename = ""; Globals.FuelTShow = "n"; Globals.FuelTTextShow = "n";  //reset to no values
-            if (cmbShowFuelT.Text == "N") { Globals.FuelTShow = "n"; }
-            if (cmbFuelTTextShow.Text == "N") { Globals.FuelTTextShow = "n"; }
+            //            Globals.gaugename = ""; Globals.FuelTShow = "N"; Globals.FuelTTextShow = "N";  //reset to no values
+            if (cmbShowFuelT.Text == "N") { Globals.FuelTShow = "N"; }
+            if (cmbFuelTTextShow.Text == "N") { Globals.FuelTTextShow = "N"; }
             if (cmbShowFuelT.Text == "Panel 1") { Globals.FuelTShow = "1"; }
             if (cmbFuelTTextShow.Text == "Panel 1") { Globals.FuelTTextShow = "1"; }
             if (cmbShowFuelT.Text == "Panel 2") { Globals.FuelTShow = "2"; }
@@ -960,28 +1069,37 @@ namespace kkdash
 
             if ((Globals.FuelTShow == "1") || (Globals.FuelTTextShow == "1"))
             {
-                Globals.showP1 = "Y";
                 Globals.gaugename = "FuelT";
+                Globals.showP1 = "Y";
                 if ((Globals.FuelTShow == "1") && (Globals.FuelTTextShow != "1"))
                 {
-                    Globals.FuelTvalp1 = Globals.gaugename + "," + Globals.FuelTShow + "," + Globals.FuelTNeedleWidth + "," + Globals.FuelTNeedleLength + "," + Globals.FuelTNeedleX + "," + Globals.FuelTNeedleY + "," + Globals.FuelTOffset + "," + Globals.FuelTEnd + "," + Globals.FuelTTop + "," + "n" + "," + Globals.FuelTTextX + "," + Globals.FuelTTextY + "," + Globals.FuelTFontSize + "," + Globals.FuelTTextStyle + "," + Globals.FuelTNeedleType + "," + Globals.FuelTNeedle;
+                    Globals.FuelTvalp1 = Globals.gaugename + "," + Globals.FuelTShow + "," + Globals.FuelTNeedleWidth + "," + Globals.FuelTNeedleLength + "," + Globals.FuelTNeedleX + "," + Globals.FuelTNeedleY + "," + Globals.FuelTOffset + "," + Globals.FuelTEnd + "," + Globals.FuelTTop + "," + "n" + "," + Globals.FuelTTextX + "," + Globals.FuelTTextY + "," + Globals.FuelTFontSize + "," + Globals.FuelTTextStyle + "," + Globals.FuelTNeedleType + "," + Globals.FuelTNeedle + "," + Globals.FuelTGPIO;
                 }
                 if ((Globals.FuelTShow != "1") && (Globals.FuelTTextShow == "1"))
                 {
-                    Globals.FuelTvalp1 = Globals.gaugename + "," + "n" + "," + Globals.FuelTNeedleWidth + "," + Globals.FuelTNeedleLength + "," + Globals.FuelTNeedleX + "," + Globals.FuelTNeedleY + "," + Globals.FuelTOffset + "," + Globals.FuelTEnd + "," + Globals.FuelTTop + "," + Globals.FuelTTextShow + "," + Globals.FuelTTextX + "," + Globals.FuelTTextY + "," + Globals.FuelTFontSize + "," + Globals.FuelTTextStyle + "," + Globals.FuelTNeedleType + "," + Globals.FuelTNeedle;
+                    Globals.FuelTvalp1 = Globals.gaugename + "," + "N" + "," + Globals.FuelTNeedleWidth + "," + Globals.FuelTNeedleLength + "," + Globals.FuelTNeedleX + "," + Globals.FuelTNeedleY + "," + Globals.FuelTOffset + "," + Globals.FuelTEnd + "," + Globals.FuelTTop + "," + Globals.FuelTTextShow + "," + Globals.FuelTTextX + "," + Globals.FuelTTextY + "," + Globals.FuelTFontSize + "," + Globals.FuelTTextStyle + "," + Globals.FuelTNeedleType + "," + Globals.FuelTNeedle + "," + Globals.FuelTGPIO;
+                }
+                if ((Globals.FuelTShow == "1") && (Globals.FuelTTextShow == "1"))
+                {
+                    Globals.FuelTvalp1 = Globals.gaugename + "," + Globals.FuelTShow + "," + Globals.FuelTNeedleWidth + "," + Globals.FuelTNeedleLength + "," + Globals.FuelTNeedleX + "," + Globals.FuelTNeedleY + "," + Globals.FuelTOffset + "," + Globals.FuelTEnd + "," + Globals.FuelTTop + "," + Globals.FuelTTextShow + "," + Globals.FuelTTextX + "," + Globals.FuelTTextY + "," + Globals.FuelTFontSize + "," + Globals.FuelTTextStyle + "," + Globals.FuelTNeedleType + "," + Globals.FuelTNeedle + "," + Globals.FuelTGPIO;
                 }
             }
+
             if ((Globals.FuelTShow == "2") || (Globals.FuelTTextShow == "2"))
             {
-                Globals.showP2 = "Y";
                 Globals.gaugename = "FuelT";
+                Globals.showP2 = "Y";
                 if ((Globals.FuelTShow == "2") && (Globals.FuelTTextShow != "2"))
                 {
-                    Globals.FuelTvalp2 = Globals.gaugename + "," + Globals.FuelTShow + "," + Globals.FuelTNeedleWidth + "," + Globals.FuelTNeedleLength + "," + Globals.FuelTNeedleX + "," + Globals.FuelTNeedleY + "," + Globals.FuelTOffset + "," + Globals.FuelTEnd + "," + Globals.FuelTTop + "," + "n" + "," + Globals.FuelTTextX + "," + Globals.FuelTTextY + "," + Globals.FuelTFontSize + "," + Globals.FuelTTextStyle + "," + Globals.FuelTNeedleType + "," + Globals.FuelTNeedle;
+                    Globals.FuelTvalp2 = Globals.gaugename + "," + Globals.FuelTShow + "," + Globals.FuelTNeedleWidth + "," + Globals.FuelTNeedleLength + "," + Globals.FuelTNeedleX + "," + Globals.FuelTNeedleY + "," + Globals.FuelTOffset + "," + Globals.FuelTEnd + "," + Globals.FuelTTop + "," + "n" + "," + Globals.FuelTTextX + "," + Globals.FuelTTextY + "," + Globals.FuelTFontSize + "," + Globals.FuelTTextStyle + "," + Globals.FuelTNeedleType + "," + Globals.FuelTNeedle + "," + Globals.FuelTGPIO;
                 }
                 if ((Globals.FuelTShow != "2") && (Globals.FuelTTextShow == "2"))
                 {
-                    Globals.FuelTvalp2 = Globals.gaugename + "," + "n" + "," + Globals.FuelTNeedleWidth + "," + Globals.FuelTNeedleLength + "," + Globals.FuelTNeedleX + "," + Globals.FuelTNeedleY + "," + Globals.FuelTOffset + "," + Globals.FuelTEnd + "," + Globals.FuelTTop + "," + Globals.FuelTTextShow + "," + Globals.FuelTTextX + "," + Globals.FuelTTextY + "," + Globals.FuelTFontSize + "," + Globals.FuelTTextStyle + "," + Globals.FuelTNeedleType + "," + Globals.FuelTNeedle;
+                    Globals.FuelTvalp2 = Globals.gaugename + "," + "N" + "," + Globals.FuelTNeedleWidth + "," + Globals.FuelTNeedleLength + "," + Globals.FuelTNeedleX + "," + Globals.FuelTNeedleY + "," + Globals.FuelTOffset + "," + Globals.FuelTEnd + "," + Globals.FuelTTop + "," + Globals.FuelTTextShow + "," + Globals.FuelTTextX + "," + Globals.FuelTTextY + "," + Globals.FuelTFontSize + "," + Globals.FuelTTextStyle + "," + Globals.FuelTNeedleType + "," + Globals.FuelTNeedle + "," + Globals.FuelTGPIO;
+                }
+                if ((Globals.FuelTShow == "2") && (Globals.FuelTTextShow == "2"))
+                {
+                    Globals.FuelTvalp2 = Globals.gaugename + "," + Globals.FuelTShow + "," + Globals.FuelTNeedleWidth + "," + Globals.FuelTNeedleLength + "," + Globals.FuelTNeedleX + "," + Globals.FuelTNeedleY + "," + Globals.FuelTOffset + "," + Globals.FuelTEnd + "," + Globals.FuelTTop + "," + Globals.FuelTTextShow + "," + Globals.FuelTTextX + "," + Globals.FuelTTextY + "," + Globals.FuelTFontSize + "," + Globals.FuelTTextStyle + "," + Globals.FuelTNeedleType + "," + Globals.FuelTNeedle + "," + Globals.FuelTGPIO;
                 }
             }
             if ((Globals.FuelTShow == "3") || (Globals.FuelTTextShow == "3"))
@@ -990,18 +1108,22 @@ namespace kkdash
                 Globals.gaugename = "FuelT";
                 if ((Globals.FuelTShow == "3") && (Globals.FuelTTextShow != "3"))
                 {
-                    Globals.FuelTvalp3 = Globals.gaugename + "," + Globals.FuelTShow + "," + Globals.FuelTNeedleWidth + "," + Globals.FuelTNeedleLength + "," + Globals.FuelTNeedleX + "," + Globals.FuelTNeedleY + "," + Globals.FuelTOffset + "," + Globals.FuelTEnd + "," + Globals.FuelTTop + "," + "n" + "," + Globals.FuelTTextX + "," + Globals.FuelTTextY + "," + Globals.FuelTFontSize + "," + Globals.FuelTTextStyle + "," + Globals.FuelTNeedleType + "," + Globals.FuelTNeedle;
+                    Globals.FuelTvalp3 = Globals.gaugename + "," + Globals.FuelTShow + "," + Globals.FuelTNeedleWidth + "," + Globals.FuelTNeedleLength + "," + Globals.FuelTNeedleX + "," + Globals.FuelTNeedleY + "," + Globals.FuelTOffset + "," + Globals.FuelTEnd + "," + Globals.FuelTTop + "," + "n" + "," + Globals.FuelTTextX + "," + Globals.FuelTTextY + "," + Globals.FuelTFontSize + "," + Globals.FuelTTextStyle + "," + Globals.FuelTNeedleType + "," + Globals.FuelTNeedle + "," + Globals.FuelTGPIO;
                 }
                 if ((Globals.FuelTShow != "3") && (Globals.FuelTTextShow == "3"))
                 {
-                    Globals.FuelTvalp3 = Globals.gaugename + "," + "n" + "," + Globals.FuelTNeedleWidth + "," + Globals.FuelTNeedleLength + "," + Globals.FuelTNeedleX + "," + Globals.FuelTNeedleY + "," + Globals.FuelTOffset + "," + Globals.FuelTEnd + "," + Globals.FuelTTop + "," + Globals.FuelTTextShow + "," + Globals.FuelTTextX + "," + Globals.FuelTTextY + "," + Globals.FuelTFontSize + "," + Globals.FuelTTextStyle + "," + Globals.FuelTNeedleType + "," + Globals.FuelTNeedle;
+                    Globals.FuelTvalp3 = Globals.gaugename + "," + "N" + "," + Globals.FuelTNeedleWidth + "," + Globals.FuelTNeedleLength + "," + Globals.FuelTNeedleX + "," + Globals.FuelTNeedleY + "," + Globals.FuelTOffset + "," + Globals.FuelTEnd + "," + Globals.FuelTTop + "," + Globals.FuelTTextShow + "," + Globals.FuelTTextX + "," + Globals.FuelTTextY + "," + Globals.FuelTFontSize + "," + Globals.FuelTTextStyle + "," + Globals.FuelTNeedleType + "," + Globals.FuelTNeedle + "," + Globals.FuelTGPIO;
+                }
+                if ((Globals.FuelTShow == "3") && (Globals.FuelTTextShow == "3"))
+                {
+                    Globals.FuelTvalp3 = Globals.gaugename + "," + Globals.FuelTShow + "," + Globals.FuelTNeedleWidth + "," + Globals.FuelTNeedleLength + "," + Globals.FuelTNeedleX + "," + Globals.FuelTNeedleY + "," + Globals.FuelTOffset + "," + Globals.FuelTEnd + "," + Globals.FuelTTop + "," + Globals.FuelTTextShow + "," + Globals.FuelTTextX + "," + Globals.FuelTTextY + "," + Globals.FuelTFontSize + "," + Globals.FuelTTextStyle + "," + Globals.FuelTNeedleType + "," + Globals.FuelTNeedle + "," + Globals.FuelTGPIO;
                 }
             }
 
             //FuelP
-            Globals.gaugename = ""; Globals.FuelPShow = "n"; Globals.FuelPTextShow = "n";  //reset to no values
-            if (cmbShowFuelP.Text == "N") { Globals.FuelPShow = "n"; }
-            if (cmbFuelPTextShow.Text == "N") { Globals.FuelPTextShow = "n"; }
+            //            Globals.gaugename = ""; Globals.FuelPShow = "N"; Globals.FuelPTextShow = "N";  //reset to no values
+            if (cmbShowFuelP.Text == "N") { Globals.FuelPShow = "N"; }
+            if (cmbFuelPTextShow.Text == "N") { Globals.FuelPTextShow = "N"; }
             if (cmbShowFuelP.Text == "Panel 1") { Globals.FuelPShow = "1"; }
             if (cmbFuelPTextShow.Text == "Panel 1") { Globals.FuelPTextShow = "1"; }
             if (cmbShowFuelP.Text == "Panel 2") { Globals.FuelPShow = "2"; }
@@ -1011,28 +1133,37 @@ namespace kkdash
 
             if ((Globals.FuelPShow == "1") || (Globals.FuelPTextShow == "1"))
             {
-                Globals.showP1 = "Y";
                 Globals.gaugename = "FuelP";
+                Globals.showP1 = "Y";
                 if ((Globals.FuelPShow == "1") && (Globals.FuelPTextShow != "1"))
                 {
-                    Globals.FuelPvalp1 = Globals.gaugename + "," + Globals.FuelPShow + "," + Globals.FuelPNeedleWidth + "," + Globals.FuelPNeedleLength + "," + Globals.FuelPNeedleX + "," + Globals.FuelPNeedleY + "," + Globals.FuelPOffset + "," + Globals.FuelPEnd + "," + Globals.FuelPTop + "," + "n" + "," + Globals.FuelPTextX + "," + Globals.FuelPTextY + "," + Globals.FuelPFontSize + "," + Globals.FuelPTextStyle + "," + Globals.FuelPNeedleType + "," + Globals.FuelPNeedle;
+                    Globals.FuelPvalp1 = Globals.gaugename + "," + Globals.FuelPShow + "," + Globals.FuelPNeedleWidth + "," + Globals.FuelPNeedleLength + "," + Globals.FuelPNeedleX + "," + Globals.FuelPNeedleY + "," + Globals.FuelPOffset + "," + Globals.FuelPEnd + "," + Globals.FuelPTop + "," + "n" + "," + Globals.FuelPTextX + "," + Globals.FuelPTextY + "," + Globals.FuelPFontSize + "," + Globals.FuelPTextStyle + "," + Globals.FuelPNeedleType + "," + Globals.FuelPNeedle + "," + Globals.FuelPGPIO;
                 }
                 if ((Globals.FuelPShow != "1") && (Globals.FuelPTextShow == "1"))
                 {
-                    Globals.FuelPvalp1 = Globals.gaugename + "," + "n" + "," + Globals.FuelPNeedleWidth + "," + Globals.FuelPNeedleLength + "," + Globals.FuelPNeedleX + "," + Globals.FuelPNeedleY + "," + Globals.FuelPOffset + "," + Globals.FuelPEnd + "," + Globals.FuelPTop + "," + Globals.FuelPTextShow + "," + Globals.FuelPTextX + "," + Globals.FuelPTextY + "," + Globals.FuelPFontSize + "," + Globals.FuelPTextStyle + "," + Globals.FuelPNeedleType + "," + Globals.FuelPNeedle;
+                    Globals.FuelPvalp1 = Globals.gaugename + "," + "N" + "," + Globals.FuelPNeedleWidth + "," + Globals.FuelPNeedleLength + "," + Globals.FuelPNeedleX + "," + Globals.FuelPNeedleY + "," + Globals.FuelPOffset + "," + Globals.FuelPEnd + "," + Globals.FuelPTop + "," + Globals.FuelPTextShow + "," + Globals.FuelPTextX + "," + Globals.FuelPTextY + "," + Globals.FuelPFontSize + "," + Globals.FuelPTextStyle + "," + Globals.FuelPNeedleType + "," + Globals.FuelPNeedle + "," + Globals.FuelPGPIO;
+                }
+                if ((Globals.FuelPShow == "1") && (Globals.FuelPTextShow == "1"))
+                {
+                    Globals.FuelPvalp1 = Globals.gaugename + "," + Globals.FuelPShow + "," + Globals.FuelPNeedleWidth + "," + Globals.FuelPNeedleLength + "," + Globals.FuelPNeedleX + "," + Globals.FuelPNeedleY + "," + Globals.FuelPOffset + "," + Globals.FuelPEnd + "," + Globals.FuelPTop + "," + Globals.FuelPTextShow + "," + Globals.FuelPTextX + "," + Globals.FuelPTextY + "," + Globals.FuelPFontSize + "," + Globals.FuelPTextStyle + "," + Globals.FuelPNeedleType + "," + Globals.FuelPNeedle + "," + Globals.FuelPGPIO;
                 }
             }
+
             if ((Globals.FuelPShow == "2") || (Globals.FuelPTextShow == "2"))
             {
-                Globals.showP2 = "Y";
                 Globals.gaugename = "FuelP";
+                Globals.showP2 = "Y";
                 if ((Globals.FuelPShow == "2") && (Globals.FuelPTextShow != "2"))
                 {
-                    Globals.FuelPvalp2 = Globals.gaugename + "," + Globals.FuelPShow + "," + Globals.FuelPNeedleWidth + "," + Globals.FuelPNeedleLength + "," + Globals.FuelPNeedleX + "," + Globals.FuelPNeedleY + "," + Globals.FuelPOffset + "," + Globals.FuelPEnd + "," + Globals.FuelPTop + "," + "n" + "," + Globals.FuelPTextX + "," + Globals.FuelPTextY + "," + Globals.FuelPFontSize + "," + Globals.FuelPTextStyle + "," + Globals.FuelPNeedleType + "," + Globals.FuelPNeedle;
+                    Globals.FuelPvalp2 = Globals.gaugename + "," + Globals.FuelPShow + "," + Globals.FuelPNeedleWidth + "," + Globals.FuelPNeedleLength + "," + Globals.FuelPNeedleX + "," + Globals.FuelPNeedleY + "," + Globals.FuelPOffset + "," + Globals.FuelPEnd + "," + Globals.FuelPTop + "," + "n" + "," + Globals.FuelPTextX + "," + Globals.FuelPTextY + "," + Globals.FuelPFontSize + "," + Globals.FuelPTextStyle + "," + Globals.FuelPNeedleType + "," + Globals.FuelPNeedle + "," + Globals.FuelPGPIO;
                 }
                 if ((Globals.FuelPShow != "2") && (Globals.FuelPTextShow == "2"))
                 {
-                    Globals.FuelPvalp2 = Globals.gaugename + "," + "n" + "," + Globals.FuelPNeedleWidth + "," + Globals.FuelPNeedleLength + "," + Globals.FuelPNeedleX + "," + Globals.FuelPNeedleY + "," + Globals.FuelPOffset + "," + Globals.FuelPEnd + "," + Globals.FuelPTop + "," + Globals.FuelPTextShow + "," + Globals.FuelPTextX + "," + Globals.FuelPTextY + "," + Globals.FuelPFontSize + "," + Globals.FuelPTextStyle + "," + Globals.FuelPNeedleType + "," + Globals.FuelPNeedle;
+                    Globals.FuelPvalp2 = Globals.gaugename + "," + "N" + "," + Globals.FuelPNeedleWidth + "," + Globals.FuelPNeedleLength + "," + Globals.FuelPNeedleX + "," + Globals.FuelPNeedleY + "," + Globals.FuelPOffset + "," + Globals.FuelPEnd + "," + Globals.FuelPTop + "," + Globals.FuelPTextShow + "," + Globals.FuelPTextX + "," + Globals.FuelPTextY + "," + Globals.FuelPFontSize + "," + Globals.FuelPTextStyle + "," + Globals.FuelPNeedleType + "," + Globals.FuelPNeedle + "," + Globals.FuelPGPIO;
+                }
+                if ((Globals.FuelPShow == "2") && (Globals.FuelPTextShow == "2"))
+                {
+                    Globals.FuelPvalp2 = Globals.gaugename + "," + Globals.FuelPShow + "," + Globals.FuelPNeedleWidth + "," + Globals.FuelPNeedleLength + "," + Globals.FuelPNeedleX + "," + Globals.FuelPNeedleY + "," + Globals.FuelPOffset + "," + Globals.FuelPEnd + "," + Globals.FuelPTop + "," + Globals.FuelPTextShow + "," + Globals.FuelPTextX + "," + Globals.FuelPTextY + "," + Globals.FuelPFontSize + "," + Globals.FuelPTextStyle + "," + Globals.FuelPNeedleType + "," + Globals.FuelPNeedle + "," + Globals.FuelPGPIO;
                 }
             }
             if ((Globals.FuelPShow == "3") || (Globals.FuelPTextShow == "3"))
@@ -1041,18 +1172,86 @@ namespace kkdash
                 Globals.gaugename = "FuelP";
                 if ((Globals.FuelPShow == "3") && (Globals.FuelPTextShow != "3"))
                 {
-                    Globals.FuelPvalp3 = Globals.gaugename + "," + Globals.FuelPShow + "," + Globals.FuelPNeedleWidth + "," + Globals.FuelPNeedleLength + "," + Globals.FuelPNeedleX + "," + Globals.FuelPNeedleY + "," + Globals.FuelPOffset + "," + Globals.FuelPEnd + "," + Globals.FuelPTop + "," + "n" + "," + Globals.FuelPTextX + "," + Globals.FuelPTextY + "," + Globals.FuelPFontSize + "," + Globals.FuelPTextStyle + "," + Globals.FuelPNeedleType + "," + Globals.FuelPNeedle;
+                    Globals.FuelPvalp3 = Globals.gaugename + "," + Globals.FuelPShow + "," + Globals.FuelPNeedleWidth + "," + Globals.FuelPNeedleLength + "," + Globals.FuelPNeedleX + "," + Globals.FuelPNeedleY + "," + Globals.FuelPOffset + "," + Globals.FuelPEnd + "," + Globals.FuelPTop + "," + "n" + "," + Globals.FuelPTextX + "," + Globals.FuelPTextY + "," + Globals.FuelPFontSize + "," + Globals.FuelPTextStyle + "," + Globals.FuelPNeedleType + "," + Globals.FuelPNeedle + "," + Globals.FuelPGPIO;
                 }
                 if ((Globals.FuelPShow != "3") && (Globals.FuelPTextShow == "3"))
                 {
-                    Globals.FuelPvalp3 = Globals.gaugename + "," + "n" + "," + Globals.FuelPNeedleWidth + "," + Globals.FuelPNeedleLength + "," + Globals.FuelPNeedleX + "," + Globals.FuelPNeedleY + "," + Globals.FuelPOffset + "," + Globals.FuelPEnd + "," + Globals.FuelPTop + "," + Globals.FuelPTextShow + "," + Globals.FuelPTextX + "," + Globals.FuelPTextY + "," + Globals.FuelPFontSize + "," + Globals.FuelPTextStyle + "," + Globals.FuelPNeedleType + "," + Globals.FuelPNeedle;
+                    Globals.FuelPvalp3 = Globals.gaugename + "," + "N" + "," + Globals.FuelPNeedleWidth + "," + Globals.FuelPNeedleLength + "," + Globals.FuelPNeedleX + "," + Globals.FuelPNeedleY + "," + Globals.FuelPOffset + "," + Globals.FuelPEnd + "," + Globals.FuelPTop + "," + Globals.FuelPTextShow + "," + Globals.FuelPTextX + "," + Globals.FuelPTextY + "," + Globals.FuelPFontSize + "," + Globals.FuelPTextStyle + "," + Globals.FuelPNeedleType + "," + Globals.FuelPNeedle + "," + Globals.FuelPGPIO;
+                }
+                if ((Globals.FuelPShow == "3") && (Globals.FuelPTextShow == "3"))
+                {
+                    Globals.FuelPvalp3 = Globals.gaugename + "," + Globals.FuelPShow + "," + Globals.FuelPNeedleWidth + "," + Globals.FuelPNeedleLength + "," + Globals.FuelPNeedleX + "," + Globals.FuelPNeedleY + "," + Globals.FuelPOffset + "," + Globals.FuelPEnd + "," + Globals.FuelPTop + "," + Globals.FuelPTextShow + "," + Globals.FuelPTextX + "," + Globals.FuelPTextY + "," + Globals.FuelPFontSize + "," + Globals.FuelPTextStyle + "," + Globals.FuelPNeedleType + "," + Globals.FuelPNeedle + "," + Globals.FuelPGPIO;
+                }
+            }
+
+            //Battery
+            //            Globals.gaugename = ""; Globals.BatteryShow = "N"; Globals.BatteryTextShow = "N";  //reset to no values
+            if (cmbShowBattery.Text == "N") { Globals.BatteryShow = "N"; }
+            if (cmbBatteryTextShow.Text == "N") { Globals.BatteryTextShow = "N"; }
+            if (cmbShowBattery.Text == "Panel 1") { Globals.BatteryShow = "1"; }
+            if (cmbBatteryTextShow.Text == "Panel 1") { Globals.BatteryTextShow = "1"; }
+            if (cmbShowBattery.Text == "Panel 2") { Globals.BatteryShow = "2"; }
+            if (cmbBatteryTextShow.Text == "Panel 2") { Globals.BatteryTextShow = "2"; }
+            if (cmbShowBattery.Text == "Panel 3") { Globals.BatteryShow = "3"; }
+            if (cmbBatteryTextShow.Text == "Panel 3") { Globals.BatteryTextShow = "3"; }
+
+            if ((Globals.BatteryShow == "1") || (Globals.BatteryTextShow == "1"))
+            {
+                Globals.gaugename = "Battery";
+                Globals.showP1 = "Y";
+                if ((Globals.BatteryShow == "1") && (Globals.BatteryTextShow != "1"))
+                {
+                    Globals.Batteryvalp1 = Globals.gaugename + "," + Globals.BatteryShow + "," + Globals.BatteryNeedleWidth + "," + Globals.BatteryNeedleLength + "," + Globals.BatteryNeedleX + "," + Globals.BatteryNeedleY + "," + Globals.BatteryOffset + "," + Globals.BatteryEnd + "," + Globals.BatteryTop + "," + "n" + "," + Globals.BatteryTextX + "," + Globals.BatteryTextY + "," + Globals.BatteryFontSize + "," + Globals.BatteryTextStyle + "," + Globals.BatteryNeedleType + "," + Globals.BatteryNeedle + "," + Globals.BatteryGPIO;
+                }
+                if ((Globals.BatteryShow != "1") && (Globals.BatteryTextShow == "1"))
+                {
+                    Globals.Batteryvalp1 = Globals.gaugename + "," + "N" + "," + Globals.BatteryNeedleWidth + "," + Globals.BatteryNeedleLength + "," + Globals.BatteryNeedleX + "," + Globals.BatteryNeedleY + "," + Globals.BatteryOffset + "," + Globals.BatteryEnd + "," + Globals.BatteryTop + "," + Globals.BatteryTextShow + "," + Globals.BatteryTextX + "," + Globals.BatteryTextY + "," + Globals.BatteryFontSize + "," + Globals.BatteryTextStyle + "," + Globals.BatteryNeedleType + "," + Globals.BatteryNeedle + "," + Globals.BatteryGPIO;
+                }
+                if ((Globals.BatteryShow == "1") && (Globals.BatteryTextShow == "1"))
+                {
+                    Globals.Batteryvalp1 = Globals.gaugename + "," + Globals.BatteryShow + "," + Globals.BatteryNeedleWidth + "," + Globals.BatteryNeedleLength + "," + Globals.BatteryNeedleX + "," + Globals.BatteryNeedleY + "," + Globals.BatteryOffset + "," + Globals.BatteryEnd + "," + Globals.BatteryTop + "," + Globals.BatteryTextShow + "," + Globals.BatteryTextX + "," + Globals.BatteryTextY + "," + Globals.BatteryFontSize + "," + Globals.BatteryTextStyle + "," + Globals.BatteryNeedleType + "," + Globals.BatteryNeedle + "," + Globals.BatteryGPIO;
+                }
+            }
+
+            if ((Globals.BatteryShow == "2") || (Globals.BatteryTextShow == "2"))
+            {
+                Globals.gaugename = "Battery";
+                Globals.showP2 = "Y";
+                if ((Globals.BatteryShow == "2") && (Globals.BatteryTextShow != "2"))
+                {
+                    Globals.Batteryvalp2 = Globals.gaugename + "," + Globals.BatteryShow + "," + Globals.BatteryNeedleWidth + "," + Globals.BatteryNeedleLength + "," + Globals.BatteryNeedleX + "," + Globals.BatteryNeedleY + "," + Globals.BatteryOffset + "," + Globals.BatteryEnd + "," + Globals.BatteryTop + "," + "n" + "," + Globals.BatteryTextX + "," + Globals.BatteryTextY + "," + Globals.BatteryFontSize + "," + Globals.BatteryTextStyle + "," + Globals.BatteryNeedleType + "," + Globals.BatteryNeedle + "," + Globals.BatteryGPIO;
+                }
+                if ((Globals.BatteryShow != "2") && (Globals.BatteryTextShow == "2"))
+                {
+                    Globals.Batteryvalp2 = Globals.gaugename + "," + "N" + "," + Globals.BatteryNeedleWidth + "," + Globals.BatteryNeedleLength + "," + Globals.BatteryNeedleX + "," + Globals.BatteryNeedleY + "," + Globals.BatteryOffset + "," + Globals.BatteryEnd + "," + Globals.BatteryTop + "," + Globals.BatteryTextShow + "," + Globals.BatteryTextX + "," + Globals.BatteryTextY + "," + Globals.BatteryFontSize + "," + Globals.BatteryTextStyle + "," + Globals.BatteryNeedleType + "," + Globals.BatteryNeedle + "," + Globals.BatteryGPIO;
+                }
+                if ((Globals.BatteryShow == "2") && (Globals.BatteryTextShow == "2"))
+                {
+                    Globals.Batteryvalp2 = Globals.gaugename + "," + Globals.BatteryShow + "," + Globals.BatteryNeedleWidth + "," + Globals.BatteryNeedleLength + "," + Globals.BatteryNeedleX + "," + Globals.BatteryNeedleY + "," + Globals.BatteryOffset + "," + Globals.BatteryEnd + "," + Globals.BatteryTop + "," + Globals.BatteryTextShow + "," + Globals.BatteryTextX + "," + Globals.BatteryTextY + "," + Globals.BatteryFontSize + "," + Globals.BatteryTextStyle + "," + Globals.BatteryNeedleType + "," + Globals.BatteryNeedle + "," + Globals.BatteryGPIO;
+                }
+            }
+            if ((Globals.BatteryShow == "3") || (Globals.BatteryTextShow == "3"))
+            {
+                Globals.showP3 = "Y";
+                Globals.gaugename = "Battery";
+                if ((Globals.BatteryShow == "3") && (Globals.BatteryTextShow != "3"))
+                {
+                    Globals.Batteryvalp3 = Globals.gaugename + "," + Globals.BatteryShow + "," + Globals.BatteryNeedleWidth + "," + Globals.BatteryNeedleLength + "," + Globals.BatteryNeedleX + "," + Globals.BatteryNeedleY + "," + Globals.BatteryOffset + "," + Globals.BatteryEnd + "," + Globals.BatteryTop + "," + "n" + "," + Globals.BatteryTextX + "," + Globals.BatteryTextY + "," + Globals.BatteryFontSize + "," + Globals.BatteryTextStyle + "," + Globals.BatteryNeedleType + "," + Globals.BatteryNeedle + "," + Globals.BatteryGPIO;
+                }
+                if ((Globals.BatteryShow != "3") && (Globals.BatteryTextShow == "3"))
+                {
+                    Globals.Batteryvalp3 = Globals.gaugename + "," + "N" + "," + Globals.BatteryNeedleWidth + "," + Globals.BatteryNeedleLength + "," + Globals.BatteryNeedleX + "," + Globals.BatteryNeedleY + "," + Globals.BatteryOffset + "," + Globals.BatteryEnd + "," + Globals.BatteryTop + "," + Globals.BatteryTextShow + "," + Globals.BatteryTextX + "," + Globals.BatteryTextY + "," + Globals.BatteryFontSize + "," + Globals.BatteryTextStyle + "," + Globals.BatteryNeedleType + "," + Globals.BatteryNeedle + "," + Globals.BatteryGPIO;
+                }
+                if ((Globals.BatteryShow == "3") && (Globals.BatteryTextShow == "3"))
+                {
+                    Globals.Batteryvalp3 = Globals.gaugename + "," + Globals.BatteryShow + "," + Globals.BatteryNeedleWidth + "," + Globals.BatteryNeedleLength + "," + Globals.BatteryNeedleX + "," + Globals.BatteryNeedleY + "," + Globals.BatteryOffset + "," + Globals.BatteryEnd + "," + Globals.BatteryTop + "," + Globals.BatteryTextShow + "," + Globals.BatteryTextX + "," + Globals.BatteryTextY + "," + Globals.BatteryFontSize + "," + Globals.BatteryTextStyle + "," + Globals.BatteryNeedleType + "," + Globals.BatteryNeedle + "," + Globals.BatteryGPIO;
                 }
             }
 
             //User1
-            Globals.gaugename = ""; Globals.User1Show = "n"; Globals.User1TextShow = "n";  //reset to no values
-            if (cmbShowUser1.Text == "N") { Globals.User1Show = "n"; }
-            if (cmbUser1TextShow.Text == "N") { Globals.User1TextShow = "n"; }
+            //            Globals.gaugename = ""; Globals.User1Show = "N"; Globals.User1TextShow = "N";  //reset to no values
+            if (cmbShowUser1.Text == "N") { Globals.User1Show = "N"; }
+            if (cmbUser1TextShow.Text == "N") { Globals.User1TextShow = "N"; }
             if (cmbShowUser1.Text == "Panel 1") { Globals.User1Show = "1"; }
             if (cmbUser1TextShow.Text == "Panel 1") { Globals.User1TextShow = "1"; }
             if (cmbShowUser1.Text == "Panel 2") { Globals.User1Show = "2"; }
@@ -1062,28 +1261,37 @@ namespace kkdash
 
             if ((Globals.User1Show == "1") || (Globals.User1TextShow == "1"))
             {
-                Globals.showP1 = "Y";
                 Globals.gaugename = "User1";
+                Globals.showP1 = "Y";
                 if ((Globals.User1Show == "1") && (Globals.User1TextShow != "1"))
                 {
-                    Globals.User1valp1 = Globals.gaugename + "," + Globals.User1Show + "," + Globals.User1NeedleWidth + "," + Globals.User1NeedleLength + "," + Globals.User1NeedleX + "," + Globals.User1NeedleY + "," + Globals.User1Offset + "," + Globals.User1End + "," + Globals.User1Top + "," + "n" + "," + Globals.User1TextX + "," + Globals.User1TextY + "," + Globals.User1FontSize + "," + Globals.User1TextStyle + "," + Globals.User1NeedleType + "," + Globals.User1Needle;
+                    Globals.User1valp1 = Globals.gaugename + "," + Globals.User1Show + "," + Globals.User1NeedleWidth + "," + Globals.User1NeedleLength + "," + Globals.User1NeedleX + "," + Globals.User1NeedleY + "," + Globals.User1Offset + "," + Globals.User1End + "," + Globals.User1Top + "," + "n" + "," + Globals.User1TextX + "," + Globals.User1TextY + "," + Globals.User1FontSize + "," + Globals.User1TextStyle + "," + Globals.User1NeedleType + "," + Globals.User1Needle + "," + Globals.User1GPIO;
                 }
                 if ((Globals.User1Show != "1") && (Globals.User1TextShow == "1"))
                 {
-                    Globals.User1valp1 = Globals.gaugename + "," + "n" + "," + Globals.User1NeedleWidth + "," + Globals.User1NeedleLength + "," + Globals.User1NeedleX + "," + Globals.User1NeedleY + "," + Globals.User1Offset + "," + Globals.User1End + "," + Globals.User1Top + "," + Globals.User1TextShow + "," + Globals.User1TextX + "," + Globals.User1TextY + "," + Globals.User1FontSize + "," + Globals.User1TextStyle + "," + Globals.User1NeedleType + "," + Globals.User1Needle;
+                    Globals.User1valp1 = Globals.gaugename + "," + "N" + "," + Globals.User1NeedleWidth + "," + Globals.User1NeedleLength + "," + Globals.User1NeedleX + "," + Globals.User1NeedleY + "," + Globals.User1Offset + "," + Globals.User1End + "," + Globals.User1Top + "," + Globals.User1TextShow + "," + Globals.User1TextX + "," + Globals.User1TextY + "," + Globals.User1FontSize + "," + Globals.User1TextStyle + "," + Globals.User1NeedleType + "," + Globals.User1Needle + "," + Globals.User1GPIO;
+                }
+                if ((Globals.User1Show == "1") && (Globals.User1TextShow == "1"))
+                {
+                    Globals.User1valp1 = Globals.gaugename + "," + Globals.User1Show + "," + Globals.User1NeedleWidth + "," + Globals.User1NeedleLength + "," + Globals.User1NeedleX + "," + Globals.User1NeedleY + "," + Globals.User1Offset + "," + Globals.User1End + "," + Globals.User1Top + "," + Globals.User1TextShow + "," + Globals.User1TextX + "," + Globals.User1TextY + "," + Globals.User1FontSize + "," + Globals.User1TextStyle + "," + Globals.User1NeedleType + "," + Globals.User1Needle + "," + Globals.User1GPIO;
                 }
             }
+
             if ((Globals.User1Show == "2") || (Globals.User1TextShow == "2"))
             {
-                Globals.showP2 = "Y";
                 Globals.gaugename = "User1";
+                Globals.showP2 = "Y";
                 if ((Globals.User1Show == "2") && (Globals.User1TextShow != "2"))
                 {
-                    Globals.User1valp2 = Globals.gaugename + "," + Globals.User1Show + "," + Globals.User1NeedleWidth + "," + Globals.User1NeedleLength + "," + Globals.User1NeedleX + "," + Globals.User1NeedleY + "," + Globals.User1Offset + "," + Globals.User1End + "," + Globals.User1Top + "," + "n" + "," + Globals.User1TextX + "," + Globals.User1TextY + "," + Globals.User1FontSize + "," + Globals.User1TextStyle + "," + Globals.User1NeedleType + "," + Globals.User1Needle;
+                    Globals.User1valp2 = Globals.gaugename + "," + Globals.User1Show + "," + Globals.User1NeedleWidth + "," + Globals.User1NeedleLength + "," + Globals.User1NeedleX + "," + Globals.User1NeedleY + "," + Globals.User1Offset + "," + Globals.User1End + "," + Globals.User1Top + "," + "n" + "," + Globals.User1TextX + "," + Globals.User1TextY + "," + Globals.User1FontSize + "," + Globals.User1TextStyle + "," + Globals.User1NeedleType + "," + Globals.User1Needle + "," + Globals.User1GPIO;
                 }
                 if ((Globals.User1Show != "2") && (Globals.User1TextShow == "2"))
                 {
-                    Globals.User1valp2 = Globals.gaugename + "," + "n" + "," + Globals.User1NeedleWidth + "," + Globals.User1NeedleLength + "," + Globals.User1NeedleX + "," + Globals.User1NeedleY + "," + Globals.User1Offset + "," + Globals.User1End + "," + Globals.User1Top + "," + Globals.User1TextShow + "," + Globals.User1TextX + "," + Globals.User1TextY + "," + Globals.User1FontSize + "," + Globals.User1TextStyle + "," + Globals.User1NeedleType + "," + Globals.User1Needle;
+                    Globals.User1valp2 = Globals.gaugename + "," + "N" + "," + Globals.User1NeedleWidth + "," + Globals.User1NeedleLength + "," + Globals.User1NeedleX + "," + Globals.User1NeedleY + "," + Globals.User1Offset + "," + Globals.User1End + "," + Globals.User1Top + "," + Globals.User1TextShow + "," + Globals.User1TextX + "," + Globals.User1TextY + "," + Globals.User1FontSize + "," + Globals.User1TextStyle + "," + Globals.User1NeedleType + "," + Globals.User1Needle + "," + Globals.User1GPIO;
+                }
+                if ((Globals.User1Show == "2") && (Globals.User1TextShow == "2"))
+                {
+                    Globals.User1valp2 = Globals.gaugename + "," + Globals.User1Show + "," + Globals.User1NeedleWidth + "," + Globals.User1NeedleLength + "," + Globals.User1NeedleX + "," + Globals.User1NeedleY + "," + Globals.User1Offset + "," + Globals.User1End + "," + Globals.User1Top + "," + Globals.User1TextShow + "," + Globals.User1TextX + "," + Globals.User1TextY + "," + Globals.User1FontSize + "," + Globals.User1TextStyle + "," + Globals.User1NeedleType + "," + Globals.User1Needle + "," + Globals.User1GPIO;
                 }
             }
             if ((Globals.User1Show == "3") || (Globals.User1TextShow == "3"))
@@ -1092,18 +1300,22 @@ namespace kkdash
                 Globals.gaugename = "User1";
                 if ((Globals.User1Show == "3") && (Globals.User1TextShow != "3"))
                 {
-                    Globals.User1valp3 = Globals.gaugename + "," + Globals.User1Show + "," + Globals.User1NeedleWidth + "," + Globals.User1NeedleLength + "," + Globals.User1NeedleX + "," + Globals.User1NeedleY + "," + Globals.User1Offset + "," + Globals.User1End + "," + Globals.User1Top + "," + "n" + "," + Globals.User1TextX + "," + Globals.User1TextY + "," + Globals.User1FontSize + "," + Globals.User1TextStyle + "," + Globals.User1NeedleType + "," + Globals.User1Needle;
+                    Globals.User1valp3 = Globals.gaugename + "," + Globals.User1Show + "," + Globals.User1NeedleWidth + "," + Globals.User1NeedleLength + "," + Globals.User1NeedleX + "," + Globals.User1NeedleY + "," + Globals.User1Offset + "," + Globals.User1End + "," + Globals.User1Top + "," + "n" + "," + Globals.User1TextX + "," + Globals.User1TextY + "," + Globals.User1FontSize + "," + Globals.User1TextStyle + "," + Globals.User1NeedleType + "," + Globals.User1Needle + "," + Globals.User1GPIO;
                 }
                 if ((Globals.User1Show != "3") && (Globals.User1TextShow == "3"))
                 {
-                    Globals.User1valp3 = Globals.gaugename + "," + "n" + "," + Globals.User1NeedleWidth + "," + Globals.User1NeedleLength + "," + Globals.User1NeedleX + "," + Globals.User1NeedleY + "," + Globals.User1Offset + "," + Globals.User1End + "," + Globals.User1Top + "," + Globals.User1TextShow + "," + Globals.User1TextX + "," + Globals.User1TextY + "," + Globals.User1FontSize + "," + Globals.User1TextStyle + "," + Globals.User1NeedleType + "," + Globals.User1Needle;
+                    Globals.User1valp3 = Globals.gaugename + "," + "N" + "," + Globals.User1NeedleWidth + "," + Globals.User1NeedleLength + "," + Globals.User1NeedleX + "," + Globals.User1NeedleY + "," + Globals.User1Offset + "," + Globals.User1End + "," + Globals.User1Top + "," + Globals.User1TextShow + "," + Globals.User1TextX + "," + Globals.User1TextY + "," + Globals.User1FontSize + "," + Globals.User1TextStyle + "," + Globals.User1NeedleType + "," + Globals.User1Needle + "," + Globals.User1GPIO;
+                }
+                if ((Globals.User1Show == "3") && (Globals.User1TextShow == "3"))
+                {
+                    Globals.User1valp3 = Globals.gaugename + "," + Globals.User1Show + "," + Globals.User1NeedleWidth + "," + Globals.User1NeedleLength + "," + Globals.User1NeedleX + "," + Globals.User1NeedleY + "," + Globals.User1Offset + "," + Globals.User1End + "," + Globals.User1Top + "," + Globals.User1TextShow + "," + Globals.User1TextX + "," + Globals.User1TextY + "," + Globals.User1FontSize + "," + Globals.User1TextStyle + "," + Globals.User1NeedleType + "," + Globals.User1Needle + "," + Globals.User1GPIO;
                 }
             }
 
             //User2
-            Globals.gaugename = ""; Globals.User2Show = "n"; Globals.User2TextShow = "n";  //reset to no values
-            if (cmbShowUser2.Text == "N") { Globals.User2Show = "n"; }
-            if (cmbUser2TextShow.Text == "N") { Globals.User2TextShow = "n"; }
+            //            Globals.gaugename = ""; Globals.User2Show = "N"; Globals.User2TextShow = "N";  //reset to no values
+            if (cmbShowUser2.Text == "N") { Globals.User2Show = "N"; }
+            if (cmbUser2TextShow.Text == "N") { Globals.User2TextShow = "N"; }
             if (cmbShowUser2.Text == "Panel 1") { Globals.User2Show = "1"; }
             if (cmbUser2TextShow.Text == "Panel 1") { Globals.User2TextShow = "1"; }
             if (cmbShowUser2.Text == "Panel 2") { Globals.User2Show = "2"; }
@@ -1113,28 +1325,37 @@ namespace kkdash
 
             if ((Globals.User2Show == "1") || (Globals.User2TextShow == "1"))
             {
-                Globals.showP1 = "Y";
                 Globals.gaugename = "User2";
+                Globals.showP1 = "Y";
                 if ((Globals.User2Show == "1") && (Globals.User2TextShow != "1"))
                 {
-                    Globals.User2valp1 = Globals.gaugename + "," + Globals.User2Show + "," + Globals.User2NeedleWidth + "," + Globals.User2NeedleLength + "," + Globals.User2NeedleX + "," + Globals.User2NeedleY + "," + Globals.User2Offset + "," + Globals.User2End + "," + Globals.User2Top + "," + "n" + "," + Globals.User2TextX + "," + Globals.User2TextY + "," + Globals.User2FontSize + "," + Globals.User2TextStyle + "," + Globals.User2NeedleType + "," + Globals.User2Needle;
+                    Globals.User2valp1 = Globals.gaugename + "," + Globals.User2Show + "," + Globals.User2NeedleWidth + "," + Globals.User2NeedleLength + "," + Globals.User2NeedleX + "," + Globals.User2NeedleY + "," + Globals.User2Offset + "," + Globals.User2End + "," + Globals.User2Top + "," + "n" + "," + Globals.User2TextX + "," + Globals.User2TextY + "," + Globals.User2FontSize + "," + Globals.User2TextStyle + "," + Globals.User2NeedleType + "," + Globals.User2Needle + "," + Globals.User2GPIO;
                 }
                 if ((Globals.User2Show != "1") && (Globals.User2TextShow == "1"))
                 {
-                    Globals.User2valp1 = Globals.gaugename + "," + "n" + "," + Globals.User2NeedleWidth + "," + Globals.User2NeedleLength + "," + Globals.User2NeedleX + "," + Globals.User2NeedleY + "," + Globals.User2Offset + "," + Globals.User2End + "," + Globals.User2Top + "," + Globals.User2TextShow + "," + Globals.User2TextX + "," + Globals.User2TextY + "," + Globals.User2FontSize + "," + Globals.User2TextStyle + "," + Globals.User2NeedleType + "," + Globals.User2Needle;
+                    Globals.User2valp1 = Globals.gaugename + "," + "N" + "," + Globals.User2NeedleWidth + "," + Globals.User2NeedleLength + "," + Globals.User2NeedleX + "," + Globals.User2NeedleY + "," + Globals.User2Offset + "," + Globals.User2End + "," + Globals.User2Top + "," + Globals.User2TextShow + "," + Globals.User2TextX + "," + Globals.User2TextY + "," + Globals.User2FontSize + "," + Globals.User2TextStyle + "," + Globals.User2NeedleType + "," + Globals.User2Needle + "," + Globals.User2GPIO;
+                }
+                if ((Globals.User2Show == "1") && (Globals.User2TextShow == "1"))
+                {
+                    Globals.User2valp1 = Globals.gaugename + "," + Globals.User2Show + "," + Globals.User2NeedleWidth + "," + Globals.User2NeedleLength + "," + Globals.User2NeedleX + "," + Globals.User2NeedleY + "," + Globals.User2Offset + "," + Globals.User2End + "," + Globals.User2Top + "," + Globals.User2TextShow + "," + Globals.User2TextX + "," + Globals.User2TextY + "," + Globals.User2FontSize + "," + Globals.User2TextStyle + "," + Globals.User2NeedleType + "," + Globals.User2Needle + "," + Globals.User2GPIO;
                 }
             }
+
             if ((Globals.User2Show == "2") || (Globals.User2TextShow == "2"))
             {
-                Globals.showP2 = "Y";
                 Globals.gaugename = "User2";
+                Globals.showP2 = "Y";
                 if ((Globals.User2Show == "2") && (Globals.User2TextShow != "2"))
                 {
-                    Globals.User2valp2 = Globals.gaugename + "," + Globals.User2Show + "," + Globals.User2NeedleWidth + "," + Globals.User2NeedleLength + "," + Globals.User2NeedleX + "," + Globals.User2NeedleY + "," + Globals.User2Offset + "," + Globals.User2End + "," + Globals.User2Top + "," + "n" + "," + Globals.User2TextX + "," + Globals.User2TextY + "," + Globals.User2FontSize + "," + Globals.User2TextStyle + "," + Globals.User2NeedleType + "," + Globals.User2Needle;
+                    Globals.User2valp2 = Globals.gaugename + "," + Globals.User2Show + "," + Globals.User2NeedleWidth + "," + Globals.User2NeedleLength + "," + Globals.User2NeedleX + "," + Globals.User2NeedleY + "," + Globals.User2Offset + "," + Globals.User2End + "," + Globals.User2Top + "," + "n" + "," + Globals.User2TextX + "," + Globals.User2TextY + "," + Globals.User2FontSize + "," + Globals.User2TextStyle + "," + Globals.User2NeedleType + "," + Globals.User2Needle + "," + Globals.User2GPIO;
                 }
                 if ((Globals.User2Show != "2") && (Globals.User2TextShow == "2"))
                 {
-                    Globals.User2valp2 = Globals.gaugename + "," + "n" + "," + Globals.User2NeedleWidth + "," + Globals.User2NeedleLength + "," + Globals.User2NeedleX + "," + Globals.User2NeedleY + "," + Globals.User2Offset + "," + Globals.User2End + "," + Globals.User2Top + "," + Globals.User2TextShow + "," + Globals.User2TextX + "," + Globals.User2TextY + "," + Globals.User2FontSize + "," + Globals.User2TextStyle + "," + Globals.User2NeedleType + "," + Globals.User2Needle;
+                    Globals.User2valp2 = Globals.gaugename + "," + "N" + "," + Globals.User2NeedleWidth + "," + Globals.User2NeedleLength + "," + Globals.User2NeedleX + "," + Globals.User2NeedleY + "," + Globals.User2Offset + "," + Globals.User2End + "," + Globals.User2Top + "," + Globals.User2TextShow + "," + Globals.User2TextX + "," + Globals.User2TextY + "," + Globals.User2FontSize + "," + Globals.User2TextStyle + "," + Globals.User2NeedleType + "," + Globals.User2Needle + "," + Globals.User2GPIO;
+                }
+                if ((Globals.User2Show == "2") && (Globals.User2TextShow == "2"))
+                {
+                    Globals.User2valp2 = Globals.gaugename + "," + Globals.User2Show + "," + Globals.User2NeedleWidth + "," + Globals.User2NeedleLength + "," + Globals.User2NeedleX + "," + Globals.User2NeedleY + "," + Globals.User2Offset + "," + Globals.User2End + "," + Globals.User2Top + "," + Globals.User2TextShow + "," + Globals.User2TextX + "," + Globals.User2TextY + "," + Globals.User2FontSize + "," + Globals.User2TextStyle + "," + Globals.User2NeedleType + "," + Globals.User2Needle + "," + Globals.User2GPIO;
                 }
             }
             if ((Globals.User2Show == "3") || (Globals.User2TextShow == "3"))
@@ -1143,18 +1364,22 @@ namespace kkdash
                 Globals.gaugename = "User2";
                 if ((Globals.User2Show == "3") && (Globals.User2TextShow != "3"))
                 {
-                    Globals.User2valp3 = Globals.gaugename + "," + Globals.User2Show + "," + Globals.User2NeedleWidth + "," + Globals.User2NeedleLength + "," + Globals.User2NeedleX + "," + Globals.User2NeedleY + "," + Globals.User2Offset + "," + Globals.User2End + "," + Globals.User2Top + "," + "n" + "," + Globals.User2TextX + "," + Globals.User2TextY + "," + Globals.User2FontSize + "," + Globals.User2TextStyle + "," + Globals.User2NeedleType + "," + Globals.User2Needle;
+                    Globals.User2valp3 = Globals.gaugename + "," + Globals.User2Show + "," + Globals.User2NeedleWidth + "," + Globals.User2NeedleLength + "," + Globals.User2NeedleX + "," + Globals.User2NeedleY + "," + Globals.User2Offset + "," + Globals.User2End + "," + Globals.User2Top + "," + "n" + "," + Globals.User2TextX + "," + Globals.User2TextY + "," + Globals.User2FontSize + "," + Globals.User2TextStyle + "," + Globals.User2NeedleType + "," + Globals.User2Needle + "," + Globals.User2GPIO;
                 }
                 if ((Globals.User2Show != "3") && (Globals.User2TextShow == "3"))
                 {
-                    Globals.User2valp3 = Globals.gaugename + "," + "n" + "," + Globals.User2NeedleWidth + "," + Globals.User2NeedleLength + "," + Globals.User2NeedleX + "," + Globals.User2NeedleY + "," + Globals.User2Offset + "," + Globals.User2End + "," + Globals.User2Top + "," + Globals.User2TextShow + "," + Globals.User2TextX + "," + Globals.User2TextY + "," + Globals.User2FontSize + "," + Globals.User2TextStyle + "," + Globals.User2NeedleType + "," + Globals.User2Needle;
+                    Globals.User2valp3 = Globals.gaugename + "," + "N" + "," + Globals.User2NeedleWidth + "," + Globals.User2NeedleLength + "," + Globals.User2NeedleX + "," + Globals.User2NeedleY + "," + Globals.User2Offset + "," + Globals.User2End + "," + Globals.User2Top + "," + Globals.User2TextShow + "," + Globals.User2TextX + "," + Globals.User2TextY + "," + Globals.User2FontSize + "," + Globals.User2TextStyle + "," + Globals.User2NeedleType + "," + Globals.User2Needle + "," + Globals.User2GPIO;
+                }
+                if ((Globals.User2Show == "3") && (Globals.User2TextShow == "3"))
+                {
+                    Globals.User2valp3 = Globals.gaugename + "," + Globals.User2Show + "," + Globals.User2NeedleWidth + "," + Globals.User2NeedleLength + "," + Globals.User2NeedleX + "," + Globals.User2NeedleY + "," + Globals.User2Offset + "," + Globals.User2End + "," + Globals.User2Top + "," + Globals.User2TextShow + "," + Globals.User2TextX + "," + Globals.User2TextY + "," + Globals.User2FontSize + "," + Globals.User2TextStyle + "," + Globals.User2NeedleType + "," + Globals.User2Needle + "," + Globals.User2GPIO;
                 }
             }
 
             //User3
-            Globals.gaugename = ""; Globals.User3Show = "n"; Globals.User3TextShow = "n";  //reset to no values
-            if (cmbShowUser3.Text == "N") { Globals.User3Show = "n"; }
-            if (cmbUser3TextShow.Text == "N") { Globals.User3TextShow = "n"; }
+            //            Globals.gaugename = ""; Globals.User3Show = "N"; Globals.User3TextShow = "N";  //reset to no values
+            if (cmbShowUser3.Text == "N") { Globals.User3Show = "N"; }
+            if (cmbUser3TextShow.Text == "N") { Globals.User3TextShow = "N"; }
             if (cmbShowUser3.Text == "Panel 1") { Globals.User3Show = "1"; }
             if (cmbUser3TextShow.Text == "Panel 1") { Globals.User3TextShow = "1"; }
             if (cmbShowUser3.Text == "Panel 2") { Globals.User3Show = "2"; }
@@ -1164,28 +1389,37 @@ namespace kkdash
 
             if ((Globals.User3Show == "1") || (Globals.User3TextShow == "1"))
             {
-                Globals.showP1 = "Y";
                 Globals.gaugename = "User3";
+                Globals.showP1 = "Y";
                 if ((Globals.User3Show == "1") && (Globals.User3TextShow != "1"))
                 {
-                    Globals.User3valp1 = Globals.gaugename + "," + Globals.User3Show + "," + Globals.User3NeedleWidth + "," + Globals.User3NeedleLength + "," + Globals.User3NeedleX + "," + Globals.User3NeedleY + "," + Globals.User3Offset + "," + Globals.User3End + "," + Globals.User3Top + "," + "n" + "," + Globals.User3TextX + "," + Globals.User3TextY + "," + Globals.User3FontSize + "," + Globals.User3TextStyle + "," + Globals.User3NeedleType + "," + Globals.User3Needle;
+                    Globals.User3valp1 = Globals.gaugename + "," + Globals.User3Show + "," + Globals.User3NeedleWidth + "," + Globals.User3NeedleLength + "," + Globals.User3NeedleX + "," + Globals.User3NeedleY + "," + Globals.User3Offset + "," + Globals.User3End + "," + Globals.User3Top + "," + "n" + "," + Globals.User3TextX + "," + Globals.User3TextY + "," + Globals.User3FontSize + "," + Globals.User3TextStyle + "," + Globals.User3NeedleType + "," + Globals.User3Needle + "," + Globals.User3GPIO;
                 }
                 if ((Globals.User3Show != "1") && (Globals.User3TextShow == "1"))
                 {
-                    Globals.User3valp1 = Globals.gaugename + "," + "n" + "," + Globals.User3NeedleWidth + "," + Globals.User3NeedleLength + "," + Globals.User3NeedleX + "," + Globals.User3NeedleY + "," + Globals.User3Offset + "," + Globals.User3End + "," + Globals.User3Top + "," + Globals.User3TextShow + "," + Globals.User3TextX + "," + Globals.User3TextY + "," + Globals.User3FontSize + "," + Globals.User3TextStyle + "," + Globals.User3NeedleType + "," + Globals.User3Needle;
+                    Globals.User3valp1 = Globals.gaugename + "," + "N" + "," + Globals.User3NeedleWidth + "," + Globals.User3NeedleLength + "," + Globals.User3NeedleX + "," + Globals.User3NeedleY + "," + Globals.User3Offset + "," + Globals.User3End + "," + Globals.User3Top + "," + Globals.User3TextShow + "," + Globals.User3TextX + "," + Globals.User3TextY + "," + Globals.User3FontSize + "," + Globals.User3TextStyle + "," + Globals.User3NeedleType + "," + Globals.User3Needle + "," + Globals.User3GPIO;
+                }
+                if ((Globals.User3Show == "1") && (Globals.User3TextShow == "1"))
+                {
+                    Globals.User3valp1 = Globals.gaugename + "," + Globals.User3Show + "," + Globals.User3NeedleWidth + "," + Globals.User3NeedleLength + "," + Globals.User3NeedleX + "," + Globals.User3NeedleY + "," + Globals.User3Offset + "," + Globals.User3End + "," + Globals.User3Top + "," + Globals.User3TextShow + "," + Globals.User3TextX + "," + Globals.User3TextY + "," + Globals.User3FontSize + "," + Globals.User3TextStyle + "," + Globals.User3NeedleType + "," + Globals.User3Needle + "," + Globals.User3GPIO;
                 }
             }
+
             if ((Globals.User3Show == "2") || (Globals.User3TextShow == "2"))
             {
-                Globals.showP2 = "Y";
                 Globals.gaugename = "User3";
+                Globals.showP2 = "Y";
                 if ((Globals.User3Show == "2") && (Globals.User3TextShow != "2"))
                 {
-                    Globals.User3valp2 = Globals.gaugename + "," + Globals.User3Show + "," + Globals.User3NeedleWidth + "," + Globals.User3NeedleLength + "," + Globals.User3NeedleX + "," + Globals.User3NeedleY + "," + Globals.User3Offset + "," + Globals.User3End + "," + Globals.User3Top + "," + "n" + "," + Globals.User3TextX + "," + Globals.User3TextY + "," + Globals.User3FontSize + "," + Globals.User3TextStyle + "," + Globals.User3NeedleType + "," + Globals.User3Needle;
+                    Globals.User3valp2 = Globals.gaugename + "," + Globals.User3Show + "," + Globals.User3NeedleWidth + "," + Globals.User3NeedleLength + "," + Globals.User3NeedleX + "," + Globals.User3NeedleY + "," + Globals.User3Offset + "," + Globals.User3End + "," + Globals.User3Top + "," + "n" + "," + Globals.User3TextX + "," + Globals.User3TextY + "," + Globals.User3FontSize + "," + Globals.User3TextStyle + "," + Globals.User3NeedleType + "," + Globals.User3Needle + "," + Globals.User3GPIO;
                 }
                 if ((Globals.User3Show != "2") && (Globals.User3TextShow == "2"))
                 {
-                    Globals.User3valp2 = Globals.gaugename + "," + "n" + "," + Globals.User3NeedleWidth + "," + Globals.User3NeedleLength + "," + Globals.User3NeedleX + "," + Globals.User3NeedleY + "," + Globals.User3Offset + "," + Globals.User3End + "," + Globals.User3Top + "," + Globals.User3TextShow + "," + Globals.User3TextX + "," + Globals.User3TextY + "," + Globals.User3FontSize + "," + Globals.User3TextStyle + "," + Globals.User3NeedleType + "," + Globals.User3Needle;
+                    Globals.User3valp2 = Globals.gaugename + "," + "N" + "," + Globals.User3NeedleWidth + "," + Globals.User3NeedleLength + "," + Globals.User3NeedleX + "," + Globals.User3NeedleY + "," + Globals.User3Offset + "," + Globals.User3End + "," + Globals.User3Top + "," + Globals.User3TextShow + "," + Globals.User3TextX + "," + Globals.User3TextY + "," + Globals.User3FontSize + "," + Globals.User3TextStyle + "," + Globals.User3NeedleType + "," + Globals.User3Needle + "," + Globals.User3GPIO;
+                }
+                if ((Globals.User3Show == "2") && (Globals.User3TextShow == "2"))
+                {
+                    Globals.User3valp2 = Globals.gaugename + "," + Globals.User3Show + "," + Globals.User3NeedleWidth + "," + Globals.User3NeedleLength + "," + Globals.User3NeedleX + "," + Globals.User3NeedleY + "," + Globals.User3Offset + "," + Globals.User3End + "," + Globals.User3Top + "," + Globals.User3TextShow + "," + Globals.User3TextX + "," + Globals.User3TextY + "," + Globals.User3FontSize + "," + Globals.User3TextStyle + "," + Globals.User3NeedleType + "," + Globals.User3Needle + "," + Globals.User3GPIO;
                 }
             }
             if ((Globals.User3Show == "3") || (Globals.User3TextShow == "3"))
@@ -1194,18 +1428,86 @@ namespace kkdash
                 Globals.gaugename = "User3";
                 if ((Globals.User3Show == "3") && (Globals.User3TextShow != "3"))
                 {
-                    Globals.User3valp3 = Globals.gaugename + "," + Globals.User3Show + "," + Globals.User3NeedleWidth + "," + Globals.User3NeedleLength + "," + Globals.User3NeedleX + "," + Globals.User3NeedleY + "," + Globals.User3Offset + "," + Globals.User3End + "," + Globals.User3Top + "," + "n" + "," + Globals.User3TextX + "," + Globals.User3TextY + "," + Globals.User3FontSize + "," + Globals.User3TextStyle + "," + Globals.User3NeedleType + "," + Globals.User3Needle;
+                    Globals.User3valp3 = Globals.gaugename + "," + Globals.User3Show + "," + Globals.User3NeedleWidth + "," + Globals.User3NeedleLength + "," + Globals.User3NeedleX + "," + Globals.User3NeedleY + "," + Globals.User3Offset + "," + Globals.User3End + "," + Globals.User3Top + "," + "n" + "," + Globals.User3TextX + "," + Globals.User3TextY + "," + Globals.User3FontSize + "," + Globals.User3TextStyle + "," + Globals.User3NeedleType + "," + Globals.User3Needle + "," + Globals.User3GPIO;
                 }
                 if ((Globals.User3Show != "3") && (Globals.User3TextShow == "3"))
                 {
-                    Globals.User3valp3 = Globals.gaugename + "," + "n" + "," + Globals.User3NeedleWidth + "," + Globals.User3NeedleLength + "," + Globals.User3NeedleX + "," + Globals.User3NeedleY + "," + Globals.User3Offset + "," + Globals.User3End + "," + Globals.User3Top + "," + Globals.User3TextShow + "," + Globals.User3TextX + "," + Globals.User3TextY + "," + Globals.User3FontSize + "," + Globals.User3TextStyle + "," + Globals.User3NeedleType + "," + Globals.User3Needle;
+                    Globals.User3valp3 = Globals.gaugename + "," + "N" + "," + Globals.User3NeedleWidth + "," + Globals.User3NeedleLength + "," + Globals.User3NeedleX + "," + Globals.User3NeedleY + "," + Globals.User3Offset + "," + Globals.User3End + "," + Globals.User3Top + "," + Globals.User3TextShow + "," + Globals.User3TextX + "," + Globals.User3TextY + "," + Globals.User3FontSize + "," + Globals.User3TextStyle + "," + Globals.User3NeedleType + "," + Globals.User3Needle + "," + Globals.User3GPIO;
+                }
+                if ((Globals.User3Show == "3") && (Globals.User3TextShow == "3"))
+                {
+                    Globals.User3valp3 = Globals.gaugename + "," + Globals.User3Show + "," + Globals.User3NeedleWidth + "," + Globals.User3NeedleLength + "," + Globals.User3NeedleX + "," + Globals.User3NeedleY + "," + Globals.User3Offset + "," + Globals.User3End + "," + Globals.User3Top + "," + Globals.User3TextShow + "," + Globals.User3TextX + "," + Globals.User3TextY + "," + Globals.User3FontSize + "," + Globals.User3TextStyle + "," + Globals.User3NeedleType + "," + Globals.User3Needle + "," + Globals.User3GPIO;
+                }
+            }
+
+            //User3
+            //            Globals.gaugename = ""; Globals.User3Show = "N"; Globals.User3TextShow = "N";  //reset to no values
+            if (cmbShowUser3.Text == "N") { Globals.User3Show = "N"; }
+            if (cmbUser3TextShow.Text == "N") { Globals.User3TextShow = "N"; }
+            if (cmbShowUser3.Text == "Panel 1") { Globals.User3Show = "1"; }
+            if (cmbUser3TextShow.Text == "Panel 1") { Globals.User3TextShow = "1"; }
+            if (cmbShowUser3.Text == "Panel 2") { Globals.User3Show = "2"; }
+            if (cmbUser3TextShow.Text == "Panel 2") { Globals.User3TextShow = "2"; }
+            if (cmbShowUser3.Text == "Panel 3") { Globals.User3Show = "3"; }
+            if (cmbUser3TextShow.Text == "Panel 3") { Globals.User3TextShow = "3"; }
+
+            if ((Globals.User3Show == "1") || (Globals.User3TextShow == "1"))
+            {
+                Globals.gaugename = "User3";
+                Globals.showP1 = "Y";
+                if ((Globals.User3Show == "1") && (Globals.User3TextShow != "1"))
+                {
+                    Globals.User3valp1 = Globals.gaugename + "," + Globals.User3Show + "," + Globals.User3NeedleWidth + "," + Globals.User3NeedleLength + "," + Globals.User3NeedleX + "," + Globals.User3NeedleY + "," + Globals.User3Offset + "," + Globals.User3End + "," + Globals.User3Top + "," + "n" + "," + Globals.User3TextX + "," + Globals.User3TextY + "," + Globals.User3FontSize + "," + Globals.User3TextStyle + "," + Globals.User3NeedleType + "," + Globals.User3Needle + "," + Globals.User3GPIO;
+                }
+                if ((Globals.User3Show != "1") && (Globals.User3TextShow == "1"))
+                {
+                    Globals.User3valp1 = Globals.gaugename + "," + "N" + "," + Globals.User3NeedleWidth + "," + Globals.User3NeedleLength + "," + Globals.User3NeedleX + "," + Globals.User3NeedleY + "," + Globals.User3Offset + "," + Globals.User3End + "," + Globals.User3Top + "," + Globals.User3TextShow + "," + Globals.User3TextX + "," + Globals.User3TextY + "," + Globals.User3FontSize + "," + Globals.User3TextStyle + "," + Globals.User3NeedleType + "," + Globals.User3Needle + "," + Globals.User3GPIO;
+                }
+                if ((Globals.User3Show == "1") && (Globals.User3TextShow == "1"))
+                {
+                    Globals.User3valp1 = Globals.gaugename + "," + Globals.User3Show + "," + Globals.User3NeedleWidth + "," + Globals.User3NeedleLength + "," + Globals.User3NeedleX + "," + Globals.User3NeedleY + "," + Globals.User3Offset + "," + Globals.User3End + "," + Globals.User3Top + "," + Globals.User3TextShow + "," + Globals.User3TextX + "," + Globals.User3TextY + "," + Globals.User3FontSize + "," + Globals.User3TextStyle + "," + Globals.User3NeedleType + "," + Globals.User3Needle + "," + Globals.User3GPIO;
+                }
+            }
+
+            if ((Globals.User3Show == "2") || (Globals.User3TextShow == "2"))
+            {
+                Globals.gaugename = "User3";
+                Globals.showP2 = "Y";
+                if ((Globals.User3Show == "2") && (Globals.User3TextShow != "2"))
+                {
+                    Globals.User3valp2 = Globals.gaugename + "," + Globals.User3Show + "," + Globals.User3NeedleWidth + "," + Globals.User3NeedleLength + "," + Globals.User3NeedleX + "," + Globals.User3NeedleY + "," + Globals.User3Offset + "," + Globals.User3End + "," + Globals.User3Top + "," + "n" + "," + Globals.User3TextX + "," + Globals.User3TextY + "," + Globals.User3FontSize + "," + Globals.User3TextStyle + "," + Globals.User3NeedleType + "," + Globals.User3Needle + "," + Globals.User3GPIO;
+                }
+                if ((Globals.User3Show != "2") && (Globals.User3TextShow == "2"))
+                {
+                    Globals.User3valp2 = Globals.gaugename + "," + "N" + "," + Globals.User3NeedleWidth + "," + Globals.User3NeedleLength + "," + Globals.User3NeedleX + "," + Globals.User3NeedleY + "," + Globals.User3Offset + "," + Globals.User3End + "," + Globals.User3Top + "," + Globals.User3TextShow + "," + Globals.User3TextX + "," + Globals.User3TextY + "," + Globals.User3FontSize + "," + Globals.User3TextStyle + "," + Globals.User3NeedleType + "," + Globals.User3Needle + "," + Globals.User3GPIO;
+                }
+                if ((Globals.User3Show == "2") && (Globals.User3TextShow == "2"))
+                {
+                    Globals.User3valp2 = Globals.gaugename + "," + Globals.User3Show + "," + Globals.User3NeedleWidth + "," + Globals.User3NeedleLength + "," + Globals.User3NeedleX + "," + Globals.User3NeedleY + "," + Globals.User3Offset + "," + Globals.User3End + "," + Globals.User3Top + "," + Globals.User3TextShow + "," + Globals.User3TextX + "," + Globals.User3TextY + "," + Globals.User3FontSize + "," + Globals.User3TextStyle + "," + Globals.User3NeedleType + "," + Globals.User3Needle + "," + Globals.User3GPIO;
+                }
+            }
+            if ((Globals.User3Show == "3") || (Globals.User3TextShow == "3"))
+            {
+                Globals.showP3 = "Y";
+                Globals.gaugename = "User3";
+                if ((Globals.User3Show == "3") && (Globals.User3TextShow != "3"))
+                {
+                    Globals.User3valp3 = Globals.gaugename + "," + Globals.User3Show + "," + Globals.User3NeedleWidth + "," + Globals.User3NeedleLength + "," + Globals.User3NeedleX + "," + Globals.User3NeedleY + "," + Globals.User3Offset + "," + Globals.User3End + "," + Globals.User3Top + "," + "n" + "," + Globals.User3TextX + "," + Globals.User3TextY + "," + Globals.User3FontSize + "," + Globals.User3TextStyle + "," + Globals.User3NeedleType + "," + Globals.User3Needle + "," + Globals.User3GPIO;
+                }
+                if ((Globals.User3Show != "3") && (Globals.User3TextShow == "3"))
+                {
+                    Globals.User3valp3 = Globals.gaugename + "," + "N" + "," + Globals.User3NeedleWidth + "," + Globals.User3NeedleLength + "," + Globals.User3NeedleX + "," + Globals.User3NeedleY + "," + Globals.User3Offset + "," + Globals.User3End + "," + Globals.User3Top + "," + Globals.User3TextShow + "," + Globals.User3TextX + "," + Globals.User3TextY + "," + Globals.User3FontSize + "," + Globals.User3TextStyle + "," + Globals.User3NeedleType + "," + Globals.User3Needle + "," + Globals.User3GPIO;
+                }
+                if ((Globals.User3Show == "3") && (Globals.User3TextShow == "3"))
+                {
+                    Globals.User3valp3 = Globals.gaugename + "," + Globals.User3Show + "," + Globals.User3NeedleWidth + "," + Globals.User3NeedleLength + "," + Globals.User3NeedleX + "," + Globals.User3NeedleY + "," + Globals.User3Offset + "," + Globals.User3End + "," + Globals.User3Top + "," + Globals.User3TextShow + "," + Globals.User3TextX + "," + Globals.User3TextY + "," + Globals.User3FontSize + "," + Globals.User3TextStyle + "," + Globals.User3NeedleType + "," + Globals.User3Needle + "," + Globals.User3GPIO;
                 }
             }
 
             //User4
-            Globals.gaugename = ""; Globals.User4Show = "n"; Globals.User4TextShow = "n";  //reset to no values
-            if (cmbShowUser4.Text == "N") { Globals.User4Show = "n"; }
-            if (cmbUser4TextShow.Text == "N") { Globals.User4TextShow = "n"; }
+            //            Globals.gaugename = ""; Globals.User4Show = "N"; Globals.User4TextShow = "N";  //reset to no values
+            if (cmbShowUser4.Text == "N") { Globals.User4Show = "N"; }
+            if (cmbUser4TextShow.Text == "N") { Globals.User4TextShow = "N"; }
             if (cmbShowUser4.Text == "Panel 1") { Globals.User4Show = "1"; }
             if (cmbUser4TextShow.Text == "Panel 1") { Globals.User4TextShow = "1"; }
             if (cmbShowUser4.Text == "Panel 2") { Globals.User4Show = "2"; }
@@ -1215,28 +1517,37 @@ namespace kkdash
 
             if ((Globals.User4Show == "1") || (Globals.User4TextShow == "1"))
             {
-                Globals.showP1 = "Y";
                 Globals.gaugename = "User4";
+                Globals.showP1 = "Y";
                 if ((Globals.User4Show == "1") && (Globals.User4TextShow != "1"))
                 {
-                    Globals.User4valp1 = Globals.gaugename + "," + Globals.User4Show + "," + Globals.User4NeedleWidth + "," + Globals.User4NeedleLength + "," + Globals.User4NeedleX + "," + Globals.User4NeedleY + "," + Globals.User4Offset + "," + Globals.User4End + "," + Globals.User4Top + "," + "n" + "," + Globals.User4TextX + "," + Globals.User4TextY + "," + Globals.User4FontSize + "," + Globals.User4TextStyle + "," + Globals.User4NeedleType + "," + Globals.User4Needle;
+                    Globals.User4valp1 = Globals.gaugename + "," + Globals.User4Show + "," + Globals.User4NeedleWidth + "," + Globals.User4NeedleLength + "," + Globals.User4NeedleX + "," + Globals.User4NeedleY + "," + Globals.User4Offset + "," + Globals.User4End + "," + Globals.User4Top + "," + "n" + "," + Globals.User4TextX + "," + Globals.User4TextY + "," + Globals.User4FontSize + "," + Globals.User4TextStyle + "," + Globals.User4NeedleType + "," + Globals.User4Needle + "," + Globals.User4GPIO;
                 }
                 if ((Globals.User4Show != "1") && (Globals.User4TextShow == "1"))
                 {
-                    Globals.User4valp1 = Globals.gaugename + "," + "n" + "," + Globals.User4NeedleWidth + "," + Globals.User4NeedleLength + "," + Globals.User4NeedleX + "," + Globals.User4NeedleY + "," + Globals.User4Offset + "," + Globals.User4End + "," + Globals.User4Top + "," + Globals.User4TextShow + "," + Globals.User4TextX + "," + Globals.User4TextY + "," + Globals.User4FontSize + "," + Globals.User4TextStyle + "," + Globals.User4NeedleType + "," + Globals.User4Needle;
+                    Globals.User4valp1 = Globals.gaugename + "," + "N" + "," + Globals.User4NeedleWidth + "," + Globals.User4NeedleLength + "," + Globals.User4NeedleX + "," + Globals.User4NeedleY + "," + Globals.User4Offset + "," + Globals.User4End + "," + Globals.User4Top + "," + Globals.User4TextShow + "," + Globals.User4TextX + "," + Globals.User4TextY + "," + Globals.User4FontSize + "," + Globals.User4TextStyle + "," + Globals.User4NeedleType + "," + Globals.User4Needle + "," + Globals.User4GPIO;
+                }
+                if ((Globals.User4Show == "1") && (Globals.User4TextShow == "1"))
+                {
+                    Globals.User4valp1 = Globals.gaugename + "," + Globals.User4Show + "," + Globals.User4NeedleWidth + "," + Globals.User4NeedleLength + "," + Globals.User4NeedleX + "," + Globals.User4NeedleY + "," + Globals.User4Offset + "," + Globals.User4End + "," + Globals.User4Top + "," + Globals.User4TextShow + "," + Globals.User4TextX + "," + Globals.User4TextY + "," + Globals.User4FontSize + "," + Globals.User4TextStyle + "," + Globals.User4NeedleType + "," + Globals.User4Needle + "," + Globals.User4GPIO;
                 }
             }
+
             if ((Globals.User4Show == "2") || (Globals.User4TextShow == "2"))
             {
-                Globals.showP2 = "Y";
                 Globals.gaugename = "User4";
+                Globals.showP2 = "Y";
                 if ((Globals.User4Show == "2") && (Globals.User4TextShow != "2"))
                 {
-                    Globals.User4valp2 = Globals.gaugename + "," + Globals.User4Show + "," + Globals.User4NeedleWidth + "," + Globals.User4NeedleLength + "," + Globals.User4NeedleX + "," + Globals.User4NeedleY + "," + Globals.User4Offset + "," + Globals.User4End + "," + Globals.User4Top + "," + "n" + "," + Globals.User4TextX + "," + Globals.User4TextY + "," + Globals.User4FontSize + "," + Globals.User4TextStyle + "," + Globals.User4NeedleType + "," + Globals.User4Needle;
+                    Globals.User4valp2 = Globals.gaugename + "," + Globals.User4Show + "," + Globals.User4NeedleWidth + "," + Globals.User4NeedleLength + "," + Globals.User4NeedleX + "," + Globals.User4NeedleY + "," + Globals.User4Offset + "," + Globals.User4End + "," + Globals.User4Top + "," + "n" + "," + Globals.User4TextX + "," + Globals.User4TextY + "," + Globals.User4FontSize + "," + Globals.User4TextStyle + "," + Globals.User4NeedleType + "," + Globals.User4Needle + "," + Globals.User4GPIO;
                 }
                 if ((Globals.User4Show != "2") && (Globals.User4TextShow == "2"))
                 {
-                    Globals.User4valp2 = Globals.gaugename + "," + "n" + "," + Globals.User4NeedleWidth + "," + Globals.User4NeedleLength + "," + Globals.User4NeedleX + "," + Globals.User4NeedleY + "," + Globals.User4Offset + "," + Globals.User4End + "," + Globals.User4Top + "," + Globals.User4TextShow + "," + Globals.User4TextX + "," + Globals.User4TextY + "," + Globals.User4FontSize + "," + Globals.User4TextStyle + "," + Globals.User4NeedleType + "," + Globals.User4Needle;
+                    Globals.User4valp2 = Globals.gaugename + "," + "N" + "," + Globals.User4NeedleWidth + "," + Globals.User4NeedleLength + "," + Globals.User4NeedleX + "," + Globals.User4NeedleY + "," + Globals.User4Offset + "," + Globals.User4End + "," + Globals.User4Top + "," + Globals.User4TextShow + "," + Globals.User4TextX + "," + Globals.User4TextY + "," + Globals.User4FontSize + "," + Globals.User4TextStyle + "," + Globals.User4NeedleType + "," + Globals.User4Needle + "," + Globals.User4GPIO;
+                }
+                if ((Globals.User4Show == "2") && (Globals.User4TextShow == "2"))
+                {
+                    Globals.User4valp2 = Globals.gaugename + "," + Globals.User4Show + "," + Globals.User4NeedleWidth + "," + Globals.User4NeedleLength + "," + Globals.User4NeedleX + "," + Globals.User4NeedleY + "," + Globals.User4Offset + "," + Globals.User4End + "," + Globals.User4Top + "," + Globals.User4TextShow + "," + Globals.User4TextX + "," + Globals.User4TextY + "," + Globals.User4FontSize + "," + Globals.User4TextStyle + "," + Globals.User4NeedleType + "," + Globals.User4Needle + "," + Globals.User4GPIO;
                 }
             }
             if ((Globals.User4Show == "3") || (Globals.User4TextShow == "3"))
@@ -1245,24 +1556,52 @@ namespace kkdash
                 Globals.gaugename = "User4";
                 if ((Globals.User4Show == "3") && (Globals.User4TextShow != "3"))
                 {
-                    Globals.User4valp3 = Globals.gaugename + "," + Globals.User4Show + "," + Globals.User4NeedleWidth + "," + Globals.User4NeedleLength + "," + Globals.User4NeedleX + "," + Globals.User4NeedleY + "," + Globals.User4Offset + "," + Globals.User4End + "," + Globals.User4Top + "," + "n" + "," + Globals.User4TextX + "," + Globals.User4TextY + "," + Globals.User4FontSize + "," + Globals.User4TextStyle + "," + Globals.User4NeedleType + "," + Globals.User4Needle;
+                    Globals.User4valp3 = Globals.gaugename + "," + Globals.User4Show + "," + Globals.User4NeedleWidth + "," + Globals.User4NeedleLength + "," + Globals.User4NeedleX + "," + Globals.User4NeedleY + "," + Globals.User4Offset + "," + Globals.User4End + "," + Globals.User4Top + "," + "n" + "," + Globals.User4TextX + "," + Globals.User4TextY + "," + Globals.User4FontSize + "," + Globals.User4TextStyle + "," + Globals.User4NeedleType + "," + Globals.User4Needle + "," + Globals.User4GPIO;
                 }
                 if ((Globals.User4Show != "3") && (Globals.User4TextShow == "3"))
                 {
-                    Globals.User4valp3 = Globals.gaugename + "," + "n" + "," + Globals.User4NeedleWidth + "," + Globals.User4NeedleLength + "," + Globals.User4NeedleX + "," + Globals.User4NeedleY + "," + Globals.User4Offset + "," + Globals.User4End + "," + Globals.User4Top + "," + Globals.User4TextShow + "," + Globals.User4TextX + "," + Globals.User4TextY + "," + Globals.User4FontSize + "," + Globals.User4TextStyle + "," + Globals.User4NeedleType + "," + Globals.User4Needle;
+                    Globals.User4valp3 = Globals.gaugename + "," + "N" + "," + Globals.User4NeedleWidth + "," + Globals.User4NeedleLength + "," + Globals.User4NeedleX + "," + Globals.User4NeedleY + "," + Globals.User4Offset + "," + Globals.User4End + "," + Globals.User4Top + "," + Globals.User4TextShow + "," + Globals.User4TextX + "," + Globals.User4TextY + "," + Globals.User4FontSize + "," + Globals.User4TextStyle + "," + Globals.User4NeedleType + "," + Globals.User4Needle + "," + Globals.User4GPIO;
+                }
+                if ((Globals.User4Show == "3") && (Globals.User4TextShow == "3"))
+                {
+                    Globals.User4valp3 = Globals.gaugename + "," + Globals.User4Show + "," + Globals.User4NeedleWidth + "," + Globals.User4NeedleLength + "," + Globals.User4NeedleX + "," + Globals.User4NeedleY + "," + Globals.User4Offset + "," + Globals.User4End + "," + Globals.User4Top + "," + Globals.User4TextShow + "," + Globals.User4TextX + "," + Globals.User4TextY + "," + Globals.User4FontSize + "," + Globals.User4TextStyle + "," + Globals.User4NeedleType + "," + Globals.User4Needle + "," + Globals.User4GPIO;
                 }
             }
         }
-
         // --------------------------------------------------------------------------------populate screen from global variables----------------------------------------------------------
         private void resolveFromVars()
         {
             //======================================================================= get items held in the config==================================================================
 
+            txtSpeedoCanOffset.Text = Globals.SpeedoCanOffset;
+            txtTachoCanOffset.Text = Globals.TachoCanOffset;
+            txtBoostCanOffset.Text = Globals.BoostCanOffset;
+            txtTempCanOffset.Text = Globals.TempCanOffset;
+            txtOilCanOffset.Text = Globals.OilCanOffset;
+            txtOilTCanOffset.Text = Globals.OilTCanOffset;
+            txtFuelCanOffset.Text = Globals.FuelCanOffset;
+            txtFuelTCanOffset.Text = Globals.FuelTCanOffset;
+            txtFuelPCanOffset.Text = Globals.FuelPCanOffset;
+            txtBatteryCanOffset.Text = Globals.BatteryCanOffset;
             txtUser1CanOffset.Text = Globals.User1CanOffset;
             txtUser2CanOffset.Text = Globals.User2CanOffset;
             txtUser3CanOffset.Text = Globals.User3CanOffset;
             txtUser4CanOffset.Text = Globals.User4CanOffset;
+
+            cmbGPIOSpeedo.Text = Globals.SpeedoGPIO;
+            cmbGPIOTacho.Text = Globals.TachoGPIO;
+            cmbGPIOBoost.Text = Globals.BoostGPIO;
+            cmbGPIOTemp.Text = Globals.TempGPIO;
+            cmbGPIOOil.Text = Globals.OilGPIO;
+            cmbGPIOOilT.Text = Globals.OilTGPIO;
+            cmbGPIOFuel.Text = Globals.FuelGPIO;
+            cmbGPIOFuelT.Text = Globals.FuelTGPIO;
+            cmbGPIOFuelP.Text = Globals.FuelPGPIO;
+            cmbGPIOBattery.Text = Globals.BatteryGPIO;
+            cmbGPIOUser1.Text = Globals.User1GPIO;
+            cmbGPIOUser2.Text = Globals.User2GPIO;
+            cmbGPIOUser3.Text = Globals.User3GPIO;
+            cmbGPIOUser4.Text = Globals.User4GPIO;
 
             lblP1Path.Text = Globals.P1BG;
             lblP2Path.Text = Globals.P2BG;
@@ -1753,6 +2092,52 @@ namespace kkdash
                     break;
             }
 
+            txtBatteryNeedleWidth.Text = Globals.BatteryNeedleWidth;
+            txtBatteryNeedleLength.Text = Globals.BatteryNeedleLength;
+            txtBatteryNeedleX.Text = Globals.BatteryNeedleX;
+            txtBatteryNeedleY.Text = Globals.BatteryNeedleY;
+            txtBatteryEnd.Text = Globals.BatteryEnd;
+            txtBatteryTop.Text = Globals.BatteryTop;
+            txtBatteryTextX.Text = Globals.BatteryTextX;
+            txtBatteryTextY.Text = Globals.BatteryTextY;
+            txtBatteryFontSize.Text = Globals.BatteryFontSize;
+            cmbBatteryTextStyle.Text = Globals.BatteryTextStyle;
+            txtBatteryNeedle.Text = Globals.BatteryNeedle;
+            cmbBattery.Text = Globals.BatteryNeedleType;
+
+            if (Globals.BatteryShow == "1") { cmbShowBattery.Text = "Panel 1"; }
+            if (Globals.BatteryShow == "2") { cmbShowBattery.Text = "Panel 2"; }
+            if (Globals.BatteryShow == "3") { cmbShowBattery.Text = "Panel 3"; }
+
+            if (Globals.BatteryTextShow == "1") { cmbBatteryTextShow.Text = "Panel 1"; }
+            if (Globals.BatteryTextShow == "2") { cmbBatteryTextShow.Text = "Panel 2"; }
+            if (Globals.BatteryTextShow == "3") { cmbBatteryTextShow.Text = "Panel 3"; }
+
+            switch (Globals.BatteryNeedleType)
+            {
+                case "barV":
+                    if (Globals.BatteryOffset == "1")
+                    {
+                        cmbBatteryAboveBelow.Text = "á";
+                    }
+                    else
+                    {
+                        cmbBatteryAboveBelow.Text = "â";
+                    }
+                    break;
+
+                case "barH":
+                    if (Globals.BatteryOffset == "1")
+                    {
+                        cmbBatteryAboveBelow.Text = "á";
+                    }
+                    else
+                    {
+                        cmbBatteryAboveBelow.Text = "â";
+                    }
+                    break;
+            }
+
             txtUser1NeedleWidth.Text = Globals.User1NeedleWidth;
             txtUser1NeedleLength.Text = Globals.User1NeedleLength;
             txtUser1NeedleX.Text = Globals.User1NeedleX;
@@ -1936,10 +2321,6 @@ namespace kkdash
                     }
                     break;
             }
-
-
-
-
         }
 
         //------------------------------------------------------------------------------- poplulate variable from textboxes ----------------------------------------------------------------------------------
@@ -1955,6 +2336,37 @@ namespace kkdash
             Globals.p2DispHeight = txtP2Height.Text;
             Globals.p3DispWidth = txtP3Width.Text;
             Globals.p3DispHeight = txtP3Height.Text;
+
+            Globals.SpeedoCanOffset = txtSpeedoCanOffset.Text;
+            Globals.TachoCanOffset = txtTachoCanOffset.Text;
+            Globals.BoostCanOffset = txtBoostCanOffset.Text;
+            Globals.TempCanOffset = txtTempCanOffset.Text;
+            Globals.OilCanOffset = txtOilCanOffset.Text;
+            Globals.OilTCanOffset = txtOilTCanOffset.Text;
+            Globals.FuelCanOffset = txtFuelCanOffset.Text;
+            Globals.FuelTCanOffset = txtFuelTCanOffset.Text;
+            Globals.FuelPCanOffset = txtFuelPCanOffset.Text;
+            Globals.BatteryCanOffset = txtBatteryCanOffset.Text;
+            Globals.User1CanOffset = txtUser1CanOffset.Text;
+            Globals.User2CanOffset = txtUser2CanOffset.Text;
+            Globals.User3CanOffset = txtUser3CanOffset.Text;
+            Globals.User4CanOffset = txtUser4CanOffset.Text;
+
+            Globals.SpeedoGPIO = cmbGPIOSpeedo.Text;
+            Globals.TachoGPIO = cmbGPIOTacho.Text;
+            Globals.BoostGPIO = cmbGPIOBoost.Text;
+            Globals.TempGPIO = cmbGPIOTemp.Text;
+            Globals.OilGPIO = cmbGPIOOil.Text;
+            Globals.OilTGPIO = cmbGPIOOilT.Text;
+            Globals.FuelGPIO = cmbGPIOFuel.Text;
+            Globals.FuelTGPIO = cmbGPIOFuelT.Text;
+            Globals.FuelPGPIO = cmbGPIOFuelP.Text;
+            Globals.BatteryGPIO = cmbGPIOBattery.Text;
+            Globals.User1GPIO = cmbGPIOUser1.Text;
+            Globals.User2GPIO = cmbGPIOUser2.Text;
+            Globals.User3GPIO = cmbGPIOUser3.Text;
+            Globals.User4GPIO = cmbGPIOUser4.Text;
+
 
             switch (cmbSerCanP1ECU.Text)
             {
@@ -2123,7 +2535,7 @@ namespace kkdash
             Globals.SpeedoNeedle = txtSpeedoNeedle.Text;
             switch (cmbSpeedo.Text)
             {
-                case "Guage":
+                case "Gauge":
                     Globals.SpeedoNeedleType = "gauge";
                     break;
                 case "Vertical Bar":
@@ -2149,7 +2561,7 @@ namespace kkdash
             Globals.TachoNeedle = txtTachoNeedle.Text;
             switch (cmbTacho.Text)
             {
-                case "Guage":
+                case "Gauge":
                     Globals.TachoNeedleType = "gauge";
                     break;
                 case "Vertical Bar":
@@ -2175,7 +2587,7 @@ namespace kkdash
             Globals.BoostNeedle = txtBoostNeedle.Text;
             switch (cmbBoost.Text)
             {
-                case "Guage":
+                case "Gauge":
                     Globals.BoostNeedleType = "gauge";
                     break;
                 case "Vertical Bar":
@@ -2201,7 +2613,7 @@ namespace kkdash
             Globals.TempNeedle = txtTempNeedle.Text;
             switch (cmbTemp.Text)
             {
-                case "Guage":
+                case "Gauge":
                     Globals.TempNeedleType = "gauge";
                     break;
                 case "Vertical Bar":
@@ -2227,7 +2639,7 @@ namespace kkdash
             Globals.OilNeedle = txtOilNeedle.Text;
             switch (cmbOil.Text)
             {
-                case "Guage":
+                case "Gauge":
                     Globals.OilNeedleType = "gauge";
                     break;
                 case "Vertical Bar":
@@ -2253,7 +2665,7 @@ namespace kkdash
             Globals.OilTNeedle = txtOilTNeedle.Text;
             switch (cmbOilT.Text)
             {
-                case "Guage":
+                case "Gauge":
                     Globals.OilTNeedleType = "gauge";
                     break;
                 case "Vertical Bar":
@@ -2279,7 +2691,7 @@ namespace kkdash
             Globals.FuelNeedle = txtFuelNeedle.Text;
             switch (cmbFuel.Text)
             {
-                case "Guage":
+                case "Gauge":
                     Globals.FuelNeedleType = "gauge";
                     break;
                 case "Vertical Bar":
@@ -2305,7 +2717,7 @@ namespace kkdash
             Globals.FuelTNeedle = txtFuelTNeedle.Text;
             switch (cmbFuelT.Text)
             {
-                case "Guage":
+                case "Gauge":
                     Globals.FuelTNeedleType = "gauge";
                     break;
                 case "Vertical Bar":
@@ -2331,7 +2743,7 @@ namespace kkdash
             Globals.FuelPNeedle = txtFuelPNeedle.Text;
             switch (cmbFuelP.Text)
             {
-                case "Guage":
+                case "Gauge":
                     Globals.FuelPNeedleType = "gauge";
                     break;
                 case "Vertical Bar":
@@ -2342,6 +2754,32 @@ namespace kkdash
                     break;
             }
             if (Globals.FuelPNeedleType != "Gauge") { if (cmbFuelPAboveBelow.Text == "á") { Globals.FuelPNeedle = txtFuelPNeedle.Text; Globals.FuelPOffset = "1"; } else { Globals.FuelPNeedle = txtFuelPNeedle.Text; Globals.FuelPOffset = "0"; } } else { Globals.FuelPNeedle = txtFuelPNeedle.Text; }
+
+            Globals.BatteryNeedleWidth = txtBatteryNeedleWidth.Text;
+            Globals.BatteryNeedleLength = txtBatteryNeedleLength.Text;
+            Globals.BatteryNeedleX = txtBatteryNeedleX.Text;
+            Globals.BatteryNeedleY = txtBatteryNeedleY.Text;
+            Globals.BatteryOffset = txtBatteryOffset.Text;
+            Globals.BatteryEnd = txtBatteryEnd.Text;
+            Globals.BatteryTop = txtBatteryTop.Text;
+            Globals.BatteryTextX = txtBatteryTextX.Text;
+            Globals.BatteryTextY = txtBatteryTextY.Text;
+            Globals.BatteryFontSize = txtBatteryFontSize.Text;
+            Globals.BatteryTextStyle = cmbBatteryTextStyle.Text;
+            Globals.BatteryNeedle = txtBatteryNeedle.Text;
+            switch (cmbBattery.Text)
+            {
+                case "Gauge":
+                    Globals.BatteryNeedleType = "gauge";
+                    break;
+                case "Vertical Bar":
+                    Globals.BatteryNeedleType = "barV";
+                    break;
+                case "Horizontal Bar":
+                    Globals.BatteryNeedleType = "barH";
+                    break;
+            }
+            if (Globals.BatteryNeedleType != "Gauge") { if (cmbBatteryAboveBelow.Text == "á") { Globals.BatteryNeedle = txtBatteryNeedle.Text; Globals.BatteryOffset = "1"; } else { Globals.BatteryNeedle = txtBatteryNeedle.Text; Globals.BatteryOffset = "0"; } } else { Globals.BatteryNeedle = txtBatteryNeedle.Text; }
 
             Globals.User1NeedleWidth = txtUser1NeedleWidth.Text;
             Globals.User1NeedleLength = txtUser1NeedleLength.Text;
@@ -2357,7 +2795,7 @@ namespace kkdash
             Globals.User1Needle = txtUser1Needle.Text;
             switch (cmbUser1.Text)
             {
-                case "Guage":
+                case "Gauge":
                     Globals.User1NeedleType = "gauge";
                     break;
                 case "Vertical Bar":
@@ -2383,7 +2821,7 @@ namespace kkdash
             Globals.User2Needle = txtUser2Needle.Text;
             switch (cmbUser2.Text)
             {
-                case "Guage":
+                case "Gauge":
                     Globals.User2NeedleType = "gauge";
                     break;
                 case "Vertical Bar":
@@ -2409,7 +2847,7 @@ namespace kkdash
             Globals.User3Needle = txtUser3Needle.Text;
             switch (cmbUser3.Text)
             {
-                case "Guage":
+                case "Gauge":
                     Globals.User3NeedleType = "gauge";
                     break;
                 case "Vertical Bar":
@@ -2435,7 +2873,7 @@ namespace kkdash
             Globals.User4Needle = txtUser4Needle.Text;
             switch (cmbUser4.Text)
             {
-                case "Guage":
+                case "Gauge":
                     Globals.User4NeedleType = "gauge";
                     break;
                 case "Vertical Bar":
@@ -2467,10 +2905,12 @@ namespace kkdash
             Globals.FuelNeedleWidth = "0"; Globals.FuelNeedleLength = "0"; Globals.FuelNeedleX = "0"; Globals.FuelNeedleY = "0"; Globals.FuelOffset = "0"; Globals.FuelEnd = "0"; Globals.FuelTop = "0"; Globals.FuelTextX = "0"; Globals.FuelTextY = "0"; Globals.FuelFontSize = "0"; Globals.FuelTextStyle = "smooth"; Globals.FuelNeedle = "textures/instrument_needle.png";
             Globals.FuelTNeedleWidth = "0"; Globals.FuelTNeedleLength = "0"; Globals.FuelTNeedleX = "0"; Globals.FuelTNeedleY = "0"; Globals.FuelTOffset = "0"; Globals.FuelTEnd = "0"; Globals.FuelTTop = "0"; Globals.FuelTTextX = "0"; Globals.FuelTTextY = "0"; Globals.FuelTFontSize = "0"; Globals.FuelTTextStyle = "smooth"; Globals.FuelTNeedle = "textures/instrument_needle.png";
             Globals.FuelPNeedleWidth = "0"; Globals.FuelPNeedleLength = "0"; Globals.FuelPNeedleX = "0"; Globals.FuelPNeedleY = "0"; Globals.FuelPOffset = "0"; Globals.FuelPEnd = "0"; Globals.FuelPTop = "0"; Globals.FuelPTextX = "0"; Globals.FuelPTextY = "0"; Globals.FuelPFontSize = "0"; Globals.FuelPTextStyle = "smooth"; Globals.FuelPNeedle = "textures/instrument_needle.png";
+            Globals.BatteryNeedleWidth = "0"; Globals.BatteryNeedleLength = "0"; Globals.BatteryNeedleX = "0"; Globals.BatteryNeedleY = "0"; Globals.BatteryOffset = "0"; Globals.BatteryEnd = "0"; Globals.BatteryTop = "0"; Globals.BatteryTextX = "0"; Globals.BatteryTextY = "0"; Globals.BatteryFontSize = "0"; Globals.BatteryTextStyle = "smooth"; Globals.BatteryNeedle = "textures/instrument_needle.png";
             Globals.User1NeedleWidth = "0"; Globals.User1NeedleLength = "0"; Globals.User1NeedleX = "0"; Globals.User1NeedleY = "0"; Globals.User1Offset = "0"; Globals.User1End = "0"; Globals.User1Top = "0"; Globals.User1TextX = "0"; Globals.User1TextY = "0"; Globals.User1FontSize = "0"; Globals.User1TextStyle = "smooth"; Globals.User1Needle = "textures/instrument_needle.png";
             Globals.User2NeedleWidth = "0"; Globals.User2NeedleLength = "0"; Globals.User2NeedleX = "0"; Globals.User2NeedleY = "0"; Globals.User2Offset = "0"; Globals.User2End = "0"; Globals.User2Top = "0"; Globals.User2TextX = "0"; Globals.User2TextY = "0"; Globals.User2FontSize = "0"; Globals.User2TextStyle = "smooth"; Globals.User2Needle = "textures/instrument_needle.png";
             Globals.User3NeedleWidth = "0"; Globals.User3NeedleLength = "0"; Globals.User3NeedleX = "0"; Globals.User3NeedleY = "0"; Globals.User3Offset = "0"; Globals.User3End = "0"; Globals.User3Top = "0"; Globals.User3TextX = "0"; Globals.User3TextY = "0"; Globals.User3FontSize = "0"; Globals.User3TextStyle = "smooth"; Globals.User3Needle = "textures/instrument_needle.png";
             Globals.User4NeedleWidth = "0"; Globals.User4NeedleLength = "0"; Globals.User4NeedleX = "0"; Globals.User4NeedleY = "0"; Globals.User4Offset = "0"; Globals.User4End = "0"; Globals.User4Top = "0"; Globals.User4TextX = "0"; Globals.User4TextY = "0"; Globals.User4FontSize = "0"; Globals.User4TextStyle = "smooth"; Globals.User4Needle = "textures/instrument_needle.png";
+            Globals.SpeedoGPIO = "N"; Globals.TachoGPIO = "N"; Globals.BoostGPIO = "N"; Globals.TempGPIO = "N"; Globals.OilGPIO = "N"; Globals.OilTGPIO = "N"; Globals.FuelGPIO = "N"; Globals.FuelTGPIO = "N"; Globals.FuelPGPIO = "N"; Globals.BatteryGPIO = "N"; Globals.User1GPIO = "N"; Globals.User2GPIO = "N"; Globals.User3GPIO = "N"; Globals.User4GPIO = "N";
         }
 
             //-----------------------------------------------------------------------show changes for gauge / bar----------------------------------------------------------------------------
@@ -2517,6 +2957,11 @@ namespace kkdash
         private void cmbFuelP_SelectedIndexChanged(object sender, EventArgs e)
         {
             setupgauges("FuelP");
+        }
+
+        private void cmbBattery_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            setupgauges("Battery");
         }
 
         private void cmbUser1_SelectedIndexChanged_1(object sender, EventArgs e)
@@ -2795,6 +3240,19 @@ namespace kkdash
                 }
             }
 
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label42_Click(object sender, EventArgs e)
+        {
+            frmPi frmpi = new frmPi();
+
+            // Show the settings form
+            frmpi.Show();
         }
     }
 }

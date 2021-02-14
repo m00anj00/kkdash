@@ -30,7 +30,7 @@ namespace kkdash
         public static void WriteCSVfile(int PanelNo)
         {
             string PNO = "";
-            string speedoval = "", tachoval = "", boostval = "", tempval = "", oilval = "", oiltval = "", fuelval = "", fueltval = "", fuelpval = "", user1val = "", user2val = "", user3val = "", user4val = "";
+            string speedoval = "", tachoval = "", boostval = "", tempval = "", oilval = "", oiltval = "", fuelval = "", fueltval = "", fuelpval = "", batteryval = "", user1val = "", user2val = "", user3val = "", user4val = "";
             string strSeperator = ",";
             string strFilePath = "";
             string disptxt = "";
@@ -58,10 +58,11 @@ namespace kkdash
                     fuelval = Globals.Fuelvalp1;
                     fueltval = Globals.FuelTvalp1;
                     fuelpval = Globals.FuelPvalp1;
-                    user1val = Globals.FuelPvalp1;
-                    user2val = Globals.FuelPvalp1;
-                    user3val = Globals.FuelPvalp1;
-                    user4val = Globals.FuelPvalp1;
+                    batteryval = Globals.Batteryvalp1;
+                    user1val = Globals.User1valp1;
+                    user2val = Globals.User2valp1;
+                    user3val = Globals.User3valp1;
+                    user4val = Globals.User4valp1;
 
                     p1conn = Globals.p1connection;
                     p2conn = Globals.p2connection;
@@ -89,10 +90,11 @@ namespace kkdash
                     fuelval = Globals.Fuelvalp2;
                     fueltval = Globals.FuelTvalp2;
                     fuelpval = Globals.FuelPvalp2;
-                    user1val = Globals.FuelPvalp1;
-                    user2val = Globals.FuelPvalp1;
-                    user3val = Globals.FuelPvalp1;
-                    user4val = Globals.FuelPvalp1;
+                    batteryval = Globals.Batteryvalp2;
+                    user1val = Globals.User1valp1;
+                    user2val = Globals.User2valp1;
+                    user3val = Globals.User3valp1;
+                    user4val = Globals.User4valp1;
                     pantxt = "Background," + Globals.P2BG + ",,,,,,,,,,,,,,";
 
                     PNO = "2";
@@ -115,10 +117,11 @@ namespace kkdash
                     fuelval = Globals.Fuelvalp3;
                     fueltval = Globals.FuelTvalp3;
                     fuelpval = Globals.FuelPvalp3;
-                    user1val = Globals.FuelPvalp1;
-                    user2val = Globals.FuelPvalp1;
-                    user3val = Globals.FuelPvalp1;
-                    user4val = Globals.FuelPvalp1;
+                    batteryval = Globals.Batteryvalp3;
+                    user1val = Globals.User1valp1;
+                    user2val = Globals.User2valp1;
+                    user3val = Globals.User3valp1;
+                    user4val = Globals.User4valp1;
                     pantxt = "Background," + Globals.P3BG + ",,,,,,,,,,,,,,";
 
                     PNO = "3";
@@ -148,7 +151,8 @@ namespace kkdash
                 new string[] { "#BAR GRAPH STYLE: (barV or barH)" },
                 new string[] { "#name,show,bar width(V),bar height(H),gaugex,gaugey,warn%,guageend,topval,textshow,textX,textY,fontsize,fontstyle,type (barV/barH),0=warn% below-1=warn% above" },
                 new string[] { ",,,,,,,,,,,,,," },
-                new string[] { "Userdefined", Globals.User1name, Globals.User2name, Globals.User3name, Globals.User4name, Globals.User1CanOffset, Globals.User2CanOffset, Globals.User3CanOffset, Globals.User4CanOffset, ",,,,,," },
+                new string[] { "Userdefined", Globals.User1name, Globals.User2name, Globals.User3name, Globals.User4name, ",,,,,,,,," },
+                new string[] { "Offsets", Globals.SpeedoCanOffset, Globals.TachoCanOffset, Globals.BoostCanOffset, Globals.TempCanOffset, Globals.OilCanOffset, Globals.OilTCanOffset, Globals.FuelCanOffset, Globals.FuelTCanOffset, Globals.FuelPCanOffset, Globals.BatteryCanOffset, Globals.User1CanOffset, Globals.User2CanOffset, Globals.User3CanOffset, Globals.User4CanOffset, },
                 new string[] { "#Speedo:",",,,,,,,,,,,,," },
                 new string[] { speedoval },
                 new string[] { "#Tacho:",",,,,,,,,,,,,," },
@@ -167,6 +171,8 @@ namespace kkdash
                 new string[] { fueltval },
                 new string[] { "#FuelPressure:",",,,,,,,,,,,,," },
                 new string[] { fuelpval },
+                new string[] { "#Battery:",",,,,,,,,,,,,," },
+                new string[] { batteryval },
                 new string[] { "#User1:",",,,,,,,,,,,,," },
                 new string[] { user1val },
                 new string[] { "#User2:",",,,,,,,,,,,,," },

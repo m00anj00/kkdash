@@ -42,6 +42,7 @@ namespace kkdash
             this.pictureBG.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBG.TabIndex = 0;
             this.pictureBG.TabStop = false;
+            this.pictureBG.Click += new System.EventHandler(this.pictureBG_Click);
             this.pictureBG.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBG_MouseClick);
             // 
             // frmGraphic1
@@ -49,7 +50,7 @@ namespace kkdash
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1279, 788);
+            this.ClientSize = new System.Drawing.Size(1904, 1061);
             this.Controls.Add(this.pictureBG);
             this.MaximizeBox = false;
             this.MinimizeBox = false;

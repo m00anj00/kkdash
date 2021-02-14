@@ -128,11 +128,50 @@
             this.cmbTachoTextShow = new System.Windows.Forms.ComboBox();
             this.cmbSpeedoTextShow = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label46 = new System.Windows.Forms.Label();
             this.txtUser4CanOffset = new System.Windows.Forms.TextBox();
             this.txtUser3CanOffset = new System.Windows.Forms.TextBox();
             this.txtUser2CanOffset = new System.Windows.Forms.TextBox();
             this.txtUser1CanOffset = new System.Windows.Forms.TextBox();
+            this.txtBatteryCanOffset = new System.Windows.Forms.TextBox();
+            this.txtFuelPCanOffset = new System.Windows.Forms.TextBox();
+            this.txtFuelTCanOffset = new System.Windows.Forms.TextBox();
+            this.txtFuelCanOffset = new System.Windows.Forms.TextBox();
+            this.txtOilTCanOffset = new System.Windows.Forms.TextBox();
+            this.txtOilCanOffset = new System.Windows.Forms.TextBox();
+            this.cmbGPIOUser4 = new System.Windows.Forms.ComboBox();
+            this.cmbGPIOUser3 = new System.Windows.Forms.ComboBox();
+            this.cmbGPIOUser2 = new System.Windows.Forms.ComboBox();
+            this.cmbGPIOBattery = new System.Windows.Forms.ComboBox();
+            this.cmbGPIOUser1 = new System.Windows.Forms.ComboBox();
+            this.cmbGPIOFuelP = new System.Windows.Forms.ComboBox();
+            this.cmbGPIOFuelT = new System.Windows.Forms.ComboBox();
+            this.cmbGPIOFuel = new System.Windows.Forms.ComboBox();
+            this.cmbGPIOOilT = new System.Windows.Forms.ComboBox();
+            this.cmbGPIOOil = new System.Windows.Forms.ComboBox();
+            this.cmbGPIOTemp = new System.Windows.Forms.ComboBox();
+            this.cmbGPIOBoost = new System.Windows.Forms.ComboBox();
+            this.cmbGPIOTacho = new System.Windows.Forms.ComboBox();
+            this.cmbGPIOSpeedo = new System.Windows.Forms.ComboBox();
+            this.cmbBatteryAboveBelow = new System.Windows.Forms.ComboBox();
+            this.txtBatteryTop = new System.Windows.Forms.TextBox();
+            this.txtBatteryEnd = new System.Windows.Forms.TextBox();
+            this.txtBatteryOffset = new System.Windows.Forms.TextBox();
+            this.txtBatteryNeedleX = new System.Windows.Forms.TextBox();
+            this.txtBatteryNeedleY = new System.Windows.Forms.TextBox();
+            this.txtBatteryNeedleWidth = new System.Windows.Forms.TextBox();
+            this.txtBatteryNeedleLength = new System.Windows.Forms.TextBox();
+            this.txtBatteryNeedle = new System.Windows.Forms.TextBox();
+            this.cmbShowBattery = new System.Windows.Forms.ComboBox();
+            this.label50 = new System.Windows.Forms.Label();
+            this.cmbBattery = new System.Windows.Forms.ComboBox();
+            this.txtBatteryX = new System.Windows.Forms.TextBox();
+            this.txtBatteryY = new System.Windows.Forms.TextBox();
+            this.label42 = new System.Windows.Forms.Label();
+            this.label46 = new System.Windows.Forms.Label();
+            this.txtTempCanOffset = new System.Windows.Forms.TextBox();
+            this.txtBoostCanOffset = new System.Windows.Forms.TextBox();
+            this.txtTachoCanOffset = new System.Windows.Forms.TextBox();
+            this.txtSpeedoCanOffset = new System.Windows.Forms.TextBox();
             this.cmbUser4AboveBelow = new System.Windows.Forms.ComboBox();
             this.cmbUser3AboveBelow = new System.Windows.Forms.ComboBox();
             this.cmbUser2AboveBelow = new System.Windows.Forms.ComboBox();
@@ -281,6 +320,11 @@
             this.label32 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtBatteryFontSize = new System.Windows.Forms.TextBox();
+            this.cmbBatteryTextShow = new System.Windows.Forms.ComboBox();
+            this.cmbBatteryTextStyle = new System.Windows.Forms.ComboBox();
+            this.txtBatteryTextY = new System.Windows.Forms.TextBox();
+            this.txtBatteryTextX = new System.Windows.Forms.TextBox();
             this.txtUser4FontSize = new System.Windows.Forms.TextBox();
             this.cmbUser4TextShow = new System.Windows.Forms.ComboBox();
             this.cmbUser4TextStyle = new System.Windows.Forms.ComboBox();
@@ -1593,11 +1637,50 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.DarkTurquoise;
-            this.panel1.Controls.Add(this.label46);
             this.panel1.Controls.Add(this.txtUser4CanOffset);
             this.panel1.Controls.Add(this.txtUser3CanOffset);
             this.panel1.Controls.Add(this.txtUser2CanOffset);
             this.panel1.Controls.Add(this.txtUser1CanOffset);
+            this.panel1.Controls.Add(this.txtBatteryCanOffset);
+            this.panel1.Controls.Add(this.txtFuelPCanOffset);
+            this.panel1.Controls.Add(this.txtFuelTCanOffset);
+            this.panel1.Controls.Add(this.txtFuelCanOffset);
+            this.panel1.Controls.Add(this.txtOilTCanOffset);
+            this.panel1.Controls.Add(this.txtOilCanOffset);
+            this.panel1.Controls.Add(this.cmbGPIOUser4);
+            this.panel1.Controls.Add(this.cmbGPIOUser3);
+            this.panel1.Controls.Add(this.cmbGPIOUser2);
+            this.panel1.Controls.Add(this.cmbGPIOBattery);
+            this.panel1.Controls.Add(this.cmbGPIOUser1);
+            this.panel1.Controls.Add(this.cmbGPIOFuelP);
+            this.panel1.Controls.Add(this.cmbGPIOFuelT);
+            this.panel1.Controls.Add(this.cmbGPIOFuel);
+            this.panel1.Controls.Add(this.cmbGPIOOilT);
+            this.panel1.Controls.Add(this.cmbGPIOOil);
+            this.panel1.Controls.Add(this.cmbGPIOTemp);
+            this.panel1.Controls.Add(this.cmbGPIOBoost);
+            this.panel1.Controls.Add(this.cmbGPIOTacho);
+            this.panel1.Controls.Add(this.cmbGPIOSpeedo);
+            this.panel1.Controls.Add(this.cmbBatteryAboveBelow);
+            this.panel1.Controls.Add(this.txtBatteryTop);
+            this.panel1.Controls.Add(this.txtBatteryEnd);
+            this.panel1.Controls.Add(this.txtBatteryOffset);
+            this.panel1.Controls.Add(this.txtBatteryNeedleX);
+            this.panel1.Controls.Add(this.txtBatteryNeedleY);
+            this.panel1.Controls.Add(this.txtBatteryNeedleWidth);
+            this.panel1.Controls.Add(this.txtBatteryNeedleLength);
+            this.panel1.Controls.Add(this.txtBatteryNeedle);
+            this.panel1.Controls.Add(this.cmbShowBattery);
+            this.panel1.Controls.Add(this.label50);
+            this.panel1.Controls.Add(this.cmbBattery);
+            this.panel1.Controls.Add(this.txtBatteryX);
+            this.panel1.Controls.Add(this.txtBatteryY);
+            this.panel1.Controls.Add(this.label42);
+            this.panel1.Controls.Add(this.label46);
+            this.panel1.Controls.Add(this.txtTempCanOffset);
+            this.panel1.Controls.Add(this.txtBoostCanOffset);
+            this.panel1.Controls.Add(this.txtTachoCanOffset);
+            this.panel1.Controls.Add(this.txtSpeedoCanOffset);
             this.panel1.Controls.Add(this.cmbUser4AboveBelow);
             this.panel1.Controls.Add(this.cmbUser3AboveBelow);
             this.panel1.Controls.Add(this.cmbUser2AboveBelow);
@@ -1800,13 +1883,798 @@
             this.panel1.Location = new System.Drawing.Point(10, 346);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1196, 629);
+            this.panel1.Size = new System.Drawing.Size(1245, 669);
             this.panel1.TabIndex = 132;
+            // 
+            // txtUser4CanOffset
+            // 
+            this.txtUser4CanOffset.BackColor = System.Drawing.Color.Silver;
+            this.txtUser4CanOffset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtUser4CanOffset.Location = new System.Drawing.Point(1132, 617);
+            this.txtUser4CanOffset.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtUser4CanOffset.Name = "txtUser4CanOffset";
+            this.txtUser4CanOffset.Size = new System.Drawing.Size(43, 22);
+            this.txtUser4CanOffset.TabIndex = 330;
+            this.txtUser4CanOffset.Text = "0";
+            // 
+            // txtUser3CanOffset
+            // 
+            this.txtUser3CanOffset.BackColor = System.Drawing.Color.Silver;
+            this.txtUser3CanOffset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtUser3CanOffset.Location = new System.Drawing.Point(1134, 575);
+            this.txtUser3CanOffset.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtUser3CanOffset.Name = "txtUser3CanOffset";
+            this.txtUser3CanOffset.Size = new System.Drawing.Size(43, 22);
+            this.txtUser3CanOffset.TabIndex = 329;
+            this.txtUser3CanOffset.Text = "0";
+            // 
+            // txtUser2CanOffset
+            // 
+            this.txtUser2CanOffset.BackColor = System.Drawing.Color.Silver;
+            this.txtUser2CanOffset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtUser2CanOffset.Location = new System.Drawing.Point(1133, 530);
+            this.txtUser2CanOffset.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtUser2CanOffset.Name = "txtUser2CanOffset";
+            this.txtUser2CanOffset.Size = new System.Drawing.Size(43, 22);
+            this.txtUser2CanOffset.TabIndex = 328;
+            this.txtUser2CanOffset.Text = "0";
+            // 
+            // txtUser1CanOffset
+            // 
+            this.txtUser1CanOffset.BackColor = System.Drawing.Color.Silver;
+            this.txtUser1CanOffset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtUser1CanOffset.Location = new System.Drawing.Point(1132, 485);
+            this.txtUser1CanOffset.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtUser1CanOffset.Name = "txtUser1CanOffset";
+            this.txtUser1CanOffset.Size = new System.Drawing.Size(43, 22);
+            this.txtUser1CanOffset.TabIndex = 327;
+            this.txtUser1CanOffset.Text = "0";
+            // 
+            // txtBatteryCanOffset
+            // 
+            this.txtBatteryCanOffset.BackColor = System.Drawing.Color.Silver;
+            this.txtBatteryCanOffset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtBatteryCanOffset.Location = new System.Drawing.Point(1132, 446);
+            this.txtBatteryCanOffset.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtBatteryCanOffset.Name = "txtBatteryCanOffset";
+            this.txtBatteryCanOffset.Size = new System.Drawing.Size(44, 22);
+            this.txtBatteryCanOffset.TabIndex = 326;
+            this.txtBatteryCanOffset.Text = "0";
+            // 
+            // txtFuelPCanOffset
+            // 
+            this.txtFuelPCanOffset.BackColor = System.Drawing.Color.Silver;
+            this.txtFuelPCanOffset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtFuelPCanOffset.Location = new System.Drawing.Point(1132, 407);
+            this.txtFuelPCanOffset.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtFuelPCanOffset.Name = "txtFuelPCanOffset";
+            this.txtFuelPCanOffset.Size = new System.Drawing.Size(43, 22);
+            this.txtFuelPCanOffset.TabIndex = 325;
+            this.txtFuelPCanOffset.Text = "0";
+            // 
+            // txtFuelTCanOffset
+            // 
+            this.txtFuelTCanOffset.BackColor = System.Drawing.Color.Silver;
+            this.txtFuelTCanOffset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtFuelTCanOffset.Location = new System.Drawing.Point(1132, 368);
+            this.txtFuelTCanOffset.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtFuelTCanOffset.Name = "txtFuelTCanOffset";
+            this.txtFuelTCanOffset.Size = new System.Drawing.Size(43, 22);
+            this.txtFuelTCanOffset.TabIndex = 324;
+            this.txtFuelTCanOffset.Text = "0";
+            // 
+            // txtFuelCanOffset
+            // 
+            this.txtFuelCanOffset.BackColor = System.Drawing.Color.Silver;
+            this.txtFuelCanOffset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtFuelCanOffset.Location = new System.Drawing.Point(1132, 329);
+            this.txtFuelCanOffset.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtFuelCanOffset.Name = "txtFuelCanOffset";
+            this.txtFuelCanOffset.Size = new System.Drawing.Size(43, 22);
+            this.txtFuelCanOffset.TabIndex = 323;
+            this.txtFuelCanOffset.Text = "0";
+            // 
+            // txtOilTCanOffset
+            // 
+            this.txtOilTCanOffset.BackColor = System.Drawing.Color.Silver;
+            this.txtOilTCanOffset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtOilTCanOffset.Location = new System.Drawing.Point(1132, 289);
+            this.txtOilTCanOffset.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtOilTCanOffset.Name = "txtOilTCanOffset";
+            this.txtOilTCanOffset.Size = new System.Drawing.Size(44, 22);
+            this.txtOilTCanOffset.TabIndex = 322;
+            this.txtOilTCanOffset.Text = "0";
+            // 
+            // txtOilCanOffset
+            // 
+            this.txtOilCanOffset.BackColor = System.Drawing.Color.Silver;
+            this.txtOilCanOffset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtOilCanOffset.Location = new System.Drawing.Point(1134, 250);
+            this.txtOilCanOffset.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtOilCanOffset.Name = "txtOilCanOffset";
+            this.txtOilCanOffset.Size = new System.Drawing.Size(43, 22);
+            this.txtOilCanOffset.TabIndex = 321;
+            this.txtOilCanOffset.Text = "0";
+            // 
+            // cmbGPIOUser4
+            // 
+            this.cmbGPIOUser4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cmbGPIOUser4.FormattingEnabled = true;
+            this.cmbGPIOUser4.Items.AddRange(new object[] {
+            "N",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27"});
+            this.cmbGPIOUser4.Location = new System.Drawing.Point(1184, 617);
+            this.cmbGPIOUser4.Name = "cmbGPIOUser4";
+            this.cmbGPIOUser4.Size = new System.Drawing.Size(55, 24);
+            this.cmbGPIOUser4.TabIndex = 320;
+            this.cmbGPIOUser4.Text = "N";
+            // 
+            // cmbGPIOUser3
+            // 
+            this.cmbGPIOUser3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cmbGPIOUser3.FormattingEnabled = true;
+            this.cmbGPIOUser3.Items.AddRange(new object[] {
+            "N",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27"});
+            this.cmbGPIOUser3.Location = new System.Drawing.Point(1182, 575);
+            this.cmbGPIOUser3.Name = "cmbGPIOUser3";
+            this.cmbGPIOUser3.Size = new System.Drawing.Size(55, 24);
+            this.cmbGPIOUser3.TabIndex = 319;
+            this.cmbGPIOUser3.Text = "N";
+            // 
+            // cmbGPIOUser2
+            // 
+            this.cmbGPIOUser2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cmbGPIOUser2.FormattingEnabled = true;
+            this.cmbGPIOUser2.Items.AddRange(new object[] {
+            "N",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27"});
+            this.cmbGPIOUser2.Location = new System.Drawing.Point(1182, 530);
+            this.cmbGPIOUser2.Name = "cmbGPIOUser2";
+            this.cmbGPIOUser2.Size = new System.Drawing.Size(55, 24);
+            this.cmbGPIOUser2.TabIndex = 318;
+            this.cmbGPIOUser2.Text = "N";
+            // 
+            // cmbGPIOBattery
+            // 
+            this.cmbGPIOBattery.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cmbGPIOBattery.FormattingEnabled = true;
+            this.cmbGPIOBattery.Items.AddRange(new object[] {
+            "N",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27"});
+            this.cmbGPIOBattery.Location = new System.Drawing.Point(1182, 446);
+            this.cmbGPIOBattery.Name = "cmbGPIOBattery";
+            this.cmbGPIOBattery.Size = new System.Drawing.Size(55, 24);
+            this.cmbGPIOBattery.TabIndex = 317;
+            this.cmbGPIOBattery.Text = "N";
+            // 
+            // cmbGPIOUser1
+            // 
+            this.cmbGPIOUser1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cmbGPIOUser1.FormattingEnabled = true;
+            this.cmbGPIOUser1.Items.AddRange(new object[] {
+            "N",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27"});
+            this.cmbGPIOUser1.Location = new System.Drawing.Point(1182, 485);
+            this.cmbGPIOUser1.Name = "cmbGPIOUser1";
+            this.cmbGPIOUser1.Size = new System.Drawing.Size(55, 24);
+            this.cmbGPIOUser1.TabIndex = 316;
+            this.cmbGPIOUser1.Text = "N";
+            // 
+            // cmbGPIOFuelP
+            // 
+            this.cmbGPIOFuelP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cmbGPIOFuelP.FormattingEnabled = true;
+            this.cmbGPIOFuelP.Items.AddRange(new object[] {
+            "N",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27"});
+            this.cmbGPIOFuelP.Location = new System.Drawing.Point(1182, 408);
+            this.cmbGPIOFuelP.Name = "cmbGPIOFuelP";
+            this.cmbGPIOFuelP.Size = new System.Drawing.Size(55, 24);
+            this.cmbGPIOFuelP.TabIndex = 315;
+            this.cmbGPIOFuelP.Text = "N";
+            // 
+            // cmbGPIOFuelT
+            // 
+            this.cmbGPIOFuelT.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cmbGPIOFuelT.FormattingEnabled = true;
+            this.cmbGPIOFuelT.Items.AddRange(new object[] {
+            "N",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27"});
+            this.cmbGPIOFuelT.Location = new System.Drawing.Point(1182, 369);
+            this.cmbGPIOFuelT.Name = "cmbGPIOFuelT";
+            this.cmbGPIOFuelT.Size = new System.Drawing.Size(55, 24);
+            this.cmbGPIOFuelT.TabIndex = 314;
+            this.cmbGPIOFuelT.Text = "N";
+            // 
+            // cmbGPIOFuel
+            // 
+            this.cmbGPIOFuel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cmbGPIOFuel.FormattingEnabled = true;
+            this.cmbGPIOFuel.Items.AddRange(new object[] {
+            "N",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27"});
+            this.cmbGPIOFuel.Location = new System.Drawing.Point(1182, 330);
+            this.cmbGPIOFuel.Name = "cmbGPIOFuel";
+            this.cmbGPIOFuel.Size = new System.Drawing.Size(55, 24);
+            this.cmbGPIOFuel.TabIndex = 309;
+            this.cmbGPIOFuel.Text = "N";
+            // 
+            // cmbGPIOOilT
+            // 
+            this.cmbGPIOOilT.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cmbGPIOOilT.FormattingEnabled = true;
+            this.cmbGPIOOilT.Items.AddRange(new object[] {
+            "N",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27"});
+            this.cmbGPIOOilT.Location = new System.Drawing.Point(1182, 289);
+            this.cmbGPIOOilT.Name = "cmbGPIOOilT";
+            this.cmbGPIOOilT.Size = new System.Drawing.Size(55, 24);
+            this.cmbGPIOOilT.TabIndex = 313;
+            this.cmbGPIOOilT.Text = "N";
+            // 
+            // cmbGPIOOil
+            // 
+            this.cmbGPIOOil.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cmbGPIOOil.FormattingEnabled = true;
+            this.cmbGPIOOil.Items.AddRange(new object[] {
+            "N",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27"});
+            this.cmbGPIOOil.Location = new System.Drawing.Point(1182, 250);
+            this.cmbGPIOOil.Name = "cmbGPIOOil";
+            this.cmbGPIOOil.Size = new System.Drawing.Size(55, 24);
+            this.cmbGPIOOil.TabIndex = 312;
+            this.cmbGPIOOil.Text = "N";
+            // 
+            // cmbGPIOTemp
+            // 
+            this.cmbGPIOTemp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cmbGPIOTemp.FormattingEnabled = true;
+            this.cmbGPIOTemp.Items.AddRange(new object[] {
+            "N",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27"});
+            this.cmbGPIOTemp.Location = new System.Drawing.Point(1182, 212);
+            this.cmbGPIOTemp.Name = "cmbGPIOTemp";
+            this.cmbGPIOTemp.Size = new System.Drawing.Size(55, 24);
+            this.cmbGPIOTemp.TabIndex = 311;
+            this.cmbGPIOTemp.Text = "N";
+            // 
+            // cmbGPIOBoost
+            // 
+            this.cmbGPIOBoost.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cmbGPIOBoost.FormattingEnabled = true;
+            this.cmbGPIOBoost.Items.AddRange(new object[] {
+            "N",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27"});
+            this.cmbGPIOBoost.Location = new System.Drawing.Point(1182, 172);
+            this.cmbGPIOBoost.Name = "cmbGPIOBoost";
+            this.cmbGPIOBoost.Size = new System.Drawing.Size(55, 24);
+            this.cmbGPIOBoost.TabIndex = 310;
+            this.cmbGPIOBoost.Text = "N";
+            // 
+            // cmbGPIOTacho
+            // 
+            this.cmbGPIOTacho.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cmbGPIOTacho.FormattingEnabled = true;
+            this.cmbGPIOTacho.Items.AddRange(new object[] {
+            "N",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27"});
+            this.cmbGPIOTacho.Location = new System.Drawing.Point(1182, 133);
+            this.cmbGPIOTacho.Name = "cmbGPIOTacho";
+            this.cmbGPIOTacho.Size = new System.Drawing.Size(55, 24);
+            this.cmbGPIOTacho.TabIndex = 309;
+            this.cmbGPIOTacho.Text = "N";
+            // 
+            // cmbGPIOSpeedo
+            // 
+            this.cmbGPIOSpeedo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cmbGPIOSpeedo.FormattingEnabled = true;
+            this.cmbGPIOSpeedo.Items.AddRange(new object[] {
+            "N",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27"});
+            this.cmbGPIOSpeedo.Location = new System.Drawing.Point(1182, 94);
+            this.cmbGPIOSpeedo.Name = "cmbGPIOSpeedo";
+            this.cmbGPIOSpeedo.Size = new System.Drawing.Size(55, 24);
+            this.cmbGPIOSpeedo.TabIndex = 308;
+            this.cmbGPIOSpeedo.Text = "N";
+            // 
+            // cmbBatteryAboveBelow
+            // 
+            this.cmbBatteryAboveBelow.Font = new System.Drawing.Font("Wingdings", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cmbBatteryAboveBelow.FormattingEnabled = true;
+            this.cmbBatteryAboveBelow.Items.AddRange(new object[] {
+            "á",
+            "â"});
+            this.cmbBatteryAboveBelow.Location = new System.Drawing.Point(736, 445);
+            this.cmbBatteryAboveBelow.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cmbBatteryAboveBelow.Name = "cmbBatteryAboveBelow";
+            this.cmbBatteryAboveBelow.Size = new System.Drawing.Size(50, 25);
+            this.cmbBatteryAboveBelow.TabIndex = 307;
+            this.cmbBatteryAboveBelow.Text = "á";
+            // 
+            // txtBatteryTop
+            // 
+            this.txtBatteryTop.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.txtBatteryTop.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtBatteryTop.Location = new System.Drawing.Point(1086, 446);
+            this.txtBatteryTop.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtBatteryTop.Name = "txtBatteryTop";
+            this.txtBatteryTop.Size = new System.Drawing.Size(40, 22);
+            this.txtBatteryTop.TabIndex = 306;
+            this.txtBatteryTop.Text = "0";
+            // 
+            // txtBatteryEnd
+            // 
+            this.txtBatteryEnd.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.txtBatteryEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtBatteryEnd.Location = new System.Drawing.Point(1038, 446);
+            this.txtBatteryEnd.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtBatteryEnd.Name = "txtBatteryEnd";
+            this.txtBatteryEnd.Size = new System.Drawing.Size(40, 22);
+            this.txtBatteryEnd.TabIndex = 305;
+            this.txtBatteryEnd.Text = "0";
+            // 
+            // txtBatteryOffset
+            // 
+            this.txtBatteryOffset.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.txtBatteryOffset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtBatteryOffset.Location = new System.Drawing.Point(993, 446);
+            this.txtBatteryOffset.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtBatteryOffset.Name = "txtBatteryOffset";
+            this.txtBatteryOffset.Size = new System.Drawing.Size(40, 22);
+            this.txtBatteryOffset.TabIndex = 304;
+            this.txtBatteryOffset.Text = "0";
+            // 
+            // txtBatteryNeedleX
+            // 
+            this.txtBatteryNeedleX.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtBatteryNeedleX.Location = new System.Drawing.Point(898, 446);
+            this.txtBatteryNeedleX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtBatteryNeedleX.Name = "txtBatteryNeedleX";
+            this.txtBatteryNeedleX.Size = new System.Drawing.Size(40, 22);
+            this.txtBatteryNeedleX.TabIndex = 302;
+            this.txtBatteryNeedleX.Text = "0";
+            // 
+            // txtBatteryNeedleY
+            // 
+            this.txtBatteryNeedleY.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtBatteryNeedleY.Location = new System.Drawing.Point(945, 446);
+            this.txtBatteryNeedleY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtBatteryNeedleY.Name = "txtBatteryNeedleY";
+            this.txtBatteryNeedleY.Size = new System.Drawing.Size(40, 22);
+            this.txtBatteryNeedleY.TabIndex = 303;
+            this.txtBatteryNeedleY.Text = "0";
+            // 
+            // txtBatteryNeedleWidth
+            // 
+            this.txtBatteryNeedleWidth.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtBatteryNeedleWidth.Location = new System.Drawing.Point(804, 446);
+            this.txtBatteryNeedleWidth.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtBatteryNeedleWidth.Name = "txtBatteryNeedleWidth";
+            this.txtBatteryNeedleWidth.Size = new System.Drawing.Size(40, 22);
+            this.txtBatteryNeedleWidth.TabIndex = 300;
+            this.txtBatteryNeedleWidth.Text = "130";
+            // 
+            // txtBatteryNeedleLength
+            // 
+            this.txtBatteryNeedleLength.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtBatteryNeedleLength.Location = new System.Drawing.Point(852, 446);
+            this.txtBatteryNeedleLength.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtBatteryNeedleLength.Name = "txtBatteryNeedleLength";
+            this.txtBatteryNeedleLength.Size = new System.Drawing.Size(40, 22);
+            this.txtBatteryNeedleLength.TabIndex = 301;
+            this.txtBatteryNeedleLength.Text = "1200";
+            // 
+            // txtBatteryNeedle
+            // 
+            this.txtBatteryNeedle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtBatteryNeedle.Location = new System.Drawing.Point(511, 446);
+            this.txtBatteryNeedle.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtBatteryNeedle.Name = "txtBatteryNeedle";
+            this.txtBatteryNeedle.Size = new System.Drawing.Size(222, 22);
+            this.txtBatteryNeedle.TabIndex = 299;
+            this.txtBatteryNeedle.Text = "textures/instrument_needle.png";
+            // 
+            // cmbShowBattery
+            // 
+            this.cmbShowBattery.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cmbShowBattery.FormattingEnabled = true;
+            this.cmbShowBattery.Items.AddRange(new object[] {
+            "N",
+            "Panel 1",
+            "Panel 2",
+            "Panel 3"});
+            this.cmbShowBattery.Location = new System.Drawing.Point(162, 446);
+            this.cmbShowBattery.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cmbShowBattery.Name = "cmbShowBattery";
+            this.cmbShowBattery.Size = new System.Drawing.Size(98, 24);
+            this.cmbShowBattery.TabIndex = 298;
+            this.cmbShowBattery.Text = "N";
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label50.Location = new System.Drawing.Point(28, 449);
+            this.label50.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(52, 16);
+            this.label50.TabIndex = 294;
+            this.label50.Text = "Battery:";
+            // 
+            // cmbBattery
+            // 
+            this.cmbBattery.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cmbBattery.FormattingEnabled = true;
+            this.cmbBattery.Items.AddRange(new object[] {
+            "Gauge",
+            "Vertical Bar",
+            "Horizontal Bar"});
+            this.cmbBattery.Location = new System.Drawing.Point(268, 446);
+            this.cmbBattery.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cmbBattery.Name = "cmbBattery";
+            this.cmbBattery.Size = new System.Drawing.Size(138, 24);
+            this.cmbBattery.TabIndex = 295;
+            this.cmbBattery.Text = "gauge";
+            // 
+            // txtBatteryX
+            // 
+            this.txtBatteryX.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtBatteryX.Location = new System.Drawing.Point(415, 446);
+            this.txtBatteryX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtBatteryX.Name = "txtBatteryX";
+            this.txtBatteryX.Size = new System.Drawing.Size(38, 22);
+            this.txtBatteryX.TabIndex = 296;
+            this.txtBatteryX.Text = "0";
+            // 
+            // txtBatteryY
+            // 
+            this.txtBatteryY.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtBatteryY.Location = new System.Drawing.Point(461, 446);
+            this.txtBatteryY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtBatteryY.Name = "txtBatteryY";
+            this.txtBatteryY.Size = new System.Drawing.Size(42, 22);
+            this.txtBatteryY.TabIndex = 297;
+            this.txtBatteryY.Text = "0";
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label42.Location = new System.Drawing.Point(1182, 55);
+            this.label42.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(42, 16);
+            this.label42.TabIndex = 293;
+            this.label42.Text = "GPIO:";
+            this.label42.Click += new System.EventHandler(this.label42_Click);
             // 
             // label46
             // 
             this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(1136, 412);
+            this.label46.Location = new System.Drawing.Point(1133, 55);
             this.label46.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(41, 16);
@@ -1814,45 +2682,49 @@
             this.label46.Text = "Offset";
             this.label46.Click += new System.EventHandler(this.label46_Click);
             // 
-            // txtUser4CanOffset
+            // txtTempCanOffset
             // 
-            this.txtUser4CanOffset.BackColor = System.Drawing.Color.Silver;
-            this.txtUser4CanOffset.Location = new System.Drawing.Point(1134, 585);
-            this.txtUser4CanOffset.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txtUser4CanOffset.Name = "txtUser4CanOffset";
-            this.txtUser4CanOffset.Size = new System.Drawing.Size(52, 22);
-            this.txtUser4CanOffset.TabIndex = 291;
-            this.txtUser4CanOffset.Text = "0";
+            this.txtTempCanOffset.BackColor = System.Drawing.Color.Silver;
+            this.txtTempCanOffset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtTempCanOffset.Location = new System.Drawing.Point(1133, 211);
+            this.txtTempCanOffset.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtTempCanOffset.Name = "txtTempCanOffset";
+            this.txtTempCanOffset.Size = new System.Drawing.Size(43, 22);
+            this.txtTempCanOffset.TabIndex = 291;
+            this.txtTempCanOffset.Text = "0";
             // 
-            // txtUser3CanOffset
+            // txtBoostCanOffset
             // 
-            this.txtUser3CanOffset.BackColor = System.Drawing.Color.Silver;
-            this.txtUser3CanOffset.Location = new System.Drawing.Point(1134, 538);
-            this.txtUser3CanOffset.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txtUser3CanOffset.Name = "txtUser3CanOffset";
-            this.txtUser3CanOffset.Size = new System.Drawing.Size(52, 22);
-            this.txtUser3CanOffset.TabIndex = 290;
-            this.txtUser3CanOffset.Text = "0";
+            this.txtBoostCanOffset.BackColor = System.Drawing.Color.Silver;
+            this.txtBoostCanOffset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtBoostCanOffset.Location = new System.Drawing.Point(1134, 172);
+            this.txtBoostCanOffset.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtBoostCanOffset.Name = "txtBoostCanOffset";
+            this.txtBoostCanOffset.Size = new System.Drawing.Size(43, 22);
+            this.txtBoostCanOffset.TabIndex = 290;
+            this.txtBoostCanOffset.Text = "0";
             // 
-            // txtUser2CanOffset
+            // txtTachoCanOffset
             // 
-            this.txtUser2CanOffset.BackColor = System.Drawing.Color.Silver;
-            this.txtUser2CanOffset.Location = new System.Drawing.Point(1133, 495);
-            this.txtUser2CanOffset.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txtUser2CanOffset.Name = "txtUser2CanOffset";
-            this.txtUser2CanOffset.Size = new System.Drawing.Size(52, 22);
-            this.txtUser2CanOffset.TabIndex = 289;
-            this.txtUser2CanOffset.Text = "0";
+            this.txtTachoCanOffset.BackColor = System.Drawing.Color.Silver;
+            this.txtTachoCanOffset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtTachoCanOffset.Location = new System.Drawing.Point(1133, 133);
+            this.txtTachoCanOffset.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtTachoCanOffset.Name = "txtTachoCanOffset";
+            this.txtTachoCanOffset.Size = new System.Drawing.Size(44, 22);
+            this.txtTachoCanOffset.TabIndex = 289;
+            this.txtTachoCanOffset.Text = "0";
             // 
-            // txtUser1CanOffset
+            // txtSpeedoCanOffset
             // 
-            this.txtUser1CanOffset.BackColor = System.Drawing.Color.Silver;
-            this.txtUser1CanOffset.Location = new System.Drawing.Point(1134, 450);
-            this.txtUser1CanOffset.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txtUser1CanOffset.Name = "txtUser1CanOffset";
-            this.txtUser1CanOffset.Size = new System.Drawing.Size(52, 22);
-            this.txtUser1CanOffset.TabIndex = 288;
-            this.txtUser1CanOffset.Text = "0";
+            this.txtSpeedoCanOffset.BackColor = System.Drawing.Color.Silver;
+            this.txtSpeedoCanOffset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtSpeedoCanOffset.Location = new System.Drawing.Point(1134, 93);
+            this.txtSpeedoCanOffset.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtSpeedoCanOffset.Name = "txtSpeedoCanOffset";
+            this.txtSpeedoCanOffset.Size = new System.Drawing.Size(43, 22);
+            this.txtSpeedoCanOffset.TabIndex = 288;
+            this.txtSpeedoCanOffset.Text = "0";
             // 
             // cmbUser4AboveBelow
             // 
@@ -1861,7 +2733,7 @@
             this.cmbUser4AboveBelow.Items.AddRange(new object[] {
             "á",
             "â"});
-            this.cmbUser4AboveBelow.Location = new System.Drawing.Point(736, 580);
+            this.cmbUser4AboveBelow.Location = new System.Drawing.Point(737, 616);
             this.cmbUser4AboveBelow.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbUser4AboveBelow.Name = "cmbUser4AboveBelow";
             this.cmbUser4AboveBelow.Size = new System.Drawing.Size(50, 25);
@@ -1875,7 +2747,7 @@
             this.cmbUser3AboveBelow.Items.AddRange(new object[] {
             "á",
             "â"});
-            this.cmbUser3AboveBelow.Location = new System.Drawing.Point(736, 537);
+            this.cmbUser3AboveBelow.Location = new System.Drawing.Point(737, 574);
             this.cmbUser3AboveBelow.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbUser3AboveBelow.Name = "cmbUser3AboveBelow";
             this.cmbUser3AboveBelow.Size = new System.Drawing.Size(50, 25);
@@ -1889,7 +2761,7 @@
             this.cmbUser2AboveBelow.Items.AddRange(new object[] {
             "á",
             "â"});
-            this.cmbUser2AboveBelow.Location = new System.Drawing.Point(736, 492);
+            this.cmbUser2AboveBelow.Location = new System.Drawing.Point(737, 527);
             this.cmbUser2AboveBelow.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbUser2AboveBelow.Name = "cmbUser2AboveBelow";
             this.cmbUser2AboveBelow.Size = new System.Drawing.Size(50, 25);
@@ -1903,7 +2775,7 @@
             this.cmbUser1AboveBelow.Items.AddRange(new object[] {
             "á",
             "â"});
-            this.cmbUser1AboveBelow.Location = new System.Drawing.Point(736, 447);
+            this.cmbUser1AboveBelow.Location = new System.Drawing.Point(737, 482);
             this.cmbUser1AboveBelow.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbUser1AboveBelow.Name = "cmbUser1AboveBelow";
             this.cmbUser1AboveBelow.Size = new System.Drawing.Size(50, 25);
@@ -2038,7 +2910,7 @@
             // 
             // txtUser4
             // 
-            this.txtUser4.Location = new System.Drawing.Point(31, 582);
+            this.txtUser4.Location = new System.Drawing.Point(32, 617);
             this.txtUser4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser4.Name = "txtUser4";
             this.txtUser4.Size = new System.Drawing.Size(116, 22);
@@ -2048,7 +2920,7 @@
             // 
             // txtUser3
             // 
-            this.txtUser3.Location = new System.Drawing.Point(31, 538);
+            this.txtUser3.Location = new System.Drawing.Point(32, 575);
             this.txtUser3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser3.Name = "txtUser3";
             this.txtUser3.Size = new System.Drawing.Size(116, 22);
@@ -2058,7 +2930,7 @@
             // 
             // txtUser2
             // 
-            this.txtUser2.Location = new System.Drawing.Point(31, 495);
+            this.txtUser2.Location = new System.Drawing.Point(32, 530);
             this.txtUser2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser2.Name = "txtUser2";
             this.txtUser2.Size = new System.Drawing.Size(116, 22);
@@ -2068,7 +2940,7 @@
             // 
             // txtUser1
             // 
-            this.txtUser1.Location = new System.Drawing.Point(31, 450);
+            this.txtUser1.Location = new System.Drawing.Point(32, 485);
             this.txtUser1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser1.Name = "txtUser1";
             this.txtUser1.Size = new System.Drawing.Size(116, 22);
@@ -2080,7 +2952,7 @@
             // 
             this.lblUser4.AutoSize = true;
             this.lblUser4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblUser4.Location = new System.Drawing.Point(28, 588);
+            this.lblUser4.Location = new System.Drawing.Point(29, 620);
             this.lblUser4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUser4.Name = "lblUser4";
             this.lblUser4.Size = new System.Drawing.Size(46, 16);
@@ -2092,7 +2964,7 @@
             // 
             this.lblUser3.AutoSize = true;
             this.lblUser3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblUser3.Location = new System.Drawing.Point(28, 541);
+            this.lblUser3.Location = new System.Drawing.Point(29, 578);
             this.lblUser3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUser3.Name = "lblUser3";
             this.lblUser3.Size = new System.Drawing.Size(46, 16);
@@ -2104,7 +2976,7 @@
             // 
             this.lblUser2.AutoSize = true;
             this.lblUser2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblUser2.Location = new System.Drawing.Point(28, 498);
+            this.lblUser2.Location = new System.Drawing.Point(29, 533);
             this.lblUser2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUser2.Name = "lblUser2";
             this.lblUser2.Size = new System.Drawing.Size(46, 16);
@@ -2116,7 +2988,7 @@
             // 
             this.lblUser1.AutoSize = true;
             this.lblUser1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblUser1.Location = new System.Drawing.Point(28, 453);
+            this.lblUser1.Location = new System.Drawing.Point(29, 488);
             this.lblUser1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUser1.Name = "lblUser1";
             this.lblUser1.Size = new System.Drawing.Size(46, 16);
@@ -2128,7 +3000,7 @@
             // 
             this.txtUser4Top.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtUser4Top.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser4Top.Location = new System.Drawing.Point(1086, 585);
+            this.txtUser4Top.Location = new System.Drawing.Point(1086, 617);
             this.txtUser4Top.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser4Top.Name = "txtUser4Top";
             this.txtUser4Top.Size = new System.Drawing.Size(40, 22);
@@ -2139,7 +3011,7 @@
             // 
             this.txtUser4End.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtUser4End.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser4End.Location = new System.Drawing.Point(1038, 585);
+            this.txtUser4End.Location = new System.Drawing.Point(1038, 617);
             this.txtUser4End.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser4End.Name = "txtUser4End";
             this.txtUser4End.Size = new System.Drawing.Size(40, 22);
@@ -2150,7 +3022,7 @@
             // 
             this.txtUser4Offset.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtUser4Offset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser4Offset.Location = new System.Drawing.Point(993, 585);
+            this.txtUser4Offset.Location = new System.Drawing.Point(993, 617);
             this.txtUser4Offset.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser4Offset.Name = "txtUser4Offset";
             this.txtUser4Offset.Size = new System.Drawing.Size(40, 22);
@@ -2160,7 +3032,7 @@
             // txtUser4NeedleX
             // 
             this.txtUser4NeedleX.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser4NeedleX.Location = new System.Drawing.Point(898, 585);
+            this.txtUser4NeedleX.Location = new System.Drawing.Point(898, 617);
             this.txtUser4NeedleX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser4NeedleX.Name = "txtUser4NeedleX";
             this.txtUser4NeedleX.Size = new System.Drawing.Size(40, 22);
@@ -2170,7 +3042,7 @@
             // txtUser4NeedleY
             // 
             this.txtUser4NeedleY.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser4NeedleY.Location = new System.Drawing.Point(945, 585);
+            this.txtUser4NeedleY.Location = new System.Drawing.Point(945, 617);
             this.txtUser4NeedleY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser4NeedleY.Name = "txtUser4NeedleY";
             this.txtUser4NeedleY.Size = new System.Drawing.Size(40, 22);
@@ -2180,7 +3052,7 @@
             // txtUser4NeedleWidth
             // 
             this.txtUser4NeedleWidth.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser4NeedleWidth.Location = new System.Drawing.Point(804, 585);
+            this.txtUser4NeedleWidth.Location = new System.Drawing.Point(804, 617);
             this.txtUser4NeedleWidth.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser4NeedleWidth.Name = "txtUser4NeedleWidth";
             this.txtUser4NeedleWidth.Size = new System.Drawing.Size(40, 22);
@@ -2190,7 +3062,7 @@
             // txtUser4NeedleLength
             // 
             this.txtUser4NeedleLength.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser4NeedleLength.Location = new System.Drawing.Point(852, 585);
+            this.txtUser4NeedleLength.Location = new System.Drawing.Point(852, 617);
             this.txtUser4NeedleLength.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser4NeedleLength.Name = "txtUser4NeedleLength";
             this.txtUser4NeedleLength.Size = new System.Drawing.Size(40, 22);
@@ -2200,7 +3072,7 @@
             // txtUser4Needle
             // 
             this.txtUser4Needle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser4Needle.Location = new System.Drawing.Point(511, 585);
+            this.txtUser4Needle.Location = new System.Drawing.Point(512, 617);
             this.txtUser4Needle.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser4Needle.Name = "txtUser4Needle";
             this.txtUser4Needle.Size = new System.Drawing.Size(222, 22);
@@ -2216,7 +3088,7 @@
             "Panel 1",
             "Panel 2",
             "Panel 3"});
-            this.cmbShowUser4.Location = new System.Drawing.Point(162, 585);
+            this.cmbShowUser4.Location = new System.Drawing.Point(163, 617);
             this.cmbShowUser4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbShowUser4.Name = "cmbShowUser4";
             this.cmbShowUser4.Size = new System.Drawing.Size(98, 24);
@@ -2231,7 +3103,7 @@
             "Gauge",
             "Vertical Bar",
             "Horizontal Bar"});
-            this.cmbUser4.Location = new System.Drawing.Point(268, 585);
+            this.cmbUser4.Location = new System.Drawing.Point(269, 617);
             this.cmbUser4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbUser4.Name = "cmbUser4";
             this.cmbUser4.Size = new System.Drawing.Size(138, 24);
@@ -2242,7 +3114,7 @@
             // txtUser4X
             // 
             this.txtUser4X.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser4X.Location = new System.Drawing.Point(415, 585);
+            this.txtUser4X.Location = new System.Drawing.Point(416, 617);
             this.txtUser4X.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser4X.Name = "txtUser4X";
             this.txtUser4X.Size = new System.Drawing.Size(38, 22);
@@ -2252,7 +3124,7 @@
             // txtUser4Y
             // 
             this.txtUser4Y.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser4Y.Location = new System.Drawing.Point(461, 585);
+            this.txtUser4Y.Location = new System.Drawing.Point(462, 617);
             this.txtUser4Y.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser4Y.Name = "txtUser4Y";
             this.txtUser4Y.Size = new System.Drawing.Size(42, 22);
@@ -2263,7 +3135,7 @@
             // 
             this.txtUser3Top.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtUser3Top.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser3Top.Location = new System.Drawing.Point(1086, 538);
+            this.txtUser3Top.Location = new System.Drawing.Point(1087, 575);
             this.txtUser3Top.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser3Top.Name = "txtUser3Top";
             this.txtUser3Top.Size = new System.Drawing.Size(40, 22);
@@ -2274,7 +3146,7 @@
             // 
             this.txtUser3End.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtUser3End.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser3End.Location = new System.Drawing.Point(1038, 538);
+            this.txtUser3End.Location = new System.Drawing.Point(1039, 575);
             this.txtUser3End.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser3End.Name = "txtUser3End";
             this.txtUser3End.Size = new System.Drawing.Size(40, 22);
@@ -2285,7 +3157,7 @@
             // 
             this.txtUser3Offset.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtUser3Offset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser3Offset.Location = new System.Drawing.Point(993, 538);
+            this.txtUser3Offset.Location = new System.Drawing.Point(994, 575);
             this.txtUser3Offset.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser3Offset.Name = "txtUser3Offset";
             this.txtUser3Offset.Size = new System.Drawing.Size(40, 22);
@@ -2295,7 +3167,7 @@
             // txtUser3NeedleX
             // 
             this.txtUser3NeedleX.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser3NeedleX.Location = new System.Drawing.Point(898, 538);
+            this.txtUser3NeedleX.Location = new System.Drawing.Point(899, 575);
             this.txtUser3NeedleX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser3NeedleX.Name = "txtUser3NeedleX";
             this.txtUser3NeedleX.Size = new System.Drawing.Size(40, 22);
@@ -2305,7 +3177,7 @@
             // txtUser3NeedleY
             // 
             this.txtUser3NeedleY.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser3NeedleY.Location = new System.Drawing.Point(945, 538);
+            this.txtUser3NeedleY.Location = new System.Drawing.Point(946, 575);
             this.txtUser3NeedleY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser3NeedleY.Name = "txtUser3NeedleY";
             this.txtUser3NeedleY.Size = new System.Drawing.Size(40, 22);
@@ -2315,7 +3187,7 @@
             // txtUser3NeedleWidth
             // 
             this.txtUser3NeedleWidth.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser3NeedleWidth.Location = new System.Drawing.Point(804, 538);
+            this.txtUser3NeedleWidth.Location = new System.Drawing.Point(805, 575);
             this.txtUser3NeedleWidth.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser3NeedleWidth.Name = "txtUser3NeedleWidth";
             this.txtUser3NeedleWidth.Size = new System.Drawing.Size(40, 22);
@@ -2325,7 +3197,7 @@
             // txtUser3NeedleLength
             // 
             this.txtUser3NeedleLength.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser3NeedleLength.Location = new System.Drawing.Point(852, 538);
+            this.txtUser3NeedleLength.Location = new System.Drawing.Point(853, 575);
             this.txtUser3NeedleLength.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser3NeedleLength.Name = "txtUser3NeedleLength";
             this.txtUser3NeedleLength.Size = new System.Drawing.Size(40, 22);
@@ -2335,7 +3207,7 @@
             // txtUser3Needle
             // 
             this.txtUser3Needle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser3Needle.Location = new System.Drawing.Point(511, 538);
+            this.txtUser3Needle.Location = new System.Drawing.Point(512, 575);
             this.txtUser3Needle.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser3Needle.Name = "txtUser3Needle";
             this.txtUser3Needle.Size = new System.Drawing.Size(222, 22);
@@ -2351,7 +3223,7 @@
             "Panel 1",
             "Panel 2",
             "Panel 3"});
-            this.cmbShowUser3.Location = new System.Drawing.Point(162, 538);
+            this.cmbShowUser3.Location = new System.Drawing.Point(163, 575);
             this.cmbShowUser3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbShowUser3.Name = "cmbShowUser3";
             this.cmbShowUser3.Size = new System.Drawing.Size(98, 24);
@@ -2366,7 +3238,7 @@
             "Gauge",
             "Vertical Bar",
             "Horizontal Bar"});
-            this.cmbUser3.Location = new System.Drawing.Point(268, 538);
+            this.cmbUser3.Location = new System.Drawing.Point(269, 575);
             this.cmbUser3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbUser3.Name = "cmbUser3";
             this.cmbUser3.Size = new System.Drawing.Size(138, 24);
@@ -2377,7 +3249,7 @@
             // txtUser3X
             // 
             this.txtUser3X.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser3X.Location = new System.Drawing.Point(415, 538);
+            this.txtUser3X.Location = new System.Drawing.Point(416, 575);
             this.txtUser3X.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser3X.Name = "txtUser3X";
             this.txtUser3X.Size = new System.Drawing.Size(38, 22);
@@ -2387,7 +3259,7 @@
             // txtUser3Y
             // 
             this.txtUser3Y.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser3Y.Location = new System.Drawing.Point(461, 538);
+            this.txtUser3Y.Location = new System.Drawing.Point(462, 575);
             this.txtUser3Y.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser3Y.Name = "txtUser3Y";
             this.txtUser3Y.Size = new System.Drawing.Size(42, 22);
@@ -2398,7 +3270,7 @@
             // 
             this.txtUser2Top.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtUser2Top.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser2Top.Location = new System.Drawing.Point(1086, 495);
+            this.txtUser2Top.Location = new System.Drawing.Point(1087, 530);
             this.txtUser2Top.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser2Top.Name = "txtUser2Top";
             this.txtUser2Top.Size = new System.Drawing.Size(40, 22);
@@ -2409,7 +3281,7 @@
             // 
             this.txtUser2End.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtUser2End.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser2End.Location = new System.Drawing.Point(1038, 495);
+            this.txtUser2End.Location = new System.Drawing.Point(1039, 530);
             this.txtUser2End.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser2End.Name = "txtUser2End";
             this.txtUser2End.Size = new System.Drawing.Size(40, 22);
@@ -2420,7 +3292,7 @@
             // 
             this.txtUser2Offset.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtUser2Offset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser2Offset.Location = new System.Drawing.Point(993, 495);
+            this.txtUser2Offset.Location = new System.Drawing.Point(994, 530);
             this.txtUser2Offset.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser2Offset.Name = "txtUser2Offset";
             this.txtUser2Offset.Size = new System.Drawing.Size(40, 22);
@@ -2430,7 +3302,7 @@
             // txtUser2NeedleX
             // 
             this.txtUser2NeedleX.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser2NeedleX.Location = new System.Drawing.Point(898, 495);
+            this.txtUser2NeedleX.Location = new System.Drawing.Point(899, 530);
             this.txtUser2NeedleX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser2NeedleX.Name = "txtUser2NeedleX";
             this.txtUser2NeedleX.Size = new System.Drawing.Size(40, 22);
@@ -2440,7 +3312,7 @@
             // txtUser2NeedleY
             // 
             this.txtUser2NeedleY.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser2NeedleY.Location = new System.Drawing.Point(945, 495);
+            this.txtUser2NeedleY.Location = new System.Drawing.Point(946, 530);
             this.txtUser2NeedleY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser2NeedleY.Name = "txtUser2NeedleY";
             this.txtUser2NeedleY.Size = new System.Drawing.Size(40, 22);
@@ -2450,7 +3322,7 @@
             // txtUser2NeedleWidth
             // 
             this.txtUser2NeedleWidth.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser2NeedleWidth.Location = new System.Drawing.Point(804, 495);
+            this.txtUser2NeedleWidth.Location = new System.Drawing.Point(805, 530);
             this.txtUser2NeedleWidth.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser2NeedleWidth.Name = "txtUser2NeedleWidth";
             this.txtUser2NeedleWidth.Size = new System.Drawing.Size(40, 22);
@@ -2460,7 +3332,7 @@
             // txtUser2NeedleLength
             // 
             this.txtUser2NeedleLength.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser2NeedleLength.Location = new System.Drawing.Point(852, 495);
+            this.txtUser2NeedleLength.Location = new System.Drawing.Point(853, 530);
             this.txtUser2NeedleLength.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser2NeedleLength.Name = "txtUser2NeedleLength";
             this.txtUser2NeedleLength.Size = new System.Drawing.Size(40, 22);
@@ -2470,7 +3342,7 @@
             // txtUser2Needle
             // 
             this.txtUser2Needle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser2Needle.Location = new System.Drawing.Point(511, 495);
+            this.txtUser2Needle.Location = new System.Drawing.Point(512, 530);
             this.txtUser2Needle.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser2Needle.Name = "txtUser2Needle";
             this.txtUser2Needle.Size = new System.Drawing.Size(222, 22);
@@ -2486,7 +3358,7 @@
             "Panel 1",
             "Panel 2",
             "Panel 3"});
-            this.cmbShowUser2.Location = new System.Drawing.Point(162, 495);
+            this.cmbShowUser2.Location = new System.Drawing.Point(163, 530);
             this.cmbShowUser2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbShowUser2.Name = "cmbShowUser2";
             this.cmbShowUser2.Size = new System.Drawing.Size(98, 24);
@@ -2501,7 +3373,7 @@
             "Gauge",
             "Vertical Bar",
             "Horizontal Bar"});
-            this.cmbUser2.Location = new System.Drawing.Point(268, 495);
+            this.cmbUser2.Location = new System.Drawing.Point(269, 530);
             this.cmbUser2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbUser2.Name = "cmbUser2";
             this.cmbUser2.Size = new System.Drawing.Size(138, 24);
@@ -2512,7 +3384,7 @@
             // txtUser2X
             // 
             this.txtUser2X.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser2X.Location = new System.Drawing.Point(415, 495);
+            this.txtUser2X.Location = new System.Drawing.Point(416, 530);
             this.txtUser2X.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser2X.Name = "txtUser2X";
             this.txtUser2X.Size = new System.Drawing.Size(38, 22);
@@ -2522,7 +3394,7 @@
             // txtUser2Y
             // 
             this.txtUser2Y.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser2Y.Location = new System.Drawing.Point(461, 495);
+            this.txtUser2Y.Location = new System.Drawing.Point(462, 530);
             this.txtUser2Y.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser2Y.Name = "txtUser2Y";
             this.txtUser2Y.Size = new System.Drawing.Size(42, 22);
@@ -2533,7 +3405,7 @@
             // 
             this.txtUser1Top.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtUser1Top.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser1Top.Location = new System.Drawing.Point(1086, 450);
+            this.txtUser1Top.Location = new System.Drawing.Point(1087, 485);
             this.txtUser1Top.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser1Top.Name = "txtUser1Top";
             this.txtUser1Top.Size = new System.Drawing.Size(40, 22);
@@ -2544,7 +3416,7 @@
             // 
             this.txtUser1End.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtUser1End.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser1End.Location = new System.Drawing.Point(1038, 450);
+            this.txtUser1End.Location = new System.Drawing.Point(1039, 485);
             this.txtUser1End.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser1End.Name = "txtUser1End";
             this.txtUser1End.Size = new System.Drawing.Size(40, 22);
@@ -2555,7 +3427,7 @@
             // 
             this.txtUser1Offset.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtUser1Offset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser1Offset.Location = new System.Drawing.Point(993, 450);
+            this.txtUser1Offset.Location = new System.Drawing.Point(994, 485);
             this.txtUser1Offset.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser1Offset.Name = "txtUser1Offset";
             this.txtUser1Offset.Size = new System.Drawing.Size(40, 22);
@@ -2565,7 +3437,7 @@
             // txtUser1NeedleX
             // 
             this.txtUser1NeedleX.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser1NeedleX.Location = new System.Drawing.Point(898, 450);
+            this.txtUser1NeedleX.Location = new System.Drawing.Point(899, 485);
             this.txtUser1NeedleX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser1NeedleX.Name = "txtUser1NeedleX";
             this.txtUser1NeedleX.Size = new System.Drawing.Size(40, 22);
@@ -2575,7 +3447,7 @@
             // txtUser1NeedleY
             // 
             this.txtUser1NeedleY.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser1NeedleY.Location = new System.Drawing.Point(945, 450);
+            this.txtUser1NeedleY.Location = new System.Drawing.Point(946, 485);
             this.txtUser1NeedleY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser1NeedleY.Name = "txtUser1NeedleY";
             this.txtUser1NeedleY.Size = new System.Drawing.Size(40, 22);
@@ -2585,7 +3457,7 @@
             // txtUser1NeedleWidth
             // 
             this.txtUser1NeedleWidth.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser1NeedleWidth.Location = new System.Drawing.Point(804, 450);
+            this.txtUser1NeedleWidth.Location = new System.Drawing.Point(805, 485);
             this.txtUser1NeedleWidth.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser1NeedleWidth.Name = "txtUser1NeedleWidth";
             this.txtUser1NeedleWidth.Size = new System.Drawing.Size(40, 22);
@@ -2595,7 +3467,7 @@
             // txtUser1NeedleLength
             // 
             this.txtUser1NeedleLength.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser1NeedleLength.Location = new System.Drawing.Point(852, 450);
+            this.txtUser1NeedleLength.Location = new System.Drawing.Point(853, 485);
             this.txtUser1NeedleLength.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser1NeedleLength.Name = "txtUser1NeedleLength";
             this.txtUser1NeedleLength.Size = new System.Drawing.Size(40, 22);
@@ -2605,7 +3477,7 @@
             // txtUser1Needle
             // 
             this.txtUser1Needle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser1Needle.Location = new System.Drawing.Point(511, 450);
+            this.txtUser1Needle.Location = new System.Drawing.Point(512, 485);
             this.txtUser1Needle.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser1Needle.Name = "txtUser1Needle";
             this.txtUser1Needle.Size = new System.Drawing.Size(222, 22);
@@ -2621,7 +3493,7 @@
             "Panel 1",
             "Panel 2",
             "Panel 3"});
-            this.cmbShowUser1.Location = new System.Drawing.Point(162, 450);
+            this.cmbShowUser1.Location = new System.Drawing.Point(163, 485);
             this.cmbShowUser1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbShowUser1.Name = "cmbShowUser1";
             this.cmbShowUser1.Size = new System.Drawing.Size(98, 24);
@@ -2636,7 +3508,7 @@
             "Gauge",
             "Vertical Bar",
             "Horizontal Bar"});
-            this.cmbUser1.Location = new System.Drawing.Point(268, 450);
+            this.cmbUser1.Location = new System.Drawing.Point(269, 485);
             this.cmbUser1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbUser1.Name = "cmbUser1";
             this.cmbUser1.Size = new System.Drawing.Size(138, 24);
@@ -2647,7 +3519,7 @@
             // txtUser1X
             // 
             this.txtUser1X.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser1X.Location = new System.Drawing.Point(415, 450);
+            this.txtUser1X.Location = new System.Drawing.Point(416, 485);
             this.txtUser1X.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser1X.Name = "txtUser1X";
             this.txtUser1X.Size = new System.Drawing.Size(38, 22);
@@ -2657,7 +3529,7 @@
             // txtUser1Y
             // 
             this.txtUser1Y.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser1Y.Location = new System.Drawing.Point(461, 450);
+            this.txtUser1Y.Location = new System.Drawing.Point(462, 485);
             this.txtUser1Y.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser1Y.Name = "txtUser1Y";
             this.txtUser1Y.Size = new System.Drawing.Size(42, 22);
@@ -3482,6 +4354,11 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.DarkTurquoise;
+            this.panel2.Controls.Add(this.txtBatteryFontSize);
+            this.panel2.Controls.Add(this.cmbBatteryTextShow);
+            this.panel2.Controls.Add(this.cmbBatteryTextStyle);
+            this.panel2.Controls.Add(this.txtBatteryTextY);
+            this.panel2.Controls.Add(this.txtBatteryTextX);
             this.panel2.Controls.Add(this.txtUser4FontSize);
             this.panel2.Controls.Add(this.cmbUser4TextShow);
             this.panel2.Controls.Add(this.cmbUser4TextStyle);
@@ -3554,16 +4431,77 @@
             this.panel2.Controls.Add(this.txtOilTTextX);
             this.panel2.Controls.Add(this.txtOilTTextY);
             this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.panel2.Location = new System.Drawing.Point(1204, 346);
+            this.panel2.Location = new System.Drawing.Point(1254, 346);
             this.panel2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(383, 629);
+            this.panel2.Size = new System.Drawing.Size(383, 669);
             this.panel2.TabIndex = 133;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // txtBatteryFontSize
+            // 
+            this.txtBatteryFontSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtBatteryFontSize.Location = new System.Drawing.Point(314, 446);
+            this.txtBatteryFontSize.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtBatteryFontSize.Name = "txtBatteryFontSize";
+            this.txtBatteryFontSize.Size = new System.Drawing.Size(40, 22);
+            this.txtBatteryFontSize.TabIndex = 166;
+            this.txtBatteryFontSize.Text = "36";
+            // 
+            // cmbBatteryTextShow
+            // 
+            this.cmbBatteryTextShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cmbBatteryTextShow.FormattingEnabled = true;
+            this.cmbBatteryTextShow.Items.AddRange(new object[] {
+            "N",
+            "Panel 1",
+            "Panel 2",
+            "Panel 3"});
+            this.cmbBatteryTextShow.Location = new System.Drawing.Point(8, 446);
+            this.cmbBatteryTextShow.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cmbBatteryTextShow.Name = "cmbBatteryTextShow";
+            this.cmbBatteryTextShow.Size = new System.Drawing.Size(98, 24);
+            this.cmbBatteryTextShow.TabIndex = 165;
+            this.cmbBatteryTextShow.Text = "N";
+            // 
+            // cmbBatteryTextStyle
+            // 
+            this.cmbBatteryTextStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cmbBatteryTextStyle.FormattingEnabled = true;
+            this.cmbBatteryTextStyle.Items.AddRange(new object[] {
+            "smooth",
+            "bold"});
+            this.cmbBatteryTextStyle.Location = new System.Drawing.Point(118, 446);
+            this.cmbBatteryTextStyle.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cmbBatteryTextStyle.Name = "cmbBatteryTextStyle";
+            this.cmbBatteryTextStyle.Size = new System.Drawing.Size(93, 24);
+            this.cmbBatteryTextStyle.TabIndex = 162;
+            this.cmbBatteryTextStyle.Text = "smooth";
+            // 
+            // txtBatteryTextY
+            // 
+            this.txtBatteryTextY.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtBatteryTextY.Location = new System.Drawing.Point(266, 446);
+            this.txtBatteryTextY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtBatteryTextY.Name = "txtBatteryTextY";
+            this.txtBatteryTextY.Size = new System.Drawing.Size(40, 22);
+            this.txtBatteryTextY.TabIndex = 164;
+            this.txtBatteryTextY.Text = "0";
+            // 
+            // txtBatteryTextX
+            // 
+            this.txtBatteryTextX.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtBatteryTextX.Location = new System.Drawing.Point(218, 446);
+            this.txtBatteryTextX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtBatteryTextX.Name = "txtBatteryTextX";
+            this.txtBatteryTextX.Size = new System.Drawing.Size(40, 22);
+            this.txtBatteryTextX.TabIndex = 163;
+            this.txtBatteryTextX.Text = "0";
             // 
             // txtUser4FontSize
             // 
             this.txtUser4FontSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser4FontSize.Location = new System.Drawing.Point(312, 585);
+            this.txtUser4FontSize.Location = new System.Drawing.Point(314, 617);
             this.txtUser4FontSize.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser4FontSize.Name = "txtUser4FontSize";
             this.txtUser4FontSize.Size = new System.Drawing.Size(40, 22);
@@ -3579,7 +4517,7 @@
             "Panel 1",
             "Panel 2",
             "Panel 3"});
-            this.cmbUser4TextShow.Location = new System.Drawing.Point(6, 585);
+            this.cmbUser4TextShow.Location = new System.Drawing.Point(8, 617);
             this.cmbUser4TextShow.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbUser4TextShow.Name = "cmbUser4TextShow";
             this.cmbUser4TextShow.Size = new System.Drawing.Size(98, 24);
@@ -3593,7 +4531,7 @@
             this.cmbUser4TextStyle.Items.AddRange(new object[] {
             "smooth",
             "bold"});
-            this.cmbUser4TextStyle.Location = new System.Drawing.Point(115, 585);
+            this.cmbUser4TextStyle.Location = new System.Drawing.Point(117, 617);
             this.cmbUser4TextStyle.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbUser4TextStyle.Name = "cmbUser4TextStyle";
             this.cmbUser4TextStyle.Size = new System.Drawing.Size(93, 24);
@@ -3603,7 +4541,7 @@
             // txtUser4TextY
             // 
             this.txtUser4TextY.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser4TextY.Location = new System.Drawing.Point(264, 585);
+            this.txtUser4TextY.Location = new System.Drawing.Point(266, 617);
             this.txtUser4TextY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser4TextY.Name = "txtUser4TextY";
             this.txtUser4TextY.Size = new System.Drawing.Size(40, 22);
@@ -3613,7 +4551,7 @@
             // txtUser4TextX
             // 
             this.txtUser4TextX.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser4TextX.Location = new System.Drawing.Point(216, 585);
+            this.txtUser4TextX.Location = new System.Drawing.Point(218, 617);
             this.txtUser4TextX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser4TextX.Name = "txtUser4TextX";
             this.txtUser4TextX.Size = new System.Drawing.Size(40, 22);
@@ -3623,7 +4561,7 @@
             // txtUser3FontSize
             // 
             this.txtUser3FontSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser3FontSize.Location = new System.Drawing.Point(313, 538);
+            this.txtUser3FontSize.Location = new System.Drawing.Point(315, 575);
             this.txtUser3FontSize.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser3FontSize.Name = "txtUser3FontSize";
             this.txtUser3FontSize.Size = new System.Drawing.Size(40, 22);
@@ -3639,7 +4577,7 @@
             "Panel 1",
             "Panel 2",
             "Panel 3"});
-            this.cmbUser3TextShow.Location = new System.Drawing.Point(7, 538);
+            this.cmbUser3TextShow.Location = new System.Drawing.Point(9, 575);
             this.cmbUser3TextShow.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbUser3TextShow.Name = "cmbUser3TextShow";
             this.cmbUser3TextShow.Size = new System.Drawing.Size(98, 24);
@@ -3653,7 +4591,7 @@
             this.cmbUser3TextStyle.Items.AddRange(new object[] {
             "smooth",
             "bold"});
-            this.cmbUser3TextStyle.Location = new System.Drawing.Point(117, 538);
+            this.cmbUser3TextStyle.Location = new System.Drawing.Point(119, 575);
             this.cmbUser3TextStyle.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbUser3TextStyle.Name = "cmbUser3TextStyle";
             this.cmbUser3TextStyle.Size = new System.Drawing.Size(93, 24);
@@ -3663,7 +4601,7 @@
             // txtUser3TextY
             // 
             this.txtUser3TextY.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser3TextY.Location = new System.Drawing.Point(265, 538);
+            this.txtUser3TextY.Location = new System.Drawing.Point(267, 575);
             this.txtUser3TextY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser3TextY.Name = "txtUser3TextY";
             this.txtUser3TextY.Size = new System.Drawing.Size(40, 22);
@@ -3673,7 +4611,7 @@
             // txtUser3TextX
             // 
             this.txtUser3TextX.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser3TextX.Location = new System.Drawing.Point(217, 538);
+            this.txtUser3TextX.Location = new System.Drawing.Point(219, 575);
             this.txtUser3TextX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser3TextX.Name = "txtUser3TextX";
             this.txtUser3TextX.Size = new System.Drawing.Size(40, 22);
@@ -3683,7 +4621,7 @@
             // txtUser2FontSize
             // 
             this.txtUser2FontSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser2FontSize.Location = new System.Drawing.Point(313, 493);
+            this.txtUser2FontSize.Location = new System.Drawing.Point(315, 530);
             this.txtUser2FontSize.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser2FontSize.Name = "txtUser2FontSize";
             this.txtUser2FontSize.Size = new System.Drawing.Size(40, 22);
@@ -3699,7 +4637,7 @@
             "Panel 1",
             "Panel 2",
             "Panel 3"});
-            this.cmbUser2TextShow.Location = new System.Drawing.Point(7, 493);
+            this.cmbUser2TextShow.Location = new System.Drawing.Point(9, 530);
             this.cmbUser2TextShow.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbUser2TextShow.Name = "cmbUser2TextShow";
             this.cmbUser2TextShow.Size = new System.Drawing.Size(98, 24);
@@ -3713,7 +4651,7 @@
             this.cmbUser2TextStyle.Items.AddRange(new object[] {
             "smooth",
             "bold"});
-            this.cmbUser2TextStyle.Location = new System.Drawing.Point(117, 493);
+            this.cmbUser2TextStyle.Location = new System.Drawing.Point(119, 530);
             this.cmbUser2TextStyle.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbUser2TextStyle.Name = "cmbUser2TextStyle";
             this.cmbUser2TextStyle.Size = new System.Drawing.Size(93, 24);
@@ -3723,7 +4661,7 @@
             // txtUser2TextY
             // 
             this.txtUser2TextY.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser2TextY.Location = new System.Drawing.Point(265, 493);
+            this.txtUser2TextY.Location = new System.Drawing.Point(267, 530);
             this.txtUser2TextY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser2TextY.Name = "txtUser2TextY";
             this.txtUser2TextY.Size = new System.Drawing.Size(40, 22);
@@ -3733,7 +4671,7 @@
             // txtUser2TextX
             // 
             this.txtUser2TextX.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser2TextX.Location = new System.Drawing.Point(217, 493);
+            this.txtUser2TextX.Location = new System.Drawing.Point(219, 530);
             this.txtUser2TextX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser2TextX.Name = "txtUser2TextX";
             this.txtUser2TextX.Size = new System.Drawing.Size(40, 22);
@@ -3743,7 +4681,7 @@
             // txtUser1FontSize
             // 
             this.txtUser1FontSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser1FontSize.Location = new System.Drawing.Point(313, 448);
+            this.txtUser1FontSize.Location = new System.Drawing.Point(315, 485);
             this.txtUser1FontSize.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser1FontSize.Name = "txtUser1FontSize";
             this.txtUser1FontSize.Size = new System.Drawing.Size(40, 22);
@@ -3759,7 +4697,7 @@
             "Panel 1",
             "Panel 2",
             "Panel 3"});
-            this.cmbUser1TextShow.Location = new System.Drawing.Point(7, 448);
+            this.cmbUser1TextShow.Location = new System.Drawing.Point(9, 485);
             this.cmbUser1TextShow.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbUser1TextShow.Name = "cmbUser1TextShow";
             this.cmbUser1TextShow.Size = new System.Drawing.Size(98, 24);
@@ -3773,7 +4711,7 @@
             this.cmbUser1TextStyle.Items.AddRange(new object[] {
             "smooth",
             "bold"});
-            this.cmbUser1TextStyle.Location = new System.Drawing.Point(117, 448);
+            this.cmbUser1TextStyle.Location = new System.Drawing.Point(119, 485);
             this.cmbUser1TextStyle.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbUser1TextStyle.Name = "cmbUser1TextStyle";
             this.cmbUser1TextStyle.Size = new System.Drawing.Size(93, 24);
@@ -3783,7 +4721,7 @@
             // txtUser1TextY
             // 
             this.txtUser1TextY.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser1TextY.Location = new System.Drawing.Point(265, 448);
+            this.txtUser1TextY.Location = new System.Drawing.Point(267, 485);
             this.txtUser1TextY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser1TextY.Name = "txtUser1TextY";
             this.txtUser1TextY.Size = new System.Drawing.Size(40, 22);
@@ -3793,7 +4731,7 @@
             // txtUser1TextX
             // 
             this.txtUser1TextX.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser1TextX.Location = new System.Drawing.Point(217, 448);
+            this.txtUser1TextX.Location = new System.Drawing.Point(219, 485);
             this.txtUser1TextX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser1TextX.Name = "txtUser1TextX";
             this.txtUser1TextX.Size = new System.Drawing.Size(40, 22);
@@ -3944,7 +4882,7 @@
             // 
             // cmbSerCanP1P2SerSpeed
             // 
-            this.cmbSerCanP1P2SerSpeed.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.cmbSerCanP1P2SerSpeed.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cmbSerCanP1P2SerSpeed.FormattingEnabled = true;
             this.cmbSerCanP1P2SerSpeed.Items.AddRange(new object[] {
             "9600",
@@ -4021,10 +4959,10 @@
             this.TS1,
             this.TS2,
             this.TS3});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 967);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 1019);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 16, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(1594, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1650, 22);
             this.statusStrip1.TabIndex = 239;
             // 
             // TS1
@@ -4312,7 +5250,7 @@
             // 
             // cmbSerCanP1ECUSerSpeed
             // 
-            this.cmbSerCanP1ECUSerSpeed.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.cmbSerCanP1ECUSerSpeed.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cmbSerCanP1ECUSerSpeed.FormattingEnabled = true;
             this.cmbSerCanP1ECUSerSpeed.Items.AddRange(new object[] {
             "9600",
@@ -4390,7 +5328,7 @@
             this.panel4.Controls.Add(this.btnP2BG);
             this.panel4.Controls.Add(this.txtPaneI2IP);
             this.panel4.Controls.Add(this.label40);
-            this.panel4.Location = new System.Drawing.Point(544, 57);
+            this.panel4.Location = new System.Drawing.Point(570, 57);
             this.panel4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(518, 269);
@@ -4549,7 +5487,7 @@
             this.panel5.Controls.Add(this.btnP3BG);
             this.panel5.Controls.Add(this.txtPanel3IP);
             this.panel5.Controls.Add(this.label47);
-            this.panel5.Location = new System.Drawing.Point(1069, 57);
+            this.panel5.Location = new System.Drawing.Point(1119, 57);
             this.panel5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(518, 269);
@@ -4691,7 +5629,7 @@
             // 
             this.btnQuit.BackColor = System.Drawing.Color.MediumTurquoise;
             this.btnQuit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnQuit.Location = new System.Drawing.Point(1477, 6);
+            this.btnQuit.Location = new System.Drawing.Point(1524, 6);
             this.btnQuit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnQuit.Name = "btnQuit";
             this.btnQuit.Size = new System.Drawing.Size(110, 45);
@@ -4705,7 +5643,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1594, 989);
+            this.ClientSize = new System.Drawing.Size(1650, 1041);
             this.ControlBox = false;
             this.Controls.Add(this.btnQuit);
             this.Controls.Add(this.panel5);
@@ -5070,15 +6008,59 @@
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label label41;
-        private System.Windows.Forms.TextBox txtUser4CanOffset;
-        private System.Windows.Forms.TextBox txtUser3CanOffset;
-        private System.Windows.Forms.TextBox txtUser2CanOffset;
-        private System.Windows.Forms.TextBox txtUser1CanOffset;
+        private System.Windows.Forms.TextBox txtTempCanOffset;
+        private System.Windows.Forms.TextBox txtBoostCanOffset;
+        private System.Windows.Forms.TextBox txtTachoCanOffset;
+        private System.Windows.Forms.TextBox txtSpeedoCanOffset;
         private System.Windows.Forms.Label label46;
         private System.Windows.Forms.Label label49;
         private System.Windows.Forms.Label label48;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.ComboBox cmbCanAddressEcu;
         private System.Windows.Forms.Button btnQuit;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.ComboBox cmbBatteryAboveBelow;
+        private System.Windows.Forms.TextBox txtBatteryTop;
+        private System.Windows.Forms.TextBox txtBatteryEnd;
+        private System.Windows.Forms.TextBox txtBatteryOffset;
+        private System.Windows.Forms.TextBox txtBatteryNeedleX;
+        private System.Windows.Forms.TextBox txtBatteryNeedleY;
+        private System.Windows.Forms.TextBox txtBatteryNeedleWidth;
+        private System.Windows.Forms.TextBox txtBatteryNeedleLength;
+        private System.Windows.Forms.TextBox txtBatteryNeedle;
+        private System.Windows.Forms.ComboBox cmbShowBattery;
+        private System.Windows.Forms.Label label50;
+        private System.Windows.Forms.ComboBox cmbBattery;
+        private System.Windows.Forms.TextBox txtBatteryX;
+        private System.Windows.Forms.TextBox txtBatteryY;
+        private System.Windows.Forms.TextBox txtBatteryFontSize;
+        private System.Windows.Forms.ComboBox cmbBatteryTextShow;
+        private System.Windows.Forms.ComboBox cmbBatteryTextStyle;
+        private System.Windows.Forms.TextBox txtBatteryTextY;
+        private System.Windows.Forms.TextBox txtBatteryTextX;
+        private System.Windows.Forms.ComboBox cmbGPIOUser4;
+        private System.Windows.Forms.ComboBox cmbGPIOUser3;
+        private System.Windows.Forms.ComboBox cmbGPIOUser2;
+        private System.Windows.Forms.ComboBox cmbGPIOBattery;
+        private System.Windows.Forms.ComboBox cmbGPIOUser1;
+        private System.Windows.Forms.ComboBox cmbGPIOFuelP;
+        private System.Windows.Forms.ComboBox cmbGPIOFuelT;
+        private System.Windows.Forms.ComboBox cmbGPIOFuel;
+        private System.Windows.Forms.ComboBox cmbGPIOOilT;
+        private System.Windows.Forms.ComboBox cmbGPIOOil;
+        private System.Windows.Forms.ComboBox cmbGPIOTemp;
+        private System.Windows.Forms.ComboBox cmbGPIOBoost;
+        private System.Windows.Forms.ComboBox cmbGPIOTacho;
+        private System.Windows.Forms.ComboBox cmbGPIOSpeedo;
+        private System.Windows.Forms.TextBox txtUser4CanOffset;
+        private System.Windows.Forms.TextBox txtUser3CanOffset;
+        private System.Windows.Forms.TextBox txtUser2CanOffset;
+        private System.Windows.Forms.TextBox txtUser1CanOffset;
+        private System.Windows.Forms.TextBox txtBatteryCanOffset;
+        private System.Windows.Forms.TextBox txtFuelPCanOffset;
+        private System.Windows.Forms.TextBox txtFuelTCanOffset;
+        private System.Windows.Forms.TextBox txtFuelCanOffset;
+        private System.Windows.Forms.TextBox txtOilTCanOffset;
+        private System.Windows.Forms.TextBox txtOilCanOffset;
     }
 }

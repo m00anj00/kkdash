@@ -5,6 +5,8 @@
         public static int mouseposX { get; set; }
         public static int mouseposY { get; set; }
 
+        public static int thecounter { get; set; }
+
         public static string P1BG { get; set; }
         public static string P2BG { get; set; }
         public static string P3BG { get; set; }
@@ -48,10 +50,35 @@
         public static string SerCanSpeedP1P3 { get; set; }      // 125k             --both Panel 1 and Panel 3 config
         public static string SerCanAddressP1P3 { get; set; }	// 0x103 --both Panel 1 and Panel 3 config				
 
+        public static string SpeedoCanOffset { get; set; }
+        public static string TachoCanOffset { get; set; }
+        public static string BoostCanOffset { get; set; }
+        public static string TempCanOffset { get; set; }
+        public static string OilCanOffset { get; set; }
+        public static string OilTCanOffset { get; set; }
+        public static string FuelCanOffset { get; set; }
+        public static string FuelTCanOffset { get; set; }
+        public static string FuelPCanOffset { get; set; }
+        public static string BatteryCanOffset { get; set; }
         public static string User1CanOffset { get; set; }
         public static string User2CanOffset { get; set; }
         public static string User3CanOffset { get; set; }
         public static string User4CanOffset { get; set; }
+
+        public static string SpeedoGPIO { get; set; }
+        public static string TachoGPIO { get; set; }
+        public static string BoostGPIO { get; set; }
+        public static string TempGPIO { get; set; }
+        public static string OilGPIO { get; set; }
+        public static string OilTGPIO { get; set; }
+        public static string FuelGPIO { get; set; }
+        public static string FuelTGPIO { get; set; }
+        public static string FuelPGPIO { get; set; }
+        public static string BatteryGPIO { get; set; }
+        public static string User1GPIO { get; set; }
+        public static string User2GPIO { get; set; }
+        public static string User3GPIO { get; set; }
+        public static string User4GPIO { get; set; }
 
         //user gauge names
         public static string User1name { get; set; }
@@ -108,7 +135,7 @@
         public static string TachoTextY { get; set; }
         public static string TachoFontSize { get; set; }
         public static string TachoTextStyle { get; set; }
-
+        //boost
         public static string BoostShow { get; set; }
         public static string BoostNeedle { get; set; }
         public static string BoostNeedleType { get; set; }
@@ -124,7 +151,7 @@
         public static string BoostTextY { get; set; }
         public static string BoostFontSize { get; set; }
         public static string BoostTextStyle { get; set; }
-
+        //temp
         public static string TempShow { get; set; }
         public static string TempNeedle { get; set; }
         public static string TempNeedleType { get; set; }
@@ -140,7 +167,7 @@
         public static string TempTextY { get; set; }
         public static string TempFontSize { get; set; }
         public static string TempTextStyle { get; set; }
-
+        //oil
         public static string OilShow { get; set; }
         public static string OilNeedle { get; set; }
         public static string OilNeedleType { get; set; }
@@ -156,7 +183,7 @@
         public static string OilTextY { get; set; }
         public static string OilFontSize { get; set; }
         public static string OilTextStyle { get; set; }
-
+        //oilT
         public static string OilTShow { get; set; }
         public static string OilTNeedle { get; set; }
         public static string OilTNeedleType { get; set; }
@@ -172,7 +199,7 @@
         public static string OilTTextY { get; set; }
         public static string OilTFontSize { get; set; }
         public static string OilTTextStyle { get; set; }
-
+        //fuel
         public static string FuelShow { get; set; }
         public static string FuelNeedle { get; set; }
         public static string FuelNeedleType { get; set; }
@@ -188,7 +215,7 @@
         public static string FuelTextY { get; set; }
         public static string FuelFontSize { get; set; }
         public static string FuelTextStyle { get; set; }
-
+        //fuelt
         public static string FuelTShow { get; set; }
         public static string FuelTNeedle { get; set; }
         public static string FuelTNeedleType { get; set; }
@@ -204,7 +231,7 @@
         public static string FuelTTextY { get; set; }
         public static string FuelTFontSize { get; set; }
         public static string FuelTTextStyle { get; set; }
-
+        //fuelp
         public static string FuelPShow { get; set; }
         public static string FuelPNeedle { get; set; }
         public static string FuelPNeedleType { get; set; }
@@ -220,7 +247,23 @@
         public static string FuelPTextY { get; set; }
         public static string FuelPFontSize { get; set; }
         public static string FuelPTextStyle { get; set; }
-
+        //battery
+        public static string BatteryShow { get; set; }
+        public static string BatteryNeedle { get; set; }
+        public static string BatteryNeedleType { get; set; }
+        public static string BatteryNeedleWidth { get; set; }
+        public static string BatteryNeedleLength { get; set; }
+        public static string BatteryNeedleX { get; set; }
+        public static string BatteryNeedleY { get; set; }
+        public static string BatteryOffset { get; set; }
+        public static string BatteryEnd { get; set; }
+        public static string BatteryTop { get; set; }
+        public static string BatteryTextShow { get; set; }
+        public static string BatteryTextX { get; set; }
+        public static string BatteryTextY { get; set; }
+        public static string BatteryFontSize { get; set; }
+        public static string BatteryTextStyle { get; set; }
+        //user1
         public static string User1Show { get; set; }
         public static string User1Needle { get; set; }
         public static string User1NeedleType { get; set; }
@@ -236,7 +279,7 @@
         public static string User1TextY { get; set; }
         public static string User1FontSize { get; set; }
         public static string User1TextStyle { get; set; }
-
+        //user2
         public static string User2Show { get; set; }
         public static string User2Needle { get; set; }
         public static string User2NeedleType { get; set; }
@@ -252,7 +295,7 @@
         public static string User2TextY { get; set; }
         public static string User2FontSize { get; set; }
         public static string User2TextStyle { get; set; }
-
+        //user3
         public static string User3Show { get; set; }
         public static string User3Needle { get; set; }
         public static string User3NeedleType { get; set; }
@@ -268,7 +311,7 @@
         public static string User3TextY { get; set; }
         public static string User3FontSize { get; set; }
         public static string User3TextStyle { get; set; }
-
+        //user4
         public static string User4Show { get; set; }
         public static string User4Needle { get; set; }
         public static string User4NeedleType { get; set; }
@@ -296,6 +339,7 @@
         public static string Fuelvalp1 { get; set; }
         public static string FuelTvalp1 { get; set; }
         public static string FuelPvalp1 { get; set; }
+        public static string Batteryvalp1 { get; set; }
         public static string p1disptxt { get; set; }
 
         public static string canser1 { get; set; }
@@ -320,6 +364,7 @@
         public static string FuelTB1 { get; set; }
         public static string FuelTTB1 { get; set; }
         public static string FuelPTB1 { get; set; }
+        public static string BatteryTB1 { get; set; }
         public static string User1PTB1 { get; set; }
         public static string User2PTB1 { get; set; }
         public static string User3PTB1 { get; set; }
@@ -336,6 +381,7 @@
         public static string Fuelvalp2 { get; set; }
         public static string FuelTvalp2 { get; set; }
         public static string FuelPvalp2 { get; set; }
+        public static string Batteryvalp2 { get; set; }
         public static string p2disptxt { get; set; }
 
         public static string canser2 { get; set; }
@@ -360,6 +406,7 @@
         public static string FuelTB2 { get; set; }
         public static string FuelTTB2 { get; set; }
         public static string FuelPTB2 { get; set; }
+        public static string BatteryTB2 { get; set; }
         public static string User1PTB2 { get; set; }
         public static string User2PTB2 { get; set; }
         public static string User3PTB2 { get; set; }
@@ -375,6 +422,7 @@
         public static string OilTvalp3 { get; set; }
         public static string Fuelvalp3 { get; set; }
         public static string FuelTvalp3 { get; set; }
+        public static string Batteryvalp3 { get; set; }
         public static string FuelPvalp3 { get; set; }
         public static string p3disptxt { get; set; }
 
@@ -400,6 +448,7 @@
         public static string FuelTB3 { get; set; }
         public static string FuelTTB3 { get; set; }
         public static string FuelPTB3 { get; set; }
+        public static string BatteryTB3 { get; set; }
         public static string User1PTB3 { get; set; }
         public static string User2PTB3 { get; set; }
         public static string User3PTB3 { get; set; }

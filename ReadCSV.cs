@@ -10,6 +10,8 @@ namespace kkdash
     {
         public static void ReadTheCSV(int PanelNo)
         {
+            Globals.thecounter = 0;
+
             if (PanelNo == 1)
             {
                 try
@@ -27,18 +29,22 @@ namespace kkdash
                                 //gauges and bars
                                 if ((items[0].ToLower() == "speedo") || (items[0].ToLower() == "tacho") || (items[0].ToLower() == "boost") || (items[0].ToLower() == "temp") || (items[0].ToLower() == "oil") || (items[0].ToLower() == "oilt") || (items[0].ToLower() == "fuel"))
                                 {
-                                    popReadGauges(items[0], items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13], items[14], items[15]);
+                                    popReadgauges(items[0], items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13], items[14], items[15], items[16]);
                                 }
-                                if ((items[0].ToLower() == "fuelt") || (items[0].ToLower() == "fuelp") || (items[0].ToLower() == "user1") || (items[0].ToLower() == "user2") || (items[0].ToLower() == "user3") || (items[0].ToLower() == "user4"))
+                                if ((items[0].ToLower() == "fuelt") || (items[0].ToLower() == "fuelp") || (items[0].ToLower() == "battery") || (items[0].ToLower() == "user1") || (items[0].ToLower() == "user2") || (items[0].ToLower() == "user3") || (items[0].ToLower() == "user4"))
                                 {
-                                    popReadGauges(items[0], items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13], items[14], items[15]);
+                                    popReadgauges(items[0], items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13], items[14], items[15], items[16]);
                                 }
                                 if (items[0] == "1") { Globals.p1DispWidth = items[1]; Globals.p1DispHeight = items[2]; }
 
                                 if (items[0] == "Background") { Globals.P1BG = items[1]; }
                                 if (items[0] == "Userdefined")
                                 {
-                                    Globals.User1name = items[1]; Globals.User2name = items[2]; Globals.User3name = items[3]; Globals.User4name = items[4]; Globals.User1CanOffset = items[5]; Globals.User2CanOffset = items[6]; Globals.User3CanOffset = items[7]; Globals.User4CanOffset = items[8];
+                                    Globals.User1name = items[1]; Globals.User2name = items[2]; Globals.User3name = items[3]; Globals.User4name = items[4];
+                                }
+                                if (items[0] == "Offsets")
+                                {
+                                    Globals.SpeedoCanOffset = items[1]; Globals.TachoCanOffset = items[2]; Globals.BoostCanOffset = items[3]; Globals.TempCanOffset = items[4]; Globals.OilCanOffset = items[5]; Globals.OilTCanOffset = items[6]; Globals.FuelCanOffset = items[7]; Globals.FuelTCanOffset = items[8]; Globals.FuelPCanOffset = items[9]; Globals.BatteryCanOffset = items[10]; Globals.User1CanOffset = items[11]; Globals.User2CanOffset = items[12]; Globals.User3CanOffset = items[13]; Globals.User4CanOffset = items[14];
                                 }
                                 if (items[0].ToLower() == "ecuconnection")
                                 {
@@ -85,11 +91,11 @@ namespace kkdash
                                     string[] items = currentLine.Split(',');
                                     if ((items[0].ToLower() == "speedo") || (items[0].ToLower() == "tacho") || (items[0].ToLower() == "boost") || (items[0].ToLower() == "temp") || (items[0].ToLower() == "oil") || (items[0].ToLower() == "oilt") || (items[0].ToLower() == "fuel"))
                                     {
-                                        popReadGauges(items[0], items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13], items[14], items[15]);
+                                        popReadgauges(items[0], items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13], items[14], items[15], items[16]);
                                     }
-                                    if ((items[0].ToLower() == "fuelt") || (items[0].ToLower() == "fuelp") || (items[0].ToLower() == "user1") || (items[0].ToLower() == "user2") || (items[0].ToLower() == "user3") || (items[0].ToLower() == "user4"))
+                                    if ((items[0].ToLower() == "fuelt") || (items[0].ToLower() == "fuelp") || (items[0].ToLower() == "battery") || (items[0].ToLower() == "user1") || (items[0].ToLower() == "user2") || (items[0].ToLower() == "user3") || (items[0].ToLower() == "user4"))
                                     {
-                                        popReadGauges(items[0], items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13], items[14], items[15]);
+                                        popReadgauges(items[0], items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13], items[14], items[15], items[16]);
                                     }
                                     if (items[0] == "2") { Globals.p2DispWidth = items[1]; Globals.p2DispHeight = items[2]; }
                                     if (items[0] == "Background") { Globals.P2BG = items[1]; }
@@ -131,11 +137,11 @@ namespace kkdash
                                     string[] items = currentLine.Split(',');
                                     if ((items[0].ToLower() == "speedo") || (items[0].ToLower() == "tacho") || (items[0].ToLower() == "boost") || (items[0].ToLower() == "temp") || (items[0].ToLower() == "oil") || (items[0].ToLower() == "oilt") || (items[0].ToLower() == "fuel"))
                                     {
-                                        popReadGauges(items[0], items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13], items[14], items[15]);
+                                        popReadgauges(items[0], items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13], items[14], items[15], items[16]);
                                     }
-                                    if ((items[0].ToLower() == "fuelt") || (items[0].ToLower() == "fuelp") || (items[0].ToLower() == "user1") || (items[0].ToLower() == "user2") || (items[0].ToLower() == "user3") || (items[0].ToLower() == "user4"))
+                                    if ((items[0].ToLower() == "fuelt") || (items[0].ToLower() == "fuelp") || (items[0].ToLower() == "battery") || (items[0].ToLower() == "user1") || (items[0].ToLower() == "user2") || (items[0].ToLower() == "user3") || (items[0].ToLower() == "user4"))
                                     {
-                                        popReadGauges(items[0], items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13], items[14], items[15]);
+                                        popReadgauges(items[0], items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13], items[14], items[15], items[16]);
                                     }
                                     if (items[0] == "3") { Globals.p3DispWidth = items[1]; Globals.p3DispHeight = items[2]; }
                                     if (items[0] == "Background") { Globals.P3BG = items[1]; }
@@ -160,8 +166,9 @@ namespace kkdash
 
 
         //--------------------------------------------------------------------------set the panel according to the gauge / text box-----------------------------------------------------------------
-        public static void popReadGauges(string gaugename, string itemShow, string itemNeedleWidth, string itemNeedleLength, string itemNeedleX, string itemNeedleY, string itemOffset, string itemEnd, string itemTop, string itemTextShow, string itemTextX, string itemTextY, string itemFontSize, string itemTextStyle, string itemNeedleType, string itemNeedle)
+        public static void popReadgauges(string gaugename, string itemShow, string itemNeedleWidth, string itemNeedleLength, string itemNeedleX, string itemNeedleY, string itemOffset, string itemEnd, string itemTop, string itemTextShow, string itemTextX, string itemTextY, string itemFontSize, string itemTextStyle, string itemNeedleType, string itemNeedle, string gpio)
         {
+            Globals.thecounter += 1;
             //                          0                           1                                 2                                 3                              4                             5                           6                              7                         8                           9                              10                         11                           12                              13                             14                              15                                                                                        
             //Globals.Speedovalp1 = Globals.gaugename + "," + Globals.SpeedoShow1 + "," + Globals.SpeedoNeedleWidth + "," + Globals.SpeedoNeedleLength + "," + Globals.SpeedoNeedleX + "," + Globals.SpeedoNeedleY + "," + Globals.SpeedoOffset + "," + Globals.SpeedoEnd + "," + Globals.SpeedoTop + "," + Globals.SpeedoTextShow1 + "," + Globals.SpeedoTextX + "," + Globals.SpeedoTextY + "," + Globals.SpeedoFontSize + "," + Globals.SpeedoTextStyle + "," + Globals.SpeedoNeedleType + "," + Globals.SpeedoNeedle;
             switch (gaugename)
@@ -183,6 +190,7 @@ namespace kkdash
                             Globals.SpeedoTop = itemTop;
                             Globals.SpeedoNeedleType = itemNeedleType;
                             Globals.SpeedoNeedle = itemNeedle;
+                            Globals.SpeedoGPIO = gpio;
                         }
                         else
                         {
@@ -195,6 +203,7 @@ namespace kkdash
                             Globals.SpeedoTop = "0";
                             Globals.SpeedoNeedleType = "0";
                             Globals.SpeedoNeedle = "0";
+                            Globals.SpeedoGPIO = "n";
                         }
 
                         if (itemTextShow == "1") { Globals.SpeedoTextShow = "1"; }
@@ -233,6 +242,7 @@ namespace kkdash
                             Globals.TachoTop = itemTop;
                             Globals.TachoNeedleType = itemNeedleType;
                             Globals.TachoNeedle = itemNeedle;
+                            Globals.TachoGPIO = gpio;
                         }
                         else
                         {
@@ -245,6 +255,7 @@ namespace kkdash
                             Globals.TachoTop = "0";
                             Globals.TachoNeedleType = "0";
                             Globals.TachoNeedle = "0";
+                            Globals.TachoGPIO = "n";
                         }
 
                         if (itemTextShow == "1") { Globals.TachoTextShow = "1"; }
@@ -283,6 +294,7 @@ namespace kkdash
                             Globals.BoostTop = itemTop;
                             Globals.BoostNeedleType = itemNeedleType;
                             Globals.BoostNeedle = itemNeedle;
+                            Globals.BoostGPIO = gpio;
                         }
                         else
                         {
@@ -295,6 +307,7 @@ namespace kkdash
                             Globals.BoostTop = "0";
                             Globals.BoostNeedleType = "0";
                             Globals.BoostNeedle = "0";
+                            Globals.BoostGPIO = "n";
                         }
 
                         if (itemTextShow == "1") { Globals.BoostTextShow = "1"; }
@@ -333,6 +346,7 @@ namespace kkdash
                             Globals.TempTop = itemTop;
                             Globals.TempNeedleType = itemNeedleType;
                             Globals.TempNeedle = itemNeedle;
+                            Globals.TempGPIO = gpio;
                         }
                         else
                         {
@@ -345,6 +359,7 @@ namespace kkdash
                             Globals.TempTop = "0";
                             Globals.TempNeedleType = "0";
                             Globals.TempNeedle = "0";
+                            Globals.TempGPIO = "n";
                         }
 
                         if (itemTextShow == "1") { Globals.TempTextShow = "1"; }
@@ -383,6 +398,7 @@ namespace kkdash
                             Globals.OilTop = itemTop;
                             Globals.OilNeedleType = itemNeedleType;
                             Globals.OilNeedle = itemNeedle;
+                            Globals.OilGPIO = gpio;
                         }
                         else
                         {
@@ -395,6 +411,7 @@ namespace kkdash
                             Globals.OilTop = "0";
                             Globals.OilNeedleType = "0";
                             Globals.OilNeedle = "0";
+                            Globals.OilGPIO = "n";
                         }
 
                         if (itemTextShow == "1") { Globals.OilTextShow = "1"; }
@@ -433,6 +450,7 @@ namespace kkdash
                             Globals.OilTTop = itemTop;
                             Globals.OilTNeedleType = itemNeedleType;
                             Globals.OilTNeedle = itemNeedle;
+                            Globals.OilTGPIO = gpio;
                         }
                         else
                         {
@@ -445,6 +463,7 @@ namespace kkdash
                             Globals.OilTTop = "0";
                             Globals.OilTNeedleType = "0";
                             Globals.OilTNeedle = "0";
+                            Globals.OilTGPIO = "n";
                         }
 
                         if (itemTextShow == "1") { Globals.OilTTextShow = "1"; }
@@ -483,6 +502,7 @@ namespace kkdash
                             Globals.FuelTop = itemTop;
                             Globals.FuelNeedleType = itemNeedleType;
                             Globals.FuelNeedle = itemNeedle;
+                            Globals.FuelGPIO = gpio;
                         }
                         else
                         {
@@ -495,6 +515,7 @@ namespace kkdash
                             Globals.FuelTop = "0";
                             Globals.FuelNeedleType = "0";
                             Globals.FuelNeedle = "0";
+                            Globals.FuelGPIO = "n";
                         }
 
                         if (itemTextShow == "1") { Globals.FuelTextShow = "1"; }
@@ -533,6 +554,7 @@ namespace kkdash
                             Globals.FuelTTop = itemTop;
                             Globals.FuelTNeedleType = itemNeedleType;
                             Globals.FuelTNeedle = itemNeedle;
+                            Globals.FuelTGPIO = gpio;
                         }
                         else
                         {
@@ -545,6 +567,7 @@ namespace kkdash
                             Globals.FuelTTop = "0";
                             Globals.FuelTNeedleType = "0";
                             Globals.FuelTNeedle = "0";
+                            Globals.FuelTGPIO = "n";
                         }
 
                         if (itemTextShow == "1") { Globals.FuelTTextShow = "1"; }
@@ -583,6 +606,7 @@ namespace kkdash
                             Globals.FuelPTop = itemTop;
                             Globals.FuelPNeedleType = itemNeedleType;
                             Globals.FuelPNeedle = itemNeedle;
+                            Globals.FuelPGPIO = gpio;
                         }
                         else
                         {
@@ -595,6 +619,7 @@ namespace kkdash
                             Globals.FuelPTop = "0";
                             Globals.FuelPNeedleType = "0";
                             Globals.FuelPNeedle = "0";
+                            Globals.FuelPGPIO = "n";
                         }
 
                         if (itemTextShow == "1") { Globals.FuelPTextShow = "1"; }
@@ -617,6 +642,58 @@ namespace kkdash
                         break;
                     }
 
+                case "Battery":
+                    {
+                        if (itemShow == "1") { Globals.BatteryShow = "1"; }
+                        if (itemShow == "2") { Globals.BatteryShow = "2"; }
+                        if (itemShow == "3") { Globals.BatteryShow = "3"; }
+                        if ((itemShow == "1") || (itemShow == "2") || (itemShow == "3"))
+                        {
+                            Globals.BatteryNeedleWidth = itemNeedleWidth;
+                            Globals.BatteryNeedleLength = itemNeedleLength;
+                            Globals.BatteryNeedleX = itemNeedleX;
+                            Globals.BatteryNeedleY = itemNeedleY;
+                            Globals.BatteryOffset = itemOffset;
+                            Globals.BatteryEnd = itemEnd;
+                            Globals.BatteryTop = itemTop;
+                            Globals.BatteryNeedleType = itemNeedleType;
+                            Globals.BatteryNeedle = itemNeedle;
+                            Globals.BatteryGPIO = gpio;
+                        }
+                        else
+                        {
+                            Globals.BatteryNeedleWidth = "0";
+                            Globals.BatteryNeedleLength = "0";
+                            Globals.BatteryNeedleX = "0";
+                            Globals.BatteryNeedleY = "0";
+                            Globals.BatteryOffset = "0";
+                            Globals.BatteryEnd = "0";
+                            Globals.BatteryTop = "0";
+                            Globals.BatteryNeedleType = "0";
+                            Globals.BatteryNeedle = "0";
+                            Globals.BatteryGPIO = "n";
+                        }
+
+                        if (itemTextShow == "1") { Globals.BatteryTextShow = "1"; }
+                        if (itemTextShow == "2") { Globals.BatteryTextShow = "2"; }
+                        if (itemTextShow == "3") { Globals.BatteryTextShow = "3"; }
+                        if ((itemTextShow == "1") || (itemTextShow == "2") || (itemTextShow == "3"))
+                        {
+                            Globals.BatteryTextX = itemTextX;
+                            Globals.BatteryTextY = itemTextY;
+                            Globals.BatteryFontSize = itemFontSize;
+                            Globals.BatteryTextStyle = itemTextStyle;
+                        }
+                        else
+                        {
+                            Globals.BatteryTextX = "0";
+                            Globals.BatteryTextY = "0";
+                            Globals.BatteryFontSize = "0";
+                            Globals.BatteryTextStyle = "0";
+                        }
+                        break;
+                    }
+
                 case "User1":
                     {
                         if (itemShow == "1") { Globals.User1Show = "1"; }
@@ -633,9 +710,11 @@ namespace kkdash
                             Globals.User1Top = itemTop;
                             Globals.User1NeedleType = itemNeedleType;
                             Globals.User1Needle = itemNeedle;
+                            Globals.User1GPIO = gpio;
                         }
                         else
                         {
+                            //Globals.User1Show
                             Globals.User1NeedleWidth = "0";
                             Globals.User1NeedleLength = "0";
                             Globals.User1NeedleX = "0";
@@ -645,6 +724,7 @@ namespace kkdash
                             Globals.User1Top = "0";
                             Globals.User1NeedleType = "0";
                             Globals.User1Needle = "0";
+                            Globals.User1GPIO = "n";
                         }
 
                         if (itemTextShow == "1") { Globals.User1TextShow = "1"; }
@@ -683,6 +763,7 @@ namespace kkdash
                             Globals.User2Top = itemTop;
                             Globals.User2NeedleType = itemNeedleType;
                             Globals.User2Needle = itemNeedle;
+                            Globals.User2GPIO = gpio;
                         }
                         else
                         {
@@ -695,6 +776,7 @@ namespace kkdash
                             Globals.User2Top = "0";
                             Globals.User2NeedleType = "0";
                             Globals.User2Needle = "0";
+                            Globals.User2GPIO = "n";
                         }
 
                         if (itemTextShow == "1") { Globals.User2TextShow = "1"; }
@@ -733,6 +815,7 @@ namespace kkdash
                             Globals.User3Top = itemTop;
                             Globals.User3NeedleType = itemNeedleType;
                             Globals.User3Needle = itemNeedle;
+                            Globals.User3GPIO = gpio;
                         }
                         else
                         {
@@ -745,6 +828,7 @@ namespace kkdash
                             Globals.User3Top = "0";
                             Globals.User3NeedleType = "0";
                             Globals.User3Needle = "0";
+                            Globals.User3GPIO = "n";
                         }
 
                         if (itemTextShow == "1") { Globals.User3TextShow = "1"; }
@@ -783,6 +867,7 @@ namespace kkdash
                             Globals.User4Top = itemTop;
                             Globals.User4NeedleType = itemNeedleType;
                             Globals.User4Needle = itemNeedle;
+                            Globals.User4GPIO = gpio;
                         }
                         else
                         {
@@ -795,6 +880,7 @@ namespace kkdash
                             Globals.User4Top = "0";
                             Globals.User4NeedleType = "0";
                             Globals.User4Needle = "0";
+                            Globals.User4GPIO = "n";
                         }
 
                         if (itemTextShow == "1") { Globals.User4TextShow = "1"; }
