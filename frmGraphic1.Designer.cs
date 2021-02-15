@@ -43,7 +43,6 @@ namespace kkdash
             this.pictureBG.TabIndex = 0;
             this.pictureBG.TabStop = false;
             this.pictureBG.Click += new System.EventHandler(this.pictureBG_Click);
-            this.pictureBG.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBG_MouseClick);
             // 
             // frmGraphic1
             // 
