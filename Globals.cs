@@ -2,6 +2,10 @@
 {
     class Globals
     {
+        public static bool isSaved1 { get; set; }
+        public static bool isSaved2 { get; set; }
+        public static bool isSaved3 { get; set; }
+
         public static int mouseposX { get; set; }
         public static int mouseposY { get; set; }
 
