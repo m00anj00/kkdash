@@ -45,6 +45,7 @@ namespace kkdash
                 }
                 else
                 {
+                    MessageBox.Show("Cant select no path.  Exiting");
                     this.Close();
                 }
             }
@@ -2772,19 +2773,52 @@ namespace kkdash
 
         private void button1_Click(object sender, EventArgs e)
         {
-           if (File.Exists (Globals.flocation + "\\Panel1.csv")|| File.Exists(Globals.flocation + "\\Panel2.csv")|| File.Exists(Globals.flocation + "\\Panel3.csv"))
+            if (File.Exists(Globals.flocation + "\\Panel1.csv"))
+            {
+                if (Globals.isSaved1 != true)
                 {
-                DialogResult dialogResult = MessageBox.Show("File(s) exist.  Do you wish to overwrite?", "Save changes", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    WriteCSVfile(1);
-                    WriteCSVfile(2);
-                    WriteCSVfile(3);
-                    this.Close();
+                    DialogResult dialogResult = MessageBox.Show("Panel1.csv exist.  Do you wish to overwrite?", "Save changes", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        WriteCSVfile(1);
+                        this.Close();
+                    }
+                    else if (dialogResult == DialogResult.No)
+                    {
+                        this.Close();
+                    }
                 }
-                else if (dialogResult == DialogResult.No)
+            }
+            if (File.Exists(Globals.flocation + "\\Panel2.csv"))
+            {
+                if (Globals.isSaved2 != true)
                 {
-                    this.Close();
+                    DialogResult dialogResult = MessageBox.Show("Panel2.csv exist.  Do you wish to overwrite?", "Save changes", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        WriteCSVfile(2);
+                        this.Close();
+                    }
+                    else if (dialogResult == DialogResult.No)
+                    {
+                        this.Close();
+                    }
+                }
+            }
+            if (File.Exists(Globals.flocation + "\\Panel3.csv"))
+            {
+                if (Globals.isSaved3 != true)
+                {
+                    DialogResult dialogResult = MessageBox.Show("Panel3.csv exist.  Do you wish to overwrite?", "Save changes", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        WriteCSVfile(3);
+                        this.Close();
+                    }
+                    else if (dialogResult == DialogResult.No)
+                    {
+                        this.Close();
+                    }
                 }
             }
 

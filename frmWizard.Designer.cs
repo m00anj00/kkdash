@@ -66,7 +66,6 @@
             this.cmbFuelTextStyle = new System.Windows.Forms.ComboBox();
             this.cmbFuelTTextStyle = new System.Windows.Forms.ComboBox();
             this.cmbFuelPTextStyle = new System.Windows.Forms.ComboBox();
-            this.label20 = new System.Windows.Forms.Label();
             this.txtSpeedoX = new System.Windows.Forms.TextBox();
             this.txtSpeedoY = new System.Windows.Forms.TextBox();
             this.txtTachoY = new System.Windows.Forms.TextBox();
@@ -108,7 +107,6 @@
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.btnNext = new System.Windows.Forms.Button();
-            this.label25 = new System.Windows.Forms.Label();
             this.cmbShowTacho = new System.Windows.Forms.ComboBox();
             this.cmbShowBoost = new System.Windows.Forms.ComboBox();
             this.cmbShowTemp = new System.Windows.Forms.ComboBox();
@@ -598,7 +596,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.label16.Location = new System.Drawing.Point(5, 55);
+            this.label16.Location = new System.Drawing.Point(4, 56);
             this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(43, 16);
@@ -609,7 +607,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.label17.Location = new System.Drawing.Point(124, 57);
+            this.label17.Location = new System.Drawing.Point(123, 58);
             this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(69, 16);
@@ -794,7 +792,7 @@
             this.cmbSpeedoTextStyle.Items.AddRange(new object[] {
             "smooth",
             "bold"});
-            this.cmbSpeedoTextStyle.Location = new System.Drawing.Point(118, 93);
+            this.cmbSpeedoTextStyle.Location = new System.Drawing.Point(117, 94);
             this.cmbSpeedoTextStyle.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbSpeedoTextStyle.Name = "cmbSpeedoTextStyle";
             this.cmbSpeedoTextStyle.Size = new System.Drawing.Size(93, 24);
@@ -808,7 +806,7 @@
             this.cmbTachoTextStyle.Items.AddRange(new object[] {
             "smooth",
             "bold"});
-            this.cmbTachoTextStyle.Location = new System.Drawing.Point(118, 133);
+            this.cmbTachoTextStyle.Location = new System.Drawing.Point(117, 134);
             this.cmbTachoTextStyle.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbTachoTextStyle.Name = "cmbTachoTextStyle";
             this.cmbTachoTextStyle.Size = new System.Drawing.Size(93, 24);
@@ -822,7 +820,7 @@
             this.cmbBoostTextStyle.Items.AddRange(new object[] {
             "smooth",
             "bold"});
-            this.cmbBoostTextStyle.Location = new System.Drawing.Point(118, 172);
+            this.cmbBoostTextStyle.Location = new System.Drawing.Point(117, 173);
             this.cmbBoostTextStyle.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbBoostTextStyle.Name = "cmbBoostTextStyle";
             this.cmbBoostTextStyle.Size = new System.Drawing.Size(93, 24);
@@ -836,7 +834,7 @@
             this.cmbTempTextStyle.Items.AddRange(new object[] {
             "smooth",
             "bold"});
-            this.cmbTempTextStyle.Location = new System.Drawing.Point(118, 211);
+            this.cmbTempTextStyle.Location = new System.Drawing.Point(117, 212);
             this.cmbTempTextStyle.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbTempTextStyle.Name = "cmbTempTextStyle";
             this.cmbTempTextStyle.Size = new System.Drawing.Size(93, 24);
@@ -850,7 +848,7 @@
             this.cmbOilTextStyle.Items.AddRange(new object[] {
             "smooth",
             "bold"});
-            this.cmbOilTextStyle.Location = new System.Drawing.Point(118, 250);
+            this.cmbOilTextStyle.Location = new System.Drawing.Point(117, 251);
             this.cmbOilTextStyle.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbOilTextStyle.Name = "cmbOilTextStyle";
             this.cmbOilTextStyle.Size = new System.Drawing.Size(93, 24);
@@ -864,7 +862,7 @@
             this.cmbOilTTextStyle.Items.AddRange(new object[] {
             "smooth",
             "bold"});
-            this.cmbOilTTextStyle.Location = new System.Drawing.Point(118, 290);
+            this.cmbOilTTextStyle.Location = new System.Drawing.Point(117, 291);
             this.cmbOilTTextStyle.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbOilTTextStyle.Name = "cmbOilTTextStyle";
             this.cmbOilTTextStyle.Size = new System.Drawing.Size(93, 24);
@@ -878,7 +876,7 @@
             this.cmbFuelTextStyle.Items.AddRange(new object[] {
             "smooth",
             "bold"});
-            this.cmbFuelTextStyle.Location = new System.Drawing.Point(118, 329);
+            this.cmbFuelTextStyle.Location = new System.Drawing.Point(117, 330);
             this.cmbFuelTextStyle.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbFuelTextStyle.Name = "cmbFuelTextStyle";
             this.cmbFuelTextStyle.Size = new System.Drawing.Size(93, 24);
@@ -892,7 +890,7 @@
             this.cmbFuelTTextStyle.Items.AddRange(new object[] {
             "smooth",
             "bold"});
-            this.cmbFuelTTextStyle.Location = new System.Drawing.Point(118, 368);
+            this.cmbFuelTTextStyle.Location = new System.Drawing.Point(117, 369);
             this.cmbFuelTTextStyle.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbFuelTTextStyle.Name = "cmbFuelTTextStyle";
             this.cmbFuelTTextStyle.Size = new System.Drawing.Size(93, 24);
@@ -906,24 +904,12 @@
             this.cmbFuelPTextStyle.Items.AddRange(new object[] {
             "smooth",
             "bold"});
-            this.cmbFuelPTextStyle.Location = new System.Drawing.Point(118, 407);
+            this.cmbFuelPTextStyle.Location = new System.Drawing.Point(117, 408);
             this.cmbFuelPTextStyle.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbFuelPTextStyle.Name = "cmbFuelPTextStyle";
             this.cmbFuelPTextStyle.Size = new System.Drawing.Size(93, 24);
             this.cmbFuelPTextStyle.TabIndex = 58;
             this.cmbFuelPTextStyle.Text = "smooth";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.label20.Location = new System.Drawing.Point(470, 55);
-            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(19, 16);
-            this.label20.TabIndex = 60;
-            this.label20.Text = "Y:";
-            this.label20.Visible = false;
             // 
             // txtSpeedoX
             // 
@@ -1126,7 +1112,7 @@
             // txtFuelPTextY
             // 
             this.txtFuelPTextY.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtFuelPTextY.Location = new System.Drawing.Point(266, 407);
+            this.txtFuelPTextY.Location = new System.Drawing.Point(265, 408);
             this.txtFuelPTextY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtFuelPTextY.Name = "txtFuelPTextY";
             this.txtFuelPTextY.Size = new System.Drawing.Size(40, 22);
@@ -1136,7 +1122,7 @@
             // txtFuelPTextX
             // 
             this.txtFuelPTextX.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtFuelPTextX.Location = new System.Drawing.Point(218, 407);
+            this.txtFuelPTextX.Location = new System.Drawing.Point(217, 408);
             this.txtFuelPTextX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtFuelPTextX.Name = "txtFuelPTextX";
             this.txtFuelPTextX.Size = new System.Drawing.Size(40, 22);
@@ -1146,7 +1132,7 @@
             // txtFuelTTextY
             // 
             this.txtFuelTTextY.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtFuelTTextY.Location = new System.Drawing.Point(266, 368);
+            this.txtFuelTTextY.Location = new System.Drawing.Point(265, 369);
             this.txtFuelTTextY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtFuelTTextY.Name = "txtFuelTTextY";
             this.txtFuelTTextY.Size = new System.Drawing.Size(40, 22);
@@ -1156,7 +1142,7 @@
             // txtFuelTTextX
             // 
             this.txtFuelTTextX.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtFuelTTextX.Location = new System.Drawing.Point(218, 368);
+            this.txtFuelTTextX.Location = new System.Drawing.Point(217, 369);
             this.txtFuelTTextX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtFuelTTextX.Name = "txtFuelTTextX";
             this.txtFuelTTextX.Size = new System.Drawing.Size(40, 22);
@@ -1166,7 +1152,7 @@
             // txtFuelTextY
             // 
             this.txtFuelTextY.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtFuelTextY.Location = new System.Drawing.Point(266, 329);
+            this.txtFuelTextY.Location = new System.Drawing.Point(265, 330);
             this.txtFuelTextY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtFuelTextY.Name = "txtFuelTextY";
             this.txtFuelTextY.Size = new System.Drawing.Size(40, 22);
@@ -1176,7 +1162,7 @@
             // txtFuelTextX
             // 
             this.txtFuelTextX.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtFuelTextX.Location = new System.Drawing.Point(218, 329);
+            this.txtFuelTextX.Location = new System.Drawing.Point(217, 330);
             this.txtFuelTextX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtFuelTextX.Name = "txtFuelTextX";
             this.txtFuelTextX.Size = new System.Drawing.Size(40, 22);
@@ -1186,7 +1172,7 @@
             // txtOilTTextY
             // 
             this.txtOilTTextY.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtOilTTextY.Location = new System.Drawing.Point(266, 290);
+            this.txtOilTTextY.Location = new System.Drawing.Point(265, 291);
             this.txtOilTTextY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtOilTTextY.Name = "txtOilTTextY";
             this.txtOilTTextY.Size = new System.Drawing.Size(40, 22);
@@ -1196,7 +1182,7 @@
             // txtOilTTextX
             // 
             this.txtOilTTextX.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtOilTTextX.Location = new System.Drawing.Point(218, 290);
+            this.txtOilTTextX.Location = new System.Drawing.Point(217, 291);
             this.txtOilTTextX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtOilTTextX.Name = "txtOilTTextX";
             this.txtOilTTextX.Size = new System.Drawing.Size(40, 22);
@@ -1206,7 +1192,7 @@
             // txtOilTextY
             // 
             this.txtOilTextY.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtOilTextY.Location = new System.Drawing.Point(266, 250);
+            this.txtOilTextY.Location = new System.Drawing.Point(265, 251);
             this.txtOilTextY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtOilTextY.Name = "txtOilTextY";
             this.txtOilTextY.Size = new System.Drawing.Size(40, 22);
@@ -1216,7 +1202,7 @@
             // txtOilTextX
             // 
             this.txtOilTextX.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtOilTextX.Location = new System.Drawing.Point(218, 250);
+            this.txtOilTextX.Location = new System.Drawing.Point(217, 251);
             this.txtOilTextX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtOilTextX.Name = "txtOilTextX";
             this.txtOilTextX.Size = new System.Drawing.Size(40, 22);
@@ -1226,7 +1212,7 @@
             // txtTempTextY
             // 
             this.txtTempTextY.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtTempTextY.Location = new System.Drawing.Point(266, 211);
+            this.txtTempTextY.Location = new System.Drawing.Point(265, 212);
             this.txtTempTextY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtTempTextY.Name = "txtTempTextY";
             this.txtTempTextY.Size = new System.Drawing.Size(40, 22);
@@ -1236,7 +1222,7 @@
             // txtTempTextX
             // 
             this.txtTempTextX.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtTempTextX.Location = new System.Drawing.Point(218, 211);
+            this.txtTempTextX.Location = new System.Drawing.Point(217, 212);
             this.txtTempTextX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtTempTextX.Name = "txtTempTextX";
             this.txtTempTextX.Size = new System.Drawing.Size(40, 22);
@@ -1246,7 +1232,7 @@
             // txtBoostTextY
             // 
             this.txtBoostTextY.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtBoostTextY.Location = new System.Drawing.Point(266, 172);
+            this.txtBoostTextY.Location = new System.Drawing.Point(265, 173);
             this.txtBoostTextY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtBoostTextY.Name = "txtBoostTextY";
             this.txtBoostTextY.Size = new System.Drawing.Size(40, 22);
@@ -1256,7 +1242,7 @@
             // txtBoostTextX
             // 
             this.txtBoostTextX.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtBoostTextX.Location = new System.Drawing.Point(218, 172);
+            this.txtBoostTextX.Location = new System.Drawing.Point(217, 173);
             this.txtBoostTextX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtBoostTextX.Name = "txtBoostTextX";
             this.txtBoostTextX.Size = new System.Drawing.Size(40, 22);
@@ -1266,7 +1252,7 @@
             // txtTachoTextY
             // 
             this.txtTachoTextY.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtTachoTextY.Location = new System.Drawing.Point(266, 133);
+            this.txtTachoTextY.Location = new System.Drawing.Point(265, 134);
             this.txtTachoTextY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtTachoTextY.Name = "txtTachoTextY";
             this.txtTachoTextY.Size = new System.Drawing.Size(40, 22);
@@ -1276,7 +1262,7 @@
             // txtTachoTextX
             // 
             this.txtTachoTextX.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtTachoTextX.Location = new System.Drawing.Point(218, 133);
+            this.txtTachoTextX.Location = new System.Drawing.Point(217, 134);
             this.txtTachoTextX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtTachoTextX.Name = "txtTachoTextX";
             this.txtTachoTextX.Size = new System.Drawing.Size(40, 22);
@@ -1286,7 +1272,7 @@
             // txtSpeedoTextY
             // 
             this.txtSpeedoTextY.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtSpeedoTextY.Location = new System.Drawing.Point(266, 93);
+            this.txtSpeedoTextY.Location = new System.Drawing.Point(265, 94);
             this.txtSpeedoTextY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtSpeedoTextY.Name = "txtSpeedoTextY";
             this.txtSpeedoTextY.Size = new System.Drawing.Size(40, 22);
@@ -1296,7 +1282,7 @@
             // txtSpeedoTextX
             // 
             this.txtSpeedoTextX.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtSpeedoTextX.Location = new System.Drawing.Point(218, 93);
+            this.txtSpeedoTextX.Location = new System.Drawing.Point(217, 94);
             this.txtSpeedoTextX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtSpeedoTextX.Name = "txtSpeedoTextX";
             this.txtSpeedoTextX.Size = new System.Drawing.Size(40, 22);
@@ -1307,7 +1293,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.label21.Location = new System.Drawing.Point(262, 57);
+            this.label21.Location = new System.Drawing.Point(261, 58);
             this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(19, 16);
@@ -1318,7 +1304,7 @@
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.label22.Location = new System.Drawing.Point(215, 58);
+            this.label22.Location = new System.Drawing.Point(214, 59);
             this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(18, 16);
@@ -1340,7 +1326,7 @@
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
-            this.label24.Location = new System.Drawing.Point(6, 9);
+            this.label24.Location = new System.Drawing.Point(78, 9);
             this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(140, 16);
@@ -1349,24 +1335,16 @@
             // 
             // btnNext
             // 
-            this.btnNext.BackColor = System.Drawing.Color.MediumTurquoise;
-            this.btnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnNext.Location = new System.Drawing.Point(134, 6);
+            this.btnNext.BackColor = System.Drawing.Color.White;
+            this.btnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnNext.Location = new System.Drawing.Point(14, 83);
             this.btnNext.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(110, 45);
+            this.btnNext.Size = new System.Drawing.Size(501, 76);
             this.btnNext.TabIndex = 101;
-            this.btnNext.Text = "Continue";
+            this.btnNext.Text = "Next";
             this.btnNext.UseVisualStyleBackColor = false;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
-            // 
-            // label25
-            // 
-            this.label25.Location = new System.Drawing.Point(0, 0);
-            this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(117, 27);
-            this.label25.TabIndex = 161;
             // 
             // cmbShowTacho
             // 
@@ -1505,7 +1483,7 @@
             "Panel 1",
             "Panel 2",
             "Panel 3"});
-            this.cmbFuelPTextShow.Location = new System.Drawing.Point(8, 407);
+            this.cmbFuelPTextShow.Location = new System.Drawing.Point(7, 408);
             this.cmbFuelPTextShow.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbFuelPTextShow.Name = "cmbFuelPTextShow";
             this.cmbFuelPTextShow.Size = new System.Drawing.Size(98, 24);
@@ -1521,7 +1499,7 @@
             "Panel 1",
             "Panel 2",
             "Panel 3"});
-            this.cmbFuelTTextShow.Location = new System.Drawing.Point(8, 368);
+            this.cmbFuelTTextShow.Location = new System.Drawing.Point(7, 369);
             this.cmbFuelTTextShow.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbFuelTTextShow.Name = "cmbFuelTTextShow";
             this.cmbFuelTTextShow.Size = new System.Drawing.Size(98, 24);
@@ -1537,7 +1515,7 @@
             "Panel 1",
             "Panel 2",
             "Panel 3"});
-            this.cmbFuelTextShow.Location = new System.Drawing.Point(8, 329);
+            this.cmbFuelTextShow.Location = new System.Drawing.Point(7, 330);
             this.cmbFuelTextShow.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbFuelTextShow.Name = "cmbFuelTextShow";
             this.cmbFuelTextShow.Size = new System.Drawing.Size(98, 24);
@@ -1553,7 +1531,7 @@
             "Panel 1",
             "Panel 2",
             "Panel 3"});
-            this.cmbOilTTextShow.Location = new System.Drawing.Point(8, 290);
+            this.cmbOilTTextShow.Location = new System.Drawing.Point(7, 291);
             this.cmbOilTTextShow.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbOilTTextShow.Name = "cmbOilTTextShow";
             this.cmbOilTTextShow.Size = new System.Drawing.Size(98, 24);
@@ -1569,7 +1547,7 @@
             "Panel 1",
             "Panel 2",
             "Panel 3"});
-            this.cmbOilTextShow.Location = new System.Drawing.Point(8, 250);
+            this.cmbOilTextShow.Location = new System.Drawing.Point(7, 251);
             this.cmbOilTextShow.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbOilTextShow.Name = "cmbOilTextShow";
             this.cmbOilTextShow.Size = new System.Drawing.Size(98, 24);
@@ -1585,7 +1563,7 @@
             "Panel 1",
             "Panel 2",
             "Panel 3"});
-            this.cmbTempTextShow.Location = new System.Drawing.Point(8, 211);
+            this.cmbTempTextShow.Location = new System.Drawing.Point(7, 212);
             this.cmbTempTextShow.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbTempTextShow.Name = "cmbTempTextShow";
             this.cmbTempTextShow.Size = new System.Drawing.Size(98, 24);
@@ -1601,7 +1579,7 @@
             "Panel 1",
             "Panel 2",
             "Panel 3"});
-            this.cmbBoostTextShow.Location = new System.Drawing.Point(9, 172);
+            this.cmbBoostTextShow.Location = new System.Drawing.Point(8, 173);
             this.cmbBoostTextShow.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbBoostTextShow.Name = "cmbBoostTextShow";
             this.cmbBoostTextShow.Size = new System.Drawing.Size(98, 24);
@@ -1617,7 +1595,7 @@
             "Panel 1",
             "Panel 2",
             "Panel 3"});
-            this.cmbTachoTextShow.Location = new System.Drawing.Point(9, 133);
+            this.cmbTachoTextShow.Location = new System.Drawing.Point(8, 134);
             this.cmbTachoTextShow.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbTachoTextShow.Name = "cmbTachoTextShow";
             this.cmbTachoTextShow.Size = new System.Drawing.Size(98, 24);
@@ -1633,7 +1611,7 @@
             "Panel 1",
             "Panel 2",
             "Panel 3"});
-            this.cmbSpeedoTextShow.Location = new System.Drawing.Point(9, 93);
+            this.cmbSpeedoTextShow.Location = new System.Drawing.Point(8, 94);
             this.cmbSpeedoTextShow.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbSpeedoTextShow.Name = "cmbSpeedoTextShow";
             this.cmbSpeedoTextShow.Size = new System.Drawing.Size(98, 24);
@@ -1865,7 +1843,6 @@
             this.panel1.Controls.Add(this.label18);
             this.panel1.Controls.Add(this.cmbShowSpeedo);
             this.panel1.Controls.Add(this.label23);
-            this.panel1.Controls.Add(this.label20);
             this.panel1.Controls.Add(this.txtSpeedoX);
             this.panel1.Controls.Add(this.txtSpeedoY);
             this.panel1.Controls.Add(this.txtTachoX);
@@ -1885,17 +1862,17 @@
             this.panel1.Controls.Add(this.txtFuelPX);
             this.panel1.Controls.Add(this.txtFuelPY);
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.panel1.Location = new System.Drawing.Point(13, 305);
+            this.panel1.Location = new System.Drawing.Point(13, 251);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1160, 669);
+            this.panel1.Size = new System.Drawing.Size(1176, 669);
             this.panel1.TabIndex = 132;
             // 
             // txtUser4CanOffset
             // 
             this.txtUser4CanOffset.BackColor = System.Drawing.Color.Silver;
             this.txtUser4CanOffset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser4CanOffset.Location = new System.Drawing.Point(1037, 617);
+            this.txtUser4CanOffset.Location = new System.Drawing.Point(992, 617);
             this.txtUser4CanOffset.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser4CanOffset.Name = "txtUser4CanOffset";
             this.txtUser4CanOffset.Size = new System.Drawing.Size(43, 22);
@@ -1906,7 +1883,7 @@
             // 
             this.txtUser3CanOffset.BackColor = System.Drawing.Color.Silver;
             this.txtUser3CanOffset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser3CanOffset.Location = new System.Drawing.Point(1039, 575);
+            this.txtUser3CanOffset.Location = new System.Drawing.Point(994, 575);
             this.txtUser3CanOffset.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser3CanOffset.Name = "txtUser3CanOffset";
             this.txtUser3CanOffset.Size = new System.Drawing.Size(43, 22);
@@ -1917,7 +1894,7 @@
             // 
             this.txtUser2CanOffset.BackColor = System.Drawing.Color.Silver;
             this.txtUser2CanOffset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser2CanOffset.Location = new System.Drawing.Point(1038, 530);
+            this.txtUser2CanOffset.Location = new System.Drawing.Point(993, 530);
             this.txtUser2CanOffset.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser2CanOffset.Name = "txtUser2CanOffset";
             this.txtUser2CanOffset.Size = new System.Drawing.Size(43, 22);
@@ -1928,7 +1905,7 @@
             // 
             this.txtUser1CanOffset.BackColor = System.Drawing.Color.Silver;
             this.txtUser1CanOffset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser1CanOffset.Location = new System.Drawing.Point(1037, 485);
+            this.txtUser1CanOffset.Location = new System.Drawing.Point(992, 485);
             this.txtUser1CanOffset.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser1CanOffset.Name = "txtUser1CanOffset";
             this.txtUser1CanOffset.Size = new System.Drawing.Size(43, 22);
@@ -1939,7 +1916,7 @@
             // 
             this.txtBatteryCanOffset.BackColor = System.Drawing.Color.Silver;
             this.txtBatteryCanOffset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtBatteryCanOffset.Location = new System.Drawing.Point(1037, 446);
+            this.txtBatteryCanOffset.Location = new System.Drawing.Point(992, 446);
             this.txtBatteryCanOffset.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtBatteryCanOffset.Name = "txtBatteryCanOffset";
             this.txtBatteryCanOffset.Size = new System.Drawing.Size(44, 22);
@@ -1950,7 +1927,7 @@
             // 
             this.txtFuelPCanOffset.BackColor = System.Drawing.Color.Silver;
             this.txtFuelPCanOffset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtFuelPCanOffset.Location = new System.Drawing.Point(1037, 407);
+            this.txtFuelPCanOffset.Location = new System.Drawing.Point(992, 407);
             this.txtFuelPCanOffset.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtFuelPCanOffset.Name = "txtFuelPCanOffset";
             this.txtFuelPCanOffset.Size = new System.Drawing.Size(43, 22);
@@ -1961,7 +1938,7 @@
             // 
             this.txtFuelTCanOffset.BackColor = System.Drawing.Color.Silver;
             this.txtFuelTCanOffset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtFuelTCanOffset.Location = new System.Drawing.Point(1037, 368);
+            this.txtFuelTCanOffset.Location = new System.Drawing.Point(992, 368);
             this.txtFuelTCanOffset.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtFuelTCanOffset.Name = "txtFuelTCanOffset";
             this.txtFuelTCanOffset.Size = new System.Drawing.Size(43, 22);
@@ -1972,7 +1949,7 @@
             // 
             this.txtFuelCanOffset.BackColor = System.Drawing.Color.Silver;
             this.txtFuelCanOffset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtFuelCanOffset.Location = new System.Drawing.Point(1037, 329);
+            this.txtFuelCanOffset.Location = new System.Drawing.Point(992, 329);
             this.txtFuelCanOffset.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtFuelCanOffset.Name = "txtFuelCanOffset";
             this.txtFuelCanOffset.Size = new System.Drawing.Size(43, 22);
@@ -1983,7 +1960,7 @@
             // 
             this.txtOilTCanOffset.BackColor = System.Drawing.Color.Silver;
             this.txtOilTCanOffset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtOilTCanOffset.Location = new System.Drawing.Point(1037, 289);
+            this.txtOilTCanOffset.Location = new System.Drawing.Point(992, 289);
             this.txtOilTCanOffset.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtOilTCanOffset.Name = "txtOilTCanOffset";
             this.txtOilTCanOffset.Size = new System.Drawing.Size(44, 22);
@@ -1994,7 +1971,7 @@
             // 
             this.txtOilCanOffset.BackColor = System.Drawing.Color.Silver;
             this.txtOilCanOffset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtOilCanOffset.Location = new System.Drawing.Point(1039, 250);
+            this.txtOilCanOffset.Location = new System.Drawing.Point(994, 250);
             this.txtOilCanOffset.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtOilCanOffset.Name = "txtOilCanOffset";
             this.txtOilCanOffset.Size = new System.Drawing.Size(43, 22);
@@ -2031,7 +2008,7 @@
             "25",
             "26",
             "27"});
-            this.cmbGPIOUser4.Location = new System.Drawing.Point(1089, 617);
+            this.cmbGPIOUser4.Location = new System.Drawing.Point(1044, 617);
             this.cmbGPIOUser4.Name = "cmbGPIOUser4";
             this.cmbGPIOUser4.Size = new System.Drawing.Size(55, 24);
             this.cmbGPIOUser4.TabIndex = 320;
@@ -2067,7 +2044,7 @@
             "25",
             "26",
             "27"});
-            this.cmbGPIOUser3.Location = new System.Drawing.Point(1087, 575);
+            this.cmbGPIOUser3.Location = new System.Drawing.Point(1042, 575);
             this.cmbGPIOUser3.Name = "cmbGPIOUser3";
             this.cmbGPIOUser3.Size = new System.Drawing.Size(55, 24);
             this.cmbGPIOUser3.TabIndex = 319;
@@ -2103,7 +2080,7 @@
             "25",
             "26",
             "27"});
-            this.cmbGPIOUser2.Location = new System.Drawing.Point(1087, 530);
+            this.cmbGPIOUser2.Location = new System.Drawing.Point(1042, 530);
             this.cmbGPIOUser2.Name = "cmbGPIOUser2";
             this.cmbGPIOUser2.Size = new System.Drawing.Size(55, 24);
             this.cmbGPIOUser2.TabIndex = 318;
@@ -2139,7 +2116,7 @@
             "25",
             "26",
             "27"});
-            this.cmbGPIOBattery.Location = new System.Drawing.Point(1087, 446);
+            this.cmbGPIOBattery.Location = new System.Drawing.Point(1042, 446);
             this.cmbGPIOBattery.Name = "cmbGPIOBattery";
             this.cmbGPIOBattery.Size = new System.Drawing.Size(55, 24);
             this.cmbGPIOBattery.TabIndex = 317;
@@ -2175,7 +2152,7 @@
             "25",
             "26",
             "27"});
-            this.cmbGPIOUser1.Location = new System.Drawing.Point(1087, 485);
+            this.cmbGPIOUser1.Location = new System.Drawing.Point(1042, 485);
             this.cmbGPIOUser1.Name = "cmbGPIOUser1";
             this.cmbGPIOUser1.Size = new System.Drawing.Size(55, 24);
             this.cmbGPIOUser1.TabIndex = 316;
@@ -2211,7 +2188,7 @@
             "25",
             "26",
             "27"});
-            this.cmbGPIOFuelP.Location = new System.Drawing.Point(1087, 408);
+            this.cmbGPIOFuelP.Location = new System.Drawing.Point(1042, 408);
             this.cmbGPIOFuelP.Name = "cmbGPIOFuelP";
             this.cmbGPIOFuelP.Size = new System.Drawing.Size(55, 24);
             this.cmbGPIOFuelP.TabIndex = 315;
@@ -2247,7 +2224,7 @@
             "25",
             "26",
             "27"});
-            this.cmbGPIOFuelT.Location = new System.Drawing.Point(1087, 369);
+            this.cmbGPIOFuelT.Location = new System.Drawing.Point(1042, 369);
             this.cmbGPIOFuelT.Name = "cmbGPIOFuelT";
             this.cmbGPIOFuelT.Size = new System.Drawing.Size(55, 24);
             this.cmbGPIOFuelT.TabIndex = 314;
@@ -2283,7 +2260,7 @@
             "25",
             "26",
             "27"});
-            this.cmbGPIOFuel.Location = new System.Drawing.Point(1087, 330);
+            this.cmbGPIOFuel.Location = new System.Drawing.Point(1042, 330);
             this.cmbGPIOFuel.Name = "cmbGPIOFuel";
             this.cmbGPIOFuel.Size = new System.Drawing.Size(55, 24);
             this.cmbGPIOFuel.TabIndex = 309;
@@ -2319,7 +2296,7 @@
             "25",
             "26",
             "27"});
-            this.cmbGPIOOilT.Location = new System.Drawing.Point(1087, 289);
+            this.cmbGPIOOilT.Location = new System.Drawing.Point(1042, 289);
             this.cmbGPIOOilT.Name = "cmbGPIOOilT";
             this.cmbGPIOOilT.Size = new System.Drawing.Size(55, 24);
             this.cmbGPIOOilT.TabIndex = 313;
@@ -2355,7 +2332,7 @@
             "25",
             "26",
             "27"});
-            this.cmbGPIOOil.Location = new System.Drawing.Point(1087, 250);
+            this.cmbGPIOOil.Location = new System.Drawing.Point(1042, 250);
             this.cmbGPIOOil.Name = "cmbGPIOOil";
             this.cmbGPIOOil.Size = new System.Drawing.Size(55, 24);
             this.cmbGPIOOil.TabIndex = 312;
@@ -2391,7 +2368,7 @@
             "25",
             "26",
             "27"});
-            this.cmbGPIOTemp.Location = new System.Drawing.Point(1087, 212);
+            this.cmbGPIOTemp.Location = new System.Drawing.Point(1042, 212);
             this.cmbGPIOTemp.Name = "cmbGPIOTemp";
             this.cmbGPIOTemp.Size = new System.Drawing.Size(55, 24);
             this.cmbGPIOTemp.TabIndex = 311;
@@ -2427,7 +2404,7 @@
             "25",
             "26",
             "27"});
-            this.cmbGPIOBoost.Location = new System.Drawing.Point(1087, 172);
+            this.cmbGPIOBoost.Location = new System.Drawing.Point(1042, 172);
             this.cmbGPIOBoost.Name = "cmbGPIOBoost";
             this.cmbGPIOBoost.Size = new System.Drawing.Size(55, 24);
             this.cmbGPIOBoost.TabIndex = 310;
@@ -2463,7 +2440,7 @@
             "25",
             "26",
             "27"});
-            this.cmbGPIOTacho.Location = new System.Drawing.Point(1087, 133);
+            this.cmbGPIOTacho.Location = new System.Drawing.Point(1042, 133);
             this.cmbGPIOTacho.Name = "cmbGPIOTacho";
             this.cmbGPIOTacho.Size = new System.Drawing.Size(55, 24);
             this.cmbGPIOTacho.TabIndex = 309;
@@ -2499,7 +2476,7 @@
             "25",
             "26",
             "27"});
-            this.cmbGPIOSpeedo.Location = new System.Drawing.Point(1087, 94);
+            this.cmbGPIOSpeedo.Location = new System.Drawing.Point(1042, 94);
             this.cmbGPIOSpeedo.Name = "cmbGPIOSpeedo";
             this.cmbGPIOSpeedo.Size = new System.Drawing.Size(55, 24);
             this.cmbGPIOSpeedo.TabIndex = 308;
@@ -2523,7 +2500,7 @@
             // 
             this.txtBatteryTop.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtBatteryTop.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtBatteryTop.Location = new System.Drawing.Point(991, 446);
+            this.txtBatteryTop.Location = new System.Drawing.Point(946, 446);
             this.txtBatteryTop.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtBatteryTop.Name = "txtBatteryTop";
             this.txtBatteryTop.Size = new System.Drawing.Size(40, 22);
@@ -2534,7 +2511,7 @@
             // 
             this.txtBatteryEnd.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtBatteryEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtBatteryEnd.Location = new System.Drawing.Point(943, 446);
+            this.txtBatteryEnd.Location = new System.Drawing.Point(898, 446);
             this.txtBatteryEnd.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtBatteryEnd.Name = "txtBatteryEnd";
             this.txtBatteryEnd.Size = new System.Drawing.Size(40, 22);
@@ -2551,6 +2528,7 @@
             this.txtBatteryOffset.Size = new System.Drawing.Size(40, 22);
             this.txtBatteryOffset.TabIndex = 304;
             this.txtBatteryOffset.Text = "0";
+            this.txtBatteryOffset.Visible = false;
             // 
             // txtBatteryNeedleX
             // 
@@ -2670,7 +2648,7 @@
             // 
             this.label42.AutoSize = true;
             this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.label42.Location = new System.Drawing.Point(1087, 55);
+            this.label42.Location = new System.Drawing.Point(1042, 55);
             this.label42.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(42, 16);
@@ -2681,7 +2659,7 @@
             // label46
             // 
             this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(1038, 55);
+            this.label46.Location = new System.Drawing.Point(993, 55);
             this.label46.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(41, 16);
@@ -2693,7 +2671,7 @@
             // 
             this.txtTempCanOffset.BackColor = System.Drawing.Color.Silver;
             this.txtTempCanOffset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtTempCanOffset.Location = new System.Drawing.Point(1038, 211);
+            this.txtTempCanOffset.Location = new System.Drawing.Point(993, 211);
             this.txtTempCanOffset.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtTempCanOffset.Name = "txtTempCanOffset";
             this.txtTempCanOffset.Size = new System.Drawing.Size(43, 22);
@@ -2704,7 +2682,7 @@
             // 
             this.txtBoostCanOffset.BackColor = System.Drawing.Color.Silver;
             this.txtBoostCanOffset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtBoostCanOffset.Location = new System.Drawing.Point(1039, 172);
+            this.txtBoostCanOffset.Location = new System.Drawing.Point(994, 172);
             this.txtBoostCanOffset.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtBoostCanOffset.Name = "txtBoostCanOffset";
             this.txtBoostCanOffset.Size = new System.Drawing.Size(43, 22);
@@ -2715,7 +2693,7 @@
             // 
             this.txtTachoCanOffset.BackColor = System.Drawing.Color.Silver;
             this.txtTachoCanOffset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtTachoCanOffset.Location = new System.Drawing.Point(1038, 133);
+            this.txtTachoCanOffset.Location = new System.Drawing.Point(993, 133);
             this.txtTachoCanOffset.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtTachoCanOffset.Name = "txtTachoCanOffset";
             this.txtTachoCanOffset.Size = new System.Drawing.Size(44, 22);
@@ -2726,7 +2704,7 @@
             // 
             this.txtSpeedoCanOffset.BackColor = System.Drawing.Color.Silver;
             this.txtSpeedoCanOffset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtSpeedoCanOffset.Location = new System.Drawing.Point(1039, 93);
+            this.txtSpeedoCanOffset.Location = new System.Drawing.Point(994, 93);
             this.txtSpeedoCanOffset.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtSpeedoCanOffset.Name = "txtSpeedoCanOffset";
             this.txtSpeedoCanOffset.Size = new System.Drawing.Size(43, 22);
@@ -3007,7 +2985,7 @@
             // 
             this.txtUser4Top.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtUser4Top.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser4Top.Location = new System.Drawing.Point(991, 617);
+            this.txtUser4Top.Location = new System.Drawing.Point(946, 617);
             this.txtUser4Top.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser4Top.Name = "txtUser4Top";
             this.txtUser4Top.Size = new System.Drawing.Size(40, 22);
@@ -3018,7 +2996,7 @@
             // 
             this.txtUser4End.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtUser4End.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser4End.Location = new System.Drawing.Point(943, 617);
+            this.txtUser4End.Location = new System.Drawing.Point(898, 617);
             this.txtUser4End.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser4End.Name = "txtUser4End";
             this.txtUser4End.Size = new System.Drawing.Size(40, 22);
@@ -3035,6 +3013,7 @@
             this.txtUser4Offset.Size = new System.Drawing.Size(40, 22);
             this.txtUser4Offset.TabIndex = 264;
             this.txtUser4Offset.Text = "0";
+            this.txtUser4Offset.Visible = false;
             // 
             // txtUser4NeedleX
             // 
@@ -3144,7 +3123,7 @@
             // 
             this.txtUser3Top.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtUser3Top.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser3Top.Location = new System.Drawing.Point(992, 575);
+            this.txtUser3Top.Location = new System.Drawing.Point(947, 575);
             this.txtUser3Top.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser3Top.Name = "txtUser3Top";
             this.txtUser3Top.Size = new System.Drawing.Size(40, 22);
@@ -3155,7 +3134,7 @@
             // 
             this.txtUser3End.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtUser3End.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser3End.Location = new System.Drawing.Point(944, 575);
+            this.txtUser3End.Location = new System.Drawing.Point(899, 575);
             this.txtUser3End.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser3End.Name = "txtUser3End";
             this.txtUser3End.Size = new System.Drawing.Size(40, 22);
@@ -3172,6 +3151,7 @@
             this.txtUser3Offset.Size = new System.Drawing.Size(40, 22);
             this.txtUser3Offset.TabIndex = 251;
             this.txtUser3Offset.Text = "0";
+            this.txtUser3Offset.Visible = false;
             // 
             // txtUser3NeedleX
             // 
@@ -3281,7 +3261,7 @@
             // 
             this.txtUser2Top.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtUser2Top.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser2Top.Location = new System.Drawing.Point(992, 530);
+            this.txtUser2Top.Location = new System.Drawing.Point(947, 530);
             this.txtUser2Top.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser2Top.Name = "txtUser2Top";
             this.txtUser2Top.Size = new System.Drawing.Size(40, 22);
@@ -3292,7 +3272,7 @@
             // 
             this.txtUser2End.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtUser2End.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser2End.Location = new System.Drawing.Point(944, 530);
+            this.txtUser2End.Location = new System.Drawing.Point(899, 530);
             this.txtUser2End.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser2End.Name = "txtUser2End";
             this.txtUser2End.Size = new System.Drawing.Size(40, 22);
@@ -3309,6 +3289,7 @@
             this.txtUser2Offset.Size = new System.Drawing.Size(40, 22);
             this.txtUser2Offset.TabIndex = 238;
             this.txtUser2Offset.Text = "0";
+            this.txtUser2Offset.Visible = false;
             // 
             // txtUser2NeedleX
             // 
@@ -3418,7 +3399,7 @@
             // 
             this.txtUser1Top.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtUser1Top.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser1Top.Location = new System.Drawing.Point(992, 485);
+            this.txtUser1Top.Location = new System.Drawing.Point(947, 485);
             this.txtUser1Top.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser1Top.Name = "txtUser1Top";
             this.txtUser1Top.Size = new System.Drawing.Size(40, 22);
@@ -3429,7 +3410,7 @@
             // 
             this.txtUser1End.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtUser1End.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser1End.Location = new System.Drawing.Point(944, 485);
+            this.txtUser1End.Location = new System.Drawing.Point(899, 485);
             this.txtUser1End.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser1End.Name = "txtUser1End";
             this.txtUser1End.Size = new System.Drawing.Size(40, 22);
@@ -3446,6 +3427,7 @@
             this.txtUser1Offset.Size = new System.Drawing.Size(40, 22);
             this.txtUser1Offset.TabIndex = 225;
             this.txtUser1Offset.Text = "0";
+            this.txtUser1Offset.Visible = false;
             // 
             // txtUser1NeedleX
             // 
@@ -3555,20 +3537,19 @@
             // 
             this.lblWarn.AutoSize = true;
             this.lblWarn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.lblWarn.Location = new System.Drawing.Point(516, 55);
+            this.lblWarn.Location = new System.Drawing.Point(509, 55);
             this.lblWarn.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblWarn.Name = "lblWarn";
-            this.lblWarn.Size = new System.Drawing.Size(149, 16);
+            this.lblWarn.Size = new System.Drawing.Size(182, 16);
             this.lblWarn.TabIndex = 214;
-            this.lblWarn.Text = "Warn % :   Above/below";
-            this.lblWarn.Visible = false;
+            this.lblWarn.Text = "Warn % :              Above/below";
             this.lblWarn.Click += new System.EventHandler(this.lblWarn_Click);
             // 
             // txtFuelPTop
             // 
             this.txtFuelPTop.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtFuelPTop.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtFuelPTop.Location = new System.Drawing.Point(991, 407);
+            this.txtFuelPTop.Location = new System.Drawing.Point(946, 407);
             this.txtFuelPTop.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtFuelPTop.Name = "txtFuelPTop";
             this.txtFuelPTop.Size = new System.Drawing.Size(40, 22);
@@ -3579,7 +3560,7 @@
             // 
             this.txtFuelTTop.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtFuelTTop.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtFuelTTop.Location = new System.Drawing.Point(991, 368);
+            this.txtFuelTTop.Location = new System.Drawing.Point(946, 368);
             this.txtFuelTTop.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtFuelTTop.Name = "txtFuelTTop";
             this.txtFuelTTop.Size = new System.Drawing.Size(40, 22);
@@ -3590,7 +3571,7 @@
             // 
             this.txtFuelTop.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtFuelTop.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtFuelTop.Location = new System.Drawing.Point(991, 329);
+            this.txtFuelTop.Location = new System.Drawing.Point(946, 329);
             this.txtFuelTop.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtFuelTop.Name = "txtFuelTop";
             this.txtFuelTop.Size = new System.Drawing.Size(40, 22);
@@ -3601,7 +3582,7 @@
             // 
             this.txtOilTTop.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtOilTTop.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtOilTTop.Location = new System.Drawing.Point(991, 290);
+            this.txtOilTTop.Location = new System.Drawing.Point(946, 290);
             this.txtOilTTop.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtOilTTop.Name = "txtOilTTop";
             this.txtOilTTop.Size = new System.Drawing.Size(40, 22);
@@ -3612,7 +3593,7 @@
             // 
             this.txtOilTop.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtOilTop.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtOilTop.Location = new System.Drawing.Point(991, 250);
+            this.txtOilTop.Location = new System.Drawing.Point(946, 250);
             this.txtOilTop.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtOilTop.Name = "txtOilTop";
             this.txtOilTop.Size = new System.Drawing.Size(40, 22);
@@ -3623,7 +3604,7 @@
             // 
             this.txtTempTop.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtTempTop.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtTempTop.Location = new System.Drawing.Point(991, 211);
+            this.txtTempTop.Location = new System.Drawing.Point(946, 211);
             this.txtTempTop.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtTempTop.Name = "txtTempTop";
             this.txtTempTop.Size = new System.Drawing.Size(40, 22);
@@ -3634,7 +3615,7 @@
             // 
             this.txtBoostTop.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtBoostTop.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtBoostTop.Location = new System.Drawing.Point(991, 172);
+            this.txtBoostTop.Location = new System.Drawing.Point(946, 172);
             this.txtBoostTop.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtBoostTop.Name = "txtBoostTop";
             this.txtBoostTop.Size = new System.Drawing.Size(40, 22);
@@ -3645,7 +3626,7 @@
             // 
             this.txtTachoTop.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtTachoTop.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtTachoTop.Location = new System.Drawing.Point(991, 133);
+            this.txtTachoTop.Location = new System.Drawing.Point(946, 133);
             this.txtTachoTop.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtTachoTop.Name = "txtTachoTop";
             this.txtTachoTop.Size = new System.Drawing.Size(40, 22);
@@ -3656,7 +3637,7 @@
             // 
             this.txtSpeedoTop.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtSpeedoTop.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtSpeedoTop.Location = new System.Drawing.Point(991, 93);
+            this.txtSpeedoTop.Location = new System.Drawing.Point(946, 93);
             this.txtSpeedoTop.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtSpeedoTop.Name = "txtSpeedoTop";
             this.txtSpeedoTop.Size = new System.Drawing.Size(40, 22);
@@ -3667,7 +3648,7 @@
             // 
             this.txtFuelPEnd.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtFuelPEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtFuelPEnd.Location = new System.Drawing.Point(943, 407);
+            this.txtFuelPEnd.Location = new System.Drawing.Point(898, 407);
             this.txtFuelPEnd.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtFuelPEnd.Name = "txtFuelPEnd";
             this.txtFuelPEnd.Size = new System.Drawing.Size(40, 22);
@@ -3678,7 +3659,7 @@
             // 
             this.txtFuelTEnd.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtFuelTEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtFuelTEnd.Location = new System.Drawing.Point(943, 368);
+            this.txtFuelTEnd.Location = new System.Drawing.Point(898, 368);
             this.txtFuelTEnd.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtFuelTEnd.Name = "txtFuelTEnd";
             this.txtFuelTEnd.Size = new System.Drawing.Size(40, 22);
@@ -3689,7 +3670,7 @@
             // 
             this.txtFuelEnd.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtFuelEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtFuelEnd.Location = new System.Drawing.Point(943, 329);
+            this.txtFuelEnd.Location = new System.Drawing.Point(898, 329);
             this.txtFuelEnd.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtFuelEnd.Name = "txtFuelEnd";
             this.txtFuelEnd.Size = new System.Drawing.Size(40, 22);
@@ -3700,7 +3681,7 @@
             // 
             this.txtOilTEnd.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtOilTEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtOilTEnd.Location = new System.Drawing.Point(943, 290);
+            this.txtOilTEnd.Location = new System.Drawing.Point(898, 290);
             this.txtOilTEnd.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtOilTEnd.Name = "txtOilTEnd";
             this.txtOilTEnd.Size = new System.Drawing.Size(40, 22);
@@ -3711,7 +3692,7 @@
             // 
             this.txtOilEnd.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtOilEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtOilEnd.Location = new System.Drawing.Point(943, 250);
+            this.txtOilEnd.Location = new System.Drawing.Point(898, 250);
             this.txtOilEnd.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtOilEnd.Name = "txtOilEnd";
             this.txtOilEnd.Size = new System.Drawing.Size(40, 22);
@@ -3722,7 +3703,7 @@
             // 
             this.txtTempEnd.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtTempEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtTempEnd.Location = new System.Drawing.Point(943, 211);
+            this.txtTempEnd.Location = new System.Drawing.Point(898, 211);
             this.txtTempEnd.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtTempEnd.Name = "txtTempEnd";
             this.txtTempEnd.Size = new System.Drawing.Size(40, 22);
@@ -3733,7 +3714,7 @@
             // 
             this.txtBoostEnd.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtBoostEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtBoostEnd.Location = new System.Drawing.Point(943, 172);
+            this.txtBoostEnd.Location = new System.Drawing.Point(898, 172);
             this.txtBoostEnd.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtBoostEnd.Name = "txtBoostEnd";
             this.txtBoostEnd.Size = new System.Drawing.Size(40, 22);
@@ -3744,7 +3725,7 @@
             // 
             this.txtTachoEnd.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtTachoEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtTachoEnd.Location = new System.Drawing.Point(943, 133);
+            this.txtTachoEnd.Location = new System.Drawing.Point(898, 133);
             this.txtTachoEnd.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtTachoEnd.Name = "txtTachoEnd";
             this.txtTachoEnd.Size = new System.Drawing.Size(40, 22);
@@ -3755,7 +3736,7 @@
             // 
             this.txtSpeedoEnd.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtSpeedoEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtSpeedoEnd.Location = new System.Drawing.Point(943, 93);
+            this.txtSpeedoEnd.Location = new System.Drawing.Point(898, 93);
             this.txtSpeedoEnd.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtSpeedoEnd.Name = "txtSpeedoEnd";
             this.txtSpeedoEnd.Size = new System.Drawing.Size(40, 22);
@@ -3772,6 +3753,7 @@
             this.txtFuelPOffset.Size = new System.Drawing.Size(40, 22);
             this.txtFuelPOffset.TabIndex = 195;
             this.txtFuelPOffset.Text = "0";
+            this.txtFuelPOffset.Visible = false;
             // 
             // txtFuelTOffset
             // 
@@ -3783,6 +3765,7 @@
             this.txtFuelTOffset.Size = new System.Drawing.Size(40, 22);
             this.txtFuelTOffset.TabIndex = 194;
             this.txtFuelTOffset.Text = "0";
+            this.txtFuelTOffset.Visible = false;
             // 
             // txtFuelOffset
             // 
@@ -3794,6 +3777,7 @@
             this.txtFuelOffset.Size = new System.Drawing.Size(40, 22);
             this.txtFuelOffset.TabIndex = 193;
             this.txtFuelOffset.Text = "0";
+            this.txtFuelOffset.Visible = false;
             // 
             // txtOilTOffset
             // 
@@ -3805,6 +3789,7 @@
             this.txtOilTOffset.Size = new System.Drawing.Size(40, 22);
             this.txtOilTOffset.TabIndex = 192;
             this.txtOilTOffset.Text = "0";
+            this.txtOilTOffset.Visible = false;
             // 
             // txtOilOffset
             // 
@@ -3816,6 +3801,7 @@
             this.txtOilOffset.Size = new System.Drawing.Size(40, 22);
             this.txtOilOffset.TabIndex = 191;
             this.txtOilOffset.Text = "0";
+            this.txtOilOffset.Visible = false;
             // 
             // txtTempOffset
             // 
@@ -3827,6 +3813,7 @@
             this.txtTempOffset.Size = new System.Drawing.Size(40, 22);
             this.txtTempOffset.TabIndex = 190;
             this.txtTempOffset.Text = "0";
+            this.txtTempOffset.Visible = false;
             // 
             // txtBoostOffset
             // 
@@ -3838,6 +3825,7 @@
             this.txtBoostOffset.Size = new System.Drawing.Size(40, 22);
             this.txtBoostOffset.TabIndex = 188;
             this.txtBoostOffset.Text = "0";
+            this.txtBoostOffset.Visible = false;
             // 
             // txtTachoOffset
             // 
@@ -3849,6 +3837,7 @@
             this.txtTachoOffset.Size = new System.Drawing.Size(40, 22);
             this.txtTachoOffset.TabIndex = 189;
             this.txtTachoOffset.Text = "0";
+            this.txtTachoOffset.Visible = false;
             // 
             // txtSpeedoOffset
             // 
@@ -3860,6 +3849,7 @@
             this.txtSpeedoOffset.Size = new System.Drawing.Size(40, 22);
             this.txtSpeedoOffset.TabIndex = 187;
             this.txtSpeedoOffset.Text = "0";
+            this.txtSpeedoOffset.Visible = false;
             // 
             // txtFuelPNeedleX
             // 
@@ -4306,7 +4296,7 @@
             // txtSpeedoNeedleWidth
             // 
             this.txtSpeedoNeedleWidth.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtSpeedoNeedleWidth.Location = new System.Drawing.Point(709, 93);
+            this.txtSpeedoNeedleWidth.Location = new System.Drawing.Point(709, 94);
             this.txtSpeedoNeedleWidth.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtSpeedoNeedleWidth.Name = "txtSpeedoNeedleWidth";
             this.txtSpeedoNeedleWidth.Size = new System.Drawing.Size(40, 22);
@@ -4446,17 +4436,17 @@
             this.panel2.Controls.Add(this.txtOilTTextX);
             this.panel2.Controls.Add(this.txtOilTTextY);
             this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.panel2.Location = new System.Drawing.Point(1171, 305);
+            this.panel2.Location = new System.Drawing.Point(1189, 251);
             this.panel2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(383, 669);
+            this.panel2.Size = new System.Drawing.Size(365, 669);
             this.panel2.TabIndex = 133;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // txtBatteryFontSize
             // 
             this.txtBatteryFontSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtBatteryFontSize.Location = new System.Drawing.Point(314, 446);
+            this.txtBatteryFontSize.Location = new System.Drawing.Point(313, 447);
             this.txtBatteryFontSize.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtBatteryFontSize.Name = "txtBatteryFontSize";
             this.txtBatteryFontSize.Size = new System.Drawing.Size(40, 22);
@@ -4472,7 +4462,7 @@
             "Panel 1",
             "Panel 2",
             "Panel 3"});
-            this.cmbBatteryTextShow.Location = new System.Drawing.Point(8, 446);
+            this.cmbBatteryTextShow.Location = new System.Drawing.Point(7, 447);
             this.cmbBatteryTextShow.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbBatteryTextShow.Name = "cmbBatteryTextShow";
             this.cmbBatteryTextShow.Size = new System.Drawing.Size(98, 24);
@@ -4486,7 +4476,7 @@
             this.cmbBatteryTextStyle.Items.AddRange(new object[] {
             "smooth",
             "bold"});
-            this.cmbBatteryTextStyle.Location = new System.Drawing.Point(118, 446);
+            this.cmbBatteryTextStyle.Location = new System.Drawing.Point(117, 447);
             this.cmbBatteryTextStyle.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbBatteryTextStyle.Name = "cmbBatteryTextStyle";
             this.cmbBatteryTextStyle.Size = new System.Drawing.Size(93, 24);
@@ -4496,7 +4486,7 @@
             // txtBatteryTextY
             // 
             this.txtBatteryTextY.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtBatteryTextY.Location = new System.Drawing.Point(266, 446);
+            this.txtBatteryTextY.Location = new System.Drawing.Point(265, 447);
             this.txtBatteryTextY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtBatteryTextY.Name = "txtBatteryTextY";
             this.txtBatteryTextY.Size = new System.Drawing.Size(40, 22);
@@ -4506,7 +4496,7 @@
             // txtBatteryTextX
             // 
             this.txtBatteryTextX.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtBatteryTextX.Location = new System.Drawing.Point(218, 446);
+            this.txtBatteryTextX.Location = new System.Drawing.Point(217, 447);
             this.txtBatteryTextX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtBatteryTextX.Name = "txtBatteryTextX";
             this.txtBatteryTextX.Size = new System.Drawing.Size(40, 22);
@@ -4576,7 +4566,7 @@
             // txtUser3FontSize
             // 
             this.txtUser3FontSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser3FontSize.Location = new System.Drawing.Point(315, 575);
+            this.txtUser3FontSize.Location = new System.Drawing.Point(314, 576);
             this.txtUser3FontSize.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser3FontSize.Name = "txtUser3FontSize";
             this.txtUser3FontSize.Size = new System.Drawing.Size(40, 22);
@@ -4592,7 +4582,7 @@
             "Panel 1",
             "Panel 2",
             "Panel 3"});
-            this.cmbUser3TextShow.Location = new System.Drawing.Point(9, 575);
+            this.cmbUser3TextShow.Location = new System.Drawing.Point(8, 576);
             this.cmbUser3TextShow.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbUser3TextShow.Name = "cmbUser3TextShow";
             this.cmbUser3TextShow.Size = new System.Drawing.Size(98, 24);
@@ -4606,7 +4596,7 @@
             this.cmbUser3TextStyle.Items.AddRange(new object[] {
             "smooth",
             "bold"});
-            this.cmbUser3TextStyle.Location = new System.Drawing.Point(119, 575);
+            this.cmbUser3TextStyle.Location = new System.Drawing.Point(118, 576);
             this.cmbUser3TextStyle.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbUser3TextStyle.Name = "cmbUser3TextStyle";
             this.cmbUser3TextStyle.Size = new System.Drawing.Size(93, 24);
@@ -4616,7 +4606,7 @@
             // txtUser3TextY
             // 
             this.txtUser3TextY.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser3TextY.Location = new System.Drawing.Point(267, 575);
+            this.txtUser3TextY.Location = new System.Drawing.Point(266, 576);
             this.txtUser3TextY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser3TextY.Name = "txtUser3TextY";
             this.txtUser3TextY.Size = new System.Drawing.Size(40, 22);
@@ -4626,7 +4616,7 @@
             // txtUser3TextX
             // 
             this.txtUser3TextX.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser3TextX.Location = new System.Drawing.Point(219, 575);
+            this.txtUser3TextX.Location = new System.Drawing.Point(218, 576);
             this.txtUser3TextX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser3TextX.Name = "txtUser3TextX";
             this.txtUser3TextX.Size = new System.Drawing.Size(40, 22);
@@ -4636,7 +4626,7 @@
             // txtUser2FontSize
             // 
             this.txtUser2FontSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser2FontSize.Location = new System.Drawing.Point(315, 530);
+            this.txtUser2FontSize.Location = new System.Drawing.Point(314, 531);
             this.txtUser2FontSize.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser2FontSize.Name = "txtUser2FontSize";
             this.txtUser2FontSize.Size = new System.Drawing.Size(40, 22);
@@ -4652,7 +4642,7 @@
             "Panel 1",
             "Panel 2",
             "Panel 3"});
-            this.cmbUser2TextShow.Location = new System.Drawing.Point(9, 530);
+            this.cmbUser2TextShow.Location = new System.Drawing.Point(8, 531);
             this.cmbUser2TextShow.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbUser2TextShow.Name = "cmbUser2TextShow";
             this.cmbUser2TextShow.Size = new System.Drawing.Size(98, 24);
@@ -4666,7 +4656,7 @@
             this.cmbUser2TextStyle.Items.AddRange(new object[] {
             "smooth",
             "bold"});
-            this.cmbUser2TextStyle.Location = new System.Drawing.Point(119, 530);
+            this.cmbUser2TextStyle.Location = new System.Drawing.Point(118, 531);
             this.cmbUser2TextStyle.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbUser2TextStyle.Name = "cmbUser2TextStyle";
             this.cmbUser2TextStyle.Size = new System.Drawing.Size(93, 24);
@@ -4676,7 +4666,7 @@
             // txtUser2TextY
             // 
             this.txtUser2TextY.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser2TextY.Location = new System.Drawing.Point(267, 530);
+            this.txtUser2TextY.Location = new System.Drawing.Point(266, 531);
             this.txtUser2TextY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser2TextY.Name = "txtUser2TextY";
             this.txtUser2TextY.Size = new System.Drawing.Size(40, 22);
@@ -4686,7 +4676,7 @@
             // txtUser2TextX
             // 
             this.txtUser2TextX.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser2TextX.Location = new System.Drawing.Point(219, 530);
+            this.txtUser2TextX.Location = new System.Drawing.Point(218, 531);
             this.txtUser2TextX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser2TextX.Name = "txtUser2TextX";
             this.txtUser2TextX.Size = new System.Drawing.Size(40, 22);
@@ -4696,7 +4686,7 @@
             // txtUser1FontSize
             // 
             this.txtUser1FontSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser1FontSize.Location = new System.Drawing.Point(315, 485);
+            this.txtUser1FontSize.Location = new System.Drawing.Point(314, 486);
             this.txtUser1FontSize.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser1FontSize.Name = "txtUser1FontSize";
             this.txtUser1FontSize.Size = new System.Drawing.Size(40, 22);
@@ -4712,7 +4702,7 @@
             "Panel 1",
             "Panel 2",
             "Panel 3"});
-            this.cmbUser1TextShow.Location = new System.Drawing.Point(9, 485);
+            this.cmbUser1TextShow.Location = new System.Drawing.Point(8, 486);
             this.cmbUser1TextShow.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbUser1TextShow.Name = "cmbUser1TextShow";
             this.cmbUser1TextShow.Size = new System.Drawing.Size(98, 24);
@@ -4726,7 +4716,7 @@
             this.cmbUser1TextStyle.Items.AddRange(new object[] {
             "smooth",
             "bold"});
-            this.cmbUser1TextStyle.Location = new System.Drawing.Point(119, 485);
+            this.cmbUser1TextStyle.Location = new System.Drawing.Point(118, 486);
             this.cmbUser1TextStyle.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbUser1TextStyle.Name = "cmbUser1TextStyle";
             this.cmbUser1TextStyle.Size = new System.Drawing.Size(93, 24);
@@ -4736,7 +4726,7 @@
             // txtUser1TextY
             // 
             this.txtUser1TextY.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser1TextY.Location = new System.Drawing.Point(267, 485);
+            this.txtUser1TextY.Location = new System.Drawing.Point(266, 486);
             this.txtUser1TextY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser1TextY.Name = "txtUser1TextY";
             this.txtUser1TextY.Size = new System.Drawing.Size(40, 22);
@@ -4746,7 +4736,7 @@
             // txtUser1TextX
             // 
             this.txtUser1TextX.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser1TextX.Location = new System.Drawing.Point(219, 485);
+            this.txtUser1TextX.Location = new System.Drawing.Point(218, 486);
             this.txtUser1TextX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUser1TextX.Name = "txtUser1TextX";
             this.txtUser1TextX.Size = new System.Drawing.Size(40, 22);
@@ -4757,7 +4747,7 @@
             // 
             this.label39.AutoSize = true;
             this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.label39.Location = new System.Drawing.Point(310, 58);
+            this.label39.Location = new System.Drawing.Point(309, 59);
             this.label39.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(36, 16);
@@ -4767,7 +4757,7 @@
             // txtSpeedoFontSize
             // 
             this.txtSpeedoFontSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtSpeedoFontSize.Location = new System.Drawing.Point(314, 93);
+            this.txtSpeedoFontSize.Location = new System.Drawing.Point(313, 94);
             this.txtSpeedoFontSize.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtSpeedoFontSize.Name = "txtSpeedoFontSize";
             this.txtSpeedoFontSize.Size = new System.Drawing.Size(40, 22);
@@ -4777,7 +4767,7 @@
             // txtTachoFontSize
             // 
             this.txtTachoFontSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtTachoFontSize.Location = new System.Drawing.Point(314, 133);
+            this.txtTachoFontSize.Location = new System.Drawing.Point(313, 134);
             this.txtTachoFontSize.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtTachoFontSize.Name = "txtTachoFontSize";
             this.txtTachoFontSize.Size = new System.Drawing.Size(40, 22);
@@ -4787,7 +4777,7 @@
             // txtFuelPFontSize
             // 
             this.txtFuelPFontSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtFuelPFontSize.Location = new System.Drawing.Point(314, 407);
+            this.txtFuelPFontSize.Location = new System.Drawing.Point(313, 408);
             this.txtFuelPFontSize.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtFuelPFontSize.Name = "txtFuelPFontSize";
             this.txtFuelPFontSize.Size = new System.Drawing.Size(40, 22);
@@ -4797,7 +4787,7 @@
             // txtBoostFontSize
             // 
             this.txtBoostFontSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtBoostFontSize.Location = new System.Drawing.Point(314, 172);
+            this.txtBoostFontSize.Location = new System.Drawing.Point(313, 173);
             this.txtBoostFontSize.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtBoostFontSize.Name = "txtBoostFontSize";
             this.txtBoostFontSize.Size = new System.Drawing.Size(40, 22);
@@ -4807,7 +4797,7 @@
             // txtFuelTFontSize
             // 
             this.txtFuelTFontSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtFuelTFontSize.Location = new System.Drawing.Point(314, 368);
+            this.txtFuelTFontSize.Location = new System.Drawing.Point(313, 369);
             this.txtFuelTFontSize.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtFuelTFontSize.Name = "txtFuelTFontSize";
             this.txtFuelTFontSize.Size = new System.Drawing.Size(40, 22);
@@ -4817,7 +4807,7 @@
             // txtTempFontSize
             // 
             this.txtTempFontSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtTempFontSize.Location = new System.Drawing.Point(314, 211);
+            this.txtTempFontSize.Location = new System.Drawing.Point(313, 212);
             this.txtTempFontSize.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtTempFontSize.Name = "txtTempFontSize";
             this.txtTempFontSize.Size = new System.Drawing.Size(40, 22);
@@ -4827,7 +4817,7 @@
             // txtFuelFontSize
             // 
             this.txtFuelFontSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtFuelFontSize.Location = new System.Drawing.Point(314, 329);
+            this.txtFuelFontSize.Location = new System.Drawing.Point(313, 330);
             this.txtFuelFontSize.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtFuelFontSize.Name = "txtFuelFontSize";
             this.txtFuelFontSize.Size = new System.Drawing.Size(40, 22);
@@ -4837,7 +4827,7 @@
             // txtOilFontSize
             // 
             this.txtOilFontSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtOilFontSize.Location = new System.Drawing.Point(314, 250);
+            this.txtOilFontSize.Location = new System.Drawing.Point(313, 251);
             this.txtOilFontSize.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtOilFontSize.Name = "txtOilFontSize";
             this.txtOilFontSize.Size = new System.Drawing.Size(40, 22);
@@ -4847,7 +4837,7 @@
             // txtOilTFontSize
             // 
             this.txtOilTFontSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtOilTFontSize.Location = new System.Drawing.Point(314, 290);
+            this.txtOilTFontSize.Location = new System.Drawing.Point(313, 291);
             this.txtOilTFontSize.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtOilTFontSize.Name = "txtOilTFontSize";
             this.txtOilTFontSize.Size = new System.Drawing.Size(40, 22);
@@ -4974,10 +4964,10 @@
             this.TS1,
             this.TS2,
             this.TS3});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 974);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 928);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 16, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(1575, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1573, 22);
             this.statusStrip1.TabIndex = 239;
             // 
             // TS1
@@ -5008,14 +4998,14 @@
             // 
             // btnLoad
             // 
-            this.btnLoad.BackColor = System.Drawing.Color.MediumTurquoise;
-            this.btnLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnLoad.Location = new System.Drawing.Point(18, 6);
+            this.btnLoad.BackColor = System.Drawing.Color.White;
+            this.btnLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnLoad.Location = new System.Drawing.Point(13, 3);
             this.btnLoad.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(110, 45);
+            this.btnLoad.Size = new System.Drawing.Size(502, 79);
             this.btnLoad.TabIndex = 235;
-            this.btnLoad.Text = "Load";
+            this.btnLoad.Text = "Config Load";
             this.btnLoad.UseVisualStyleBackColor = false;
             this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click_1);
             // 
@@ -5038,7 +5028,6 @@
             this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.cmbSerCanP1ECUSerSpeed);
             this.panel3.Controls.Add(this.cmbSerCanP1P2SerInter);
-            this.panel3.Controls.Add(this.label25);
             this.panel3.Controls.Add(this.cmbSerCanP1ECUCanSpeed);
             this.panel3.Controls.Add(this.txtP1Height);
             this.panel3.Controls.Add(this.cmbSerCanP1P2SerSpeed);
@@ -5052,7 +5041,7 @@
             this.panel3.Controls.Add(this.txtPanel1IP);
             this.panel3.Controls.Add(this.cmbSerCanP1P2);
             this.panel3.Controls.Add(this.label1);
-            this.panel3.Location = new System.Drawing.Point(14, 57);
+            this.panel3.Location = new System.Drawing.Point(523, 3);
             this.panel3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(518, 251);
@@ -5342,10 +5331,10 @@
             this.panel4.Controls.Add(this.btnP2BG);
             this.panel4.Controls.Add(this.txtPaneI2IP);
             this.panel4.Controls.Add(this.label40);
-            this.panel4.Location = new System.Drawing.Point(526, 57);
+            this.panel4.Location = new System.Drawing.Point(1036, 3);
             this.panel4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(518, 251);
+            this.panel4.Size = new System.Drawing.Size(518, 117);
             this.panel4.TabIndex = 237;
             // 
             // label48
@@ -5363,7 +5352,7 @@
             // 
             this.label38.AutoSize = true;
             this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.label38.Location = new System.Drawing.Point(373, 72);
+            this.label38.Location = new System.Drawing.Point(373, 58);
             this.label38.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(38, 16);
@@ -5386,7 +5375,7 @@
             "0x714",
             "0x715",
             "0x716"});
-            this.cmbSerCanP2Address.Location = new System.Drawing.Point(435, 70);
+            this.cmbSerCanP2Address.Location = new System.Drawing.Point(435, 56);
             this.cmbSerCanP2Address.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbSerCanP2Address.Name = "cmbSerCanP2Address";
             this.cmbSerCanP2Address.Size = new System.Drawing.Size(63, 23);
@@ -5397,7 +5386,7 @@
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.label27.Location = new System.Drawing.Point(18, 114);
+            this.label27.Location = new System.Drawing.Point(16, 89);
             this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(74, 16);
@@ -5407,7 +5396,7 @@
             // txtP2Height
             // 
             this.txtP2Height.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtP2Height.Location = new System.Drawing.Point(294, 107);
+            this.txtP2Height.Location = new System.Drawing.Point(292, 82);
             this.txtP2Height.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtP2Height.Name = "txtP2Height";
             this.txtP2Height.Size = new System.Drawing.Size(56, 22);
@@ -5417,7 +5406,7 @@
             // txtP2Width
             // 
             this.txtP2Width.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtP2Width.Location = new System.Drawing.Point(196, 107);
+            this.txtP2Width.Location = new System.Drawing.Point(194, 82);
             this.txtP2Width.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtP2Width.Name = "txtP2Width";
             this.txtP2Width.Size = new System.Drawing.Size(56, 22);
@@ -5428,7 +5417,7 @@
             // 
             this.label31.AutoSize = true;
             this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label31.Location = new System.Drawing.Point(264, 111);
+            this.label31.Location = new System.Drawing.Point(262, 86);
             this.label31.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(15, 16);
@@ -5461,7 +5450,7 @@
             // txtPaneI2IP
             // 
             this.txtPaneI2IP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtPaneI2IP.Location = new System.Drawing.Point(196, 68);
+            this.txtPaneI2IP.Location = new System.Drawing.Point(196, 54);
             this.txtPaneI2IP.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtPaneI2IP.Name = "txtPaneI2IP";
             this.txtPaneI2IP.Size = new System.Drawing.Size(154, 22);
@@ -5472,7 +5461,7 @@
             // 
             this.label40.AutoSize = true;
             this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.label40.Location = new System.Drawing.Point(18, 72);
+            this.label40.Location = new System.Drawing.Point(18, 58);
             this.label40.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(61, 16);
@@ -5493,17 +5482,17 @@
             this.panel5.Controls.Add(this.btnP3BG);
             this.panel5.Controls.Add(this.txtPanel3IP);
             this.panel5.Controls.Add(this.label47);
-            this.panel5.Location = new System.Drawing.Point(1034, 57);
+            this.panel5.Location = new System.Drawing.Point(1036, 120);
             this.panel5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(518, 251);
+            this.panel5.Size = new System.Drawing.Size(518, 134);
             this.panel5.TabIndex = 238;
             // 
             // label41
             // 
             this.label41.AutoSize = true;
             this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.label41.Location = new System.Drawing.Point(373, 72);
+            this.label41.Location = new System.Drawing.Point(373, 58);
             this.label41.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(38, 16);
@@ -5526,7 +5515,7 @@
             "0x714",
             "0x715",
             "0x716"});
-            this.cmbSerCanP3Address.Location = new System.Drawing.Point(433, 70);
+            this.cmbSerCanP3Address.Location = new System.Drawing.Point(433, 56);
             this.cmbSerCanP3Address.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbSerCanP3Address.Name = "cmbSerCanP3Address";
             this.cmbSerCanP3Address.Size = new System.Drawing.Size(66, 23);
@@ -5537,7 +5526,7 @@
             // 
             this.label43.AutoSize = true;
             this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.label43.Location = new System.Drawing.Point(18, 114);
+            this.label43.Location = new System.Drawing.Point(18, 90);
             this.label43.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label43.Name = "label43";
             this.label43.Size = new System.Drawing.Size(74, 16);
@@ -5558,7 +5547,7 @@
             // txtP3Height
             // 
             this.txtP3Height.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtP3Height.Location = new System.Drawing.Point(294, 107);
+            this.txtP3Height.Location = new System.Drawing.Point(294, 83);
             this.txtP3Height.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtP3Height.Name = "txtP3Height";
             this.txtP3Height.Size = new System.Drawing.Size(56, 22);
@@ -5568,7 +5557,7 @@
             // txtP3Width
             // 
             this.txtP3Width.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtP3Width.Location = new System.Drawing.Point(196, 107);
+            this.txtP3Width.Location = new System.Drawing.Point(196, 83);
             this.txtP3Width.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtP3Width.Name = "txtP3Width";
             this.txtP3Width.Size = new System.Drawing.Size(56, 22);
@@ -5579,7 +5568,7 @@
             // 
             this.label45.AutoSize = true;
             this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label45.Location = new System.Drawing.Point(264, 111);
+            this.label45.Location = new System.Drawing.Point(264, 87);
             this.label45.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(15, 16);
@@ -5612,7 +5601,7 @@
             // txtPanel3IP
             // 
             this.txtPanel3IP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtPanel3IP.Location = new System.Drawing.Point(196, 68);
+            this.txtPanel3IP.Location = new System.Drawing.Point(196, 54);
             this.txtPanel3IP.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtPanel3IP.Name = "txtPanel3IP";
             this.txtPanel3IP.Size = new System.Drawing.Size(154, 22);
@@ -5624,7 +5613,7 @@
             // 
             this.label47.AutoSize = true;
             this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.label47.Location = new System.Drawing.Point(18, 72);
+            this.label47.Location = new System.Drawing.Point(18, 58);
             this.label47.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(61, 16);
@@ -5633,14 +5622,14 @@
             // 
             // btnQuit
             // 
-            this.btnQuit.BackColor = System.Drawing.Color.MediumTurquoise;
-            this.btnQuit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnQuit.Location = new System.Drawing.Point(1436, 6);
+            this.btnQuit.BackColor = System.Drawing.Color.White;
+            this.btnQuit.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnQuit.Location = new System.Drawing.Point(14, 162);
             this.btnQuit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnQuit.Name = "btnQuit";
-            this.btnQuit.Size = new System.Drawing.Size(111, 45);
+            this.btnQuit.Size = new System.Drawing.Size(501, 83);
             this.btnQuit.TabIndex = 240;
-            this.btnQuit.Text = "Exit";
+            this.btnQuit.Text = "Save / Exit";
             this.btnQuit.UseVisualStyleBackColor = false;
             this.btnQuit.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -5652,7 +5641,7 @@
             this.AutoScrollMinSize = new System.Drawing.Size(1024, 768);
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.Turquoise;
-            this.ClientSize = new System.Drawing.Size(1592, 980);
+            this.ClientSize = new System.Drawing.Size(1573, 950);
             this.ControlBox = false;
             this.Controls.Add(this.btnQuit);
             this.Controls.Add(this.panel5);
@@ -5724,7 +5713,6 @@
         private System.Windows.Forms.ComboBox cmbFuelTextStyle;
         private System.Windows.Forms.ComboBox cmbFuelTTextStyle;
         private System.Windows.Forms.ComboBox cmbFuelPTextStyle;
-        private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox txtSpeedoX;
         private System.Windows.Forms.TextBox txtSpeedoY;
         private System.Windows.Forms.TextBox txtTachoY;
@@ -5766,7 +5754,6 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Button btnNext;
-        private System.Windows.Forms.Label label25;
         private System.Windows.Forms.ComboBox cmbShowTacho;
         private System.Windows.Forms.ComboBox cmbShowBoost;
         private System.Windows.Forms.ComboBox cmbShowTemp;

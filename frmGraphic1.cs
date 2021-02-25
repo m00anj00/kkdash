@@ -17,13 +17,15 @@ namespace kkdash
         public Label[] labels = new Label[35]; public Label lblPrompt; public Label lblPromptVal; public string YesNo = "No";
         public string offSetLow = ""; public string offSetHigh = ""; public int lowpointX; public int lowpointY; public int highpointX; public int highpointY;
         public int tempXlen; public int tempYlen; public int tempXlow; public int tempYlow; public int tempXhigh; public int tempYhigh;
-        public int lpX; public int lpY; 
+        public int lpX; public int lpY;
+        public bool showCross = true;
 
         public int startPosX { get; set; }
         public int startPosY { get; set; }
         public int MousePosX { get; set; }
         public int MousePosY { get; set; }
         public int NeedleLength { get; set; }
+        public string movingCentre = "";
 
         public frmGraphic1()
         {
@@ -33,7 +35,7 @@ namespace kkdash
         private void frmGraphic_Load(object sender, EventArgs e)
         {
             //read the config file to be sure its correct:
-            ; ReadTheCSV(1);
+            ReadTheCSV(1);
 
             try
             {
@@ -47,33 +49,32 @@ namespace kkdash
                     foreach (string gauge in gauges)
                     {
                         if (lbNumber == 0) { lbLeft = 30; lbTop = lbval + lbFontGap; }
-                        if (lbNumber == 8) { lbLeft = 150; lbTop = lbval + lbFontGap; }
-                        if (lbNumber == 16) { lbLeft = 270; lbTop = lbval + lbFontGap; }
-                        if (lbNumber == 24) { lbLeft = 390; lbTop = lbval + lbFontGap; }
+                        if (lbNumber == 8) { lbLeft = 160; lbTop = lbval + lbFontGap; }
+                        if (lbNumber == 16) { lbLeft = 290; lbTop = lbval + lbFontGap; }
+                        if (lbNumber == 24) { lbLeft = 420; lbTop = lbval + lbFontGap; }
                         lblAdd(gauge);
                     }
 
                     // create a new label for sequence:
                     lblPrompt = new Label(); this.Controls.Add(lblPrompt); lblPrompt.AutoSize = true;
                     lblPrompt.Location = new System.Drawing.Point(lbLeft + 130, pictureBG.Height + 10);
-                    lblPrompt.Visible = true; lblPrompt.Font = new Font("Arial", 30, FontStyle.Bold);
+                    lblPrompt.Visible = true; lblPrompt.Font = new Font("Arial", 20, FontStyle.Bold);
                     lblPrompt.Text = "";
 
                     // create a new label for sequence:
                     lblPromptVal = new Label(); this.Controls.Add(lblPromptVal); lblPromptVal.AutoSize = true;
-                    lblPromptVal.Location = new System.Drawing.Point(lbLeft + 220, pictureBG.Height + 50);
-                    lblPromptVal.Visible = true; lblPromptVal.Font = new Font("Arial", 30, FontStyle.Bold);
+                    lblPromptVal.Location = new System.Drawing.Point(lbLeft + 130, pictureBG.Height + 50);
+                    lblPromptVal.Visible = true; lblPromptVal.Font = new Font("Arial", 20, FontStyle.Bold);
                     lblPromptVal.Text = "";
 
                     txtTopVal.Left = lbLeft + 220;
                     txtTopVal.Top = pictureBG.Height + 100;
                     txtTopVal.Visible = false;
 
-                    btnSave.Left = lbLeft;
-                    btnSave.Top = lbTop + 90;
+                    btnSave.Left = pictureBG.Width + 20;
+                    btnSave.Top = 0;
 
                     //if a label is clicked it changes colour.  a new label states each action sequence.
-                    
                 }
                 else
                 {
@@ -101,34 +102,34 @@ namespace kkdash
                                 clickedlabel.BackColor = Color.Blue;
                                 Editing = clickedlabel.Text;
                                 //------------------------------------------------- sequence of questions for coordinates ------------------------------------------------------
-                                if ((clickedlabel.Text == "Speedo") && (Globals.SpeedoNeedleType == "gauge")) { lblPrompt.Text = "Click needle pivot point"; }
-                                if ((clickedlabel.Text == "Speedo") && ((Globals.SpeedoNeedleType == "barH") || (Globals.SpeedoNeedleType == "barV"))) { lblPrompt.Text = "Click bar TOP LEFT"; }
-                                if ((clickedlabel.Text == "Tacho") && (Globals.TachoNeedleType == "gauge")) { lblPrompt.Text = "Click needle pivot point"; }
-                                if ((clickedlabel.Text == "Tacho") && ((Globals.TachoNeedleType == "barH") || (Globals.TachoNeedleType == "barV"))) { lblPrompt.Text = "Click bar TOP LEFT"; }
-                                if ((clickedlabel.Text == "Boost") && (Globals.BoostNeedleType == "gauge")) { lblPrompt.Text = "Click needle pivot point"; }
-                                if ((clickedlabel.Text == "Boost") && ((Globals.BoostNeedleType == "barH") || (Globals.BoostNeedleType == "barV"))) { lblPrompt.Text = "Click bar TOP LEFT"; }
-                                if ((clickedlabel.Text == "Temp") && (Globals.TempNeedleType == "gauge")) { lblPrompt.Text = "Click needle pivot point"; }
-                                if ((clickedlabel.Text == "Temp") && ((Globals.TempNeedleType == "barH") || (Globals.TempNeedleType == "barV"))) { lblPrompt.Text = "Click bar TOP LEFT"; }
-                                if ((clickedlabel.Text == "Oil Press") && (Globals.OilNeedleType == "gauge")) { lblPrompt.Text = "Click needle pivot point"; }
-                                if ((clickedlabel.Text == "Oil Press") && ((Globals.OilNeedleType == "barH") || (Globals.OilNeedleType == "barV"))) { lblPrompt.Text = "Click bar TOP LEFT"; }
-                                if ((clickedlabel.Text == "Oil Temp") && (Globals.OilTNeedleType == "gauge")) { lblPrompt.Text = "Click needle pivot point"; }
-                                if ((clickedlabel.Text == "Oil Temp") && ((Globals.OilTNeedleType == "barH") || (Globals.OilTNeedleType == "barV"))) { lblPrompt.Text = "Click bar TOP LEFT"; }
-                                if ((clickedlabel.Text == "Fuel") && (Globals.FuelNeedleType == "gauge")) { lblPrompt.Text = "Click needle pivot point"; }
-                                if ((clickedlabel.Text == "Fuel") && ((Globals.FuelNeedleType == "barH") || (Globals.FuelNeedleType == "barV"))) { lblPrompt.Text = "Click bar TOP LEFT"; }
-                                if ((clickedlabel.Text == "Fuel Temp") && (Globals.FuelTNeedleType == "gauge")) { lblPrompt.Text = "Click needle pivot point"; }
-                                if ((clickedlabel.Text == "Fuel Temp") && ((Globals.FuelTNeedleType == "barH") || (Globals.FuelTNeedleType == "barV"))) { lblPrompt.Text = "Click bar TOP LEFT"; }
-                                if ((clickedlabel.Text == "Fuel Press") && (Globals.FuelPNeedleType == "gauge")) { lblPrompt.Text = "Click needle pivot point"; }
-                                if ((clickedlabel.Text == "Fuel Press") && ((Globals.FuelPNeedleType == "barH") || (Globals.FuelPNeedleType == "barV"))) { lblPrompt.Text = "Click bar TOP LEFT"; }
-                                if ((clickedlabel.Text == "Battery") && (Globals.BatteryNeedleType == "gauge")) { lblPrompt.Text = "Click needle pivot point"; }
-                                if ((clickedlabel.Text == "Battery") && ((Globals.BatteryNeedleType == "barH") || (Globals.BatteryNeedleType == "barV"))) { lblPrompt.Text = "Click bar TOP LEFT"; }
-                                if ((clickedlabel.Text == "User1") && (Globals.User1NeedleType == "gauge")) { lblPrompt.Text = "Click needle pivot point"; }
-                                if ((clickedlabel.Text == "User1") && ((Globals.User1NeedleType == "barH") || (Globals.User1NeedleType == "barV"))) { lblPrompt.Text = "Click bar TOP LEFT"; }
-                                if ((clickedlabel.Text == "User2") && (Globals.User2NeedleType == "gauge")) { lblPrompt.Text = "Click needle pivot point"; }
-                                if ((clickedlabel.Text == "User2") && ((Globals.User2NeedleType == "barH") || (Globals.User2NeedleType == "barV"))) { lblPrompt.Text = "Click bar TOP LEFT"; }
-                                if ((clickedlabel.Text == "User3") && (Globals.User3NeedleType == "gauge")) { lblPrompt.Text = "Click needle pivot point"; }
-                                if ((clickedlabel.Text == "User3") && ((Globals.User3NeedleType == "barH") || (Globals.User3NeedleType == "barV"))) { lblPrompt.Text = "Click bar TOP LEFT"; }
-                                if ((clickedlabel.Text == "User4") && (Globals.User4NeedleType == "gauge")) { lblPrompt.Text = "Click needle pivot point"; }
-                                if ((clickedlabel.Text == "User4") && ((Globals.User4NeedleType == "barH") || (Globals.User4NeedleType == "barV"))) { lblPrompt.Text = "Click bar TOP LEFT"; }
+                                if ((clickedlabel.Text == "Speedo") && (Globals.SpeedoNeedleType == "gauge")) { lblPrompt.Text = "Click needle pivot point"; movingCentre = "gauge"; }
+                                if ((clickedlabel.Text == "Speedo") && ((Globals.SpeedoNeedleType == "barH") || (Globals.SpeedoNeedleType == "barV"))) { lblPrompt.Text = "Click bar TOP LEFT"; movingCentre = "bar"; }
+                                if ((clickedlabel.Text == "Tacho") && (Globals.TachoNeedleType == "gauge")) { lblPrompt.Text = "Click needle pivot point"; movingCentre = "gauge"; }
+                                if ((clickedlabel.Text == "Tacho") && ((Globals.TachoNeedleType == "barH") || (Globals.TachoNeedleType == "barV"))) { lblPrompt.Text = "Click bar TOP LEFT"; movingCentre = "bar"; }
+                                if ((clickedlabel.Text == "Boost") && (Globals.BoostNeedleType == "gauge")) { lblPrompt.Text = "Click needle pivot point"; movingCentre = "gauge"; }
+                                if ((clickedlabel.Text == "Boost") && ((Globals.BoostNeedleType == "barH") || (Globals.BoostNeedleType == "barV"))) { lblPrompt.Text = "Click bar TOP LEFT"; movingCentre = "bar"; }
+                                if ((clickedlabel.Text == "Temp") && (Globals.TempNeedleType == "gauge")) { lblPrompt.Text = "Click needle pivot point"; movingCentre = "gauge"; }
+                                if ((clickedlabel.Text == "Temp") && ((Globals.TempNeedleType == "barH") || (Globals.TempNeedleType == "barV"))) { lblPrompt.Text = "Click bar TOP LEFT"; movingCentre = "bar"; }
+                                if ((clickedlabel.Text == "Oil Press") && (Globals.OilNeedleType == "gauge")) { lblPrompt.Text = "Click needle pivot point"; movingCentre = "gauge"; }
+                                if ((clickedlabel.Text == "Oil Press") && ((Globals.OilNeedleType == "barH") || (Globals.OilNeedleType == "barV"))) { lblPrompt.Text = "Click bar TOP LEFT"; movingCentre = "bar"; }
+                                if ((clickedlabel.Text == "Oil Temp") && (Globals.OilTNeedleType == "gauge")) { lblPrompt.Text = "Click needle pivot point"; movingCentre = "gauge"; }
+                                if ((clickedlabel.Text == "Oil Temp") && ((Globals.OilTNeedleType == "barH") || (Globals.OilTNeedleType == "barV"))) { lblPrompt.Text = "Click bar TOP LEFT"; movingCentre = "bar"; }
+                                if ((clickedlabel.Text == "Fuel") && (Globals.FuelNeedleType == "gauge")) { lblPrompt.Text = "Click needle pivot point"; movingCentre = "gauge"; }
+                                if ((clickedlabel.Text == "Fuel") && ((Globals.FuelNeedleType == "barH") || (Globals.FuelNeedleType == "barV"))) { lblPrompt.Text = "Click bar TOP LEFT"; movingCentre = "bar"; }
+                                if ((clickedlabel.Text == "Fuel Temp") && (Globals.FuelTNeedleType == "gauge")) { lblPrompt.Text = "Click needle pivot point"; movingCentre = "gauge"; }
+                                if ((clickedlabel.Text == "Fuel Temp") && ((Globals.FuelTNeedleType == "barH") || (Globals.FuelTNeedleType == "barV"))) { lblPrompt.Text = "Click bar TOP LEFT"; movingCentre = "bar"; }
+                                if ((clickedlabel.Text == "Fuel Press") && (Globals.FuelPNeedleType == "gauge")) { lblPrompt.Text = "Click needle pivot point"; movingCentre = "gauge"; }
+                                if ((clickedlabel.Text == "Fuel Press") && ((Globals.FuelPNeedleType == "barH") || (Globals.FuelPNeedleType == "barV"))) { lblPrompt.Text = "Click bar TOP LEFT"; movingCentre = "bar"; }
+                                if ((clickedlabel.Text == "Battery") && (Globals.BatteryNeedleType == "gauge")) { lblPrompt.Text = "Click needle pivot point"; movingCentre = "gauge"; }
+                                if ((clickedlabel.Text == "Battery") && ((Globals.BatteryNeedleType == "barH") || (Globals.BatteryNeedleType == "barV"))) { lblPrompt.Text = "Click bar TOP LEFT"; movingCentre = "bar"; }
+                                if ((clickedlabel.Text == "User1") && (Globals.User1NeedleType == "gauge")) { lblPrompt.Text = "Click needle pivot point"; movingCentre = "gauge"; }
+                                if ((clickedlabel.Text == "User1") && ((Globals.User1NeedleType == "barH") || (Globals.User1NeedleType == "barV"))) { lblPrompt.Text = "Click bar TOP LEFT"; movingCentre = "bar"; }
+                                if ((clickedlabel.Text == "User2") && (Globals.User2NeedleType == "gauge")) { lblPrompt.Text = "Click needle pivot point"; movingCentre = "gauge"; }
+                                if ((clickedlabel.Text == "User2") && ((Globals.User2NeedleType == "barH") || (Globals.User2NeedleType == "barV"))) { lblPrompt.Text = "Click bar TOP LEFT"; movingCentre = "bar"; }
+                                if ((clickedlabel.Text == "User3") && (Globals.User3NeedleType == "gauge")) { lblPrompt.Text = "Click needle pivot point"; movingCentre = "gauge"; }
+                                if ((clickedlabel.Text == "User3") && ((Globals.User3NeedleType == "barH") || (Globals.User3NeedleType == "barV"))) { lblPrompt.Text = "Click bar TOP LEFT"; movingCentre = "bar"; }
+                                if ((clickedlabel.Text == "User4") && (Globals.User4NeedleType == "gauge")) { lblPrompt.Text = "Click needle pivot point"; movingCentre = "gauge"; }
+                                if ((clickedlabel.Text == "User4") && ((Globals.User4NeedleType == "barH") || (Globals.User4NeedleType == "barV"))) { lblPrompt.Text = "Click bar TOP LEFT"; movingCentre = "bar"; }
 
 
                                 lblPrompt.BackColor = Color.Blue;
@@ -149,15 +150,16 @@ namespace kkdash
                         {
                             if ((clickedlabel.BackColor == Color.Turquoise) && (Editing == ""))
                             {
-                                clickedlabel.BackColor = Color.White;
+                                movingCentre = "text";
+                                clickedlabel.BackColor = Color.WhiteSmoke;
                                 Editing = clickedlabel.Text;
 
                                 lblPrompt.Location = new System.Drawing.Point(lbLeft + 200, pictureBG.Height + 10);
-                                lblPrompt.Visible = true; lblPrompt.Font = new Font("Arial", 30, FontStyle.Bold);
+                                lblPrompt.Visible = true; lblPrompt.Font = new Font("Arial", 20, FontStyle.Bold);
                                 lblPrompt.Visible = true;
 
                                 lblPromptVal.Location = new System.Drawing.Point(lbLeft + 200, pictureBG.Height + 50);
-                                lblPromptVal.Visible = true; lblPromptVal.Font = new Font("Arial", 30, FontStyle.Bold);
+                                lblPromptVal.Visible = true; lblPromptVal.Font = new Font("Arial", 20, FontStyle.Bold);
                                 lblPromptVal.Visible = true;
 
                                 //1st step. bar position
@@ -199,41 +201,45 @@ namespace kkdash
                                     {
                                         if (stage == 0)
                                         {
-                                            //1st step. pivot center
-                                            startPosX = mouseEventArgs.X;
-                                            startPosY = mouseEventArgs.Y;
-
-                                            if (Editing == "Speedo") { Globals.SpeedoNeedleX = (startPosX - (pictureBG.Width / 2)).ToString(); Globals.SpeedoNeedleY = ((pictureBG.Height / 2) - MousePosY).ToString(); }
-                                            if (Editing == "Tacho") { Globals.TachoNeedleX = (startPosX - (pictureBG.Width / 2)).ToString(); Globals.TachoNeedleY = ((pictureBG.Height / 2) - MousePosY).ToString(); }
-                                            if (Editing == "Boost") { Globals.BoostNeedleX = (startPosX - (pictureBG.Width / 2)).ToString(); Globals.BoostNeedleY = ((pictureBG.Height / 2) - MousePosY).ToString(); }
-                                            if (Editing == "Temp") { Globals.TempNeedleX = (startPosX - (pictureBG.Width / 2)).ToString(); Globals.TempNeedleY = ((pictureBG.Height / 2) - MousePosY).ToString(); }
-                                            if (Editing == "Oil Press") { Globals.OilNeedleX = (startPosX - (pictureBG.Width / 2)).ToString(); Globals.OilNeedleY = ((pictureBG.Height / 2) - MousePosY).ToString(); }
-                                            if (Editing == "Oil Temp") { Globals.OilTNeedleX = (startPosX - (pictureBG.Width / 2)).ToString(); Globals.OilTNeedleY = ((pictureBG.Height / 2) - MousePosY).ToString(); }
-                                            if (Editing == "Fuel") { Globals.FuelNeedleX = (startPosX - (pictureBG.Width / 2)).ToString(); Globals.FuelNeedleY = ((pictureBG.Height / 2) - MousePosY).ToString(); }
-                                            if (Editing == "Fuel Temp") { Globals.FuelTNeedleX = (startPosX - (pictureBG.Width / 2)).ToString(); Globals.FuelTNeedleY = ((pictureBG.Height / 2) - MousePosY).ToString(); }
-                                            if (Editing == "Fuel Press") { Globals.FuelPNeedleX = (startPosX - (pictureBG.Width / 2)).ToString(); Globals.FuelPNeedleY = ((pictureBG.Height / 2) - MousePosY).ToString(); }
-                                            if (Editing == "Battery") { Globals.BatteryNeedleX = (startPosX - (pictureBG.Width / 2)).ToString(); Globals.BatteryNeedleY = ((pictureBG.Height / 2) - MousePosY).ToString(); }
-                                            if (Editing == "User1") { Globals.User1NeedleX = (startPosX - (pictureBG.Width / 2)).ToString(); Globals.User1NeedleY = ((pictureBG.Height / 2) - MousePosY).ToString(); }
-                                            if (Editing == "User2") { Globals.User2NeedleX = (startPosX - (pictureBG.Width / 2)).ToString(); Globals.User2NeedleY = ((pictureBG.Height / 2) - MousePosY).ToString(); }
-                                            if (Editing == "User3") { Globals.User3NeedleX = (startPosX - (pictureBG.Width / 2)).ToString(); Globals.User3NeedleY = ((pictureBG.Height / 2) - MousePosY).ToString(); }
-                                            if (Editing == "User4") { Globals.User4NeedleX = (startPosX - (pictureBG.Width / 2)).ToString(); Globals.User4NeedleY = ((pictureBG.Height / 2) - MousePosY).ToString(); }
-  
-                                            //draw lines
-                                            using (Graphics p = pictureBG.CreateGraphics())
+                                            if (showCross == true)
                                             {
-                                                // Draw next line and...
-                                                p.DrawLine(Pens.White, startPosX, startPosY, startPosX, startPosY - 300);
-                                                p.DrawLine(Pens.White, startPosX, startPosY, startPosX, startPosY + 300);
-                                                p.DrawLine(Pens.White, startPosX, startPosY, startPosX - 300, startPosY);
-                                                p.DrawLine(Pens.White, startPosX, startPosY, startPosX + 300, startPosY);
-                                            }
+                                                //1st step. pivot center
+                                                startPosX = mouseEventArgs.X;
+                                                startPosY = mouseEventArgs.Y;
 
-                                            lblPrompt.Text = "Needle length on the middle value";
-                                        }
-                                        stage += 1;
+                                                if (Editing == "Speedo") { Globals.SpeedoNeedleX = (startPosX - (pictureBG.Width / 2)).ToString(); Globals.SpeedoNeedleY = ((pictureBG.Height / 2) - MousePosY).ToString(); }
+                                                if (Editing == "Tacho") { Globals.TachoNeedleX = (startPosX - (pictureBG.Width / 2)).ToString(); Globals.TachoNeedleY = ((pictureBG.Height / 2) - MousePosY).ToString(); }
+                                                if (Editing == "Boost") { Globals.BoostNeedleX = (startPosX - (pictureBG.Width / 2)).ToString(); Globals.BoostNeedleY = ((pictureBG.Height / 2) - MousePosY).ToString(); }
+                                                if (Editing == "Temp") { Globals.TempNeedleX = (startPosX - (pictureBG.Width / 2)).ToString(); Globals.TempNeedleY = ((pictureBG.Height / 2) - MousePosY).ToString(); }
+                                                if (Editing == "Oil Press") { Globals.OilNeedleX = (startPosX - (pictureBG.Width / 2)).ToString(); Globals.OilNeedleY = ((pictureBG.Height / 2) - MousePosY).ToString(); }
+                                                if (Editing == "Oil Temp") { Globals.OilTNeedleX = (startPosX - (pictureBG.Width / 2)).ToString(); Globals.OilTNeedleY = ((pictureBG.Height / 2) - MousePosY).ToString(); }
+                                                if (Editing == "Fuel") { Globals.FuelNeedleX = (startPosX - (pictureBG.Width / 2)).ToString(); Globals.FuelNeedleY = ((pictureBG.Height / 2) - MousePosY).ToString(); }
+                                                if (Editing == "Fuel Temp") { Globals.FuelTNeedleX = (startPosX - (pictureBG.Width / 2)).ToString(); Globals.FuelTNeedleY = ((pictureBG.Height / 2) - MousePosY).ToString(); }
+                                                if (Editing == "Fuel Press") { Globals.FuelPNeedleX = (startPosX - (pictureBG.Width / 2)).ToString(); Globals.FuelPNeedleY = ((pictureBG.Height / 2) - MousePosY).ToString(); }
+                                                if (Editing == "Battery") { Globals.BatteryNeedleX = (startPosX - (pictureBG.Width / 2)).ToString(); Globals.BatteryNeedleY = ((pictureBG.Height / 2) - MousePosY).ToString(); }
+                                                if (Editing == "User1") { Globals.User1NeedleX = (startPosX - (pictureBG.Width / 2)).ToString(); Globals.User1NeedleY = ((pictureBG.Height / 2) - MousePosY).ToString(); }
+                                                if (Editing == "User2") { Globals.User2NeedleX = (startPosX - (pictureBG.Width / 2)).ToString(); Globals.User2NeedleY = ((pictureBG.Height / 2) - MousePosY).ToString(); }
+                                                if (Editing == "User3") { Globals.User3NeedleX = (startPosX - (pictureBG.Width / 2)).ToString(); Globals.User3NeedleY = ((pictureBG.Height / 2) - MousePosY).ToString(); }
+                                                if (Editing == "User4") { Globals.User4NeedleX = (startPosX - (pictureBG.Width / 2)).ToString(); Globals.User4NeedleY = ((pictureBG.Height / 2) - MousePosY).ToString(); }
+
+                                                //draw lines
+                                                using (Graphics p = pictureBG.CreateGraphics())
+                                                {
+                                                    // Draw next line and...
+                                                    p.DrawLine(Pens.White, startPosX, startPosY, startPosX, startPosY - 300);
+                                                    p.DrawLine(Pens.White, startPosX, startPosY, startPosX, startPosY + 300);
+                                                    p.DrawLine(Pens.White, startPosX, startPosY, startPosX - 300, startPosY);
+                                                    p.DrawLine(Pens.White, startPosX, startPosY, startPosX + 300, startPosY);
+                                                }
+                                                pnlDirections.Left = lbLeft + 250;
+                                                pnlDirections.Top = pictureBG.Height + 100;
+                                                pnlDirections.Visible = true;
+                                            }                                        }
+
+
                                         break;
                                     }
-                                case "Needle length on the middle value":
+                                case "Click the needle length":
                                     {
                                         //2nd step. needle length
                                         if (stage == 1)
@@ -344,7 +350,7 @@ namespace kkdash
                                                     p.DrawLine(Pens.Black, startPosX, startPosY, startPosX - 300, startPosY);
                                                     p.DrawLine(Pens.Black, startPosX, startPosY, startPosX + 300, startPosY);
 
-                                                    tempXlen = startPosX ; tempYlen = mouseEventArgs.Y;
+                                                    tempXlen = startPosX; tempYlen = mouseEventArgs.Y;
                                                     p.DrawLine(Pens.Blue, startPosX, startPosY, startPosX, mouseEventArgs.Y);
                                                 }
                                                 switch (Editing)
@@ -380,7 +386,7 @@ namespace kkdash
                                             lowpointY = mouseEventArgs.Y;
                                             using (Graphics p = pictureBG.CreateGraphics())
                                             {
-                                                p.DrawLine(Pens.Black, startPosX, startPosY, tempXlen , tempYlen);
+                                                p.DrawLine(Pens.Black, startPosX, startPosY, tempXlen, tempYlen);
                                                 tempXlow = mouseEventArgs.X; tempYlow = mouseEventArgs.Y;
                                                 p.DrawLine(Pens.Orange, startPosX, startPosY, mouseEventArgs.X, mouseEventArgs.Y);
                                             }
@@ -403,178 +409,178 @@ namespace kkdash
                                                 tempXhigh = mouseEventArgs.X; tempYhigh = mouseEventArgs.Y;
                                                 p.DrawLine(Pens.Orange, startPosX, startPosY, mouseEventArgs.X, mouseEventArgs.Y);
                                             }
-                                        }
-                                        //reset values and text boxes
-                                        lblPrompt.Text = "";
-                                        lblPromptVal.Text = "";
-                                        stage = 0;
 
-                                        //now calculate gauge offsets in degrees.  lower is direction offset relative to 90 degree multiple.  higher is total number of degrees of arc.
-                                        double angle1 = 0;
-                                        double dx = 0;
-                                        double dy = 0;
-                                        double theta = 0;
-                                        double angle2 = 0;
+                                            //reset values and text boxes
+                                            lblPrompt.Text = "";
+                                            lblPromptVal.Text = "";
+                                            stage = 0;
 
-                                        if (dir == "up")
-                                        {
-                                            dy = (startPosY - lowpointY);
-                                            dx = (startPosX - lowpointX);
-                                            theta = Math.Atan2(dx, dy);
-                                            angle1 = (((theta * 180) / Math.PI) % 360);
-                                            if (angle1 < 0) { angle1 += 360; }
-                                            offSetLow = (Math.Round(90 - angle1)).ToString();
+                                            //now calculate gauge offsets in degrees.  lower is direction offset relative to 90 degree multiple.  higher is total number of degrees of arc.
+                                            double angle1 = 0;
+                                            double dx = 0;
+                                            double dy = 0;
+                                            double theta = 0;
+                                            double angle2 = 0;
 
-                                            dy = (startPosY - highpointY);
-                                            dx = (startPosX - highpointX);
-                                            theta = Math.Atan2(dy, dx);
-                                            angle2 = ((((theta * 180) / Math.PI) % 360) - 90);
-                                            if (angle2 < 0)
+                                            if (dir == "up")
                                             {
-                                                angle2 += 360;
+                                                dy = (startPosY - lowpointY);
+                                                dx = (startPosX - lowpointX);
+                                                theta = Math.Atan2(dx, dy);
+                                                angle1 = (((theta * 180) / Math.PI) % 360);
+                                                if (angle1 < 0) { angle1 += 360; }
+                                                offSetLow = (Math.Round(90 - angle1)).ToString();
+
+                                                dy = (startPosY - highpointY);
+                                                dx = (startPosX - highpointX);
+                                                theta = Math.Atan2(dy, dx);
+                                                angle2 = ((((theta * 180) / Math.PI) % 360) - 90);
+                                                if (angle2 < 0)
+                                                {
+                                                    angle2 += 360;
+                                                }
+                                                offSetHigh = (Math.Round((angle1 + angle2))).ToString();
+
+                                                switch (Editing)
+                                                {
+                                                    //  values
+                                                    case "Speedo": { Globals.SpeedoOffset = offSetLow; Globals.SpeedoEnd = offSetHigh; Globals.SpeedoNeedleX = startPosX.ToString(); Globals.SpeedoNeedleY = startPosY.ToString(); } break;
+                                                    case "Tacho": { Globals.TachoOffset = offSetLow; Globals.TachoEnd = offSetHigh; Globals.TachoNeedleX = startPosX.ToString(); Globals.TachoNeedleY = startPosY.ToString(); } break;
+                                                    case "Boost": { Globals.BoostOffset = offSetLow; Globals.BoostEnd = offSetHigh; Globals.BoostNeedleX = startPosX.ToString(); Globals.BoostNeedleY = startPosY.ToString(); } break;
+                                                    case "Temp": { Globals.TempOffset = offSetLow; Globals.TempEnd = offSetHigh; Globals.TempNeedleX = startPosX.ToString(); Globals.TempNeedleY = startPosY.ToString(); } break;
+                                                    case "Oil Press": { Globals.OilOffset = offSetLow; Globals.OilEnd = offSetHigh; Globals.OilNeedleX = startPosX.ToString(); Globals.OilNeedleY = startPosY.ToString(); } break;
+                                                    case "Oil Temp": { Globals.OilTOffset = offSetLow; Globals.OilTEnd = offSetHigh; Globals.OilTNeedleX = startPosX.ToString(); Globals.OilTNeedleY = startPosY.ToString(); } break;
+                                                    case "Fuel": { Globals.FuelOffset = offSetLow; Globals.FuelEnd = offSetHigh; Globals.FuelNeedleX = startPosX.ToString(); Globals.FuelNeedleY = startPosY.ToString(); } break;
+                                                    case "Fuel Temp": { Globals.FuelTOffset = offSetLow; Globals.FuelTEnd = offSetHigh; Globals.FuelTNeedleX = startPosX.ToString(); Globals.FuelTNeedleY = startPosY.ToString(); } break;
+                                                    case "Fuel Press": { Globals.FuelPOffset = offSetLow; Globals.FuelPEnd = offSetHigh; Globals.FuelPNeedleX = startPosX.ToString(); Globals.FuelPNeedleY = startPosY.ToString(); } break;
+                                                    case "Battery": { Globals.BatteryOffset = offSetLow; Globals.BatteryEnd = offSetHigh; Globals.BatteryNeedleX = startPosX.ToString(); Globals.BatteryNeedleY = startPosY.ToString(); } break;
+                                                    case "User1": { Globals.User1Offset = offSetLow; Globals.User1End = offSetHigh; Globals.User1NeedleX = startPosX.ToString(); Globals.User1NeedleY = startPosY.ToString(); } break;
+                                                    case "User2": { Globals.User2Offset = offSetLow; Globals.User2End = offSetHigh; Globals.User2NeedleX = startPosX.ToString(); Globals.User2NeedleY = startPosY.ToString(); } break;
+                                                    case "User3": { Globals.User3Offset = offSetLow; Globals.User3End = offSetHigh; Globals.User2NeedleX = startPosX.ToString(); Globals.User3NeedleY = startPosY.ToString(); } break;
+                                                    case "User4": { Globals.User4Offset = offSetLow; Globals.User4End = offSetHigh; Globals.User4NeedleX = startPosX.ToString(); Globals.User4NeedleY = startPosY.ToString(); } break;
+                                                }
+
                                             }
-                                            offSetHigh = (Math.Round((angle1 + angle2))).ToString();
 
-                                            switch (Editing)
+                                            if (dir == "down")
                                             {
-                                                //  values
-                                                case "Speedo": { Globals.SpeedoOffset = offSetLow; Globals.SpeedoEnd = offSetHigh; Globals.SpeedoNeedleX = startPosX.ToString(); Globals.SpeedoNeedleY = startPosY.ToString(); } break;
-                                                case "Tacho": { Globals.TachoOffset = offSetLow; Globals.TachoEnd = offSetHigh; Globals.TachoNeedleX = startPosX.ToString(); Globals.TachoNeedleY = startPosY.ToString(); } break;
-                                                case "Boost": { Globals.BoostOffset = offSetLow; Globals.BoostEnd = offSetHigh; Globals.BoostNeedleX = startPosX.ToString(); Globals.BoostNeedleY = startPosY.ToString(); } break;
-                                                case "Temp": { Globals.TempOffset = offSetLow; Globals.TempEnd = offSetHigh; Globals.TempNeedleX = startPosX.ToString(); Globals.TempNeedleY = startPosY.ToString(); } break;
-                                                case "Oil Press": { Globals.OilOffset = offSetLow; Globals.OilEnd = offSetHigh; Globals.OilNeedleX = startPosX.ToString(); Globals.OilNeedleY = startPosY.ToString(); } break;
-                                                case "Oil Temp": { Globals.OilTOffset = offSetLow; Globals.OilTEnd = offSetHigh; Globals.OilTNeedleX = startPosX.ToString(); Globals.OilTNeedleY = startPosY.ToString(); } break;
-                                                case "Fuel": { Globals.FuelOffset = offSetLow; Globals.FuelEnd = offSetHigh; Globals.FuelNeedleX = startPosX.ToString(); Globals.FuelNeedleY = startPosY.ToString(); } break;
-                                                case "Fuel Temp": { Globals.FuelTOffset = offSetLow; Globals.FuelTEnd = offSetHigh; Globals.FuelTNeedleX = startPosX.ToString(); Globals.FuelTNeedleY = startPosY.ToString(); } break;
-                                                case "Fuel Press": { Globals.FuelPOffset = offSetLow; Globals.FuelPEnd = offSetHigh; Globals.FuelPNeedleX = startPosX.ToString(); Globals.FuelPNeedleY = startPosY.ToString(); } break;
-                                                case "Battery": { Globals.BatteryOffset = offSetLow; Globals.BatteryEnd = offSetHigh; Globals.BatteryNeedleX = startPosX.ToString(); Globals.BatteryNeedleY = startPosY.ToString(); } break;
-                                                case "User1": { Globals.User1Offset = offSetLow; Globals.User1End = offSetHigh; Globals.User1NeedleX = startPosX.ToString(); Globals.User1NeedleY = startPosY.ToString(); } break;
-                                                case "User2": { Globals.User2Offset = offSetLow; Globals.User2End = offSetHigh; Globals.User2NeedleX = startPosX.ToString(); Globals.User2NeedleY = startPosY.ToString(); } break;
-                                                case "User3": { Globals.User3Offset = offSetLow; Globals.User3End = offSetHigh; Globals.User2NeedleX = startPosX.ToString(); Globals.User3NeedleY = startPosY.ToString(); } break;
-                                                case "User4": { Globals.User4Offset = offSetLow; Globals.User4End = offSetHigh; Globals.User4NeedleX = startPosX.ToString(); Globals.User4NeedleY = startPosY.ToString(); } break;
+                                                dy = (startPosY - lowpointY);
+                                                dx = (startPosX - lowpointX);
+                                                theta = Math.Atan2(dx, dy);
+                                                angle1 = (((theta * 180) / Math.PI) % 360);
+
+                                                if (angle1 < 0) { angle1 += 360; }
+                                                offSetLow = (Math.Round(angle1 - 180)).ToString();
+
+                                                dy = (startPosY - highpointY);
+                                                dx = (startPosX - highpointX);
+                                                theta = Math.Atan2(dx, dy);
+                                                angle2 = ((((theta * 180) / Math.PI) % 360));
+                                                if (angle2 < 0)
+                                                {
+                                                    angle2 += 360;
+                                                }
+                                                offSetHigh = (Math.Round(angle1 - angle2)).ToString();
+
+                                                switch (Editing)
+                                                {
+                                                    //  values
+                                                    case "Speedo": { Globals.SpeedoOffset = offSetLow; Globals.SpeedoEnd = offSetHigh; Globals.SpeedoNeedleX = startPosX.ToString(); Globals.SpeedoNeedleY = startPosY.ToString(); } break;
+                                                    case "Tacho": { Globals.TachoOffset = offSetLow; Globals.TachoEnd = offSetHigh; Globals.TachoNeedleX = startPosX.ToString(); Globals.TachoNeedleY = startPosY.ToString(); } break;
+                                                    case "Boost": { Globals.BoostOffset = offSetLow; Globals.BoostEnd = offSetHigh; Globals.BoostNeedleX = startPosX.ToString(); Globals.BoostNeedleY = startPosY.ToString(); } break;
+                                                    case "Temp": { Globals.TempOffset = offSetLow; Globals.TempEnd = offSetHigh; Globals.TempNeedleX = startPosX.ToString(); Globals.TempNeedleY = startPosY.ToString(); } break;
+                                                    case "Oil Press": { Globals.OilOffset = offSetLow; Globals.OilEnd = offSetHigh; Globals.OilNeedleX = startPosX.ToString(); Globals.OilNeedleY = startPosY.ToString(); } break;
+                                                    case "Oil Temp": { Globals.OilTOffset = offSetLow; Globals.OilTEnd = offSetHigh; Globals.OilTNeedleX = startPosX.ToString(); Globals.OilTNeedleY = startPosY.ToString(); } break;
+                                                    case "Fuel": { Globals.FuelOffset = offSetLow; Globals.FuelEnd = offSetHigh; Globals.FuelNeedleX = startPosX.ToString(); Globals.FuelNeedleY = startPosY.ToString(); } break;
+                                                    case "Fuel Temp": { Globals.FuelTOffset = offSetLow; Globals.FuelTEnd = offSetHigh; Globals.FuelTNeedleX = startPosX.ToString(); Globals.FuelTNeedleY = startPosY.ToString(); } break;
+                                                    case "Fuel Press": { Globals.FuelPOffset = offSetLow; Globals.FuelPEnd = offSetHigh; Globals.FuelPNeedleX = startPosX.ToString(); Globals.FuelPNeedleY = startPosY.ToString(); } break;
+                                                    case "Battery": { Globals.BatteryOffset = offSetLow; Globals.BatteryEnd = offSetHigh; Globals.BatteryNeedleX = startPosX.ToString(); Globals.BatteryNeedleY = startPosY.ToString(); } break;
+                                                    case "User1": { Globals.User1Offset = offSetLow; Globals.User1End = offSetHigh; Globals.User1NeedleX = startPosX.ToString(); Globals.User1NeedleY = startPosY.ToString(); } break;
+                                                    case "User2": { Globals.User2Offset = offSetLow; Globals.User2End = offSetHigh; Globals.User2NeedleX = startPosX.ToString(); Globals.User2NeedleY = startPosY.ToString(); } break;
+                                                    case "User3": { Globals.User3Offset = offSetLow; Globals.User3End = offSetHigh; Globals.User2NeedleX = startPosX.ToString(); Globals.User3NeedleY = startPosY.ToString(); } break;
+                                                    case "User4": { Globals.User4Offset = offSetLow; Globals.User4End = offSetHigh; Globals.User4NeedleX = startPosX.ToString(); Globals.User4NeedleY = startPosY.ToString(); } break;
+                                                }
                                             }
 
-                                        }
-
-                                        if (dir == "down")
-                                        {
-                                            dy = (startPosY - lowpointY);
-                                            dx = (startPosX - lowpointX);
-                                            theta = Math.Atan2(dx, dy);
-                                            angle1 = (((theta * 180) / Math.PI) % 360);
-
-                                            if (angle1 < 0) { angle1 += 360; }
-                                            offSetLow = (Math.Round(angle1 - 180)).ToString();
-
-                                            dy = (startPosY - highpointY);
-                                            dx = (startPosX - highpointX);
-                                            theta = Math.Atan2(dx, dy);
-                                            angle2 = ((((theta * 180) / Math.PI) % 360));
-                                            if (angle2 < 0)
+                                            if (dir == "left")
                                             {
-                                                angle2 += 360;
+                                                dy = (lowpointY - startPosY);
+                                                dx = (lowpointX - startPosX);
+                                                theta = Math.Atan2(dx, dy);
+                                                angle1 = ((((theta * 180) / Math.PI) % 360) - 270);
+                                                if (angle1 < 0) { angle1 += 360; }
+
+                                                offSetLow = "-" + (Math.Round(angle1)).ToString();
+
+                                                dy = (startPosY - highpointY);
+                                                dx = (startPosX - highpointX);
+                                                theta = Math.Atan2(dy, dx);
+                                                angle2 = ((((theta * 180) / Math.PI) % 360));
+                                                if (angle2 < 0)
+                                                {
+                                                    angle2 += 360;
+                                                }
+                                                offSetHigh = (Math.Round((angle1 + angle2))).ToString();
+
+                                                switch (Editing)
+                                                {
+                                                    //  values
+                                                    //  values
+                                                    case "Speedo": { Globals.SpeedoOffset = offSetLow; Globals.SpeedoEnd = offSetHigh; Globals.SpeedoNeedleX = startPosX.ToString(); Globals.SpeedoNeedleY = startPosY.ToString(); } break;
+                                                    case "Tacho": { Globals.TachoOffset = offSetLow; Globals.TachoEnd = offSetHigh; Globals.TachoNeedleX = startPosX.ToString(); Globals.TachoNeedleY = startPosY.ToString(); } break;
+                                                    case "Boost": { Globals.BoostOffset = offSetLow; Globals.BoostEnd = offSetHigh; Globals.BoostNeedleX = startPosX.ToString(); Globals.BoostNeedleY = startPosY.ToString(); } break;
+                                                    case "Temp": { Globals.TempOffset = offSetLow; Globals.TempEnd = offSetHigh; Globals.TempNeedleX = startPosX.ToString(); Globals.TempNeedleY = startPosY.ToString(); } break;
+                                                    case "Oil Press": { Globals.OilOffset = offSetLow; Globals.OilEnd = offSetHigh; Globals.OilNeedleX = startPosX.ToString(); Globals.OilNeedleY = startPosY.ToString(); } break;
+                                                    case "Oil Temp": { Globals.OilTOffset = offSetLow; Globals.OilTEnd = offSetHigh; Globals.OilTNeedleX = startPosX.ToString(); Globals.OilTNeedleY = startPosY.ToString(); } break;
+                                                    case "Fuel": { Globals.FuelOffset = offSetLow; Globals.FuelEnd = offSetHigh; Globals.FuelNeedleX = startPosX.ToString(); Globals.FuelNeedleY = startPosY.ToString(); } break;
+                                                    case "Fuel Temp": { Globals.FuelTOffset = offSetLow; Globals.FuelTEnd = offSetHigh; Globals.FuelTNeedleX = startPosX.ToString(); Globals.FuelTNeedleY = startPosY.ToString(); } break;
+                                                    case "Fuel Press": { Globals.FuelPOffset = offSetLow; Globals.FuelPEnd = offSetHigh; Globals.FuelPNeedleX = startPosX.ToString(); Globals.FuelPNeedleY = startPosY.ToString(); } break;
+                                                    case "Battery": { Globals.BatteryOffset = offSetLow; Globals.BatteryEnd = offSetHigh; Globals.BatteryNeedleX = startPosX.ToString(); Globals.BatteryNeedleY = startPosY.ToString(); } break;
+                                                    case "User1": { Globals.User1Offset = offSetLow; Globals.User1End = offSetHigh; Globals.User1NeedleX = startPosX.ToString(); Globals.User1NeedleY = startPosY.ToString(); } break;
+                                                    case "User2": { Globals.User2Offset = offSetLow; Globals.User2End = offSetHigh; Globals.User2NeedleX = startPosX.ToString(); Globals.User2NeedleY = startPosY.ToString(); } break;
+                                                    case "User3": { Globals.User3Offset = offSetLow; Globals.User3End = offSetHigh; Globals.User2NeedleX = startPosX.ToString(); Globals.User3NeedleY = startPosY.ToString(); } break;
+                                                    case "User4": { Globals.User4Offset = offSetLow; Globals.User4End = offSetHigh; Globals.User4NeedleX = startPosX.ToString(); Globals.User4NeedleY = startPosY.ToString(); } break;
+                                                }
                                             }
-                                            offSetHigh = (Math.Round(angle1 - angle2)).ToString();
 
-                                            switch (Editing)
+                                            if (dir == "right")
                                             {
-                                                //  values
-                                                case "Speedo": { Globals.SpeedoOffset = offSetLow; Globals.SpeedoEnd = offSetHigh; Globals.SpeedoNeedleX = startPosX.ToString(); Globals.SpeedoNeedleY = startPosY.ToString(); } break;
-                                                case "Tacho": { Globals.TachoOffset = offSetLow; Globals.TachoEnd = offSetHigh; Globals.TachoNeedleX = startPosX.ToString(); Globals.TachoNeedleY = startPosY.ToString(); } break;
-                                                case "Boost": { Globals.BoostOffset = offSetLow; Globals.BoostEnd = offSetHigh; Globals.BoostNeedleX = startPosX.ToString(); Globals.BoostNeedleY = startPosY.ToString(); } break;
-                                                case "Temp": { Globals.TempOffset = offSetLow; Globals.TempEnd = offSetHigh; Globals.TempNeedleX = startPosX.ToString(); Globals.TempNeedleY = startPosY.ToString(); } break;
-                                                case "Oil Press": { Globals.OilOffset = offSetLow; Globals.OilEnd = offSetHigh; Globals.OilNeedleX = startPosX.ToString(); Globals.OilNeedleY = startPosY.ToString(); } break;
-                                                case "Oil Temp": { Globals.OilTOffset = offSetLow; Globals.OilTEnd = offSetHigh; Globals.OilTNeedleX = startPosX.ToString(); Globals.OilTNeedleY = startPosY.ToString(); } break;
-                                                case "Fuel": { Globals.FuelOffset = offSetLow; Globals.FuelEnd = offSetHigh; Globals.FuelNeedleX = startPosX.ToString(); Globals.FuelNeedleY = startPosY.ToString(); } break;
-                                                case "Fuel Temp": { Globals.FuelTOffset = offSetLow; Globals.FuelTEnd = offSetHigh; Globals.FuelTNeedleX = startPosX.ToString(); Globals.FuelTNeedleY = startPosY.ToString(); } break;
-                                                case "Fuel Press": { Globals.FuelPOffset = offSetLow; Globals.FuelPEnd = offSetHigh; Globals.FuelPNeedleX = startPosX.ToString(); Globals.FuelPNeedleY = startPosY.ToString(); } break;
-                                                case "Battery": { Globals.BatteryOffset = offSetLow; Globals.BatteryEnd = offSetHigh; Globals.BatteryNeedleX = startPosX.ToString(); Globals.BatteryNeedleY = startPosY.ToString(); } break;
-                                                case "User1": { Globals.User1Offset = offSetLow; Globals.User1End = offSetHigh; Globals.User1NeedleX = startPosX.ToString(); Globals.User1NeedleY = startPosY.ToString(); } break;
-                                                case "User2": { Globals.User2Offset = offSetLow; Globals.User2End = offSetHigh; Globals.User2NeedleX = startPosX.ToString(); Globals.User2NeedleY = startPosY.ToString(); } break;
-                                                case "User3": { Globals.User3Offset = offSetLow; Globals.User3End = offSetHigh; Globals.User2NeedleX = startPosX.ToString(); Globals.User3NeedleY = startPosY.ToString(); } break;
-                                                case "User4": { Globals.User4Offset = offSetLow; Globals.User4End = offSetHigh; Globals.User4NeedleX = startPosX.ToString(); Globals.User4NeedleY = startPosY.ToString(); } break;
-                                            }
-                                        }
+                                                dy = (lowpointY - startPosY);
+                                                dx = (lowpointX - startPosX);
+                                                theta = Math.Atan2(dx, dy);
+                                                angle1 = ((((theta * 180) / Math.PI) % 360) - 270);
+                                                if (angle1 < 0) { angle1 += 360; }
 
+                                                offSetLow = (Math.Round(angle1)).ToString();
 
-                                        if (dir == "left")
-                                        {
-                                            dy = (lowpointY - startPosY);
-                                            dx = (lowpointX - startPosX);
-                                            theta = Math.Atan2(dx, dy);
-                                            angle1 = ((((theta * 180) / Math.PI) % 360) - 270);
-                                            if (angle1 < 0) { angle1 += 360; }
+                                                dy = (startPosY - highpointY);
+                                                dx = (startPosX - highpointX);
+                                                theta = Math.Atan2(dy, dx);
+                                                angle2 = ((((theta * 180) / Math.PI) % 360));
+                                                if (angle2 < 0)
+                                                {
+                                                    angle2 += 360;
+                                                }
+                                                offSetHigh = (Math.Round((angle1 + angle2))).ToString();
 
-                                            offSetLow = "-" + (Math.Round(angle1)).ToString();
-
-                                            dy = (startPosY - highpointY);
-                                            dx = (startPosX - highpointX);
-                                            theta = Math.Atan2(dy, dx);
-                                            angle2 = ((((theta * 180) / Math.PI) % 360));
-                                            if (angle2 < 0)
-                                            {
-                                                angle2 += 360;
-                                            }
-                                            offSetHigh = (Math.Round((angle1 + angle2))).ToString();
-
-                                            switch (Editing)
-                                            {
-                                                //  values
-                                                //  values
-                                                case "Speedo": { Globals.SpeedoOffset = offSetLow; Globals.SpeedoEnd = offSetHigh; Globals.SpeedoNeedleX = startPosX.ToString(); Globals.SpeedoNeedleY = startPosY.ToString(); } break;
-                                                case "Tacho": { Globals.TachoOffset = offSetLow; Globals.TachoEnd = offSetHigh; Globals.TachoNeedleX = startPosX.ToString(); Globals.TachoNeedleY = startPosY.ToString(); } break;
-                                                case "Boost": { Globals.BoostOffset = offSetLow; Globals.BoostEnd = offSetHigh; Globals.BoostNeedleX = startPosX.ToString(); Globals.BoostNeedleY = startPosY.ToString(); } break;
-                                                case "Temp": { Globals.TempOffset = offSetLow; Globals.TempEnd = offSetHigh; Globals.TempNeedleX = startPosX.ToString(); Globals.TempNeedleY = startPosY.ToString(); } break;
-                                                case "Oil Press": { Globals.OilOffset = offSetLow; Globals.OilEnd = offSetHigh; Globals.OilNeedleX = startPosX.ToString(); Globals.OilNeedleY = startPosY.ToString(); } break;
-                                                case "Oil Temp": { Globals.OilTOffset = offSetLow; Globals.OilTEnd = offSetHigh; Globals.OilTNeedleX = startPosX.ToString(); Globals.OilTNeedleY = startPosY.ToString(); } break;
-                                                case "Fuel": { Globals.FuelOffset = offSetLow; Globals.FuelEnd = offSetHigh; Globals.FuelNeedleX = startPosX.ToString(); Globals.FuelNeedleY = startPosY.ToString(); } break;
-                                                case "Fuel Temp": { Globals.FuelTOffset = offSetLow; Globals.FuelTEnd = offSetHigh; Globals.FuelTNeedleX = startPosX.ToString(); Globals.FuelTNeedleY = startPosY.ToString(); } break;
-                                                case "Fuel Press": { Globals.FuelPOffset = offSetLow; Globals.FuelPEnd = offSetHigh; Globals.FuelPNeedleX = startPosX.ToString(); Globals.FuelPNeedleY = startPosY.ToString(); } break;
-                                                case "Battery": { Globals.BatteryOffset = offSetLow; Globals.BatteryEnd = offSetHigh; Globals.BatteryNeedleX = startPosX.ToString(); Globals.BatteryNeedleY = startPosY.ToString(); } break;
-                                                case "User1": { Globals.User1Offset = offSetLow; Globals.User1End = offSetHigh; Globals.User1NeedleX = startPosX.ToString(); Globals.User1NeedleY = startPosY.ToString(); } break;
-                                                case "User2": { Globals.User2Offset = offSetLow; Globals.User2End = offSetHigh; Globals.User2NeedleX = startPosX.ToString(); Globals.User2NeedleY = startPosY.ToString(); } break;
-                                                case "User3": { Globals.User3Offset = offSetLow; Globals.User3End = offSetHigh; Globals.User2NeedleX = startPosX.ToString(); Globals.User3NeedleY = startPosY.ToString(); } break;
-                                                case "User4": { Globals.User4Offset = offSetLow; Globals.User4End = offSetHigh; Globals.User4NeedleX = startPosX.ToString(); Globals.User4NeedleY = startPosY.ToString(); } break;
-                                            }
-                                        }
-
-                                        if (dir == "right")
-                                        {
-                                            dy = (lowpointY - startPosY);
-                                            dx = (lowpointX - startPosX);
-                                            theta = Math.Atan2(dx, dy);
-                                            angle1 = ((((theta * 180) / Math.PI) % 360) - 270);
-                                            if (angle1 < 0) { angle1 += 360; }
-
-                                            offSetLow = (Math.Round(angle1)).ToString();
-
-                                            dy = (startPosY - highpointY);
-                                            dx = (startPosX - highpointX);
-                                            theta = Math.Atan2(dy, dx);
-                                            angle2 = ((((theta * 180) / Math.PI) % 360));
-                                            if (angle2 < 0)
-                                            {
-                                                angle2 += 360;
-                                            }
-                                            offSetHigh = (Math.Round((angle1 + angle2))).ToString();
-
-                                            switch (Editing)
-                                            {
-                                                //  values
-                                                case "Speedo": { Globals.SpeedoOffset = offSetLow; Globals.SpeedoEnd = offSetHigh; Globals.SpeedoNeedleX = startPosX.ToString(); Globals.SpeedoNeedleY = startPosY.ToString(); } break;
-                                                case "Tacho": { Globals.TachoOffset = offSetLow; Globals.TachoEnd = offSetHigh; Globals.TachoNeedleX = startPosX.ToString(); Globals.TachoNeedleY = startPosY.ToString(); } break;
-                                                case "Boost": { Globals.BoostOffset = offSetLow; Globals.BoostEnd = offSetHigh; Globals.BoostNeedleX = startPosX.ToString(); Globals.BoostNeedleY = startPosY.ToString(); } break;
-                                                case "Temp": { Globals.TempOffset = offSetLow; Globals.TempEnd = offSetHigh; Globals.TempNeedleX = startPosX.ToString(); Globals.TempNeedleY = startPosY.ToString(); } break;
-                                                case "Oil Press": { Globals.OilOffset = offSetLow; Globals.OilEnd = offSetHigh; Globals.OilNeedleX = startPosX.ToString(); Globals.OilNeedleY = startPosY.ToString(); } break;
-                                                case "Oil Temp": { Globals.OilTOffset = offSetLow; Globals.OilTEnd = offSetHigh; Globals.OilTNeedleX = startPosX.ToString(); Globals.OilTNeedleY = startPosY.ToString(); } break;
-                                                case "Fuel": { Globals.FuelOffset = offSetLow; Globals.FuelEnd = offSetHigh; Globals.FuelNeedleX = startPosX.ToString(); Globals.FuelNeedleY = startPosY.ToString(); } break;
-                                                case "Fuel Temp": { Globals.FuelTOffset = offSetLow; Globals.FuelTEnd = offSetHigh; Globals.FuelTNeedleX = startPosX.ToString(); Globals.FuelTNeedleY = startPosY.ToString(); } break;
-                                                case "Fuel Press": { Globals.FuelPOffset = offSetLow; Globals.FuelPEnd = offSetHigh; Globals.FuelPNeedleX = startPosX.ToString(); Globals.FuelPNeedleY = startPosY.ToString(); } break;
-                                                case "Battery": { Globals.BatteryOffset = offSetLow; Globals.BatteryEnd = offSetHigh; Globals.BatteryNeedleX = startPosX.ToString(); Globals.BatteryNeedleY = startPosY.ToString(); } break;
-                                                case "User1": { Globals.User1Offset = offSetLow; Globals.User1End = offSetHigh; Globals.User1NeedleX = startPosX.ToString(); Globals.User1NeedleY = startPosY.ToString(); } break;
-                                                case "User2": { Globals.User2Offset = offSetLow; Globals.User2End = offSetHigh; Globals.User2NeedleX = startPosX.ToString(); Globals.User2NeedleY = startPosY.ToString(); } break;
-                                                case "User3": { Globals.User3Offset = offSetLow; Globals.User3End = offSetHigh; Globals.User2NeedleX = startPosX.ToString(); Globals.User3NeedleY = startPosY.ToString(); } break;
-                                                case "User4": { Globals.User4Offset = offSetLow; Globals.User4End = offSetHigh; Globals.User4NeedleX = startPosX.ToString(); Globals.User4NeedleY = startPosY.ToString(); } break;
+                                                switch (Editing)
+                                                {
+                                                    //  values
+                                                    case "Speedo": { Globals.SpeedoOffset = offSetLow; Globals.SpeedoEnd = offSetHigh; Globals.SpeedoNeedleX = startPosX.ToString(); Globals.SpeedoNeedleY = startPosY.ToString(); } break;
+                                                    case "Tacho": { Globals.TachoOffset = offSetLow; Globals.TachoEnd = offSetHigh; Globals.TachoNeedleX = startPosX.ToString(); Globals.TachoNeedleY = startPosY.ToString(); } break;
+                                                    case "Boost": { Globals.BoostOffset = offSetLow; Globals.BoostEnd = offSetHigh; Globals.BoostNeedleX = startPosX.ToString(); Globals.BoostNeedleY = startPosY.ToString(); } break;
+                                                    case "Temp": { Globals.TempOffset = offSetLow; Globals.TempEnd = offSetHigh; Globals.TempNeedleX = startPosX.ToString(); Globals.TempNeedleY = startPosY.ToString(); } break;
+                                                    case "Oil Press": { Globals.OilOffset = offSetLow; Globals.OilEnd = offSetHigh; Globals.OilNeedleX = startPosX.ToString(); Globals.OilNeedleY = startPosY.ToString(); } break;
+                                                    case "Oil Temp": { Globals.OilTOffset = offSetLow; Globals.OilTEnd = offSetHigh; Globals.OilTNeedleX = startPosX.ToString(); Globals.OilTNeedleY = startPosY.ToString(); } break;
+                                                    case "Fuel": { Globals.FuelOffset = offSetLow; Globals.FuelEnd = offSetHigh; Globals.FuelNeedleX = startPosX.ToString(); Globals.FuelNeedleY = startPosY.ToString(); } break;
+                                                    case "Fuel Temp": { Globals.FuelTOffset = offSetLow; Globals.FuelTEnd = offSetHigh; Globals.FuelTNeedleX = startPosX.ToString(); Globals.FuelTNeedleY = startPosY.ToString(); } break;
+                                                    case "Fuel Press": { Globals.FuelPOffset = offSetLow; Globals.FuelPEnd = offSetHigh; Globals.FuelPNeedleX = startPosX.ToString(); Globals.FuelPNeedleY = startPosY.ToString(); } break;
+                                                    case "Battery": { Globals.BatteryOffset = offSetLow; Globals.BatteryEnd = offSetHigh; Globals.BatteryNeedleX = startPosX.ToString(); Globals.BatteryNeedleY = startPosY.ToString(); } break;
+                                                    case "User1": { Globals.User1Offset = offSetLow; Globals.User1End = offSetHigh; Globals.User1NeedleX = startPosX.ToString(); Globals.User1NeedleY = startPosY.ToString(); } break;
+                                                    case "User2": { Globals.User2Offset = offSetLow; Globals.User2End = offSetHigh; Globals.User2NeedleX = startPosX.ToString(); Globals.User2NeedleY = startPosY.ToString(); } break;
+                                                    case "User3": { Globals.User3Offset = offSetLow; Globals.User3End = offSetHigh; Globals.User2NeedleX = startPosX.ToString(); Globals.User3NeedleY = startPosY.ToString(); } break;
+                                                    case "User4": { Globals.User4Offset = offSetLow; Globals.User4End = offSetHigh; Globals.User4NeedleX = startPosX.ToString(); Globals.User4NeedleY = startPosY.ToString(); } break;
+                                                }
                                             }
                                         }
                                     }
@@ -597,6 +603,7 @@ namespace kkdash
                                             case "Speedo": { Globals.SpeedoTop = txtTopVal.Text; } break;
                                             case "Tacho": { Globals.TachoTop = txtTopVal.Text; } break;
                                             case "Boost": { Globals.BoostTop = txtTopVal.Text; } break;
+                                            case "Temp": { Globals.TempTop = txtTopVal.Text; } break;
                                             case "Oil Press": { Globals.OilTop = txtTopVal.Text; } break;
                                             case "Oil Temp": { Globals.OilTTop = txtTopVal.Text; } break;
                                             case "Fuel": { Globals.FuelTop = txtTopVal.Text; } break;
@@ -613,14 +620,22 @@ namespace kkdash
                                         lblPrompt.Text = "";
                                         lblPromptVal.Text = "";
                                         stage = 0;
-                                        tempXlen = 0; tempYlen = 0; tempXlow = 0; tempYlow = 0; tempXhigh = 0;tempYhigh = 0;
+                                        tempXlen = 0; tempYlen = 0; tempXlow = 0; tempYlow = 0; tempXhigh = 0; tempYhigh = 0;
                                         ResetThePage(lbNumber);
                                     }
                                     break;
 
 
 
-                                    //===================================================BAR=========================================================================
+                                //===================================================BAR=========================================================================
+
+                                case "Enter highest value":
+                                    {
+                                        txtTopVal.Visible = false;
+                                        commitBar(Editing, txtTopVal.Text);
+                                        ResetThePage(lbNumber);
+                                    }
+                                    break;
 
                                 case "Click bar TOP LEFT":
                                     {
@@ -635,6 +650,7 @@ namespace kkdash
                                         stage += 1;
                                     }
                                     break;
+
                                 case "Click bar BOTTOM RIGHT":
                                     {
                                         //2nd step. bar length
@@ -642,8 +658,8 @@ namespace kkdash
                                         {
                                             lowpointX = lpX - (pictureBG.Width / 2);
                                             lowpointY = lpY - (pictureBG.Height / 2);
-                                            
-                                            highpointX  = mouseEventArgs.X - lpX;
+
+                                            highpointX = mouseEventArgs.X - lpX;
                                             highpointY = mouseEventArgs.Y - lpY;
 
                                             tempXlow = lpX; tempYlow = lpY; tempXhigh = highpointX; tempYhigh = highpointY;
@@ -651,153 +667,199 @@ namespace kkdash
                                             using (Graphics p = pictureBG.CreateGraphics())
                                             {
                                                 p.DrawRectangle(Pens.Pink, tempXlow, tempYlow, tempXhigh, tempYhigh);
-
-                                                Thread.Sleep(1000);
+                                                Thread.Sleep(1500);
                                                 p.DrawRectangle(Pens.Black, tempXlow, tempYlow, tempXhigh, tempYhigh);
                                             }
 
-                                            if (Editing == "Speedo")
-                                            {
-                                                if ((Globals.SpeedoNeedleType == "barV") || (Globals.SpeedoNeedleType == "barH"))
-                                                { Globals.SpeedoNeedleWidth = highpointX.ToString(); Globals.SpeedoNeedleLength = highpointY.ToString(); Globals.SpeedoNeedleX = lowpointX.ToString(); Globals.SpeedoNeedleY = lowpointY.ToString(); }}
-                                            if (Editing == "Tacho")
-                                            {
-                                                if ((Globals.TachoNeedleType == "barV") || (Globals.TachoNeedleType == "barH"))
-                                                { Globals.TachoNeedleWidth = highpointX.ToString(); Globals.TachoNeedleLength = highpointY.ToString(); Globals.TachoNeedleX = lowpointX.ToString(); Globals.TachoNeedleY = lowpointY.ToString(); }
-                                            }
-                                            if (Editing == "Boost")
-                                            {
-                                                if ((Globals.BoostNeedleType == "barV") || (Globals.BoostNeedleType == "barH"))
-                                                { Globals.BoostNeedleWidth = highpointX.ToString(); Globals.BoostNeedleLength = highpointY.ToString(); Globals.BoostNeedleX = lowpointX.ToString(); Globals.BoostNeedleY = lowpointY.ToString(); }
-                                            }
-                                            if (Editing == "Temp")
-                                            {
-                                                if ((Globals.TempNeedleType == "barV") || (Globals.TempNeedleType == "barH"))
-                                                { Globals.TempNeedleWidth = highpointX.ToString(); Globals.TempNeedleLength = highpointY.ToString(); Globals.TempNeedleX = lowpointX.ToString(); Globals.TempNeedleY = lowpointY.ToString(); }
-                                            }
-                                            if (Editing == "Oil Press")
-                                            {
-                                                if ((Globals.OilNeedleType == "barV") || (Globals.OilNeedleType == "barH"))
-                                                { Globals.OilNeedleWidth = highpointX.ToString(); Globals.OilNeedleLength = highpointY.ToString(); Globals.OilNeedleX = lowpointX.ToString(); Globals.OilNeedleY = lowpointY.ToString(); }
-                                            }
-                                            if (Editing == "Oil Temp")
-                                            {
-                                                if ((Globals.OilTNeedleType == "barV") || (Globals.OilTNeedleType == "barH"))
-                                                { Globals.OilTNeedleWidth = highpointX.ToString(); Globals.OilTNeedleLength = highpointY.ToString(); Globals.OilTNeedleX = lowpointX.ToString(); Globals.OilTNeedleY = lowpointY.ToString(); }
-                                            }
-                                            if (Editing == "Fuel")
-                                            {
-                                                if ((Globals.FuelNeedleType == "barV") || (Globals.FuelNeedleType == "barH"))
-                                                { Globals.FuelNeedleWidth = highpointX.ToString(); Globals.FuelNeedleLength = highpointY.ToString(); Globals.FuelNeedleX = lowpointX.ToString(); Globals.FuelNeedleY = lowpointY.ToString(); }
-                                            }
-                                            if (Editing == "Fuel Temp")
-                                            {
-                                                if ((Globals.FuelTNeedleType == "barV") || (Globals.FuelTNeedleType == "barH"))
-                                                { Globals.FuelTNeedleWidth = highpointX.ToString(); Globals.FuelTNeedleLength = highpointY.ToString(); Globals.FuelTNeedleX = lowpointX.ToString(); Globals.FuelTNeedleY = lowpointY.ToString(); }
-                                            }
-                                            if (Editing == "Fuel Press")
-                                            {
-                                                if ((Globals.FuelPNeedleType == "barV") || (Globals.FuelPNeedleType == "barH"))
-                                                { Globals.FuelPNeedleWidth = highpointX.ToString(); Globals.FuelPNeedleLength = highpointY.ToString(); Globals.FuelPNeedleX = lowpointX.ToString(); Globals.FuelPNeedleY = lowpointY.ToString(); }
-                                            }
-                                            if (Editing == "Battery")
-                                            {
-                                                if ((Globals.BatteryNeedleType == "barV") || (Globals.BatteryNeedleType == "barH"))
-                                                { Globals.BatteryNeedleWidth = highpointX.ToString(); Globals.BatteryNeedleLength = highpointY.ToString(); Globals.BatteryNeedleX = lowpointX.ToString(); Globals.BatteryNeedleY = lowpointY.ToString(); }
-                                            }
-                                            if (Editing == "User1")
-                                            {
-                                                if ((Globals.User1NeedleType == "barV") || (Globals.User1NeedleType == "barH"))
-                                                { Globals.User1NeedleWidth = highpointX.ToString(); Globals.User1NeedleLength = highpointY.ToString(); Globals.User1NeedleX = lowpointX.ToString(); Globals.User1NeedleY = lowpointY.ToString(); }
-                                            }
-                                            if (Editing == "User2")
-                                            {
-                                                if ((Globals.User2NeedleType == "barV") || (Globals.User2NeedleType == "barH"))
-                                                { Globals.User2NeedleWidth = highpointX.ToString(); Globals.User2NeedleLength = highpointY.ToString(); Globals.User2NeedleX = lowpointX.ToString(); Globals.User2NeedleY = lowpointY.ToString(); }
-                                            }
-                                            if (Editing == "User3")
-                                            {
-                                                if ((Globals.User3NeedleType == "barV") || (Globals.User3NeedleType == "barH"))
-                                                { Globals.User3NeedleWidth = highpointX.ToString(); Globals.User3NeedleLength = highpointY.ToString(); Globals.User3NeedleX = lowpointX.ToString(); Globals.User3NeedleY = lowpointY.ToString(); }
-                                            }
-                                            if (Editing == "User4")
-                                            {
-                                                if ((Globals.User4NeedleType == "barV") || (Globals.User4NeedleType == "barH"))
-                                                { Globals.User4NeedleWidth = highpointX.ToString(); Globals.User4NeedleLength = highpointY.ToString(); Globals.User4NeedleX = lowpointX.ToString(); Globals.User4NeedleY = lowpointY.ToString(); }
-                                            }
+                                            txtTopVal.Visible = true;
+                                            lblPrompt.Text = "Enter highest value";
+                                            lblPromptVal.Text = "for " + Editing;
 
+                                            //commit all values above so it allows for entry                                        }
                                         }
-                                        stage = 0;
-                                        ResetThePage(lbNumber);
+                                        break;
+                                    }
+
+                                case "Speedo Text": case "Tacho Text": case "Boost Text": case "Temp Text": case "Oil Press Text": case "Oil Temp Text": case "Fuel Text": case "Fuel Temp Text": case "Fuel Press Text": case "Battery Text": case "User1 Text": case "User2 Text": case "User3 Text": case "User4 Text":
+                                    {
+                                        startPosX = mouseEventArgs.X;
+                                        startPosY = mouseEventArgs.Y;
+                                        movingCentre = "text";
+                                        placeTextSet(Editing, "white");
                                     }
                                     break;
                             }
                             break;
                         }
+                }
+            }
+        }
 
-                    case "Speedo Text": case "Tacho Text": case "Boost Text": case "Temp Text": case "Oil Press Text": case "Oil Temp Text": case "Fuel Text": case "Fuel Temp Text": case "Fuel Press Text": case "Battery Text": case "User1 Text": case "User2 Text": case "User3 Text": case "User4 Text":
+        private void commitBar(string Editing, string TopVal)
+        {
+            if (Editing == "Speedo")
+            {
+                if ((Globals.SpeedoNeedleType == "barV") || (Globals.SpeedoNeedleType == "barH"))
+                { Globals.SpeedoNeedleWidth = highpointX.ToString(); Globals.SpeedoNeedleLength = highpointY.ToString(); Globals.SpeedoNeedleX = lowpointX.ToString(); Globals.SpeedoNeedleY = lowpointY.ToString(); Globals.SpeedoTop = TopVal; }
+            }
+            if (Editing == "Tacho")
+            {
+                if ((Globals.TachoNeedleType == "barV") || (Globals.TachoNeedleType == "barH"))
+                { Globals.TachoNeedleWidth = highpointX.ToString(); Globals.TachoNeedleLength = highpointY.ToString(); Globals.TachoNeedleX = lowpointX.ToString(); Globals.TachoNeedleY = lowpointY.ToString(); Globals.TachoTop = TopVal; }
+            }
+            if (Editing == "Boost")
+            {
+                if ((Globals.BoostNeedleType == "barV") || (Globals.BoostNeedleType == "barH"))
+                { Globals.BoostNeedleWidth = highpointX.ToString(); Globals.BoostNeedleLength = highpointY.ToString(); Globals.BoostNeedleX = lowpointX.ToString(); Globals.BoostNeedleY = lowpointY.ToString(); Globals.BoostTop = TopVal; }
+            }
+            if (Editing == "Temp")
+            {
+                if ((Globals.TempNeedleType == "barV") || (Globals.TempNeedleType == "barH"))
+                { Globals.TempNeedleWidth = highpointX.ToString(); Globals.TempNeedleLength = highpointY.ToString(); Globals.TempNeedleX = lowpointX.ToString(); Globals.TempNeedleY = lowpointY.ToString(); Globals.TempTop = TopVal; }
+            }
+            if (Editing == "Oil Press")
+            {
+                if ((Globals.OilNeedleType == "barV") || (Globals.OilNeedleType == "barH"))
+                { Globals.OilNeedleWidth = highpointX.ToString(); Globals.OilNeedleLength = highpointY.ToString(); Globals.OilNeedleX = lowpointX.ToString(); Globals.OilNeedleY = lowpointY.ToString(); Globals.OilTop = TopVal; }
+            }
+            if (Editing == "Oil Temp")
+            {
+                if ((Globals.OilTNeedleType == "barV") || (Globals.OilTNeedleType == "barH"))
+                { Globals.OilTNeedleWidth = highpointX.ToString(); Globals.OilTNeedleLength = highpointY.ToString(); Globals.OilTNeedleX = lowpointX.ToString(); Globals.OilTNeedleY = lowpointY.ToString(); Globals.OilTTop = TopVal; }
+            }
+            if (Editing == "Fuel")
+            {
+                if ((Globals.FuelNeedleType == "barV") || (Globals.FuelNeedleType == "barH"))
+                { Globals.FuelNeedleWidth = highpointX.ToString(); Globals.FuelNeedleLength = highpointY.ToString(); Globals.FuelNeedleX = lowpointX.ToString(); Globals.FuelNeedleY = lowpointY.ToString(); Globals.FuelTop = TopVal; }
+            }
+            if (Editing == "Fuel Temp")
+            {
+                if ((Globals.FuelTNeedleType == "barV") || (Globals.FuelTNeedleType == "barH"))
+                { Globals.FuelTNeedleWidth = highpointX.ToString(); Globals.FuelTNeedleLength = highpointY.ToString(); Globals.FuelTNeedleX = lowpointX.ToString(); Globals.FuelTNeedleY = lowpointY.ToString(); Globals.FuelTTop = TopVal; }
+            }
+            if (Editing == "Fuel Press")
+            {
+                if ((Globals.FuelPNeedleType == "barV") || (Globals.FuelPNeedleType == "barH"))
+                { Globals.FuelPNeedleWidth = highpointX.ToString(); Globals.FuelPNeedleLength = highpointY.ToString(); Globals.FuelPNeedleX = lowpointX.ToString(); Globals.FuelPNeedleY = lowpointY.ToString(); Globals.FuelPTop = TopVal; }
+            }
+            if (Editing == "Battery")
+            {
+                if ((Globals.BatteryNeedleType == "barV") || (Globals.BatteryNeedleType == "barH"))
+                { Globals.BatteryNeedleWidth = highpointX.ToString(); Globals.BatteryNeedleLength = highpointY.ToString(); Globals.BatteryNeedleX = lowpointX.ToString(); Globals.BatteryNeedleY = lowpointY.ToString(); Globals.BatteryTop = TopVal; }
+            }
+            if (Editing == "User1")
+            {
+                if ((Globals.User1NeedleType == "barV") || (Globals.User1NeedleType == "barH"))
+                { Globals.User1NeedleWidth = highpointX.ToString(); Globals.User1NeedleLength = highpointY.ToString(); Globals.User1NeedleX = lowpointX.ToString(); Globals.User1NeedleY = lowpointY.ToString(); Globals.User1Top = TopVal; }
+            }
+            if (Editing == "User2")
+            {
+                if ((Globals.User2NeedleType == "barV") || (Globals.User2NeedleType == "barH"))
+                { Globals.User2NeedleWidth = highpointX.ToString(); Globals.User2NeedleLength = highpointY.ToString(); Globals.User2NeedleX = lowpointX.ToString(); Globals.User2NeedleY = lowpointY.ToString(); Globals.User2Top = TopVal; }
+            }
+            if (Editing == "User3")
+            {
+                if ((Globals.User3NeedleType == "barV") || (Globals.User3NeedleType == "barH"))
+                { Globals.User3NeedleWidth = highpointX.ToString(); Globals.User3NeedleLength = highpointY.ToString(); Globals.User3NeedleX = lowpointX.ToString(); Globals.User3NeedleY = lowpointY.ToString(); Globals.User3Top = TopVal; }
+            }
+            if (Editing == "User4")
+            {
+                if ((Globals.User4NeedleType == "barV") || (Globals.User4NeedleType == "barH"))
+                { Globals.User4NeedleWidth = highpointX.ToString(); Globals.User4NeedleLength = highpointY.ToString(); Globals.User4NeedleX = lowpointX.ToString(); Globals.User4NeedleY = lowpointY.ToString(); Globals.User4Top = TopVal; }
+            }
+
+            stage = 0;
+            ResetThePage(lbNumber);
+        }
+
+        public void placeText(string fontStyle, string fontSize, string colour)
+        {
+            StringFormat sf = new StringFormat();
+            sf.LineAlignment = StringAlignment.Center;
+            sf.Alignment = StringAlignment.Center;
+
+            if (Int32.Parse(fontSize) < 8) { fontSize = "18"; }
+            using (Graphics p = pictureBG.CreateGraphics())
+            {
+                if (colour == "white")
+                {
+                    if (fontStyle == "smooth")
+                    {
+                        using (Font arialFont = new Font("Arial", Int32.Parse(fontSize), FontStyle.Regular))
                         {
-
-                            string fontStyle = ""; string fontSize = "18"; float locX = 0; float locY = 0;
-
-
-                            if (Editing == "Speedo Text") { fontStyle = Globals.SpeedoTextStyle; fontSize = Globals.SpeedoFontSize; Globals.SpeedoTextX = mouseEventArgs.X.ToString(); Globals.SpeedoTextY = mouseEventArgs.Y.ToString(); locX = mouseEventArgs.X; locY = mouseEventArgs.Y; }
-                            if (Editing == "Tacho Text") { fontStyle = Globals.TachoTextStyle; fontSize = Globals.TachoFontSize; Globals.TachoTextX = mouseEventArgs.X.ToString(); Globals.TachoTextY = mouseEventArgs.Y.ToString(); locX = mouseEventArgs.X; locY = mouseEventArgs.Y; }
-                            if (Editing == "Boost Text") { fontStyle = Globals.BoostTextStyle; fontSize = Globals.BoostFontSize; Globals.BoostTextX = mouseEventArgs.X.ToString(); Globals.BoostTextY = mouseEventArgs.Y.ToString(); locX = mouseEventArgs.X; locY = mouseEventArgs.Y; }
-                            if (Editing == "Temp Text") { fontStyle = Globals.TempTextStyle; fontSize = Globals.TempFontSize; Globals.TempTextX = mouseEventArgs.X.ToString(); Globals.TempTextY = mouseEventArgs.Y.ToString(); locX = mouseEventArgs.X; locY = mouseEventArgs.Y; }
-                            if (Editing == "Oil Press Text") { fontStyle = Globals.OilTextStyle; fontSize = Globals.OilFontSize; Globals.OilTextX = mouseEventArgs.X.ToString(); Globals.OilTextY = mouseEventArgs.Y.ToString(); locX = mouseEventArgs.X; locY = mouseEventArgs.Y; }
-                            if (Editing == "Oil Temp Text") { fontStyle = Globals.OilTTextStyle; fontSize = Globals.OilTFontSize; Globals.OilTTextX = mouseEventArgs.X.ToString(); Globals.OilTTextY = mouseEventArgs.Y.ToString(); locX = mouseEventArgs.X; locY = mouseEventArgs.Y; }
-                            if (Editing == "Fuel Text") { fontStyle = Globals.FuelTextStyle; fontSize = Globals.FuelFontSize; Globals.FuelTextX = mouseEventArgs.X.ToString(); Globals.FuelTextY = mouseEventArgs.Y.ToString(); locX = mouseEventArgs.X; locY = mouseEventArgs.Y; }
-                            if (Editing == "Fuel Temp  Text") { fontStyle = Globals.FuelTTextStyle; fontSize = Globals.FuelTFontSize; Globals.FuelTTextX = mouseEventArgs.X.ToString(); Globals.FuelTTextY = mouseEventArgs.Y.ToString(); locX = mouseEventArgs.X; locY = mouseEventArgs.Y; }
-                            if (Editing == "Fuel Press Text") { fontStyle = Globals.FuelPTextStyle; fontSize = Globals.FuelPFontSize; Globals.FuelPTextX = mouseEventArgs.X.ToString(); Globals.FuelPTextY = mouseEventArgs.Y.ToString(); locX = mouseEventArgs.X; locY = mouseEventArgs.Y; }
-                            if (Editing == "Battery Text") { fontStyle = Globals.BatteryTextStyle; fontSize = Globals.BatteryFontSize; Globals.BatteryTextX = mouseEventArgs.X.ToString(); Globals.BatteryTextY = mouseEventArgs.Y.ToString(); locX = mouseEventArgs.X; locY = mouseEventArgs.Y; }
-                            if (Editing == "User1 Text") { fontStyle = Globals.User1TextStyle; fontSize = Globals.User1FontSize; Globals.User1TextX = mouseEventArgs.X.ToString(); Globals.User1TextY = mouseEventArgs.Y.ToString(); locX = mouseEventArgs.X; locY = mouseEventArgs.Y; }
-                            if (Editing == "User2 Text") { fontStyle = Globals.User2TextStyle; fontSize = Globals.User2FontSize; Globals.User2TextX = mouseEventArgs.X.ToString(); Globals.User2TextY = mouseEventArgs.Y.ToString(); locX = mouseEventArgs.X; locY = mouseEventArgs.Y; }
-                            if (Editing == "User3 Text") { fontStyle = Globals.User3TextStyle; fontSize = Globals.User3FontSize; Globals.User3TextX = mouseEventArgs.X.ToString(); Globals.User3TextY = mouseEventArgs.Y.ToString(); locX = mouseEventArgs.X; locY = mouseEventArgs.Y; }
-                            if (Editing == "User4 Text") { fontStyle = Globals.User4TextStyle; fontSize = Globals.User4FontSize; Globals.User4TextX = mouseEventArgs.X.ToString(); Globals.User4TextY = mouseEventArgs.Y.ToString(); locX = mouseEventArgs.X; locY = mouseEventArgs.Y; }
-
-                            StringFormat sf = new StringFormat();
-                            sf.LineAlignment = StringAlignment.Center;
-                            sf.Alignment = StringAlignment.Center;
-
-                            if (Int32.Parse(fontSize) < 8) { fontSize = "18"; }
-                            using (Graphics p = pictureBG.CreateGraphics())
-                            {
-                                if (fontStyle == "smooth")
-                                {
-                                    using (Font arialFont = new Font("Arial", Int32.Parse(fontSize), FontStyle.Regular))
-                                    {
-                                        p.DrawString("000", arialFont, Brushes.White, mouseEventArgs.X, mouseEventArgs.Y,sf);
-                                    }
-                                }
-                                if (fontStyle == "bold")
-                                {
-                                    using (Font arialFont = new Font("Arial", Int32.Parse(fontSize), FontStyle.Bold))
-                                    {
-                                        p.DrawString("000", arialFont, Brushes.White, mouseEventArgs.X, mouseEventArgs.Y,sf);
-                                    }
-                                }
-                            }
-
-
-                            Editing = "";
-
-                        //    for (int i = 1; i < (lbNumber + 1); i++)
-                        //    {
-                        //        if (labels[i].BackColor == Color.Blue)
-                        //        {
-                        //            labels[i].BackColor = Color.LightGreen;
-                        //        }
-                        //    }
-
-                            lblPrompt.Text = "";
-                            lblPromptVal.Text = "";
+                            p.DrawString("000", arialFont, Brushes.White, startPosX, startPosY, sf);
                         }
-                        ResetThePage(lbNumber);
-                        break;
+                    }
+
+                    if (fontStyle == "bold")
+                    {
+                        using (Font arialFont = new Font("Arial", Int32.Parse(fontSize), FontStyle.Bold))
+                        {
+                            p.DrawString("000", arialFont, Brushes.White, startPosX, startPosY, sf);
+                        }
+                    }
                 }
 
+                if (colour == "black")
+                {
+                    if (fontStyle == "smooth")
+                    {
+                        using (Font arialFont = new Font("Arial", Int32.Parse(fontSize), FontStyle.Regular))
+                        {
+                            p.DrawString("000", arialFont, Brushes.Black, startPosX, startPosY, sf);
+                        }
+                    }
+                    if (fontStyle == "bold")
+                    {
+                        using (Font arialFont = new Font("Arial", Int32.Parse(fontSize), FontStyle.Bold))
+                        {
+                            p.DrawString("000", arialFont, Brushes.Black, startPosX, startPosY, sf);
+                        }
+                    }
+                }
             }
+
+            pnlDirections.Left = lbLeft + 250;
+            pnlDirections.Top = pictureBG.Height + 100;
+            pnlDirections.Show();
+        }
+
+        public void placeTextSet(string Editing,string colour)
+        {
+            string fontStyle = ""; string fontSize = "18"; float locX = 0; float locY = 0;
+
+            if (Editing == "Speedo Text") { fontStyle = Globals.SpeedoTextStyle; fontSize = Globals.SpeedoFontSize; Globals.SpeedoTextX = startPosX.ToString(); Globals.SpeedoTextY = startPosY.ToString(); locX = startPosX; locY = startPosY; }
+            if (Editing == "Tacho Text") { fontStyle = Globals.TachoTextStyle; fontSize = Globals.TachoFontSize; Globals.TachoTextX = startPosX.ToString(); Globals.TachoTextY = startPosY.ToString(); locX = startPosX; locY = startPosY; }
+            if (Editing == "Boost Text") { fontStyle = Globals.BoostTextStyle; fontSize = Globals.BoostFontSize; Globals.BoostTextX = startPosX.ToString(); Globals.BoostTextY = startPosY.ToString(); locX = startPosX; locY = startPosY; }
+            if (Editing == "Temp Text") { fontStyle = Globals.TempTextStyle; fontSize = Globals.TempFontSize; Globals.TempTextX = startPosX.ToString(); Globals.TempTextY = startPosY.ToString(); locX = startPosX; locY = startPosY; }
+            if (Editing == "Oil Press Text") { fontStyle = Globals.OilTextStyle; fontSize = Globals.OilFontSize; Globals.OilTextX = startPosX.ToString(); Globals.OilTextY = startPosY.ToString(); locX = startPosX; locY = startPosY; }
+            if (Editing == "Oil Temp Text") { fontStyle = Globals.OilTTextStyle; fontSize = Globals.OilTFontSize; Globals.OilTTextX = startPosX.ToString(); Globals.OilTTextY = startPosY.ToString(); locX = startPosX; locY = startPosY; }
+            if (Editing == "Fuel Text") { fontStyle = Globals.FuelTextStyle; fontSize = Globals.FuelFontSize; Globals.FuelTextX = startPosX.ToString(); Globals.FuelTextY = startPosY.ToString(); locX = startPosX; locY = startPosY; }
+            if (Editing == "Fuel Temp  Text") { fontStyle = Globals.FuelTTextStyle; fontSize = Globals.FuelTFontSize; Globals.FuelTTextX = startPosX.ToString(); Globals.FuelTTextY = startPosY.ToString(); locX = startPosX; locY = startPosY; }
+            if (Editing == "Fuel Press Text") { fontStyle = Globals.FuelPTextStyle; fontSize = Globals.FuelPFontSize; Globals.FuelPTextX = startPosX.ToString(); Globals.FuelPTextY = startPosY.ToString(); locX = startPosX; locY = startPosY; }
+            if (Editing == "Battery Text") { fontStyle = Globals.BatteryTextStyle; fontSize = Globals.BatteryFontSize; Globals.BatteryTextX = startPosX.ToString(); Globals.BatteryTextY = startPosY.ToString(); locX = startPosX; locY = startPosY; }
+            if (Editing == "User1 Text") { fontStyle = Globals.User1TextStyle; fontSize = Globals.User1FontSize; Globals.User1TextX = startPosX.ToString(); Globals.User1TextY = startPosY.ToString(); locX = startPosX; locY = startPosY; }
+            if (Editing == "User2 Text") { fontStyle = Globals.User2TextStyle; fontSize = Globals.User2FontSize; Globals.User2TextX = startPosX.ToString(); Globals.User2TextY = startPosY.ToString(); locX = startPosX; locY = startPosY; }
+            if (Editing == "User3 Text") { fontStyle = Globals.User3TextStyle; fontSize = Globals.User3FontSize; Globals.User3TextX = startPosX.ToString(); Globals.User3TextY = startPosY.ToString(); locX = startPosX; locY = startPosY; }
+            if (Editing == "User4 Text") { fontStyle = Globals.User4TextStyle; fontSize = Globals.User4FontSize; Globals.User4TextX = startPosX.ToString(); Globals.User4TextY = startPosY.ToString(); locX = startPosX; locY = startPosY; }
+
+            placeText(fontStyle,fontSize,colour);
+        }
+
+public void finaliseText()
+        {
+            Editing = "";
+
+            for (int i = 1; i < (lbNumber + 1); i++)
+            {
+                if (labels[i].BackColor == Color.Turquoise)
+                {
+                    labels[i].BackColor = Color.LightGreen;
+                }
+            }
+
+            lblPrompt.Text = "";
+            lblPromptVal.Text = "";
         }
 
         public void ResetThePage(int lbNumber)
@@ -809,6 +871,10 @@ namespace kkdash
             for (int i = 1; i < (lbNumber + 1); i++)
             {
                 if (labels[i].BackColor == Color.Blue)
+                {
+                    labels[i].BackColor = Color.LightGreen;
+                }
+                if (labels[i].BackColor == Color.WhiteSmoke)
                 {
                     labels[i].BackColor = Color.LightGreen;
                 }
@@ -1115,9 +1181,10 @@ namespace kkdash
             if (Math.Round(dispr, 2) == rat43) { picAspect = "4:3"; } else if (Math.Round(dispr, 2) == rat169) { picAspect = "16:9"; } else { picAspect = Math.Round(dispr, 2).ToString() + ":1"; }
             if ((img.Height.ToString() != Globals.p1DispHeight) || (img.Width.ToString() != Globals.p1DispWidth)) { this.Text = "Panel 1 SCALED FROM: " + img.Width + " x " + img.Height + " (" + imgAspect + ")" + " TO " + Globals.p1DispWidth + " x " + Globals.p2DispHeight + " (" + picAspect + ")"; }
 
-            this.Size = new System.Drawing.Size(Int32.Parse(Globals.p1DispWidth) + 10, Int32.Parse(Globals.p1DispHeight) + 250);
-            pictureBG.Size = new System.Drawing.Size(Int32.Parse(Globals.p1DispWidth) - 10, Int32.Parse(Globals.p1DispHeight) - 10);
+            pictureBG.Size = new System.Drawing.Size(Int32.Parse(Globals.p1DispWidth), Int32.Parse(Globals.p1DispHeight));
             pictureBG.SizeMode = PictureBoxSizeMode.StretchImage; pictureBG.Image = Image.FromFile(Globals.flocation + "\\" + Globals.P1BG);
+            this.Size = new System.Drawing.Size(Int32.Parse(Globals.p1DispWidth) + 10, Int32.Parse(Globals.p1DispHeight) + 50);
+            this.AutoSize = true;
             //end background
         }
 
@@ -1155,6 +1222,155 @@ namespace kkdash
 
             WriteCSVfile(1);
             Globals.isSaved1 = true;
+            this.Close();
+        }
+
+        private void moveCenter(string dir)
+        {
+            using (Graphics p = pictureBG.CreateGraphics())
+            {
+                //gauge
+                if ((dir == "up") && (movingCentre == "gauge"))
+                {
+                    p.DrawLine(Pens.Black, startPosX, startPosY, startPosX, startPosY - 300);
+                    p.DrawLine(Pens.Black, startPosX, startPosY, startPosX, startPosY + 300);
+                    p.DrawLine(Pens.Black, startPosX, startPosY, startPosX - 300, startPosY);
+                    p.DrawLine(Pens.Black, startPosX, startPosY, startPosX + 300, startPosY);
+                    startPosY = startPosY - 1;
+                    p.DrawLine(Pens.White, startPosX, startPosY, startPosX, startPosY - 300);
+                    p.DrawLine(Pens.White, startPosX, startPosY, startPosX, startPosY + 300);
+                    p.DrawLine(Pens.White, startPosX, startPosY, startPosX - 300, startPosY);
+                    p.DrawLine(Pens.White, startPosX, startPosY, startPosX + 300, startPosY);
+                    showCross = true;
+                }
+
+                if ((dir == "down") && (movingCentre == "gauge"))
+                {
+                    p.DrawLine(Pens.Black, startPosX, startPosY, startPosX, startPosY - 300);
+                    p.DrawLine(Pens.Black, startPosX, startPosY, startPosX, startPosY + 300);
+                    p.DrawLine(Pens.Black, startPosX, startPosY, startPosX - 300, startPosY);
+                    p.DrawLine(Pens.Black, startPosX, startPosY, startPosX + 300, startPosY);
+                    startPosY = startPosY + 1;
+                    p.DrawLine(Pens.White, startPosX, startPosY, startPosX, startPosY - 300);
+                    p.DrawLine(Pens.White, startPosX, startPosY, startPosX, startPosY + 300);
+                    p.DrawLine(Pens.White, startPosX, startPosY, startPosX - 300, startPosY);
+                    p.DrawLine(Pens.White, startPosX, startPosY, startPosX + 300, startPosY);
+                    showCross = true;
+                }
+
+                if ((dir == "left") && (movingCentre == "gauge"))
+                {
+                    p.DrawLine(Pens.Black, startPosX, startPosY, startPosX, startPosY - 300);
+                    p.DrawLine(Pens.Black, startPosX, startPosY, startPosX, startPosY + 300);
+                    p.DrawLine(Pens.Black, startPosX, startPosY, startPosX - 300, startPosY);
+                    p.DrawLine(Pens.Black, startPosX, startPosY, startPosX + 300, startPosY);
+                    startPosX = startPosX - 1;
+                    p.DrawLine(Pens.White, startPosX, startPosY, startPosX, startPosY - 300);
+                    p.DrawLine(Pens.White, startPosX, startPosY, startPosX, startPosY + 300);
+                    p.DrawLine(Pens.White, startPosX, startPosY, startPosX - 300, startPosY);
+                    p.DrawLine(Pens.White, startPosX, startPosY, startPosX + 300, startPosY);
+                    showCross = true;
+                }
+
+                if ((dir == "right") && (movingCentre == "gauge"))
+                {
+                    p.DrawLine(Pens.Black, startPosX, startPosY, startPosX, startPosY - 300);
+                    p.DrawLine(Pens.Black, startPosX, startPosY, startPosX, startPosY + 300);
+                    p.DrawLine(Pens.Black, startPosX, startPosY, startPosX - 300, startPosY);
+                    p.DrawLine(Pens.Black, startPosX, startPosY, startPosX + 300, startPosY);
+                    startPosX = startPosX + 1;
+                    p.DrawLine(Pens.White, startPosX, startPosY, startPosX, startPosY - 300);
+                    p.DrawLine(Pens.White, startPosX, startPosY, startPosX, startPosY + 300);
+                    p.DrawLine(Pens.White, startPosX, startPosY, startPosX - 300, startPosY);
+                    p.DrawLine(Pens.White, startPosX, startPosY, startPosX + 300, startPosY);
+                    showCross = true;
+                }
+
+                //text
+                if ((dir == "up") && (movingCentre == "text"))
+                {
+                    placeTextSet(Editing, "black");
+                    startPosY = startPosY - 1;
+                    placeTextSet(Editing, "white");
+                }
+
+                if ((dir == "down") && (movingCentre == "text"))
+                {
+                    placeTextSet(Editing, "black");
+                    startPosY = startPosY + 1;
+                    placeTextSet(Editing, "white");
+                }
+
+                if ((dir == "left") && (movingCentre == "text"))
+                {
+                    placeTextSet(Editing, "black");
+                    startPosX = startPosX - 1;
+                    placeTextSet(Editing, "white");
+                }
+
+                if ((dir == "right") && (movingCentre == "text"))
+                {
+                    placeTextSet(Editing, "black");
+                    startPosX = startPosX + 1;
+                    placeTextSet(Editing, "white");
+                }
+            }
+        }
+
+        private void btnUp_Click(object sender, EventArgs e)
+        {
+            moveCenter("up");
+        }
+
+        private void btnDown_Click(object sender, EventArgs e)
+        {
+            moveCenter("down");
+        }
+
+        private void btnRight_Click(object sender, EventArgs e)
+        {
+            moveCenter("right");
+        }
+
+        private void btnLeft_Click(object sender, EventArgs e)
+        {
+            moveCenter("left");
+        }
+
+        private void pnlDirections_Paint(object sender, PaintEventArgs e)
+        {
+            if (movingCentre == "gauge")
+            {
+                //draw lines
+                using (Graphics p = pictureBG.CreateGraphics())
+                {
+                    // Draw next line and...
+                    p.DrawLine(Pens.White, startPosX, startPosY, startPosX, startPosY - 300);
+                    p.DrawLine(Pens.White, startPosX, startPosY, startPosX, startPosY + 300);
+                    p.DrawLine(Pens.White, startPosX, startPosY, startPosX - 300, startPosY);
+                    p.DrawLine(Pens.White, startPosX, startPosY, startPosX + 300, startPosY);
+                    showCross = true;
+                }
+            }
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (movingCentre == "gauge")
+            {
+                showCross = true;
+                stage += 1;
+                lblPrompt.Text = "Click the needle length";
+                pnlDirections.Visible = false;
+            }
+
+            if (movingCentre == "text")
+            {
+                placeTextSet(Editing, "black");
+                pnlDirections.Visible = false;
+                ResetThePage(lbNumber);
+            }
         }
     }
 }
