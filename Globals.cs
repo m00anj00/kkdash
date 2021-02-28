@@ -32,6 +32,131 @@
         public static string p2DispHeight { get; set; }
         public static string p3DispHeight { get; set; }
 
+        //Symbols
+        public static string symWidth { get; set; }
+        public static string symHeight { get; set; }
+        //lights
+        public static string symSidelights { get; set; }
+        public static string symSidelightsX { get; set; }
+        public static string symSidelightsY { get; set; }
+        public static string symSidelightsGPIO { get; set; }
+
+        public static string symHeadlights { get; set; }
+        public static string symHeadlightsX { get; set; }
+        public static string symHeadlightsY { get; set; }
+        public static string symHeadlightsGPIO { get; set; }
+
+        public static string symFullbeam { get; set; }
+        public static string symFullbeamX { get; set; }
+        public static string symFullbeamY { get; set; }
+        public static string symFullbeamGPIO { get; set; }
+
+        public static string symSpotlights { get; set; }
+        public static string symSpotlightsX { get; set; }
+        public static string symSpotlightsY { get; set; }
+        public static string symSpotlightsGPIO { get; set; }
+
+        public static string symFoglights { get; set; }
+        public static string symFoglightsX { get; set; }
+        public static string symFoglightsY { get; set; }
+        public static string symFoglightsGPIO { get; set; }
+        //Info
+        public static string symBattery { get; set; }
+        public static string symBatteryX { get; set; }
+        public static string symBatteryY { get; set; }
+        public static string symBatteryGPIO { get; set; }
+
+        public static string symDemister { get; set; }
+        public static string symDemisterX { get; set; }
+        public static string symDemisterY { get; set; }
+        public static string symDemisterGPIO { get; set; }
+
+        public static string symFuel { get; set; }
+        public static string symFuelX { get; set; }
+        public static string symFuelY { get; set; }
+        public static string symFuelGPIO { get; set; }
+
+        public static string symOil { get; set; }
+        public static string symOilX { get; set; }
+        public static string symOilY { get; set; }
+        public static string symOilGPIO { get; set; }
+
+        public static string symTyre { get; set; }
+        public static string symTyreX { get; set; }
+        public static string symTyreY { get; set; }
+        public static string symTyreGPIO { get; set; }
+
+        public static string symWiperInt { get; set; }
+        public static string symWiperIntX { get; set; }
+        public static string symWiperIntY { get; set; }
+        public static string symWiperIntGPIO { get; set; }
+
+        public static string symWasher { get; set; }
+        public static string symWasherX { get; set; }
+        public static string symWasherY { get; set; }
+        public static string symWasherGPIO { get; set; }
+
+        //hazards
+        public static string symBrakes { get; set; }
+        public static string symBrakesX { get; set; }
+        public static string symBrakesY { get; set; }
+        public static string symBrakesGPIO { get; set; }
+
+        public static string symSpanner { get; set; }
+        public static string symSpannerX { get; set; }
+        public static string symSpannerY { get; set; }
+        public static string symSpannerGPIO { get; set; }
+
+        public static string symTemp { get; set; }
+        public static string symTempX { get; set; }
+        public static string symTempY { get; set; }
+        public static string symTempGPIO { get; set; }
+
+        public static string symHazards { get; set; }
+        public static string symHazardsX { get; set; }
+        public static string symHazardsY { get; set; }
+        public static string symHazardsGPIO { get; set; }
+
+        public static string symIndLeft { get; set; }
+        public static string symIndLeftX { get; set; }
+        public static string symIndLeftY { get; set; }
+        public static string symIndLeftGPIO { get; set; }
+
+        public static string symIndRight { get; set; }
+        public static string symIndRightX { get; set; }
+        public static string symIndRightY { get; set; }
+        public static string symIndRightGPIO { get; set; }
+        //Seats
+        public static string symSeatLeft { get; set; }
+        public static string symSeatLeftX { get; set; }
+        public static string symSeatLeftY { get; set; }
+        public static string symSeatLeftGPIO { get; set; }
+
+        public static string symSeatRight { get; set; }
+        public static string symSeatRightX { get; set; }
+        public static string symSeatRightY { get; set; }
+        public static string symSeatRightGPIO { get; set; }
+        //Seatbelts        
+        public static string symSeatbelt { get; set; }
+        public static string symSeatbeltX { get; set; }
+        public static string symSeatbeltY { get; set; }
+        public static string symSeatbeltGPIO { get; set; }
+        //doors
+        public static string symBonnet { get; set; }
+        public static string symBonnetX { get; set; }
+        public static string symBonnetY { get; set; }
+        public static string symBonnetGPIO { get; set; }
+
+        public static string symBoot { get; set; }
+        public static string symBootX { get; set; }
+        public static string symBootY { get; set; }
+        public static string symBootGPIO { get; set; }
+
+        public static string symDoor { get; set; }
+        public static string symDoorX { get; set; }
+        public static string symDoorY { get; set; }
+        public static string symDoorGPIO { get; set; }
+
         //can/serial3/ethernet
         //Panel 1        
         public static string p1connection { get; set; }

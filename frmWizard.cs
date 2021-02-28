@@ -42,6 +42,16 @@ namespace kkdash
                     Globals.flocation = fbd.SelectedPath;
                     this.Activate();
                     //System.Windows.Forms.MessageBox.Show("Files found: " + files.Length.ToString(), "Message");
+                    try
+                    {
+                        populateSymbols();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                        this.Close();
+                    }
+
                 }
                 else
                 {
@@ -78,8 +88,9 @@ namespace kkdash
             TS2.Text = ("Ready    ");
             TS3.Text = ("Ready    ");
 
-           
+            SymbolsToVars();
             resolveFromVars();
+
         }
 
         //=======================================================================SAVE SECTION============================================================================
@@ -93,7 +104,7 @@ namespace kkdash
 
             resolveToVars(); //this takes all text except which panel indicators to global vars
             resolvePanelToVars(); //this takes the panel number to global vars
-
+            VarsToSymbols();
             TS1.Text = ("Writing config    ");
             TS2.Text = ("Ready    ");
             TS3.Text = ("Ready    ");
@@ -159,6 +170,57 @@ namespace kkdash
             }
         }
 
+        private void populateSymbols()
+        {
+            Seat1.Image = System.Drawing.Image.FromFile(@Globals.flocation + "\\symbols\\seats\\seat1-3.png");
+            Seat1.SizeMode = PictureBoxSizeMode.StretchImage;
+            Seat2.Image = System.Drawing.Image.FromFile(@Globals.flocation + "\\symbols\\seats\\seat2-3.png");
+            Seat2.SizeMode = PictureBoxSizeMode.StretchImage;
+            door.Image = System.Drawing.Image.FromFile(Globals.flocation + "\\symbols\\door\\both.png");
+            door.SizeMode = PictureBoxSizeMode.StretchImage;
+            bonnet.Image = System.Drawing.Image.FromFile(Globals.flocation + "\\symbols\\door\\bonnet.png");
+            bonnet.SizeMode = PictureBoxSizeMode.StretchImage;
+            boot.Image = System.Drawing.Image.FromFile(Globals.flocation + "\\symbols\\door\\boot.png");
+            boot.SizeMode = PictureBoxSizeMode.StretchImage;
+            demister.Image = System.Drawing.Image.FromFile(Globals.flocation + "\\symbols\\info\\demister.png");
+            demister.SizeMode = PictureBoxSizeMode.StretchImage;
+            battery.Image = System.Drawing.Image.FromFile(Globals.flocation + "\\symbols\\info\\battery.png");
+            battery.SizeMode = PictureBoxSizeMode.StretchImage;
+            fuel.Image = System.Drawing.Image.FromFile(Globals.flocation + "\\symbols\\info\\fuel.png");
+            fuel.SizeMode = PictureBoxSizeMode.StretchImage;
+            oil.Image = System.Drawing.Image.FromFile(Globals.flocation + "\\symbols\\info\\oil.png");
+            oil.SizeMode = PictureBoxSizeMode.StretchImage;
+            tyre.Image = System.Drawing.Image.FromFile(Globals.flocation + "\\symbols\\info\\tyre.png");
+            tyre.SizeMode = PictureBoxSizeMode.StretchImage;
+            washer.Image = System.Drawing.Image.FromFile(Globals.flocation + "\\symbols\\info\\washer.png");
+            washer.SizeMode = PictureBoxSizeMode.StretchImage;
+            wiperint.Image = System.Drawing.Image.FromFile(Globals.flocation + "\\symbols\\info\\wiper-int.png");
+            wiperint.SizeMode = PictureBoxSizeMode.StretchImage;
+            indleft.Image = System.Drawing.Image.FromFile(Globals.flocation + "\\symbols\\indicators\\ind-left.png");
+            indleft.SizeMode = PictureBoxSizeMode.StretchImage;
+            indright.Image = System.Drawing.Image.FromFile(Globals.flocation + "\\symbols\\indicators\\ind-right.png");
+            indright.SizeMode = PictureBoxSizeMode.StretchImage;
+            hazards.Image = System.Drawing.Image.FromFile(Globals.flocation + "\\symbols\\hazard\\hazards-on.png");
+            hazards.SizeMode = PictureBoxSizeMode.StretchImage;
+            spanner.Image = System.Drawing.Image.FromFile(Globals.flocation + "\\symbols\\hazard\\spanner.png");
+            spanner.SizeMode = PictureBoxSizeMode.StretchImage;
+            temp.Image = System.Drawing.Image.FromFile(Globals.flocation + "\\symbols\\hazard\\temp.png");
+            temp.SizeMode = PictureBoxSizeMode.StretchImage;
+            seatbelts.Image = System.Drawing.Image.FromFile(Globals.flocation + "\\symbols\\seatbelts\\all.png");
+            seatbelts.SizeMode = PictureBoxSizeMode.StretchImage;
+            sidelight.Image = System.Drawing.Image.FromFile(Globals.flocation + "\\symbols\\lights\\sidelights.png");
+            sidelight.SizeMode = PictureBoxSizeMode.StretchImage;
+            highbeam.Image = System.Drawing.Image.FromFile(Globals.flocation + "\\symbols\\lights\\headlights.png");
+            highbeam.SizeMode = PictureBoxSizeMode.StretchImage;
+            fullbeam.Image = System.Drawing.Image.FromFile(Globals.flocation + "\\symbols\\lights\\fullbeam.png");
+            fullbeam.SizeMode = PictureBoxSizeMode.StretchImage;
+            spotlight.Image = System.Drawing.Image.FromFile(Globals.flocation + "\\symbols\\lights\\spotlights.png");
+            spotlight.SizeMode = PictureBoxSizeMode.StretchImage;
+            foglight.Image = System.Drawing.Image.FromFile(Globals.flocation + "\\symbols\\lights\\foglight.png");
+            foglight.SizeMode = PictureBoxSizeMode.StretchImage;
+            brakes.Image = System.Drawing.Image.FromFile(Globals.flocation + "\\symbols\\hazard\\brakes.png");
+            brakes.SizeMode = PictureBoxSizeMode.StretchImage;
+        }
 
         //--------------------------------------------------------------------------------Gauge / barV / BarH -------------------------------------------------------------------------------------
         private void setupgauges(string gaugechoice)
@@ -2435,6 +2497,294 @@ namespace kkdash
             if (Globals.User4NeedleType != "Gauge") { if (cmbUser4AboveBelow.Text == "á") { Globals.User4Needle = txtUser4Needle.Text; Globals.User4Offset = "1"; } else { Globals.User4Needle = txtUser4Needle.Text; Globals.User4Offset = "0"; } } else { Globals.User4Needle = txtUser4Needle.Text; }
         }
 
+        private void VarsToSymbols()
+        {
+            if (Globals.symBattery == "N") {cmbSymBattery.Text = "N"; }
+            if (Globals.symBattery == "1") {cmbSymBattery.Text = "Panel 1"; }
+            if (Globals.symBattery == "2") {cmbSymBattery.Text = "Panel 2"; }
+            if (Globals.symBattery == "3") {cmbSymBattery.Text = "Panel 3"; }
+            txtSymBatteryX.Text = Globals.symBatteryX; txtSymBatteryY.Text = Globals.symBatteryY; txtSymBatteryGPIO.Text = Globals.symBatteryGPIO;
+
+            if (Globals.symBonnet == "N") { cmbSymBonnet.Text = "N"; }
+            if (Globals.symBonnet == "1") { cmbSymBonnet.Text = "Panel 1"; }
+            if (Globals.symBonnet == "2") { cmbSymBonnet.Text = "Panel 2"; }
+            if (Globals.symBonnet == "3") { cmbSymBonnet.Text = "Panel 3"; }
+            txtSymBonnetX.Text = Globals.symBonnetX; txtSymBonnetY.Text = Globals.symBonnetY; txtSymBonnetGPIO.Text = Globals.symBonnetGPIO;
+
+            if (Globals.symBoot == "N") { cmbSymBoot.Text = "N"; }
+            if (Globals.symBoot == "1") { cmbSymBoot.Text = "Panel 1"; }
+            if (Globals.symBoot == "2") { cmbSymBoot.Text = "Panel 2"; }
+            if (Globals.symBoot == "3") { cmbSymBoot.Text = "Panel 3"; }
+            txtSymBootX.Text = Globals.symBootX; txtSymBootY.Text = Globals.symBootY; txtSymBootGPIO.Text = Globals.symBootGPIO;
+
+            if (Globals.symBrakes == "N") { cmbSymBrakes.Text = "N"; }
+            if (Globals.symBrakes == "1") { cmbSymBrakes.Text = "Panel 1"; }
+            if (Globals.symBrakes == "2") { cmbSymBrakes.Text = "Panel 2"; }
+            if (Globals.symBrakes == "3") { cmbSymBrakes.Text = "Panel 3"; }
+            txtSymBrakesX.Text = Globals.symBrakesX; txtSymBrakesY.Text = Globals.symBrakesY; txtSymBrakesGPIO.Text = Globals.symBrakesGPIO;
+
+            if (Globals.symDemister == "N") { cmbSymDemister.Text = "N"; }
+            if (Globals.symDemister == "1") { cmbSymDemister.Text = "Panel 1"; }
+            if (Globals.symDemister == "2") { cmbSymDemister.Text = "Panel 2"; }
+            if (Globals.symDemister == "3") { cmbSymDemister.Text = "Panel 3"; }
+            txtSymDemisterX.Text = Globals.symDemisterX; txtSymDemisterY.Text = Globals.symDemisterY; txtSymDemisterGPIO.Text = Globals.symDemisterGPIO;
+
+            if (Globals.symDoor == "N") { cmbSymDoor.Text = "N"; }
+            if (Globals.symDoor == "1") { cmbSymDoor.Text = "Panel 1"; }
+            if (Globals.symDoor == "2") { cmbSymDoor.Text = "Panel 2"; }
+            if (Globals.symDoor == "3") { cmbSymDoor.Text = "Panel 3"; }
+            txtSymDoorX.Text = Globals.symDoorX; txtSymDoorY.Text = Globals.symDoorY; txtSymDoorGPIO.Text = Globals.symDoorGPIO;
+
+            if (Globals.symFoglights == "N") { cmbSymFoglight.Text = "N"; }
+            if (Globals.symFoglights == "1") { cmbSymFoglight.Text = "Panel 1"; }
+            if (Globals.symFoglights == "2") { cmbSymFoglight.Text = "Panel 2"; }
+            if (Globals.symFoglights == "3") { cmbSymFoglight.Text = "Panel 3"; }
+            txtSymFoglightX.Text = Globals.symFoglightsX; txtSymFoglightY.Text = Globals.symFoglightsY; txtSymFoglightGPIO.Text = Globals.symFoglightsGPIO;
+
+            if (Globals.symFuel == "N") { cmbSymFuel.Text = "N"; }
+            if (Globals.symFuel == "1") { cmbSymFuel.Text = "Panel 1"; }
+            if (Globals.symFuel == "2") { cmbSymFuel.Text = "Panel 2"; }
+            if (Globals.symFuel == "3") { cmbSymFuel.Text = "Panel 3"; }
+            txtSymFuelX.Text = Globals.symFuelX; txtSymFuelY.Text = Globals.symFuelY; txtSymFuelGPIO.Text = Globals.symFuelGPIO;
+
+            if (Globals.symFullbeam == "N") { cmbSymFullbeam.Text = "N"; }
+            if (Globals.symFullbeam == "1") { cmbSymFullbeam.Text = "Panel 1"; }
+            if (Globals.symFullbeam == "2") { cmbSymFullbeam.Text = "Panel 2"; }
+            if (Globals.symFullbeam == "3") { cmbSymFullbeam.Text = "Panel 3"; }
+            txtSymFullbeamX.Text = Globals.symFullbeamX; txtSymFullbeamY.Text = Globals.symFullbeamY; txtSymFullbeamGPIO.Text = Globals.symFullbeamGPIO;
+
+            if (Globals.symHazards == "N") { cmbSymHazards.Text = "N"; }
+            if (Globals.symHazards == "1") { cmbSymHazards.Text = "Panel 1"; }
+            if (Globals.symHazards == "2") { cmbSymHazards.Text = "Panel 2"; }
+            if (Globals.symHazards == "3") { cmbSymHazards.Text = "Panel 3"; }
+            txtSymHazardsX.Text = Globals.symHazardsX; txtSymHazardsY.Text = Globals.symHazardsY; txtSymHazardsGPIO.Text = Globals.symHazardsGPIO;
+
+            if (Globals.symHeadlights == "N") { cmbSymHeadlights.Text = "N"; }
+            if (Globals.symHeadlights == "1") { cmbSymHeadlights.Text = "Panel 1"; }
+            if (Globals.symHeadlights == "2") { cmbSymHeadlights.Text = "Panel 2"; }
+            if (Globals.symHeadlights == "3") { cmbSymHeadlights.Text = "Panel 3"; }
+            txtSymHeadlightsX.Text = Globals.symHeadlightsX; txtSymHeadlightsY.Text = Globals.symHeadlightsY; txtSymHeadlightsGPIO.Text = Globals.symHeadlightsGPIO;
+
+            if (Globals.symIndLeft == "N") { cmbSymIndLeft.Text = "N"; }
+            if (Globals.symIndLeft == "1") { cmbSymIndLeft.Text = "Panel 1"; }
+            if (Globals.symIndLeft == "2") { cmbSymIndLeft.Text = "Panel 2"; }
+            if (Globals.symIndLeft == "3") { cmbSymIndLeft.Text = "Panel 3"; }
+            txtSymIndLeftX.Text = Globals.symIndLeftX; txtSymIndLeftY.Text = Globals.symIndLeftY; txtSymIndLeftGPIO.Text = Globals.symIndLeftGPIO;
+
+            if (Globals.symIndRight == "N") { cmbSymIndRight.Text = "N"; }
+            if (Globals.symIndRight == "1") { cmbSymIndRight.Text = "Panel 1"; }
+            if (Globals.symIndRight == "2") { cmbSymIndRight.Text = "Panel 2"; }
+            if (Globals.symIndRight == "3") { cmbSymIndRight.Text = "Panel 3"; }
+            txtSymIndRightX.Text = Globals.symIndRightX; txtSymIndRightY.Text = Globals.symIndRightY; txtSymIndRightGPIO.Text = Globals.symIndRightGPIO;
+
+            if (Globals.symOil == "N") { cmbSymOil.Text = "N"; }
+            if (Globals.symOil == "1") { cmbSymOil.Text = "Panel 1"; }
+            if (Globals.symOil == "2") { cmbSymOil.Text = "Panel 2"; }
+            if (Globals.symOil == "3") { cmbSymOil.Text = "Panel 3"; }
+            txtSymOilX.Text = Globals.symOilX; txtSymOilY.Text = Globals.symOilY; txtSymOilGPIO.Text = Globals.symOilGPIO;
+
+            if (Globals.symSeatbelt == "N") { cmbSymSeatbelts.Text = "N"; }
+            if (Globals.symSeatbelt == "1") { cmbSymSeatbelts.Text = "Panel 1"; }
+            if (Globals.symSeatbelt == "2") { cmbSymSeatbelts.Text = "Panel 2"; }
+            if (Globals.symSeatbelt == "3") { cmbSymSeatbelts.Text = "Panel 3"; }
+            txtSymSeatbeltsX.Text = Globals.symSeatbeltX; txtSymSeatbeltsY.Text = Globals.symSeatbeltY; txtSymSeatbeltsGPIO.Text = Globals.symSeatbeltGPIO;
+
+            if (Globals.symSeatLeft == "N") { cmbSymSeat1.Text = "N"; }
+            if (Globals.symSeatLeft == "1") { cmbSymSeat1.Text = "Panel 1"; }
+            if (Globals.symSeatLeft == "2") { cmbSymSeat1.Text = "Panel 2"; }
+            if (Globals.symSeatLeft == "3") { cmbSymSeat1.Text = "Panel 3"; }
+            txtSymSeat1X.Text = Globals.symSeatLeftX; txtSymSeat1Y.Text = Globals.symSeatLeft; txtSymSeat1GPIO.Text = Globals.symSeatLeftGPIO;
+
+            if (Globals.symSeatRight == "N") { cmbSymSeat2.Text = "N"; }
+            if (Globals.symSeatRight == "1") { cmbSymSeat2.Text = "Panel 1"; }
+            if (Globals.symSeatRight == "2") { cmbSymSeat2.Text = "Panel 2"; }
+            if (Globals.symSeatRight == "3") { cmbSymSeat2.Text = "Panel 3"; }
+            txtSymSeat2X.Text = Globals.symSeatRight; txtSymSeat2Y.Text = Globals.symSeatRight; txtSymSeat2GPIO.Text = Globals.symSeatRight;
+
+            if (Globals.symSidelights == "N") { cmbSymSidelights.Text = "N"; }
+            if (Globals.symSidelights == "1") { cmbSymSidelights.Text = "Panel 1"; }
+            if (Globals.symSidelights == "2") { cmbSymSidelights.Text = "Panel 2"; }
+            if (Globals.symSidelights == "3") { cmbSymSidelights.Text = "Panel 3"; }
+            txtSymSidelightX.Text = Globals.symSidelightsX; txtSymSidelightY.Text = Globals.symSidelightsY; txtSymSidelightGPIO.Text = Globals.symSidelightsGPIO;
+
+            if (Globals.symSpotlights == "N") { cmbSymSpotlights.Text = "N"; }
+            if (Globals.symSpotlights == "1") { cmbSymSpotlights.Text = "Panel 1"; }
+            if (Globals.symSpotlights == "2") { cmbSymSpotlights.Text = "Panel 2"; }
+            if (Globals.symSpotlights == "3") { cmbSymSpotlights.Text = "Panel 3"; }
+            txtSymSpotlightX.Text = Globals.symSpotlightsX; txtSymSpotlightY.Text = Globals.symSpotlightsY; txtSymSpotlightGPIO.Text = Globals.symSpotlightsGPIO;
+
+            if (Globals.symTemp == "N") { cmbSymTemp.Text = "N"; }
+            if (Globals.symTemp == "1") { cmbSymTemp.Text = "Panel 1"; }
+            if (Globals.symTemp == "2") { cmbSymTemp.Text = "Panel 2"; }
+            if (Globals.symTemp == "3") { cmbSymTemp.Text = "Panel 3"; }
+            txtSymTempX.Text = Globals.symTempX; txtSymTempY.Text = Globals.symTempY; txtSymTempGPIO.Text = Globals.symTempGPIO;
+
+            if (Globals.symTyre == "N") { cmbSymTyre.Text = "N"; }
+            if (Globals.symTyre == "1") { cmbSymTyre.Text = "Panel 1"; }
+            if (Globals.symTyre == "2") { cmbSymTyre.Text = "Panel 2"; }
+            if (Globals.symTyre == "3") { cmbSymTyre.Text = "Panel 3"; }
+            txtSymTyreX.Text = Globals.symTyreX; txtSymTyreY.Text = Globals.symTyreY; txtSymTyreGPIO.Text = Globals.symTyreGPIO;
+
+            if (Globals.symWasher == "N") { cmbSymWasher.Text = "N"; }
+            if (Globals.symWasher == "1") { cmbSymWasher.Text = "Panel 1"; }
+            if (Globals.symWasher == "2") { cmbSymWasher.Text = "Panel 2"; }
+            if (Globals.symWasher == "3") { cmbSymWasher.Text = "Panel 3"; }
+            txtSymWasherX.Text = Globals.symWasherX; txtSymWasherY.Text = Globals.symWasherY; txtSymWasherGPIO.Text = Globals.symWasherGPIO;
+
+            if (Globals.symWiperInt == "N") { cmbSymWiperInt.Text = "N"; }
+            if (Globals.symWiperInt == "1") { cmbSymWiperInt.Text = "Panel 1"; }
+            if (Globals.symWiperInt == "2") { cmbSymWiperInt.Text = "Panel 2"; }
+            if (Globals.symWiperInt == "3") { cmbSymWiperInt.Text = "Panel 3"; }
+            txtSymWiperIntX.Text = Globals.symWiperIntX; txtSymWiperIntY.Text = Globals.symWiperIntY; wiperint.Text = Globals.symWiperIntGPIO;
+        }
+
+        private void SymbolsToVars()
+        {
+            if (cmbSymBattery.Text == "N") { Globals.symBattery = "N"; }
+            if (cmbSymBattery.Text == "Panel 1") { Globals.symBattery = "1"; }
+            if (cmbSymBattery.Text == "Panel 2") { Globals.symBattery = "2"; }
+            if (cmbSymBattery.Text == "Panel 3") { Globals.symBattery = "3"; }
+            Globals.symBatteryX = txtSymBatteryX.Text; Globals.symBatteryY = txtSymBatteryY.Text; Globals.symBatteryGPIO = txtSymBatteryGPIO.Text;
+
+            if (cmbSymBonnet.Text == "N") { Globals.symBonnet = "N"; }
+            if (cmbSymBonnet.Text == "Panel 1") { Globals.symBonnet = "1"; }
+            if (cmbSymBonnet.Text == "Panel 2") { Globals.symBonnet = "2"; }
+            if (cmbSymBonnet.Text == "Panel 3") { Globals.symBonnet = "3"; }
+            Globals.symBonnetX = txtSymBonnetX.Text; Globals.symBonnetY = txtSymBonnetY.Text; Globals.symBonnetGPIO = txtSymBonnetGPIO.Text;
+
+            if (cmbSymBoot.Text == "N") { Globals.symBoot = "N"; }
+            if (cmbSymBoot.Text == "Panel 1") { Globals.symBoot = "1"; }
+            if (cmbSymBoot.Text == "Panel 2") { Globals.symBoot = "2"; }
+            if (cmbSymBoot.Text == "Panel 3") { Globals.symBoot = "3"; }
+            Globals.symBootX = txtSymBootX.Text; Globals.symBootY = txtSymBootY.Text; Globals.symBootGPIO = txtSymBootGPIO.Text;
+
+            if (cmbSymBrakes.Text == "N") { Globals.symBrakes = "N"; }
+            if (cmbSymBrakes.Text == "Panel 1") { Globals.symBrakes = "1"; }
+            if (cmbSymBrakes.Text == "Panel 2") { Globals.symBrakes = "2"; }
+            if (cmbSymBrakes.Text == "Panel 3") { Globals.symBrakes = "3"; }
+            Globals.symBrakesX = txtSymBrakesX.Text; Globals.symBrakesY = txtSymBrakesY.Text; Globals.symBrakesGPIO = txtSymBrakesGPIO.Text;
+
+            if (cmbSymDemister.Text == "N") { Globals.symDemister = "N"; }
+            if (cmbSymDemister.Text == "Panel 1") { Globals.symDemister = "1"; }
+            if (cmbSymDemister.Text == "Panel 2") { Globals.symDemister = "2"; }
+            if (cmbSymDemister.Text == "Panel 3") { Globals.symDemister = "3"; }
+            Globals.symDemisterX = txtSymDemisterX.Text; Globals.symDemisterY = txtSymDemisterY.Text; Globals.symDemisterGPIO = txtSymDemisterGPIO.Text;
+
+            if (cmbSymDoor.Text == "N") { Globals.symDoor = "N"; }
+            if (cmbSymDoor.Text == "Panel 1") { Globals.symDoor = "1"; }
+            if (cmbSymDoor.Text == "Panel 2") { Globals.symDoor = "2"; }
+            if (cmbSymDoor.Text == "Panel 3") { Globals.symDoor = "3"; }
+            Globals.symDoorX = txtSymDoorX.Text; Globals.symDoorY = txtSymDoorY.Text; Globals.symDoorGPIO = txtSymDoorGPIO.Text;
+
+            if (cmbSymFoglight.Text == "N") { Globals.symFoglights = "N"; }
+            if (cmbSymFoglight.Text == "Panel 1") { Globals.symFoglights = "1"; }
+            if (cmbSymFoglight.Text == "Panel 2") { Globals.symFoglights = "2"; }
+            if (cmbSymFoglight.Text == "Panel 3") { Globals.symFoglights = "3"; }
+            Globals.symFoglightsX = txtSymFoglightX.Text; Globals.symFoglightsY = txtSymFoglightY.Text; Globals.symFoglightsGPIO = txtSymFoglightGPIO.Text;
+
+            if (cmbSymFuel.Text == "N") { Globals.symFuel = "N"; }
+            if (cmbSymFuel.Text == "Panel 1") { Globals.symFuel = "1"; }
+            if (cmbSymFuel.Text == "Panel 2") { Globals.symFuel = "2"; }
+            if (cmbSymFuel.Text == "Panel 3") { Globals.symFuel = "3"; }
+            Globals.symFuelX = txtSymFuelX.Text; Globals.symFuelY = txtSymFuelY.Text; Globals.symFuelGPIO = txtSymFuelGPIO.Text ;
+
+            if (cmbSymFullbeam.Text == "N") { Globals.symFullbeam = "N"; }
+            if (cmbSymFullbeam.Text == "Panel 1") { Globals.symFullbeam = "1"; }
+            if (cmbSymFullbeam.Text == "Panel 2") { Globals.symFullbeam = "2"; }
+            if (cmbSymFullbeam.Text == "Panel 3") { Globals.symFullbeam = "3"; }
+            Globals.symFullbeamX = txtSymFullbeamX.Text; Globals.symFullbeamY = txtSymFullbeamY.Text; Globals.symFullbeamGPIO = txtSymFullbeamGPIO.Text;
+
+            if (cmbSymHazards.Text == "N") { Globals.symHazards = "N"; }
+            if (cmbSymHazards.Text == "Panel 1") { Globals.symHazards = "1"; }
+            if (cmbSymHazards.Text == "Panel 2") { Globals.symHazards = "2"; }
+            if (cmbSymHazards.Text == "Panel 3") { Globals.symHazards = "3"; }
+            Globals.symHazardsX = txtSymHazardsX.Text; Globals.symHazardsY = txtSymHazardsY.Text; Globals.symHazardsGPIO = txtSymHazardsGPIO.Text;
+
+            if (cmbSymHeadlights.Text == "N") { Globals.symHeadlights = "N"; }
+            if (cmbSymHeadlights.Text == "Panel 1") { Globals.symHeadlights = "1"; }
+            if (cmbSymHeadlights.Text == "Panel 2") { Globals.symHeadlights = "2"; }
+            if (cmbSymHeadlights.Text == "Panel 3") { Globals.symHeadlights = "3"; }
+            Globals.symHeadlightsX = txtSymHeadlightsX.Text; Globals.symHeadlightsY = txtSymHeadlightsY.Text; Globals.symHeadlightsGPIO = txtSymHeadlightsGPIO.Text;
+
+            if (cmbSymIndLeft.Text == "N") { Globals.symIndLeft = "N"; }
+            if (cmbSymIndLeft.Text == "Panel 1") { Globals.symIndLeft = "1"; }
+            if (cmbSymIndLeft.Text == "Panel 2") { Globals.symIndLeft = "2"; }
+            if (cmbSymIndLeft.Text == "Panel 3") { Globals.symIndLeft = "3"; }
+            Globals.symIndLeftX = txtSymIndLeftX.Text; Globals.symIndLeftY = txtSymIndLeftY.Text; Globals.symIndLeftGPIO = txtSymIndLeftGPIO.Text;
+
+            if (cmbSymIndRight.Text == "N") { Globals.symIndRight = "N"; }
+            if (cmbSymIndRight.Text == "Panel 1") { Globals.symIndRight = "1"; }
+            if (cmbSymIndRight.Text == "Panel 2") { Globals.symIndRight = "2"; }
+            if (cmbSymIndRight.Text == "Panel 3") { Globals.symIndRight = "3"; }
+            Globals.symIndRightX = txtSymIndRightX.Text; Globals.symIndRightY = txtSymIndRightY.Text; Globals.symIndRightGPIO = txtSymIndRightGPIO.Text;
+
+            if (cmbSymOil.Text == "N") { Globals.symOil = "N"; }
+            if (cmbSymOil.Text == "Panel 1") { Globals.symOil = "1"; }
+            if (cmbSymOil.Text == "Panel 2") { Globals.symOil = "2"; }
+            if (cmbSymOil.Text == "Panel 3") { Globals.symOil = "3"; }
+            Globals.symOilX = txtSymOilX.Text; Globals.symOilY = txtSymOilY.Text; Globals.symOilGPIO = txtSymOilGPIO.Text;
+
+            if (cmbSymSeatbelts.Text == "N") { Globals.symSeatbelt = "N"; }
+            if (cmbSymSeatbelts.Text == "Panel 1") { Globals.symSeatbelt = "1"; }
+            if (cmbSymSeatbelts.Text == "Panel 2") { Globals.symSeatbelt = "2"; }
+            if (cmbSymSeatbelts.Text == "Panel 3") { Globals.symSeatbelt = "3"; }
+            Globals.symSeatbeltX = txtSymSeatbeltsX.Text; Globals.symSeatbeltY = txtSymSeatbeltsY.Text; Globals.symSeatbeltGPIO = txtSymSeatbeltsGPIO.Text;
+
+            if (cmbSymSeat1.Text == "N") { Globals.symSeatLeft = "N"; }
+            if (cmbSymSeat1.Text == "Panel 1") { Globals.symSeatLeft = "1"; }
+            if (cmbSymSeat1.Text == "Panel 2") { Globals.symSeatLeft = "2"; }
+            if (cmbSymSeat1.Text == "Panel 3") { Globals.symSeatLeft = "3"; }
+            Globals.symSeatLeftX = txtSymSeat1X.Text; Globals.symSeatLeftY = txtSymSeat1Y.Text; Globals.symSeatLeftGPIO = txtSymSeat1GPIO.Text;
+
+            if (cmbSymSeat2.Text == "N") { Globals.symSeatRight = "N"; }
+            if (cmbSymSeat2.Text == "Panel 1") { Globals.symSeatRight = "1"; }
+            if (cmbSymSeat2.Text == "Panel 2") { Globals.symSeatRight = "2"; }
+            if (cmbSymSeat2.Text == "Panel 3") { Globals.symSeatRight = "3"; }
+            Globals.symSeatRightX = txtSymSeat1X.Text; Globals.symSeatRightY = txtSymSeat2Y.Text; Globals.symSeatRightGPIO = txtSymSeat2GPIO.Text;
+
+            if (cmbSymSidelights.Text == "N") { Globals.symSidelights = "N"; }
+            if (cmbSymSidelights.Text == "Panel 1") { Globals.symSidelights = "1"; }
+            if (cmbSymSidelights.Text == "Panel 2") { Globals.symSidelights = "2"; }
+            if (cmbSymSidelights.Text == "Panel 3") { Globals.symSidelights = "3"; }
+            Globals.symSidelightsX = txtSymSidelightX.Text; Globals.symSidelightsY = txtSymSidelightY.Text; Globals.symSidelightsGPIO = txtSymSidelightGPIO.Text;
+
+            if (cmbSymSpanner.Text == "N") { Globals.symSpanner = "N"; }
+            if (cmbSymSpanner.Text == "Panel 1") { Globals.symSpanner = "1"; }
+            if (cmbSymSpanner.Text == "Panel 2") { Globals.symSpanner = "2"; }
+            if (cmbSymSpanner.Text == "Panel 3") { Globals.symSpanner = "3"; }
+            Globals.symSpannerX = txtSymSpannerX.Text; Globals.symSpannerY = txtSymSpannerY.Text; Globals.symSpannerGPIO = txtSymSpannerGPIO.Text;
+
+            if (cmbSymSpotlights.Text == "N") { Globals.symSpotlights = "N"; }
+            if (cmbSymSpotlights.Text == "Panel 1") { Globals.symSpotlights = "1"; }
+            if (cmbSymSpotlights.Text == "Panel 2") { Globals.symSpotlights = "2"; }
+            if (cmbSymSpotlights.Text == "Panel 3") { Globals.symSpotlights = "3"; }
+            Globals.symSpotlightsX = txtSymSpotlightX.Text; Globals.symSpotlightsY = txtSymSpotlightY.Text; Globals.symSpotlightsGPIO = txtSymSpotlightGPIO.Text;
+
+            if (cmbSymTemp.Text == "N") { Globals.symTemp = "N"; }
+            if (cmbSymTemp.Text == "Panel 1") { Globals.symTemp = "1"; }
+            if (cmbSymTemp.Text == "Panel 2") { Globals.symTemp = "2"; }
+            if (cmbSymTemp.Text == "Panel 3") { Globals.symTemp = "3"; }
+            Globals.symTempX = txtSymTempX.Text; Globals.symTempY = txtSymTempY.Text; Globals.symTempGPIO = txtSymTempGPIO.Text;
+
+            if (cmbSymTyre.Text == "N") { Globals.symTyre = "N"; }
+            if (cmbSymTyre.Text == "Panel 1") { Globals.symTyre = "1"; }
+            if (cmbSymTyre.Text == "Panel 2") { Globals.symTyre = "2"; }
+            if (cmbSymTyre.Text == "Panel 3") { Globals.symTyre = "3"; }
+            Globals.symTyreX = txtSymTyreX.Text; Globals.symTyreY = txtSymTyreY.Text; Globals.symTyreGPIO = txtSymTyreGPIO.Text;
+
+            if (cmbSymWasher.Text == "N") { Globals.symWasher = "N"; }
+            if (cmbSymWasher.Text == "Panel 1") { Globals.symWasher = "1"; }
+            if (cmbSymWasher.Text == "Panel 2") { Globals.symWasher = "2"; }
+            if (cmbSymWasher.Text == "Panel 3") { Globals.symWasher = "3"; }
+            Globals.symWasherX = txtSymWasherX.Text; Globals.symWasherY = txtSymWasherY.Text; Globals.symWasherGPIO = txtSymWasherGPIO.Text;
+
+            if (cmbSymWiperInt.Text == "N") { Globals.symWiperInt = "N"; }
+            if (cmbSymWiperInt.Text == "Panel 1") { Globals.symWiperInt = "1"; }
+            if (cmbSymWiperInt.Text == "Panel 2") { Globals.symWiperInt = "2"; }
+            if (cmbSymWiperInt.Text == "Panel 3") { Globals.symWiperInt = "3"; }
+            Globals.symWiperIntX = txtSymWiperIntX.Text; Globals.symWiperIntY = txtSymWiperIntY.Text; Globals.symWiperIntGPIO = txtSymWiperIntGPIO.Text;
+        }
+
         private void ResetGlobals()
         {
             lblUser1.Text = "User1";
@@ -2460,10 +2810,34 @@ namespace kkdash
             Globals.User3NeedleWidth = "0"; Globals.User3NeedleLength = "0"; Globals.User3NeedleX = "0"; Globals.User3NeedleY = "0"; Globals.User3Offset = "0"; Globals.User3End = "0"; Globals.User3Top = "0"; Globals.User3TextX = "0"; Globals.User3TextY = "0"; Globals.User3FontSize = "0"; Globals.User3TextStyle = "smooth"; Globals.User3Needle = "textures/instrument_needle.png";
             Globals.User4NeedleWidth = "0"; Globals.User4NeedleLength = "0"; Globals.User4NeedleX = "0"; Globals.User4NeedleY = "0"; Globals.User4Offset = "0"; Globals.User4End = "0"; Globals.User4Top = "0"; Globals.User4TextX = "0"; Globals.User4TextY = "0"; Globals.User4FontSize = "0"; Globals.User4TextStyle = "smooth"; Globals.User4Needle = "textures/instrument_needle.png";
             Globals.SpeedoGPIO = "N"; Globals.TachoGPIO = "N"; Globals.BoostGPIO = "N"; Globals.TempGPIO = "N"; Globals.OilGPIO = "N"; Globals.OilTGPIO = "N"; Globals.FuelGPIO = "N"; Globals.FuelTGPIO = "N"; Globals.FuelPGPIO = "N"; Globals.BatteryGPIO = "N"; Globals.User1GPIO = "N"; Globals.User2GPIO = "N"; Globals.User3GPIO = "N"; Globals.User4GPIO = "N";
+            Globals.symBattery = "N";Globals.symBatteryX = "0"; Globals.symBatteryY = "0"; Globals.symBatteryGPIO = "0";
+            Globals.symBonnet  = "N"; Globals.symBonnetX = "0"; Globals.symBonnetY = "0"; Globals.symBonnetGPIO = "0";
+            Globals.symBoot = "N"; Globals.symBootX = "0"; Globals.symBootY = "0"; Globals.symBootGPIO = "0";
+            Globals.symBrakes = "N"; Globals.symBrakesX = "0"; Globals.symBrakesY = "0"; Globals.symBrakesGPIO = "0";
+            Globals.symDemister = "N"; Globals.symDemisterX = "0"; Globals.symDemisterY = "0"; Globals.symDemisterGPIO = "0";
+            Globals.symDoor = "N"; Globals.symDoorX = "0"; Globals.symDoorY = "0"; Globals.symDoorGPIO = "0";
+            Globals.symFoglights = "N"; Globals.symFoglightsX = "0"; Globals.symFoglightsY = "0"; Globals.symFoglightsGPIO = "0";
+            Globals.symFuel = "N"; Globals.symFuelX = "0"; Globals.symFuelY = "0"; Globals.symFuelGPIO = "0";
+            Globals.symFullbeam = "N"; Globals.symFullbeamX = "0"; Globals.symFullbeamY = "0"; Globals.symFullbeamGPIO = "0";
+            Globals.symHazards = "N"; Globals.symHazardsX = "0"; Globals.symHazardsY = "0"; Globals.symHazardsGPIO = "0";
+            Globals.symHeadlights = "N"; Globals.symHeadlightsX = "0"; Globals.symHeadlightsY = "0"; Globals.symHeadlightsGPIO = "0";
+            Globals.symIndLeft = "N"; Globals.symIndLeftX = "0"; Globals.symIndLeftY = "0"; Globals.symIndLeftGPIO = "0";
+            Globals.symIndRight = "N"; Globals.symIndRightX = "0"; Globals.symIndRightY = "0"; Globals.symIndRightGPIO = "0";
+            Globals.symOil = "N"; Globals.symOilX = "0"; Globals.symOilY = "0"; Globals.symOilGPIO = "0";
+            Globals.symSeatbelt = "N"; Globals.symSeatbeltX = "0"; Globals.symSeatbeltY = "0"; Globals.symSeatbeltGPIO = "0";
+            Globals.symSeatLeft = "N"; Globals.symSeatLeftX = "0"; Globals.symSeatLeftY = "0"; Globals.symSeatLeftGPIO = "0";
+            Globals.symSeatRight = "N"; Globals.symSeatRightX = "0"; Globals.symSeatRightY = "0"; Globals.symSeatRightGPIO = "0";
+            Globals.symSidelights = "N"; Globals.symSidelightsX = "0"; Globals.symSidelightsY = "0"; Globals.symSidelightsGPIO = "0";
+            Globals.symSpanner = "N"; Globals.symSpannerX = "0"; Globals.symSpannerY = "0"; Globals.symSpannerGPIO = "0";
+            Globals.symSpotlights = "N"; Globals.symSpotlightsX = "0"; Globals.symSpotlightsY = "0"; Globals.symSpotlightsGPIO = "0";
+            Globals.symTemp = "N"; Globals.symTempX = "0"; Globals.symTempY = "0"; Globals.symTempGPIO = "0";
+            Globals.symTyre = "N"; Globals.symTyreX = "0"; Globals.symTyreY = "0"; Globals.symTyreGPIO = "0";
+            Globals.symWasher = "N"; Globals.symWasherX = "0"; Globals.symWasherY = "0"; Globals.symWasherGPIO = "0";
+            Globals.symWiperInt = "N"; Globals.symWiperIntX = "0"; Globals.symWiperIntY = "0"; Globals.symWiperIntGPIO = "0";
         }
 
-            //-----------------------------------------------------------------------show changes for gauge / bar----------------------------------------------------------------------------
-            private void cmbSpeedo_SelectedIndexChanged(object sender, EventArgs e)
+        //-----------------------------------------------------------------------show changes for gauge / bar----------------------------------------------------------------------------
+        private void cmbSpeedo_SelectedIndexChanged(object sender, EventArgs e)
         {
             setupgauges("Speedo");
         }
@@ -2766,7 +3140,7 @@ namespace kkdash
 
         }
 
-        private void txtPanelIP3_TextChanged(object sender, EventArgs e)
+        private void createSymbolVars()
         {
 
         }

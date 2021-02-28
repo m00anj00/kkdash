@@ -19,12 +19,7 @@ namespace kkdash
         public int tempXlen; public int tempYlen; public int tempXlow; public int tempYlow; public int tempXhigh; public int tempYhigh;
         public int lpX; public int lpY;
         public bool showCross = true;
-
-        public int startPosX { get; set; }
-        public int startPosY { get; set; }
-        public int MousePosX { get; set; }
-        public int MousePosY { get; set; }
-        public int NeedleLength { get; set; }
+        public int startPosX; public int startPosY; public int MousePosX; public int MousePosY; public int NeedleLength;
         public string movingCentre = "";
 
         public frmGraphic1()
@@ -36,7 +31,6 @@ namespace kkdash
         {
             //read the config file to be sure its correct:
             ReadTheCSV(1);
-
             try
             {
                 if (Globals.P1BG != "")
@@ -73,8 +67,13 @@ namespace kkdash
 
                     btnSave.Left = pictureBG.Width + 20;
                     btnSave.Top = 0;
+                    pnlSymbols.Left = pictureBG.Width + 20;
+                    pnlSymbols.Top = 50;
 
+                    //get the symbol icons
+                    populateSymbols("Read");
                     //if a label is clicked it changes colour.  a new label states each action sequence.
+
                 }
                 else
                 {
@@ -86,6 +85,67 @@ namespace kkdash
                 MessageBox.Show("Cant continue.  error: " + ex.Message);
                 this.Close();
             }
+        }
+
+        private void populateSymbols(string ClearReadSave)
+        {
+            if (ClearReadSave == "clear")
+            {
+                if (Globals.symSeatLeft == "1") { Seat1.Image = Image.FromFile(Globals.flocation + "\\symbols\\seats\\seat1-3.png"); Seat1.SizeMode = PictureBoxSizeMode.StretchImage; }
+                else { Seat1.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                if (Globals.symSeatRight == "1") { Seat2.Image = Image.FromFile(Globals.flocation + "\\symbols\\seats\\seat2-3.png"); Seat1.SizeMode = PictureBoxSizeMode.StretchImage; }
+                else { Seat2.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                if (Globals.symDoor == "1") { door.Image = Image.FromFile(Globals.flocation + "\\symbols\\door\\both.png"); door.SizeMode = PictureBoxSizeMode.StretchImage; }
+                else { door.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                if (Globals.symBonnet == "1") { bonnet.Image = Image.FromFile(Globals.flocation + "\\symbols\\door\\bonnet.png"); bonnet.SizeMode = PictureBoxSizeMode.StretchImage; }
+                else { bonnet.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                if (Globals.symBoot == "1") { boot.Image = Image.FromFile(Globals.flocation + "\\symbols\\door\\boot.png"); boot.SizeMode = PictureBoxSizeMode.StretchImage; }
+                else { boot.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                if (Globals.symDemister == "1") { demister.Image = Image.FromFile(Globals.flocation + "\\symbols\\info\\demister.png"); demister.SizeMode = PictureBoxSizeMode.StretchImage; }
+                else { demister.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                if (Globals.symBattery == "1") { battery.Image = Image.FromFile(Globals.flocation + "\\symbols\\info\\battery.png"); battery.SizeMode = PictureBoxSizeMode.StretchImage; }
+                else { battery.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                if (Globals.symFuel == "1") { fuel.Image = Image.FromFile(Globals.flocation + "\\symbols\\info\\fuel.png"); fuel.SizeMode = PictureBoxSizeMode.StretchImage; }
+                else { fuel.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                if (Globals.symOil == "1") { oil.Image = Image.FromFile(Globals.flocation + "\\symbols\\info\\oil.png"); oil.SizeMode = PictureBoxSizeMode.StretchImage; }
+                else { oil.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                if (Globals.symTyre == "1") { tyre.Image = Image.FromFile(Globals.flocation + "\\symbols\\info\\tyre.png"); tyre.SizeMode = PictureBoxSizeMode.StretchImage; }
+                else { tyre.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                if (Globals.symWasher == "1") { washer.Image = Image.FromFile(Globals.flocation + "\\symbols\\info\\washer.png"); washer.SizeMode = PictureBoxSizeMode.StretchImage; }
+                else { washer.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                if (Globals.symWiperInt == "1") { wiperint.Image = Image.FromFile(Globals.flocation + "\\symbols\\info\\wiper-int.png"); wiperint.SizeMode = PictureBoxSizeMode.StretchImage; }
+                else { wiperint.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                if (Globals.symIndLeft == "1") { indleft.Image = Image.FromFile(Globals.flocation + "\\symbols\\indicators\\ind-left.png"); indleft.SizeMode = PictureBoxSizeMode.StretchImage; }
+                else { indleft.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                if (Globals.symIndLeft == "1") { indright.Image = Image.FromFile(Globals.flocation + "\\symbols\\indicators\\ind-right.png"); indright.SizeMode = PictureBoxSizeMode.StretchImage; }
+                else { indright.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                if (Globals.symHazards == "1") { hazards.Image = Image.FromFile(Globals.flocation + "\\symbols\\hazard\\hazards-on.png"); hazards.SizeMode = PictureBoxSizeMode.StretchImage; }
+                else { hazards.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                if (Globals.symSpanner == "1") { spanner.Image = Image.FromFile(Globals.flocation + "\\symbols\\hazard\\spanner.png"); spanner.SizeMode = PictureBoxSizeMode.StretchImage; }
+                else { spanner.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                if (Globals.symTemp == "1") { temp.Image = Image.FromFile(Globals.flocation + "\\symbols\\hazard\\temp.png"); temp.SizeMode = PictureBoxSizeMode.StretchImage; }
+                else { temp.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                if (Globals.symSeatbelt == "1") { seatbelts.Image = Image.FromFile(Globals.flocation + "\\symbols\\seatbelts\\all.png"); seatbelts.SizeMode = PictureBoxSizeMode.StretchImage; }
+                else { seatbelts.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                if (Globals.symSidelights == "1") { sidelight.Image = Image.FromFile(Globals.flocation + "\\symbols\\lights\\sidelights.png"); sidelight.SizeMode = PictureBoxSizeMode.StretchImage; }
+                else { sidelight.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                if (Globals.symHeadlights == "1") { highbeam.Image = Image.FromFile(Globals.flocation + "\\symbols\\lights\\headlights.png"); highbeam.SizeMode = PictureBoxSizeMode.StretchImage; }
+                else { highbeam.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                if (Globals.symFullbeam == "1") { fullbeam.Image = Image.FromFile(Globals.flocation + "\\symbols\\lights\\fullbeam.png"); fullbeam.SizeMode = PictureBoxSizeMode.StretchImage; }
+                else { fullbeam.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                if (Globals.symSpotlights == "1") { spotlight.Image = Image.FromFile(Globals.flocation + "\\symbols\\lights\\spotlights.png"); spotlight.SizeMode = PictureBoxSizeMode.StretchImage; }
+                else { spotlight.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                if (Globals.symFoglights == "1") { foglight.Image = Image.FromFile(Globals.flocation + "\\symbols\\lights\\foglight.png"); foglight.SizeMode = PictureBoxSizeMode.StretchImage; }
+                else { foglight.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+            }
+
+            if (ClearReadSave == "read")
+            {
+            }
+            if (ClearReadSave == "save")
+            {
+            }
+
         }
 
         public void labels_Click(object sender, EventArgs e)
@@ -1190,6 +1250,7 @@ public void finaliseText()
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+
             if (Globals.SpeedoNeedleWidth == "0") { Globals.SpeedoNeedleWidth = "50"; }
             if (Globals.TachoNeedleWidth == "0") { Globals.TachoNeedleWidth = "50"; }
             if (Globals.BoostNeedleWidth == "0") { Globals.BoostNeedleWidth = "50"; }
@@ -1371,6 +1432,116 @@ public void finaliseText()
                 pnlDirections.Visible = false;
                 ResetThePage(lbNumber);
             }
+        }
+
+        private void sidelight_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void highbeam_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fullbeam_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void spotlight_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void foglight_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void demister_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void battery_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fuel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void oil_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tyre_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void washer_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void wiperint_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void indleft_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void indright_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void hazards_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void spanner_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void temp_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void seatbelts_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void door_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bonnet_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void boot_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Seat1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

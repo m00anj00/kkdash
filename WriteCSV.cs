@@ -6,6 +6,7 @@ namespace kkdash
 {
     public class WriteCSV
     {
+        public static string symbols1; public static string symbols2; public static string symbols3; public static string symbols4; public static string symbols5; public static string symbols6;
 
         public static void ShowSave(int panelno)
         {
@@ -17,14 +18,24 @@ namespace kkdash
                 saveFileDialog.FileName = "panel" + panelno + ".csv";
                 saveFileDialog.Filter = "csv file (*.csv)|*.csv";
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
-
                 {
                     string currentDirectory = Path.GetDirectoryName(saveFileDialog.FileName);
                     Globals.flocation = Path.GetFullPath(currentDirectory);
                     Globals.flocationName = saveFileDialog.FileName;
+                    writeSymbols();     
                 }
             }
 
+        }
+
+        public static void writeSymbols()
+        {
+                symbols1 = Globals.symSidelightsX + "," + Globals.symSidelightsY + "," + Globals.symSidelightsGPIO + "," + Globals.symHeadlightsX + "," + Globals.symHeadlightsY + "," + Globals.symHeadlightsGPIO + "," + Globals.symFullbeamX + "," + Globals.symFullbeamY + "," + Globals.symFullbeamGPIO + "," + Globals.symSpotlightsX + "," + Globals.symSpotlightsY + "," + Globals.symSpotlightsGPIO;
+                symbols2 = Globals.symFoglightsX + "," + Globals.symFoglightsY + "," + Globals.symFoglightsGPIO + "," + Globals.symBonnetX + "," + Globals.symBonnetY + "," + Globals.symBonnetGPIO + "," + Globals.symBootX + "," + Globals.symBootY + "," + Globals.symBootGPIO + "," + Globals.symDoorX + "," + Globals.symDoorY + "," + Globals.symDoorGPIO;
+                symbols3 = Globals.symFuelX + "," + Globals.symFuelY + "," + Globals.symFuelGPIO + "," + Globals.symBrakesX + "," + Globals.symBrakesY + "," + Globals.symBrakesGPIO + "," + Globals.symTempX + "," + Globals.symTempY + "," + Globals.symTempGPIO + "," + Globals.symOilX + "," + Globals.symOilY + "," + Globals.symOilGPIO;
+                symbols4 = Globals.symTyreX + "," + Globals.symTyreY + "," + Globals.symTyreGPIO + "," + Globals.symSpannerX + "," + Globals.symSpannerY + "," + Globals.symSpannerGPIO + "," + Globals.symDemisterX + "," + Globals.symDemisterY + "," + Globals.symDemisterGPIO + "," + Globals.symWasherX + "," + Globals.symWasherY + "," + Globals.symWasherGPIO;
+                symbols5 = Globals.symHazardsX + "," + Globals.symHazardsY + "," + Globals.symHazardsGPIO + "," + Globals.symIndLeftX + "," + Globals.symIndLeftY + "," + Globals.symIndLeftGPIO + "," + Globals.symIndRightX + "," + Globals.symIndRightY + "," + Globals.symIndRightGPIO + "," + Globals.symSeatbeltX + "," + Globals.symSeatbeltY + "," + Globals.symSeatbeltGPIO;
+                symbols6 = Globals.symSeatRightX + "," + Globals.symSeatRightY + "," + Globals.symSeatRightGPIO + "," + Globals.symSeatLeftX + "," + Globals.symSeatLeftY + "," + Globals.symSeatLeftGPIO + "," + Globals.symBootX + "," + Globals.symBootY + "," + Globals.symBootGPIO;
         }
 
         public static void WriteCSVfile(int PanelNo)
@@ -183,8 +194,13 @@ namespace kkdash
                 new string[] { user4val },
                 new string[] { ",,,,,,,,,,,,,," },
                 new string[] { "#WARNING AND INFO LIGHTS:" },
-                new string[] { "#category,item,X,Y,item,X,Y,item,X,Y,item,X,Y," },
-                new string[] { "symbolsInfo,seatbelts,10,-140,lowoil,0,0,demister,0,0,battery,0,0,," },
+                new string[] { "#item,X,Y,GPIO,item,X,Y,GPIO,item,X,Y,GPIO,item,X,Y,GPIO," },
+                new string[] { symbols1 },
+                new string[] { symbols2 },
+                new string[] { symbols3 },
+                new string[] { symbols4 },
+                new string[] { symbols5 },
+                new string[] { symbols6 },
                 new string[] { "#CENTRAL PANEL CRITERIA" },
                 new string[] { ",,,,,,,,,,,,,," },
                 new string[] { "#ODOMETER LOCATION / STYLE" },
