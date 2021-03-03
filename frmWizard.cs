@@ -26,10 +26,18 @@ namespace kkdash
             Globals.isSaved1 = false;
             Globals.isSaved2 = false;
             Globals.isSaved3 = false;
-
+            ResetGlobals();
             TS1.Text = ("Ready    ");
             TS2.Text = ("Ready    ");
             TS3.Text = ("Ready    ");
+
+            if (Globals.OdometerX == null) { Globals.OdometerX = "0"; }
+            if (Globals.OdometerY == null) { Globals.OdometerY = "0"; }
+            if (Globals.OdoReadingMilesKM == null) { Globals.OdoReadingMilesKM = "K"; }
+            if (Globals.OdoReading == null) { Globals.OdoReading = "12345"; }
+            if (Globals.EcoX == null) { Globals.EcoX = "0"; }
+            if (Globals.EcoY == null) { Globals.EcoY = "0"; }
+            if (Globals.EcoSize == null) { Globals.EcoSize = "14"; }
 
             MessageBox.Show("Please select the current working director");
             using (var fbd = new FolderBrowserDialog())
@@ -67,10 +75,6 @@ namespace kkdash
         private void btnLoad_Click_1(object sender, EventArgs e)
         {
             //-------------------------------------------------------------------------Open file(s) and load all data---------------------------------------------------------------
-            TS1.Text = ("Ready    ");
-            TS2.Text = ("Ready    ");
-            TS3.Text = ("Ready    ");
-            ResetGlobals();
             TS1.Text = ("Reading config    ");
             TS2.Text = ("Ready    ");
             TS3.Text = ("Ready    ");
@@ -88,9 +92,9 @@ namespace kkdash
             TS2.Text = ("Ready    ");
             TS3.Text = ("Ready    ");
 
-            SymbolsToVars();
             resolveFromVars();
-
+            VarsToSymbols();
+            VarsToInfo();   //infoscreen data and odo details
         }
 
         //=======================================================================SAVE SECTION============================================================================
@@ -102,9 +106,11 @@ namespace kkdash
             TS2.Text = ("Ready    ");
             TS3.Text = ("Ready    ");
 
-            resolveToVars(); //this takes all text except which panel indicators to global vars
+            resolveToVars();    //this takes all text except which panel indicators to global vars
             resolvePanelToVars(); //this takes the panel number to global vars
-            VarsToSymbols();
+            SymbolsToVars();    //This sets symbolics into global vars
+            InfoToVars();       //fill in infoscreen data and odo details
+
             TS1.Text = ("Writing config    ");
             TS2.Text = ("Ready    ");
             TS3.Text = ("Ready    ");
@@ -161,6 +167,8 @@ namespace kkdash
                 panel3.Hide();
                 panel4.Hide();
                 panel5.Hide();
+                pnlInfo.Hide();
+                pnlSymbols.Hide();
                 btnLoad.Hide();
                 btnNext.Hide();
             }
@@ -1219,9 +1227,29 @@ namespace kkdash
             lblP3Path.Text = Globals.P3BG;
 
             //Connectivity
+            if (Globals.PanelIP1 == null) { Globals.PanelIP1 = "192.168.1.100"; }
+            if (Globals.PanelIP2 == null) { Globals.PanelIP2 = "192.168.1.101"; }
+            if (Globals.PanelIP3 == null) { Globals.PanelIP3 = "192.168.1.102"; }
             txtPanel1IP.Text = Globals.PanelIP1;
             txtPaneI2IP.Text  = Globals.PanelIP2;
             txtPanel3IP.Text = Globals.PanelIP3;
+
+            if (Globals.SerCanP1Ecu == null) { Globals.SerCanP1Ecu = "pcan"; }
+
+            if (Globals.SerCanPortP1Ecu == null) { Globals.SerCanPortP1Ecu = "/dev/ttyAMA0"; }
+            if (Globals.SerCanSpeedP1Ecu == null) { Globals.SerCanSpeedP1Ecu = "250k"; }
+            if (Globals.SerCanAddressP1Ecu == null) { Globals.SerCanAddressP1Ecu = "0x100"; }
+            if (Globals.SerCanAddressP1 == null) { Globals.SerCanAddressP1 = "0x101"; }
+
+            if (Globals.SerCanP1P2 == null) { Globals.SerCanP1P2 = "pcan"; }
+            if (Globals.SerCanPortP1P2 == null) { Globals.SerCanPortP1P2 = "can1"; }
+            if (Globals.SerCanSpeedP1P2 == null) { Globals.SerCanSpeedP1P2 = "250k"; }
+            if (Globals.SerCanAddressP1P2 == null) { Globals.SerCanAddressP1P2 = "0x102"; }
+
+            if (Globals.SerCanP1P3 == null) { Globals.SerCanP1P3 = "pcan"; }
+            if (Globals.SerCanPortP1P3 == null) { Globals.SerCanPortP1P3 = "can2"; }
+            if (Globals.SerCanSpeedP1P3 == null) { Globals.SerCanSpeedP1P3 = "250k"; }
+            if (Globals.SerCanAddressP1P3 == null) { Globals.SerCanAddressP1P3 = "0x103"; }
 
             cmbSerCanP1ECU.Text = Globals.SerCanP1Ecu;
             if (cmbSerCanP1ECU.Text == "Serial3")
@@ -1246,7 +1274,7 @@ namespace kkdash
                 cmbCanAddressEcu.Text = Globals.SerCanAddressP1Ecu;
                 cmbCanAddressP1.Text = Globals.SerCanAddressP1;
             }
-
+            if (Globals.SerCanP1P2 == null) { Globals.SerCanP1P2 = "0x101";  }
             cmbSerCanP1P2.Text = Globals.SerCanP1P2;
             if (cmbSerCanP1P2.Text == "Serial3")
             {
@@ -1269,12 +1297,18 @@ namespace kkdash
                 cmbSerCanP2Address.Text  = Globals.SerCanAddressP1P2;
             }
 
-
+            if (Globals.SerCanP1P3 == null) { Globals.SerCanP1P3 = "0x102"; }
             cmbSerCanP1P3.Text = Globals.SerCanP1P3;
             cmbSerCanP1P3CanInter.Text = Globals.SerCanPortP1P3;
             cmbSerCanP1P3CanSpeed.Text = Globals.SerCanSpeedP1P3;
             cmbSerCanP3Address.Text = Globals.SerCanAddressP1P3;
 
+            if (Globals.p1DispWidth == null) { Globals.p1DispWidth = "1024"; }
+            if (Globals.p2DispWidth == null) { Globals.p2DispWidth = "1024"; }
+            if (Globals.p3DispWidth == null) { Globals.p3DispWidth = "1024"; }
+            if (Globals.p1DispHeight == null) { Globals.p1DispHeight = "768"; }
+            if (Globals.p2DispHeight == null) { Globals.p2DispHeight = "768"; }
+            if (Globals.p3DispHeight == null) { Globals.p3DispHeight = "768"; }
 
             txtP1Width.Text = Globals.p1DispWidth;
             txtP2Width.Text = Globals.p2DispWidth;
@@ -2497,8 +2531,91 @@ namespace kkdash
             if (Globals.User4NeedleType != "Gauge") { if (cmbUser4AboveBelow.Text == "á") { Globals.User4Needle = txtUser4Needle.Text; Globals.User4Offset = "1"; } else { Globals.User4Needle = txtUser4Needle.Text; Globals.User4Offset = "0"; } } else { Globals.User4Needle = txtUser4Needle.Text; }
         }
 
+        private void InfoToVars()
+        {
+            Globals.InfoPanelX = txtInfoPanelX.Text;
+            Globals.InfoPanelY = txtInfoPanelY.Text;
+            Globals.InfoTextSize = txtInfoTextFont.Text;
+
+            Globals.OdometerX = txtOdometerX.Text;
+            Globals.OdometerY = txtOdometerY.Text;
+
+            if (cmbOdoMilesKM.Text == "KM")
+            {
+                Globals.OdoReading = txtOdoReading.Text; //defaults to KM
+                Globals.OdoReadingMilesKM = "K";
+            }
+            else
+            {
+                double odo = (Convert.ToDouble(txtOdoReading.Text) * 1.6);
+                Globals.OdoReading = (string.Format("{0:0}", (odo).ToString()));
+                Globals.OdoReadingMilesKM = "M";
+            }
+
+            Globals.EcoX = txtEcoX.Text;
+            Globals.EcoY = txtEcoY.Text;
+            Globals.EcoSize = txtEcoFont.Text;
+
+            Globals.TripX = txtTripX.Text;
+            Globals.TripY = txtTripY.Text;
+            Globals.TripSize = txtTripSize.Text;
+        }
+
+        private void VarsToInfo()
+        {
+            if (Globals.InfoPanelX == null) { Globals.InfoPanelX = "0"; }
+            if (Globals.InfoPanelY == null) { Globals.InfoPanelY = "0"; }
+            if (Globals.InfoTextSize == null) { Globals.InfoTextSize = "14"; }
+
+            if (Globals.TripX == null) { Globals.TripX = "0"; }
+            if (Globals.TripY == null) { Globals.TripY = "0"; }
+            if (Globals.TripSize == null) { Globals.TripSize = "14"; }
+
+            if (Globals.EcoX == null) { Globals.EcoX = "0"; }
+            if (Globals.EcoY == null) { Globals.EcoY = "0"; }
+            if (Globals.EcoSize == null) { Globals.EcoSize = "14"; }
+
+            txtInfoPanelX.Text = Globals.InfoPanelX;
+            txtInfoPanelY.Text = Globals.InfoPanelY;
+            txtInfoTextFont.Text = Globals.InfoTextSize;
+
+            txtEcoX.Text = Globals.EconomyX;
+            txtEcoY.Text = Globals.EconomyY;
+            txtEcoFont.Text = Globals.EconomySize;
+
+            txtTripX.Text = Globals.TripX;
+            txtTripY.Text = Globals.TripY;
+            txtTripSize.Text = Globals.TripSize;
+
+            txtOdometerX.Text = Globals.OdometerX;
+            txtOdometerY.Text = Globals.OdometerY;
+
+            if (Globals.OdoReadingMilesKM == "K")
+            {
+                txtOdoReading.Text = String.Format("{0:00000}", Globals.OdoReading);//defaults to KM
+                cmbOdoMilesKM.Text = "KM";
+            }
+            else
+            {
+                string odo = ((Int32.Parse(Globals.OdoReading) * 1.6).ToString());
+                txtOdoReading.Text = String.Format("{0:00000}", odo);
+                cmbOdoMilesKM.Text = "Miles";
+            }
+            txtEcoX.Text = Globals.EcoX;
+            txtEcoY.Text = Globals.EcoY;
+            txtEcoFont.Text = Globals.EcoSize;
+        }
+
         private void VarsToSymbols()
         {
+            if (Globals.symWidth == null) { Globals.symWidth = "20"; }
+            if (Globals.symHeight == null) { Globals.symHeight = "20"; }
+            if (Int32.Parse(Globals.symWidth) < 10) { Globals.symWidth = "20"; }
+            if (Int32.Parse(Globals.symHeight) < 10) { Globals.symHeight = "20"; }
+            txtSymX.Text = Globals.symWidth;
+            txtSymY.Text = Globals.symHeight;
+
+
             if (Globals.symBattery == "N") {cmbSymBattery.Text = "N"; }
             if (Globals.symBattery == "1") {cmbSymBattery.Text = "Panel 1"; }
             if (Globals.symBattery == "2") {cmbSymBattery.Text = "Panel 2"; }
@@ -2593,13 +2710,13 @@ namespace kkdash
             if (Globals.symSeatLeft == "1") { cmbSymSeat1.Text = "Panel 1"; }
             if (Globals.symSeatLeft == "2") { cmbSymSeat1.Text = "Panel 2"; }
             if (Globals.symSeatLeft == "3") { cmbSymSeat1.Text = "Panel 3"; }
-            txtSymSeat1X.Text = Globals.symSeatLeftX; txtSymSeat1Y.Text = Globals.symSeatLeft; txtSymSeat1GPIO.Text = Globals.symSeatLeftGPIO;
+            txtSymSeat1X.Text = Globals.symSeatLeftX; txtSymSeat1Y.Text = Globals.symSeatLeftY; txtSymSeat1GPIO.Text = Globals.symSeatLeftGPIO;
 
             if (Globals.symSeatRight == "N") { cmbSymSeat2.Text = "N"; }
             if (Globals.symSeatRight == "1") { cmbSymSeat2.Text = "Panel 1"; }
             if (Globals.symSeatRight == "2") { cmbSymSeat2.Text = "Panel 2"; }
             if (Globals.symSeatRight == "3") { cmbSymSeat2.Text = "Panel 3"; }
-            txtSymSeat2X.Text = Globals.symSeatRight; txtSymSeat2Y.Text = Globals.symSeatRight; txtSymSeat2GPIO.Text = Globals.symSeatRight;
+            txtSymSeat2X.Text = Globals.symSeatRightX; txtSymSeat2Y.Text = Globals.symSeatRightY; txtSymSeat2GPIO.Text = Globals.symSeatRightGPIO;
 
             if (Globals.symSidelights == "N") { cmbSymSidelights.Text = "N"; }
             if (Globals.symSidelights == "1") { cmbSymSidelights.Text = "Panel 1"; }
@@ -2619,7 +2736,13 @@ namespace kkdash
             if (Globals.symTemp == "3") { cmbSymTemp.Text = "Panel 3"; }
             txtSymTempX.Text = Globals.symTempX; txtSymTempY.Text = Globals.symTempY; txtSymTempGPIO.Text = Globals.symTempGPIO;
 
-            if (Globals.symTyre == "N") { cmbSymTyre.Text = "N"; }
+            if (Globals.symSpanner == "N") { cmbSymSpanner.Text = "N"; }
+            if (Globals.symSpanner == "1") { cmbSymSpanner.Text = "Panel 1"; }
+            if (Globals.symSpanner == "2") { cmbSymSpanner.Text = "Panel 2"; }
+            if (Globals.symSpanner == "3") { cmbSymSpanner.Text = "Panel 3"; }
+            txtSymSpannerX.Text = Globals.symSpannerX; txtSymSpannerY.Text = Globals.symSpannerY; txtSymSpannerGPIO.Text = Globals.symSpannerGPIO;
+
+            
             if (Globals.symTyre == "1") { cmbSymTyre.Text = "Panel 1"; }
             if (Globals.symTyre == "2") { cmbSymTyre.Text = "Panel 2"; }
             if (Globals.symTyre == "3") { cmbSymTyre.Text = "Panel 3"; }
@@ -2640,6 +2763,9 @@ namespace kkdash
 
         private void SymbolsToVars()
         {
+            Globals.symWidth = txtSymX.Text;
+            Globals.symHeight = txtSymY.Text;
+
             if (cmbSymBattery.Text == "N") { Globals.symBattery = "N"; }
             if (cmbSymBattery.Text == "Panel 1") { Globals.symBattery = "1"; }
             if (cmbSymBattery.Text == "Panel 2") { Globals.symBattery = "2"; }
@@ -2795,20 +2921,20 @@ namespace kkdash
             Globals.showP2 = "None";
             Globals.showP3 = "None";
 
-            Globals.SpeedoNeedleWidth = "0"; Globals.SpeedoNeedleLength = "1200"; Globals.SpeedoNeedleX = "0"; Globals.SpeedoNeedleY = "0"; Globals.SpeedoOffset = "0"; Globals.SpeedoEnd = "0"; Globals.SpeedoTop = "0"; Globals.SpeedoTextX = "0"; Globals.SpeedoTextY = "0"; Globals.SpeedoFontSize = "0"; Globals.SpeedoTextStyle = "smooth"; Globals.SpeedoNeedle = "textures/instrument_needle.png";
-            Globals.TachoNeedleWidth = "0"; Globals.TachoNeedleLength = "0"; Globals.TachoNeedleX = "0"; Globals.TachoNeedleY = "0"; Globals.TachoOffset = "0"; Globals.TachoEnd = "0"; Globals.TachoTop = "0"; Globals.TachoTextX = "0"; Globals.TachoTextY = "0"; Globals.TachoFontSize = "0"; Globals.TachoTextStyle = "smooth"; Globals.TachoNeedle = "textures/instrument_needle.png";
-            Globals.BoostNeedleWidth = "0"; Globals.BoostNeedleLength = "0"; Globals.BoostNeedleX = "0"; Globals.BoostNeedleY = "0"; Globals.BoostOffset = "0"; Globals.BoostEnd = "0"; Globals.BoostTop = "0"; Globals.BoostTextX = "0"; Globals.BoostTextY = "0"; Globals.BoostFontSize = "0"; Globals.BoostTextStyle = "smooth"; Globals.BoostNeedle = "textures/instrument_needle.png";
-            Globals.TempNeedleWidth = "0"; Globals.TempNeedleLength = "0"; Globals.TempNeedleX = "0"; Globals.TempNeedleY = "0"; Globals.TempOffset = "0"; Globals.TempEnd = "0"; Globals.TempTop = "0"; Globals.TempTextX = "0"; Globals.TempTextY = "0"; Globals.TempFontSize = "0"; Globals.TempTextStyle = "smooth"; Globals.TempNeedle = "textures/instrument_needle.png";
-            Globals.OilNeedleWidth = "0"; Globals.OilNeedleLength = "0"; Globals.OilNeedleX = "0"; Globals.OilNeedleY = "0"; Globals.OilOffset = "0"; Globals.OilEnd = "0"; Globals.OilTop = "0"; Globals.OilTextX = "0"; Globals.OilTextY = "0"; Globals.OilFontSize = "0"; Globals.OilTextStyle = "smooth"; Globals.OilNeedle = "textures/instrument_needle.png";
-            Globals.OilTNeedleWidth = "0"; Globals.OilTNeedleLength = "0"; Globals.OilTNeedleX = "0"; Globals.OilTNeedleY = "0"; Globals.OilTOffset = "0"; Globals.OilTEnd = "0"; Globals.OilTTop = "0"; Globals.OilTTextX = "0"; Globals.OilTTextY = "0"; Globals.OilTFontSize = "0"; Globals.OilTTextStyle = "smooth"; Globals.OilTNeedle = "textures/instrument_needle.png";
-            Globals.FuelNeedleWidth = "0"; Globals.FuelNeedleLength = "0"; Globals.FuelNeedleX = "0"; Globals.FuelNeedleY = "0"; Globals.FuelOffset = "0"; Globals.FuelEnd = "0"; Globals.FuelTop = "0"; Globals.FuelTextX = "0"; Globals.FuelTextY = "0"; Globals.FuelFontSize = "0"; Globals.FuelTextStyle = "smooth"; Globals.FuelNeedle = "textures/instrument_needle.png";
-            Globals.FuelTNeedleWidth = "0"; Globals.FuelTNeedleLength = "0"; Globals.FuelTNeedleX = "0"; Globals.FuelTNeedleY = "0"; Globals.FuelTOffset = "0"; Globals.FuelTEnd = "0"; Globals.FuelTTop = "0"; Globals.FuelTTextX = "0"; Globals.FuelTTextY = "0"; Globals.FuelTFontSize = "0"; Globals.FuelTTextStyle = "smooth"; Globals.FuelTNeedle = "textures/instrument_needle.png";
-            Globals.FuelPNeedleWidth = "0"; Globals.FuelPNeedleLength = "0"; Globals.FuelPNeedleX = "0"; Globals.FuelPNeedleY = "0"; Globals.FuelPOffset = "0"; Globals.FuelPEnd = "0"; Globals.FuelPTop = "0"; Globals.FuelPTextX = "0"; Globals.FuelPTextY = "0"; Globals.FuelPFontSize = "0"; Globals.FuelPTextStyle = "smooth"; Globals.FuelPNeedle = "textures/instrument_needle.png";
-            Globals.BatteryNeedleWidth = "0"; Globals.BatteryNeedleLength = "0"; Globals.BatteryNeedleX = "0"; Globals.BatteryNeedleY = "0"; Globals.BatteryOffset = "0"; Globals.BatteryEnd = "0"; Globals.BatteryTop = "0"; Globals.BatteryTextX = "0"; Globals.BatteryTextY = "0"; Globals.BatteryFontSize = "0"; Globals.BatteryTextStyle = "smooth"; Globals.BatteryNeedle = "textures/instrument_needle.png";
-            Globals.User1NeedleWidth = "0"; Globals.User1NeedleLength = "0"; Globals.User1NeedleX = "0"; Globals.User1NeedleY = "0"; Globals.User1Offset = "0"; Globals.User1End = "0"; Globals.User1Top = "0"; Globals.User1TextX = "0"; Globals.User1TextY = "0"; Globals.User1FontSize = "0"; Globals.User1TextStyle = "smooth"; Globals.User1Needle = "textures/instrument_needle.png";
-            Globals.User2NeedleWidth = "0"; Globals.User2NeedleLength = "0"; Globals.User2NeedleX = "0"; Globals.User2NeedleY = "0"; Globals.User2Offset = "0"; Globals.User2End = "0"; Globals.User2Top = "0"; Globals.User2TextX = "0"; Globals.User2TextY = "0"; Globals.User2FontSize = "0"; Globals.User2TextStyle = "smooth"; Globals.User2Needle = "textures/instrument_needle.png";
-            Globals.User3NeedleWidth = "0"; Globals.User3NeedleLength = "0"; Globals.User3NeedleX = "0"; Globals.User3NeedleY = "0"; Globals.User3Offset = "0"; Globals.User3End = "0"; Globals.User3Top = "0"; Globals.User3TextX = "0"; Globals.User3TextY = "0"; Globals.User3FontSize = "0"; Globals.User3TextStyle = "smooth"; Globals.User3Needle = "textures/instrument_needle.png";
-            Globals.User4NeedleWidth = "0"; Globals.User4NeedleLength = "0"; Globals.User4NeedleX = "0"; Globals.User4NeedleY = "0"; Globals.User4Offset = "0"; Globals.User4End = "0"; Globals.User4Top = "0"; Globals.User4TextX = "0"; Globals.User4TextY = "0"; Globals.User4FontSize = "0"; Globals.User4TextStyle = "smooth"; Globals.User4Needle = "textures/instrument_needle.png";
+            Globals.SpeedoNeedleWidth = "50"; Globals.SpeedoNeedleLength = "1200"; Globals.SpeedoNeedleX = "0"; Globals.SpeedoNeedleY = "0"; Globals.SpeedoOffset = "0"; Globals.SpeedoEnd = "0"; Globals.SpeedoTop = "0"; Globals.SpeedoTextX = "0"; Globals.SpeedoTextY = "0"; Globals.SpeedoFontSize = "0"; Globals.SpeedoTextStyle = "smooth"; Globals.SpeedoNeedle = "textures/instrument_needle.png";
+            Globals.TachoNeedleWidth = "50"; Globals.TachoNeedleLength = "1200"; Globals.TachoNeedleX = "0"; Globals.TachoNeedleY = "0"; Globals.TachoOffset = "0"; Globals.TachoEnd = "0"; Globals.TachoTop = "0"; Globals.TachoTextX = "0"; Globals.TachoTextY = "0"; Globals.TachoFontSize = "0"; Globals.TachoTextStyle = "smooth"; Globals.TachoNeedle = "textures/instrument_needle.png";
+            Globals.BoostNeedleWidth = "50"; Globals.BoostNeedleLength = "1200"; Globals.BoostNeedleX = "0"; Globals.BoostNeedleY = "0"; Globals.BoostOffset = "0"; Globals.BoostEnd = "0"; Globals.BoostTop = "0"; Globals.BoostTextX = "0"; Globals.BoostTextY = "0"; Globals.BoostFontSize = "0"; Globals.BoostTextStyle = "smooth"; Globals.BoostNeedle = "textures/instrument_needle.png";
+            Globals.TempNeedleWidth = "50"; Globals.TempNeedleLength = "1200"; Globals.TempNeedleX = "0"; Globals.TempNeedleY = "0"; Globals.TempOffset = "0"; Globals.TempEnd = "0"; Globals.TempTop = "0"; Globals.TempTextX = "0"; Globals.TempTextY = "0"; Globals.TempFontSize = "0"; Globals.TempTextStyle = "smooth"; Globals.TempNeedle = "textures/instrument_needle.png";
+            Globals.OilNeedleWidth = "50"; Globals.OilNeedleLength = "1200"; Globals.OilNeedleX = "0"; Globals.OilNeedleY = "0"; Globals.OilOffset = "0"; Globals.OilEnd = "0"; Globals.OilTop = "0"; Globals.OilTextX = "0"; Globals.OilTextY = "0"; Globals.OilFontSize = "0"; Globals.OilTextStyle = "smooth"; Globals.OilNeedle = "textures/instrument_needle.png";
+            Globals.OilTNeedleWidth = "50"; Globals.OilTNeedleLength = "1200"; Globals.OilTNeedleX = "0"; Globals.OilTNeedleY = "0"; Globals.OilTOffset = "0"; Globals.OilTEnd = "0"; Globals.OilTTop = "0"; Globals.OilTTextX = "0"; Globals.OilTTextY = "0"; Globals.OilTFontSize = "0"; Globals.OilTTextStyle = "smooth"; Globals.OilTNeedle = "textures/instrument_needle.png";
+            Globals.FuelNeedleWidth = "50"; Globals.FuelNeedleLength = "1200"; Globals.FuelNeedleX = "0"; Globals.FuelNeedleY = "0"; Globals.FuelOffset = "0"; Globals.FuelEnd = "0"; Globals.FuelTop = "0"; Globals.FuelTextX = "0"; Globals.FuelTextY = "0"; Globals.FuelFontSize = "0"; Globals.FuelTextStyle = "smooth"; Globals.FuelNeedle = "textures/instrument_needle.png";
+            Globals.FuelTNeedleWidth = "50"; Globals.FuelTNeedleLength = "1200"; Globals.FuelTNeedleX = "0"; Globals.FuelTNeedleY = "0"; Globals.FuelTOffset = "0"; Globals.FuelTEnd = "0"; Globals.FuelTTop = "0"; Globals.FuelTTextX = "0"; Globals.FuelTTextY = "0"; Globals.FuelTFontSize = "0"; Globals.FuelTTextStyle = "smooth"; Globals.FuelTNeedle = "textures/instrument_needle.png";
+            Globals.FuelPNeedleWidth = "50"; Globals.FuelPNeedleLength = "1200"; Globals.FuelPNeedleX = "0"; Globals.FuelPNeedleY = "0"; Globals.FuelPOffset = "0"; Globals.FuelPEnd = "0"; Globals.FuelPTop = "0"; Globals.FuelPTextX = "0"; Globals.FuelPTextY = "0"; Globals.FuelPFontSize = "0"; Globals.FuelPTextStyle = "smooth"; Globals.FuelPNeedle = "textures/instrument_needle.png";
+            Globals.BatteryNeedleWidth = "50"; Globals.BatteryNeedleLength = "1200"; Globals.BatteryNeedleX = "0"; Globals.BatteryNeedleY = "0"; Globals.BatteryOffset = "0"; Globals.BatteryEnd = "0"; Globals.BatteryTop = "0"; Globals.BatteryTextX = "0"; Globals.BatteryTextY = "0"; Globals.BatteryFontSize = "0"; Globals.BatteryTextStyle = "smooth"; Globals.BatteryNeedle = "textures/instrument_needle.png";
+            Globals.User1NeedleWidth = "50"; Globals.User1NeedleLength = "1200"; Globals.User1NeedleX = "0"; Globals.User1NeedleY = "0"; Globals.User1Offset = "0"; Globals.User1End = "0"; Globals.User1Top = "0"; Globals.User1TextX = "0"; Globals.User1TextY = "0"; Globals.User1FontSize = "0"; Globals.User1TextStyle = "smooth"; Globals.User1Needle = "textures/instrument_needle.png";
+            Globals.User2NeedleWidth = "50"; Globals.User2NeedleLength = "1200"; Globals.User2NeedleX = "0"; Globals.User2NeedleY = "0"; Globals.User2Offset = "0"; Globals.User2End = "0"; Globals.User2Top = "0"; Globals.User2TextX = "0"; Globals.User2TextY = "0"; Globals.User2FontSize = "0"; Globals.User2TextStyle = "smooth"; Globals.User2Needle = "textures/instrument_needle.png";
+            Globals.User3NeedleWidth = "50"; Globals.User3NeedleLength = "1200"; Globals.User3NeedleX = "0"; Globals.User3NeedleY = "0"; Globals.User3Offset = "0"; Globals.User3End = "0"; Globals.User3Top = "0"; Globals.User3TextX = "0"; Globals.User3TextY = "0"; Globals.User3FontSize = "0"; Globals.User3TextStyle = "smooth"; Globals.User3Needle = "textures/instrument_needle.png";
+            Globals.User4NeedleWidth = "50"; Globals.User4NeedleLength = "1200"; Globals.User4NeedleX = "0"; Globals.User4NeedleY = "0"; Globals.User4Offset = "0"; Globals.User4End = "0"; Globals.User4Top = "0"; Globals.User4TextX = "0"; Globals.User4TextY = "0"; Globals.User4FontSize = "0"; Globals.User4TextStyle = "smooth"; Globals.User4Needle = "textures/instrument_needle.png";
             Globals.SpeedoGPIO = "N"; Globals.TachoGPIO = "N"; Globals.BoostGPIO = "N"; Globals.TempGPIO = "N"; Globals.OilGPIO = "N"; Globals.OilTGPIO = "N"; Globals.FuelGPIO = "N"; Globals.FuelTGPIO = "N"; Globals.FuelPGPIO = "N"; Globals.BatteryGPIO = "N"; Globals.User1GPIO = "N"; Globals.User2GPIO = "N"; Globals.User3GPIO = "N"; Globals.User4GPIO = "N";
             Globals.symBattery = "N";Globals.symBatteryX = "0"; Globals.symBatteryY = "0"; Globals.symBatteryGPIO = "0";
             Globals.symBonnet  = "N"; Globals.symBonnetX = "0"; Globals.symBonnetY = "0"; Globals.symBonnetGPIO = "0";
@@ -3162,6 +3288,10 @@ namespace kkdash
                         this.Close();
                     }
                 }
+                else
+                {
+                    this.Close();
+                }
             }
             if (File.Exists(Globals.flocation + "\\Panel2.csv"))
             {
@@ -3177,6 +3307,10 @@ namespace kkdash
                     {
                         this.Close();
                     }
+                }
+                else
+                {
+                    this.Close();
                 }
             }
             if (File.Exists(Globals.flocation + "\\Panel3.csv"))
@@ -3195,12 +3329,10 @@ namespace kkdash
                     }
                 }
             }
-
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
+            else
+            {
+                this.Close();
+            }
         }
 
         private void label42_Click(object sender, EventArgs e)
@@ -3209,6 +3341,19 @@ namespace kkdash
 
             // Show the settings form
             frmpi.Show();
+        }
+
+        private void cmbOdoMilesKM_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbOdoMilesKM.Text == "KM")
+            {
+                txtOdoReading.Text = (String.Format("{0:00000}", (Globals.OdoReading).ToString()));
+            }
+            else
+            {
+                double odo = Convert.ToDouble(Globals.OdoReading) * 1.6;
+                txtOdoReading.Text = (String.Format("{0:00000}", odo));
+            }
         }
     }
 }

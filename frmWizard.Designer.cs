@@ -409,7 +409,12 @@
             this.txtPanel3IP = new System.Windows.Forms.TextBox();
             this.label47 = new System.Windows.Forms.Label();
             this.btnQuit = new System.Windows.Forms.Button();
-            this.panel6 = new System.Windows.Forms.Panel();
+            this.pnlSymbols = new System.Windows.Forms.Panel();
+            this.txtSymBrakesGPIO = new System.Windows.Forms.TextBox();
+            this.txtSymBrakesY = new System.Windows.Forms.TextBox();
+            this.txtSymBrakesX = new System.Windows.Forms.TextBox();
+            this.cmbSymBrakes = new System.Windows.Forms.ComboBox();
+            this.brakes = new System.Windows.Forms.PictureBox();
             this.txtSymSeat2GPIO = new System.Windows.Forms.TextBox();
             this.txtSymSeat2Y = new System.Windows.Forms.TextBox();
             this.txtSymSeat2X = new System.Windows.Forms.TextBox();
@@ -532,18 +537,39 @@
             this.bonnet = new System.Windows.Forms.PictureBox();
             this.seatbelts = new System.Windows.Forms.PictureBox();
             this.Seat1 = new System.Windows.Forms.PictureBox();
-            this.txtSymBrakesGPIO = new System.Windows.Forms.TextBox();
-            this.txtSymBrakesY = new System.Windows.Forms.TextBox();
-            this.txtSymBrakesX = new System.Windows.Forms.TextBox();
-            this.cmbSymBrakes = new System.Windows.Forms.ComboBox();
-            this.brakes = new System.Windows.Forms.PictureBox();
+            this.pnlInfo = new System.Windows.Forms.Panel();
+            this.txtEcoFont = new System.Windows.Forms.TextBox();
+            this.txtEcoY = new System.Windows.Forms.TextBox();
+            this.txtEcoX = new System.Windows.Forms.TextBox();
+            this.label62 = new System.Windows.Forms.Label();
+            this.cmbOdoMilesKM = new System.Windows.Forms.ComboBox();
+            this.txtOdoReading = new System.Windows.Forms.TextBox();
+            this.label59 = new System.Windows.Forms.Label();
+            this.label60 = new System.Windows.Forms.Label();
+            this.txtInfoTextFont = new System.Windows.Forms.TextBox();
+            this.label58 = new System.Windows.Forms.Label();
+            this.txtOdometerY = new System.Windows.Forms.TextBox();
+            this.txtOdometerX = new System.Windows.Forms.TextBox();
+            this.label57 = new System.Windows.Forms.Label();
+            this.txtInfoPanelY = new System.Windows.Forms.TextBox();
+            this.label55 = new System.Windows.Forms.Label();
+            this.label56 = new System.Windows.Forms.Label();
+            this.label54 = new System.Windows.Forms.Label();
+            this.label52 = new System.Windows.Forms.Label();
+            this.txtInfoPanelX = new System.Windows.Forms.TextBox();
+            this.label53 = new System.Windows.Forms.Label();
+            this.txtTripSize = new System.Windows.Forms.TextBox();
+            this.txtTripY = new System.Windows.Forms.TextBox();
+            this.txtTripX = new System.Windows.Forms.TextBox();
+            this.label61 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
-            this.panel6.SuspendLayout();
+            this.pnlSymbols.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.brakes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Seat2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.door)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spanner)).BeginInit();
@@ -567,7 +593,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bonnet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seatbelts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Seat1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.brakes)).BeginInit();
+            this.pnlInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // label2
@@ -584,7 +610,7 @@
             // txtP1Width
             // 
             this.txtP1Width.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtP1Width.Location = new System.Drawing.Point(196, 107);
+            this.txtP1Width.Location = new System.Drawing.Point(155, 107);
             this.txtP1Width.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtP1Width.Name = "txtP1Width";
             this.txtP1Width.Size = new System.Drawing.Size(56, 22);
@@ -595,7 +621,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(264, 111);
+            this.label3.Location = new System.Drawing.Point(223, 111);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(15, 16);
@@ -605,7 +631,7 @@
             // txtP1Height
             // 
             this.txtP1Height.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtP1Height.Location = new System.Drawing.Point(294, 107);
+            this.txtP1Height.Location = new System.Drawing.Point(253, 107);
             this.txtP1Height.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtP1Height.Name = "txtP1Height";
             this.txtP1Height.Size = new System.Drawing.Size(56, 22);
@@ -715,7 +741,7 @@
             // 
             this.lblP1Path.AutoSize = true;
             this.lblP1Path.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblP1Path.Location = new System.Drawing.Point(308, 23);
+            this.lblP1Path.Location = new System.Drawing.Point(267, 23);
             this.lblP1Path.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblP1Path.Name = "lblP1Path";
             this.lblP1Path.Size = new System.Drawing.Size(40, 16);
@@ -725,7 +751,7 @@
             // btnPanel1BG
             // 
             this.btnPanel1BG.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnPanel1BG.Location = new System.Drawing.Point(196, 16);
+            this.btnPanel1BG.Location = new System.Drawing.Point(155, 16);
             this.btnPanel1BG.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnPanel1BG.Name = "btnPanel1BG";
             this.btnPanel1BG.Size = new System.Drawing.Size(105, 32);
@@ -1493,7 +1519,7 @@
             this.btnNext.Location = new System.Drawing.Point(14, 83);
             this.btnNext.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(501, 76);
+            this.btnNext.Size = new System.Drawing.Size(201, 76);
             this.btnNext.TabIndex = 101;
             this.btnNext.Text = "Next";
             this.btnNext.UseVisualStyleBackColor = false;
@@ -4594,7 +4620,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(365, 669);
             this.panel2.TabIndex = 133;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // txtBatteryFontSize
             // 
@@ -5011,7 +5036,7 @@
             // txtPanel1IP
             // 
             this.txtPanel1IP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtPanel1IP.Location = new System.Drawing.Point(196, 68);
+            this.txtPanel1IP.Location = new System.Drawing.Point(155, 68);
             this.txtPanel1IP.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtPanel1IP.Name = "txtPanel1IP";
             this.txtPanel1IP.Size = new System.Drawing.Size(154, 22);
@@ -5030,7 +5055,7 @@
             "slcan",
             "vcan",
             "serialcan"});
-            this.cmbSerCanP1P2.Location = new System.Drawing.Point(195, 183);
+            this.cmbSerCanP1P2.Location = new System.Drawing.Point(154, 183);
             this.cmbSerCanP1P2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbSerCanP1P2.Name = "cmbSerCanP1P2";
             this.cmbSerCanP1P2.Size = new System.Drawing.Size(86, 24);
@@ -5049,7 +5074,7 @@
             "57600",
             "115200",
             "230400"});
-            this.cmbSerCanP1P2SerSpeed.Location = new System.Drawing.Point(289, 184);
+            this.cmbSerCanP1P2SerSpeed.Location = new System.Drawing.Point(248, 184);
             this.cmbSerCanP1P2SerSpeed.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbSerCanP1P2SerSpeed.Name = "cmbSerCanP1P2SerSpeed";
             this.cmbSerCanP1P2SerSpeed.Size = new System.Drawing.Size(80, 24);
@@ -5065,7 +5090,7 @@
             "250K",
             "500K",
             "1M"});
-            this.cmbSerCanP1P2CanSpeed.Location = new System.Drawing.Point(289, 183);
+            this.cmbSerCanP1P2CanSpeed.Location = new System.Drawing.Point(248, 183);
             this.cmbSerCanP1P2CanSpeed.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbSerCanP1P2CanSpeed.Name = "cmbSerCanP1P2CanSpeed";
             this.cmbSerCanP1P2CanSpeed.Size = new System.Drawing.Size(80, 24);
@@ -5085,7 +5110,7 @@
             "/dev/ttyACM0",
             "/dev/serial0",
             "/dev/serial1"});
-            this.cmbSerCanP1P2SerInter.Location = new System.Drawing.Point(377, 183);
+            this.cmbSerCanP1P2SerInter.Location = new System.Drawing.Point(336, 183);
             this.cmbSerCanP1P2SerInter.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbSerCanP1P2SerInter.Name = "cmbSerCanP1P2SerInter";
             this.cmbSerCanP1P2SerInter.Size = new System.Drawing.Size(122, 24);
@@ -5103,7 +5128,7 @@
             "can3",
             "can4",
             "can5"});
-            this.cmbSerCanP1P2CanInter.Location = new System.Drawing.Point(377, 183);
+            this.cmbSerCanP1P2CanInter.Location = new System.Drawing.Point(336, 183);
             this.cmbSerCanP1P2CanInter.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbSerCanP1P2CanInter.Name = "cmbSerCanP1P2CanInter";
             this.cmbSerCanP1P2CanInter.Size = new System.Drawing.Size(122, 24);
@@ -5156,7 +5181,7 @@
             this.btnLoad.Location = new System.Drawing.Point(13, 3);
             this.btnLoad.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(502, 79);
+            this.btnLoad.Size = new System.Drawing.Size(202, 79);
             this.btnLoad.TabIndex = 235;
             this.btnLoad.Text = "Config Load";
             this.btnLoad.UseVisualStyleBackColor = false;
@@ -5194,17 +5219,17 @@
             this.panel3.Controls.Add(this.txtPanel1IP);
             this.panel3.Controls.Add(this.cmbSerCanP1P2);
             this.panel3.Controls.Add(this.label1);
-            this.panel3.Location = new System.Drawing.Point(523, 3);
+            this.panel3.Location = new System.Drawing.Point(223, 3);
             this.panel3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(518, 251);
+            this.panel3.Size = new System.Drawing.Size(467, 251);
             this.panel3.TabIndex = 236;
             // 
             // label26
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.label26.Location = new System.Drawing.Point(377, 110);
+            this.label26.Location = new System.Drawing.Point(336, 110);
             this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(38, 16);
@@ -5229,7 +5254,7 @@
             "0x714",
             "0x715",
             "0x716"});
-            this.cmbCanAddressEcu.Location = new System.Drawing.Point(427, 108);
+            this.cmbCanAddressEcu.Location = new System.Drawing.Point(386, 108);
             this.cmbCanAddressEcu.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbCanAddressEcu.Name = "cmbCanAddressEcu";
             this.cmbCanAddressEcu.Size = new System.Drawing.Size(72, 23);
@@ -5251,7 +5276,7 @@
             // 
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.label28.Location = new System.Drawing.Point(377, 71);
+            this.label28.Location = new System.Drawing.Point(336, 71);
             this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(38, 16);
@@ -5274,7 +5299,7 @@
             "0x714",
             "0x715",
             "0x716"});
-            this.cmbCanAddressP1.Location = new System.Drawing.Point(427, 70);
+            this.cmbCanAddressP1.Location = new System.Drawing.Point(386, 70);
             this.cmbCanAddressP1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbCanAddressP1.Name = "cmbCanAddressP1";
             this.cmbCanAddressP1.Size = new System.Drawing.Size(72, 23);
@@ -5303,7 +5328,7 @@
             "can3",
             "can4",
             "can5"});
-            this.cmbSerCanP1P3CanInter.Location = new System.Drawing.Point(378, 218);
+            this.cmbSerCanP1P3CanInter.Location = new System.Drawing.Point(337, 218);
             this.cmbSerCanP1P3CanInter.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbSerCanP1P3CanInter.Name = "cmbSerCanP1P3CanInter";
             this.cmbSerCanP1P3CanInter.Size = new System.Drawing.Size(122, 24);
@@ -5319,7 +5344,7 @@
             "250K",
             "500K",
             "1M"});
-            this.cmbSerCanP1P3CanSpeed.Location = new System.Drawing.Point(289, 218);
+            this.cmbSerCanP1P3CanSpeed.Location = new System.Drawing.Point(248, 218);
             this.cmbSerCanP1P3CanSpeed.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbSerCanP1P3CanSpeed.Name = "cmbSerCanP1P3CanSpeed";
             this.cmbSerCanP1P3CanSpeed.Size = new System.Drawing.Size(80, 24);
@@ -5337,7 +5362,7 @@
             "slcan",
             "vcan",
             "serialcan"});
-            this.cmbSerCanP1P3.Location = new System.Drawing.Point(196, 218);
+            this.cmbSerCanP1P3.Location = new System.Drawing.Point(155, 218);
             this.cmbSerCanP1P3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbSerCanP1P3.Name = "cmbSerCanP1P3";
             this.cmbSerCanP1P3.Size = new System.Drawing.Size(86, 24);
@@ -5356,7 +5381,7 @@
             "can3",
             "can4",
             "can5"});
-            this.cmbSerCanP1ECUCanInter.Location = new System.Drawing.Point(378, 149);
+            this.cmbSerCanP1ECUCanInter.Location = new System.Drawing.Point(337, 149);
             this.cmbSerCanP1ECUCanInter.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbSerCanP1ECUCanInter.Name = "cmbSerCanP1ECUCanInter";
             this.cmbSerCanP1ECUCanInter.Size = new System.Drawing.Size(122, 24);
@@ -5387,7 +5412,7 @@
             "/dev/ttyACM0",
             "/dev/serial0",
             "/dev/serial1"});
-            this.cmbSerCanP1ECUSerInter.Location = new System.Drawing.Point(378, 149);
+            this.cmbSerCanP1ECUSerInter.Location = new System.Drawing.Point(337, 149);
             this.cmbSerCanP1ECUSerInter.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbSerCanP1ECUSerInter.Name = "cmbSerCanP1ECUSerInter";
             this.cmbSerCanP1ECUSerInter.Size = new System.Drawing.Size(122, 24);
@@ -5416,7 +5441,7 @@
             "57600",
             "115200",
             "230400"});
-            this.cmbSerCanP1ECUSerSpeed.Location = new System.Drawing.Point(289, 149);
+            this.cmbSerCanP1ECUSerSpeed.Location = new System.Drawing.Point(248, 149);
             this.cmbSerCanP1ECUSerSpeed.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbSerCanP1ECUSerSpeed.Name = "cmbSerCanP1ECUSerSpeed";
             this.cmbSerCanP1ECUSerSpeed.Size = new System.Drawing.Size(80, 24);
@@ -5432,7 +5457,7 @@
             "250K",
             "500K",
             "1M"});
-            this.cmbSerCanP1ECUCanSpeed.Location = new System.Drawing.Point(289, 149);
+            this.cmbSerCanP1ECUCanSpeed.Location = new System.Drawing.Point(248, 149);
             this.cmbSerCanP1ECUCanSpeed.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbSerCanP1ECUCanSpeed.Name = "cmbSerCanP1ECUCanSpeed";
             this.cmbSerCanP1ECUCanSpeed.Size = new System.Drawing.Size(80, 24);
@@ -5462,7 +5487,7 @@
             "slcan",
             "vcan",
             "serialcan"});
-            this.cmbSerCanP1ECU.Location = new System.Drawing.Point(196, 149);
+            this.cmbSerCanP1ECU.Location = new System.Drawing.Point(155, 149);
             this.cmbSerCanP1ECU.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbSerCanP1ECU.Name = "cmbSerCanP1ECU";
             this.cmbSerCanP1ECU.Size = new System.Drawing.Size(86, 24);
@@ -5484,10 +5509,10 @@
             this.panel4.Controls.Add(this.btnP2BG);
             this.panel4.Controls.Add(this.txtPaneI2IP);
             this.panel4.Controls.Add(this.label40);
-            this.panel4.Location = new System.Drawing.Point(1036, 3);
+            this.panel4.Location = new System.Drawing.Point(690, 3);
             this.panel4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(455, 117);
+            this.panel4.Size = new System.Drawing.Size(371, 117);
             this.panel4.TabIndex = 237;
             // 
             // label48
@@ -5505,7 +5530,7 @@
             // 
             this.label38.AutoSize = true;
             this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.label38.Location = new System.Drawing.Point(314, 56);
+            this.label38.Location = new System.Drawing.Point(255, 61);
             this.label38.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(38, 16);
@@ -5528,7 +5553,7 @@
             "0x714",
             "0x715",
             "0x716"});
-            this.cmbSerCanP2Address.Location = new System.Drawing.Point(376, 54);
+            this.cmbSerCanP2Address.Location = new System.Drawing.Point(294, 59);
             this.cmbSerCanP2Address.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbSerCanP2Address.Name = "cmbSerCanP2Address";
             this.cmbSerCanP2Address.Size = new System.Drawing.Size(63, 23);
@@ -5549,7 +5574,7 @@
             // txtP2Height
             // 
             this.txtP2Height.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtP2Height.Location = new System.Drawing.Point(233, 80);
+            this.txtP2Height.Location = new System.Drawing.Point(194, 86);
             this.txtP2Height.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtP2Height.Name = "txtP2Height";
             this.txtP2Height.Size = new System.Drawing.Size(56, 22);
@@ -5559,7 +5584,7 @@
             // txtP2Width
             // 
             this.txtP2Width.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtP2Width.Location = new System.Drawing.Point(135, 80);
+            this.txtP2Width.Location = new System.Drawing.Point(96, 86);
             this.txtP2Width.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtP2Width.Name = "txtP2Width";
             this.txtP2Width.Size = new System.Drawing.Size(56, 22);
@@ -5570,7 +5595,7 @@
             // 
             this.label31.AutoSize = true;
             this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label31.Location = new System.Drawing.Point(203, 84);
+            this.label31.Location = new System.Drawing.Point(164, 90);
             this.label31.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(15, 16);
@@ -5581,7 +5606,7 @@
             // 
             this.lblP2Path.AutoSize = true;
             this.lblP2Path.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblP2Path.Location = new System.Drawing.Point(249, 21);
+            this.lblP2Path.Location = new System.Drawing.Point(210, 27);
             this.lblP2Path.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblP2Path.Name = "lblP2Path";
             this.lblP2Path.Size = new System.Drawing.Size(40, 16);
@@ -5591,7 +5616,7 @@
             // btnP2BG
             // 
             this.btnP2BG.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnP2BG.Location = new System.Drawing.Point(137, 14);
+            this.btnP2BG.Location = new System.Drawing.Point(98, 20);
             this.btnP2BG.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnP2BG.Name = "btnP2BG";
             this.btnP2BG.Size = new System.Drawing.Size(105, 32);
@@ -5603,7 +5628,7 @@
             // txtPaneI2IP
             // 
             this.txtPaneI2IP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtPaneI2IP.Location = new System.Drawing.Point(137, 52);
+            this.txtPaneI2IP.Location = new System.Drawing.Point(98, 58);
             this.txtPaneI2IP.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtPaneI2IP.Name = "txtPaneI2IP";
             this.txtPaneI2IP.Size = new System.Drawing.Size(154, 22);
@@ -5635,17 +5660,17 @@
             this.panel5.Controls.Add(this.btnP3BG);
             this.panel5.Controls.Add(this.txtPanel3IP);
             this.panel5.Controls.Add(this.label47);
-            this.panel5.Location = new System.Drawing.Point(1036, 120);
+            this.panel5.Location = new System.Drawing.Point(690, 120);
             this.panel5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(455, 134);
+            this.panel5.Size = new System.Drawing.Size(371, 134);
             this.panel5.TabIndex = 238;
             // 
             // label41
             // 
             this.label41.AutoSize = true;
             this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.label41.Location = new System.Drawing.Point(314, 59);
+            this.label41.Location = new System.Drawing.Point(255, 60);
             this.label41.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(38, 16);
@@ -5668,7 +5693,7 @@
             "0x714",
             "0x715",
             "0x716"});
-            this.cmbSerCanP3Address.Location = new System.Drawing.Point(374, 57);
+            this.cmbSerCanP3Address.Location = new System.Drawing.Point(294, 58);
             this.cmbSerCanP3Address.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbSerCanP3Address.Name = "cmbSerCanP3Address";
             this.cmbSerCanP3Address.Size = new System.Drawing.Size(66, 23);
@@ -5700,7 +5725,7 @@
             // txtP3Height
             // 
             this.txtP3Height.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtP3Height.Location = new System.Drawing.Point(235, 84);
+            this.txtP3Height.Location = new System.Drawing.Point(194, 85);
             this.txtP3Height.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtP3Height.Name = "txtP3Height";
             this.txtP3Height.Size = new System.Drawing.Size(56, 22);
@@ -5710,7 +5735,7 @@
             // txtP3Width
             // 
             this.txtP3Width.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtP3Width.Location = new System.Drawing.Point(137, 84);
+            this.txtP3Width.Location = new System.Drawing.Point(96, 85);
             this.txtP3Width.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtP3Width.Name = "txtP3Width";
             this.txtP3Width.Size = new System.Drawing.Size(56, 22);
@@ -5721,7 +5746,7 @@
             // 
             this.label45.AutoSize = true;
             this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label45.Location = new System.Drawing.Point(205, 88);
+            this.label45.Location = new System.Drawing.Point(164, 89);
             this.label45.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(15, 16);
@@ -5732,7 +5757,7 @@
             // 
             this.lblP3Path.AutoSize = true;
             this.lblP3Path.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblP3Path.Location = new System.Drawing.Point(249, 24);
+            this.lblP3Path.Location = new System.Drawing.Point(208, 25);
             this.lblP3Path.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblP3Path.Name = "lblP3Path";
             this.lblP3Path.Size = new System.Drawing.Size(40, 16);
@@ -5742,7 +5767,7 @@
             // btnP3BG
             // 
             this.btnP3BG.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnP3BG.Location = new System.Drawing.Point(137, 17);
+            this.btnP3BG.Location = new System.Drawing.Point(96, 18);
             this.btnP3BG.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnP3BG.Name = "btnP3BG";
             this.btnP3BG.Size = new System.Drawing.Size(105, 32);
@@ -5754,7 +5779,7 @@
             // txtPanel3IP
             // 
             this.txtPanel3IP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtPanel3IP.Location = new System.Drawing.Point(137, 55);
+            this.txtPanel3IP.Location = new System.Drawing.Point(96, 56);
             this.txtPanel3IP.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtPanel3IP.Name = "txtPanel3IP";
             this.txtPanel3IP.Size = new System.Drawing.Size(154, 22);
@@ -5779,145 +5804,199 @@
             this.btnQuit.Location = new System.Drawing.Point(14, 162);
             this.btnQuit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnQuit.Name = "btnQuit";
-            this.btnQuit.Size = new System.Drawing.Size(501, 83);
+            this.btnQuit.Size = new System.Drawing.Size(201, 83);
             this.btnQuit.TabIndex = 240;
             this.btnQuit.Text = "Save / Exit";
             this.btnQuit.UseVisualStyleBackColor = false;
             this.btnQuit.Click += new System.EventHandler(this.button1_Click);
             // 
-            // panel6
+            // pnlSymbols
             // 
-            this.panel6.Controls.Add(this.txtSymBrakesGPIO);
-            this.panel6.Controls.Add(this.txtSymBrakesY);
-            this.panel6.Controls.Add(this.txtSymBrakesX);
-            this.panel6.Controls.Add(this.cmbSymBrakes);
-            this.panel6.Controls.Add(this.brakes);
-            this.panel6.Controls.Add(this.txtSymSeat2GPIO);
-            this.panel6.Controls.Add(this.txtSymSeat2Y);
-            this.panel6.Controls.Add(this.txtSymSeat2X);
-            this.panel6.Controls.Add(this.cmbSymSeat2);
-            this.panel6.Controls.Add(this.Seat2);
-            this.panel6.Controls.Add(this.txtSymDemisterGPIO);
-            this.panel6.Controls.Add(this.txtSymWiperIntGPIO);
-            this.panel6.Controls.Add(this.txtSymWasherGPIO);
-            this.panel6.Controls.Add(this.txtSymSeatbeltsGPIO);
-            this.panel6.Controls.Add(this.txtSymSeat1GPIO);
-            this.panel6.Controls.Add(this.txtSymBonnetGPIO);
-            this.panel6.Controls.Add(this.txtSymBootGPIO);
-            this.panel6.Controls.Add(this.txtSymDoorGPIO);
-            this.panel6.Controls.Add(this.txtSymTempGPIO);
-            this.panel6.Controls.Add(this.txtSymTyreGPIO);
-            this.panel6.Controls.Add(this.txtSymOilGPIO);
-            this.panel6.Controls.Add(this.txtSymFuelGPIO);
-            this.panel6.Controls.Add(this.txtSymBatteryGPIO);
-            this.panel6.Controls.Add(this.txtSymSpannerGPIO);
-            this.panel6.Controls.Add(this.txtSymHazardsGPIO);
-            this.panel6.Controls.Add(this.txtSymIndRightGPIO);
-            this.panel6.Controls.Add(this.txtSymIndLeftGPIO);
-            this.panel6.Controls.Add(this.txtSymFoglightGPIO);
-            this.panel6.Controls.Add(this.txtSymSpotlightGPIO);
-            this.panel6.Controls.Add(this.txtSymHeadlightsGPIO);
-            this.panel6.Controls.Add(this.txtSymFullbeamGPIO);
-            this.panel6.Controls.Add(this.label51);
-            this.panel6.Controls.Add(this.label34);
-            this.panel6.Controls.Add(this.label35);
-            this.panel6.Controls.Add(this.txtSymSidelightGPIO);
-            this.panel6.Controls.Add(this.label20);
-            this.panel6.Controls.Add(this.label19);
-            this.panel6.Controls.Add(this.txtSymY);
-            this.panel6.Controls.Add(this.txtSymX);
-            this.panel6.Controls.Add(this.txtSymOilY);
-            this.panel6.Controls.Add(this.txtSymOilX);
-            this.panel6.Controls.Add(this.cmbSymOil);
-            this.panel6.Controls.Add(this.txtSymFuelY);
-            this.panel6.Controls.Add(this.txtSymFuelX);
-            this.panel6.Controls.Add(this.cmbSymFuel);
-            this.panel6.Controls.Add(this.txtSymDemisterY);
-            this.panel6.Controls.Add(this.txtSymBatteryY);
-            this.panel6.Controls.Add(this.txtSymDemisterX);
-            this.panel6.Controls.Add(this.txtSymBatteryX);
-            this.panel6.Controls.Add(this.cmbSymDemister);
-            this.panel6.Controls.Add(this.cmbSymBattery);
-            this.panel6.Controls.Add(this.txtSymWiperIntY);
-            this.panel6.Controls.Add(this.txtSymSpannerY);
-            this.panel6.Controls.Add(this.txtSymWiperIntX);
-            this.panel6.Controls.Add(this.txtSymSpannerX);
-            this.panel6.Controls.Add(this.cmbSymWiperInt);
-            this.panel6.Controls.Add(this.cmbSymSpanner);
-            this.panel6.Controls.Add(this.txtSymWasherY);
-            this.panel6.Controls.Add(this.txtSymHazardsY);
-            this.panel6.Controls.Add(this.txtSymWasherX);
-            this.panel6.Controls.Add(this.txtSymHazardsX);
-            this.panel6.Controls.Add(this.cmbSymWasher);
-            this.panel6.Controls.Add(this.cmbSymHazards);
-            this.panel6.Controls.Add(this.txtSymSeatbeltsY);
-            this.panel6.Controls.Add(this.txtSymIndRightY);
-            this.panel6.Controls.Add(this.txtSymSeatbeltsX);
-            this.panel6.Controls.Add(this.txtSymIndRightX);
-            this.panel6.Controls.Add(this.cmbSymSeatbelts);
-            this.panel6.Controls.Add(this.cmbSymIndRight);
-            this.panel6.Controls.Add(this.txtSymSeat1Y);
-            this.panel6.Controls.Add(this.txtSymIndLeftY);
-            this.panel6.Controls.Add(this.txtSymSeat1X);
-            this.panel6.Controls.Add(this.txtSymIndLeftX);
-            this.panel6.Controls.Add(this.cmbSymSeat1);
-            this.panel6.Controls.Add(this.cmbSymIndLeft);
-            this.panel6.Controls.Add(this.txtSymBonnetY);
-            this.panel6.Controls.Add(this.txtSymFoglightY);
-            this.panel6.Controls.Add(this.txtSymBonnetX);
-            this.panel6.Controls.Add(this.txtSymFoglightX);
-            this.panel6.Controls.Add(this.cmbSymBonnet);
-            this.panel6.Controls.Add(this.cmbSymFoglight);
-            this.panel6.Controls.Add(this.txtSymBootY);
-            this.panel6.Controls.Add(this.txtSymSpotlightY);
-            this.panel6.Controls.Add(this.txtSymBootX);
-            this.panel6.Controls.Add(this.txtSymSpotlightX);
-            this.panel6.Controls.Add(this.cmbSymBoot);
-            this.panel6.Controls.Add(this.cmbSymSpotlights);
-            this.panel6.Controls.Add(this.txtSymDoorY);
-            this.panel6.Controls.Add(this.txtSymHeadlightsY);
-            this.panel6.Controls.Add(this.txtSymDoorX);
-            this.panel6.Controls.Add(this.txtSymHeadlightsX);
-            this.panel6.Controls.Add(this.cmbSymDoor);
-            this.panel6.Controls.Add(this.cmbSymHeadlights);
-            this.panel6.Controls.Add(this.txtSymTempY);
-            this.panel6.Controls.Add(this.txtSymFullbeamY);
-            this.panel6.Controls.Add(this.txtSymTempX);
-            this.panel6.Controls.Add(this.txtSymFullbeamX);
-            this.panel6.Controls.Add(this.cmbSymTemp);
-            this.panel6.Controls.Add(this.cmbSymFullbeam);
-            this.panel6.Controls.Add(this.txtSymTyreY);
-            this.panel6.Controls.Add(this.txtSymSidelightY);
-            this.panel6.Controls.Add(this.txtSymTyreX);
-            this.panel6.Controls.Add(this.txtSymSidelightX);
-            this.panel6.Controls.Add(this.cmbSymTyre);
-            this.panel6.Controls.Add(this.cmbSymSidelights);
-            this.panel6.Controls.Add(this.door);
-            this.panel6.Controls.Add(this.spanner);
-            this.panel6.Controls.Add(this.temp);
-            this.panel6.Controls.Add(this.hazards);
-            this.panel6.Controls.Add(this.indright);
-            this.panel6.Controls.Add(this.indleft);
-            this.panel6.Controls.Add(this.washer);
-            this.panel6.Controls.Add(this.wiperint);
-            this.panel6.Controls.Add(this.tyre);
-            this.panel6.Controls.Add(this.oil);
-            this.panel6.Controls.Add(this.fuel);
-            this.panel6.Controls.Add(this.demister);
-            this.panel6.Controls.Add(this.battery);
-            this.panel6.Controls.Add(this.foglight);
-            this.panel6.Controls.Add(this.spotlight);
-            this.panel6.Controls.Add(this.fullbeam);
-            this.panel6.Controls.Add(this.highbeam);
-            this.panel6.Controls.Add(this.sidelight);
-            this.panel6.Controls.Add(this.boot);
-            this.panel6.Controls.Add(this.bonnet);
-            this.panel6.Controls.Add(this.seatbelts);
-            this.panel6.Controls.Add(this.Seat1);
-            this.panel6.Location = new System.Drawing.Point(1498, 3);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(291, 917);
-            this.panel6.TabIndex = 263;
+            this.pnlSymbols.Controls.Add(this.txtSymBrakesGPIO);
+            this.pnlSymbols.Controls.Add(this.txtSymBrakesY);
+            this.pnlSymbols.Controls.Add(this.txtSymBrakesX);
+            this.pnlSymbols.Controls.Add(this.cmbSymBrakes);
+            this.pnlSymbols.Controls.Add(this.brakes);
+            this.pnlSymbols.Controls.Add(this.txtSymSeat2GPIO);
+            this.pnlSymbols.Controls.Add(this.txtSymSeat2Y);
+            this.pnlSymbols.Controls.Add(this.txtSymSeat2X);
+            this.pnlSymbols.Controls.Add(this.cmbSymSeat2);
+            this.pnlSymbols.Controls.Add(this.Seat2);
+            this.pnlSymbols.Controls.Add(this.txtSymDemisterGPIO);
+            this.pnlSymbols.Controls.Add(this.txtSymWiperIntGPIO);
+            this.pnlSymbols.Controls.Add(this.txtSymWasherGPIO);
+            this.pnlSymbols.Controls.Add(this.txtSymSeatbeltsGPIO);
+            this.pnlSymbols.Controls.Add(this.txtSymSeat1GPIO);
+            this.pnlSymbols.Controls.Add(this.txtSymBonnetGPIO);
+            this.pnlSymbols.Controls.Add(this.txtSymBootGPIO);
+            this.pnlSymbols.Controls.Add(this.txtSymDoorGPIO);
+            this.pnlSymbols.Controls.Add(this.txtSymTempGPIO);
+            this.pnlSymbols.Controls.Add(this.txtSymTyreGPIO);
+            this.pnlSymbols.Controls.Add(this.txtSymOilGPIO);
+            this.pnlSymbols.Controls.Add(this.txtSymFuelGPIO);
+            this.pnlSymbols.Controls.Add(this.txtSymBatteryGPIO);
+            this.pnlSymbols.Controls.Add(this.txtSymSpannerGPIO);
+            this.pnlSymbols.Controls.Add(this.txtSymHazardsGPIO);
+            this.pnlSymbols.Controls.Add(this.txtSymIndRightGPIO);
+            this.pnlSymbols.Controls.Add(this.txtSymIndLeftGPIO);
+            this.pnlSymbols.Controls.Add(this.txtSymFoglightGPIO);
+            this.pnlSymbols.Controls.Add(this.txtSymSpotlightGPIO);
+            this.pnlSymbols.Controls.Add(this.txtSymHeadlightsGPIO);
+            this.pnlSymbols.Controls.Add(this.txtSymFullbeamGPIO);
+            this.pnlSymbols.Controls.Add(this.label51);
+            this.pnlSymbols.Controls.Add(this.label34);
+            this.pnlSymbols.Controls.Add(this.label35);
+            this.pnlSymbols.Controls.Add(this.txtSymSidelightGPIO);
+            this.pnlSymbols.Controls.Add(this.label20);
+            this.pnlSymbols.Controls.Add(this.label19);
+            this.pnlSymbols.Controls.Add(this.txtSymY);
+            this.pnlSymbols.Controls.Add(this.txtSymX);
+            this.pnlSymbols.Controls.Add(this.txtSymOilY);
+            this.pnlSymbols.Controls.Add(this.txtSymOilX);
+            this.pnlSymbols.Controls.Add(this.cmbSymOil);
+            this.pnlSymbols.Controls.Add(this.txtSymFuelY);
+            this.pnlSymbols.Controls.Add(this.txtSymFuelX);
+            this.pnlSymbols.Controls.Add(this.cmbSymFuel);
+            this.pnlSymbols.Controls.Add(this.txtSymDemisterY);
+            this.pnlSymbols.Controls.Add(this.txtSymBatteryY);
+            this.pnlSymbols.Controls.Add(this.txtSymDemisterX);
+            this.pnlSymbols.Controls.Add(this.txtSymBatteryX);
+            this.pnlSymbols.Controls.Add(this.cmbSymDemister);
+            this.pnlSymbols.Controls.Add(this.cmbSymBattery);
+            this.pnlSymbols.Controls.Add(this.txtSymWiperIntY);
+            this.pnlSymbols.Controls.Add(this.txtSymSpannerY);
+            this.pnlSymbols.Controls.Add(this.txtSymWiperIntX);
+            this.pnlSymbols.Controls.Add(this.txtSymSpannerX);
+            this.pnlSymbols.Controls.Add(this.cmbSymWiperInt);
+            this.pnlSymbols.Controls.Add(this.cmbSymSpanner);
+            this.pnlSymbols.Controls.Add(this.txtSymWasherY);
+            this.pnlSymbols.Controls.Add(this.txtSymHazardsY);
+            this.pnlSymbols.Controls.Add(this.txtSymWasherX);
+            this.pnlSymbols.Controls.Add(this.txtSymHazardsX);
+            this.pnlSymbols.Controls.Add(this.cmbSymWasher);
+            this.pnlSymbols.Controls.Add(this.cmbSymHazards);
+            this.pnlSymbols.Controls.Add(this.txtSymSeatbeltsY);
+            this.pnlSymbols.Controls.Add(this.txtSymIndRightY);
+            this.pnlSymbols.Controls.Add(this.txtSymSeatbeltsX);
+            this.pnlSymbols.Controls.Add(this.txtSymIndRightX);
+            this.pnlSymbols.Controls.Add(this.cmbSymSeatbelts);
+            this.pnlSymbols.Controls.Add(this.cmbSymIndRight);
+            this.pnlSymbols.Controls.Add(this.txtSymSeat1Y);
+            this.pnlSymbols.Controls.Add(this.txtSymIndLeftY);
+            this.pnlSymbols.Controls.Add(this.txtSymSeat1X);
+            this.pnlSymbols.Controls.Add(this.txtSymIndLeftX);
+            this.pnlSymbols.Controls.Add(this.cmbSymSeat1);
+            this.pnlSymbols.Controls.Add(this.cmbSymIndLeft);
+            this.pnlSymbols.Controls.Add(this.txtSymBonnetY);
+            this.pnlSymbols.Controls.Add(this.txtSymFoglightY);
+            this.pnlSymbols.Controls.Add(this.txtSymBonnetX);
+            this.pnlSymbols.Controls.Add(this.txtSymFoglightX);
+            this.pnlSymbols.Controls.Add(this.cmbSymBonnet);
+            this.pnlSymbols.Controls.Add(this.cmbSymFoglight);
+            this.pnlSymbols.Controls.Add(this.txtSymBootY);
+            this.pnlSymbols.Controls.Add(this.txtSymSpotlightY);
+            this.pnlSymbols.Controls.Add(this.txtSymBootX);
+            this.pnlSymbols.Controls.Add(this.txtSymSpotlightX);
+            this.pnlSymbols.Controls.Add(this.cmbSymBoot);
+            this.pnlSymbols.Controls.Add(this.cmbSymSpotlights);
+            this.pnlSymbols.Controls.Add(this.txtSymDoorY);
+            this.pnlSymbols.Controls.Add(this.txtSymHeadlightsY);
+            this.pnlSymbols.Controls.Add(this.txtSymDoorX);
+            this.pnlSymbols.Controls.Add(this.txtSymHeadlightsX);
+            this.pnlSymbols.Controls.Add(this.cmbSymDoor);
+            this.pnlSymbols.Controls.Add(this.cmbSymHeadlights);
+            this.pnlSymbols.Controls.Add(this.txtSymTempY);
+            this.pnlSymbols.Controls.Add(this.txtSymFullbeamY);
+            this.pnlSymbols.Controls.Add(this.txtSymTempX);
+            this.pnlSymbols.Controls.Add(this.txtSymFullbeamX);
+            this.pnlSymbols.Controls.Add(this.cmbSymTemp);
+            this.pnlSymbols.Controls.Add(this.cmbSymFullbeam);
+            this.pnlSymbols.Controls.Add(this.txtSymTyreY);
+            this.pnlSymbols.Controls.Add(this.txtSymSidelightY);
+            this.pnlSymbols.Controls.Add(this.txtSymTyreX);
+            this.pnlSymbols.Controls.Add(this.txtSymSidelightX);
+            this.pnlSymbols.Controls.Add(this.cmbSymTyre);
+            this.pnlSymbols.Controls.Add(this.cmbSymSidelights);
+            this.pnlSymbols.Controls.Add(this.door);
+            this.pnlSymbols.Controls.Add(this.spanner);
+            this.pnlSymbols.Controls.Add(this.temp);
+            this.pnlSymbols.Controls.Add(this.hazards);
+            this.pnlSymbols.Controls.Add(this.indright);
+            this.pnlSymbols.Controls.Add(this.indleft);
+            this.pnlSymbols.Controls.Add(this.washer);
+            this.pnlSymbols.Controls.Add(this.wiperint);
+            this.pnlSymbols.Controls.Add(this.tyre);
+            this.pnlSymbols.Controls.Add(this.oil);
+            this.pnlSymbols.Controls.Add(this.fuel);
+            this.pnlSymbols.Controls.Add(this.demister);
+            this.pnlSymbols.Controls.Add(this.battery);
+            this.pnlSymbols.Controls.Add(this.foglight);
+            this.pnlSymbols.Controls.Add(this.spotlight);
+            this.pnlSymbols.Controls.Add(this.fullbeam);
+            this.pnlSymbols.Controls.Add(this.highbeam);
+            this.pnlSymbols.Controls.Add(this.sidelight);
+            this.pnlSymbols.Controls.Add(this.boot);
+            this.pnlSymbols.Controls.Add(this.bonnet);
+            this.pnlSymbols.Controls.Add(this.seatbelts);
+            this.pnlSymbols.Controls.Add(this.Seat1);
+            this.pnlSymbols.Location = new System.Drawing.Point(1498, 3);
+            this.pnlSymbols.Name = "pnlSymbols";
+            this.pnlSymbols.Size = new System.Drawing.Size(291, 917);
+            this.pnlSymbols.TabIndex = 263;
+            // 
+            // txtSymBrakesGPIO
+            // 
+            this.txtSymBrakesGPIO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtSymBrakesGPIO.Location = new System.Drawing.Point(244, 892);
+            this.txtSymBrakesGPIO.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtSymBrakesGPIO.Name = "txtSymBrakesGPIO";
+            this.txtSymBrakesGPIO.Size = new System.Drawing.Size(32, 22);
+            this.txtSymBrakesGPIO.TabIndex = 388;
+            this.txtSymBrakesGPIO.Text = "0";
+            // 
+            // txtSymBrakesY
+            // 
+            this.txtSymBrakesY.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtSymBrakesY.Location = new System.Drawing.Point(203, 892);
+            this.txtSymBrakesY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtSymBrakesY.Name = "txtSymBrakesY";
+            this.txtSymBrakesY.Size = new System.Drawing.Size(32, 22);
+            this.txtSymBrakesY.TabIndex = 387;
+            this.txtSymBrakesY.Text = "0";
+            // 
+            // txtSymBrakesX
+            // 
+            this.txtSymBrakesX.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtSymBrakesX.Location = new System.Drawing.Point(165, 892);
+            this.txtSymBrakesX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtSymBrakesX.Name = "txtSymBrakesX";
+            this.txtSymBrakesX.Size = new System.Drawing.Size(32, 22);
+            this.txtSymBrakesX.TabIndex = 386;
+            this.txtSymBrakesX.Text = "0";
+            // 
+            // cmbSymBrakes
+            // 
+            this.cmbSymBrakes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cmbSymBrakes.FormattingEnabled = true;
+            this.cmbSymBrakes.Items.AddRange(new object[] {
+            "N",
+            "Panel 1",
+            "Panel 2",
+            "Panel 3"});
+            this.cmbSymBrakes.Location = new System.Drawing.Point(60, 892);
+            this.cmbSymBrakes.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cmbSymBrakes.Name = "cmbSymBrakes";
+            this.cmbSymBrakes.Size = new System.Drawing.Size(98, 24);
+            this.cmbSymBrakes.TabIndex = 385;
+            this.cmbSymBrakes.Text = "N";
+            // 
+            // brakes
+            // 
+            this.brakes.Location = new System.Drawing.Point(13, 886);
+            this.brakes.Name = "brakes";
+            this.brakes.Size = new System.Drawing.Size(40, 30);
+            this.brakes.TabIndex = 384;
+            this.brakes.TabStop = false;
             // 
             // txtSymSeat2GPIO
             // 
@@ -7236,59 +7315,294 @@
             this.Seat1.TabIndex = 263;
             this.Seat1.TabStop = false;
             // 
-            // txtSymBrakesGPIO
+            // pnlInfo
             // 
-            this.txtSymBrakesGPIO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtSymBrakesGPIO.Location = new System.Drawing.Point(244, 892);
-            this.txtSymBrakesGPIO.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txtSymBrakesGPIO.Name = "txtSymBrakesGPIO";
-            this.txtSymBrakesGPIO.Size = new System.Drawing.Size(32, 22);
-            this.txtSymBrakesGPIO.TabIndex = 388;
-            this.txtSymBrakesGPIO.Text = "0";
+            this.pnlInfo.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.pnlInfo.Controls.Add(this.txtTripSize);
+            this.pnlInfo.Controls.Add(this.txtTripY);
+            this.pnlInfo.Controls.Add(this.txtTripX);
+            this.pnlInfo.Controls.Add(this.label61);
+            this.pnlInfo.Controls.Add(this.txtEcoFont);
+            this.pnlInfo.Controls.Add(this.txtEcoY);
+            this.pnlInfo.Controls.Add(this.txtEcoX);
+            this.pnlInfo.Controls.Add(this.label62);
+            this.pnlInfo.Controls.Add(this.cmbOdoMilesKM);
+            this.pnlInfo.Controls.Add(this.txtOdoReading);
+            this.pnlInfo.Controls.Add(this.label59);
+            this.pnlInfo.Controls.Add(this.label60);
+            this.pnlInfo.Controls.Add(this.txtInfoTextFont);
+            this.pnlInfo.Controls.Add(this.label58);
+            this.pnlInfo.Controls.Add(this.txtOdometerY);
+            this.pnlInfo.Controls.Add(this.txtOdometerX);
+            this.pnlInfo.Controls.Add(this.label57);
+            this.pnlInfo.Controls.Add(this.txtInfoPanelY);
+            this.pnlInfo.Controls.Add(this.label55);
+            this.pnlInfo.Controls.Add(this.label56);
+            this.pnlInfo.Controls.Add(this.label54);
+            this.pnlInfo.Controls.Add(this.label52);
+            this.pnlInfo.Controls.Add(this.txtInfoPanelX);
+            this.pnlInfo.Controls.Add(this.label53);
+            this.pnlInfo.Location = new System.Drawing.Point(1062, 3);
+            this.pnlInfo.Name = "pnlInfo";
+            this.pnlInfo.Size = new System.Drawing.Size(429, 251);
+            this.pnlInfo.TabIndex = 264;
             // 
-            // txtSymBrakesY
+            // txtEcoFont
             // 
-            this.txtSymBrakesY.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtSymBrakesY.Location = new System.Drawing.Point(203, 892);
-            this.txtSymBrakesY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txtSymBrakesY.Name = "txtSymBrakesY";
-            this.txtSymBrakesY.Size = new System.Drawing.Size(32, 22);
-            this.txtSymBrakesY.TabIndex = 387;
-            this.txtSymBrakesY.Text = "0";
+            this.txtEcoFont.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtEcoFont.Location = new System.Drawing.Point(264, 127);
+            this.txtEcoFont.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtEcoFont.Name = "txtEcoFont";
+            this.txtEcoFont.Size = new System.Drawing.Size(32, 22);
+            this.txtEcoFont.TabIndex = 291;
+            this.txtEcoFont.Text = "14";
             // 
-            // txtSymBrakesX
+            // txtEcoY
             // 
-            this.txtSymBrakesX.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtSymBrakesX.Location = new System.Drawing.Point(165, 892);
-            this.txtSymBrakesX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txtSymBrakesX.Name = "txtSymBrakesX";
-            this.txtSymBrakesX.Size = new System.Drawing.Size(32, 22);
-            this.txtSymBrakesX.TabIndex = 386;
-            this.txtSymBrakesX.Text = "0";
+            this.txtEcoY.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtEcoY.Location = new System.Drawing.Point(221, 127);
+            this.txtEcoY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtEcoY.Name = "txtEcoY";
+            this.txtEcoY.Size = new System.Drawing.Size(32, 22);
+            this.txtEcoY.TabIndex = 290;
+            this.txtEcoY.Text = "0";
             // 
-            // cmbSymBrakes
+            // txtEcoX
             // 
-            this.cmbSymBrakes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cmbSymBrakes.FormattingEnabled = true;
-            this.cmbSymBrakes.Items.AddRange(new object[] {
-            "N",
-            "Panel 1",
-            "Panel 2",
-            "Panel 3"});
-            this.cmbSymBrakes.Location = new System.Drawing.Point(60, 892);
-            this.cmbSymBrakes.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.cmbSymBrakes.Name = "cmbSymBrakes";
-            this.cmbSymBrakes.Size = new System.Drawing.Size(98, 24);
-            this.cmbSymBrakes.TabIndex = 385;
-            this.cmbSymBrakes.Text = "N";
+            this.txtEcoX.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtEcoX.Location = new System.Drawing.Point(174, 127);
+            this.txtEcoX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtEcoX.Name = "txtEcoX";
+            this.txtEcoX.Size = new System.Drawing.Size(32, 22);
+            this.txtEcoX.TabIndex = 289;
+            this.txtEcoX.Text = "0";
             // 
-            // brakes
+            // label62
             // 
-            this.brakes.Location = new System.Drawing.Point(13, 886);
-            this.brakes.Name = "brakes";
-            this.brakes.Size = new System.Drawing.Size(40, 30);
-            this.brakes.TabIndex = 384;
-            this.brakes.TabStop = false;
+            this.label62.AutoSize = true;
+            this.label62.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label62.Location = new System.Drawing.Point(60, 128);
+            this.label62.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(91, 16);
+            this.label62.TabIndex = 288;
+            this.label62.Text = "Economy X/Y:";
+            // 
+            // cmbOdoMilesKM
+            // 
+            this.cmbOdoMilesKM.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cmbOdoMilesKM.FormattingEnabled = true;
+            this.cmbOdoMilesKM.Items.AddRange(new object[] {
+            "Miles",
+            "KM"});
+            this.cmbOdoMilesKM.Location = new System.Drawing.Point(175, 219);
+            this.cmbOdoMilesKM.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cmbOdoMilesKM.Name = "cmbOdoMilesKM";
+            this.cmbOdoMilesKM.Size = new System.Drawing.Size(80, 24);
+            this.cmbOdoMilesKM.TabIndex = 286;
+            this.cmbOdoMilesKM.Text = "KM";
+            this.cmbOdoMilesKM.SelectedIndexChanged += new System.EventHandler(this.cmbOdoMilesKM_SelectedIndexChanged);
+            // 
+            // txtOdoReading
+            // 
+            this.txtOdoReading.Enabled = false;
+            this.txtOdoReading.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtOdoReading.Location = new System.Drawing.Point(62, 219);
+            this.txtOdoReading.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtOdoReading.Name = "txtOdoReading";
+            this.txtOdoReading.Size = new System.Drawing.Size(68, 22);
+            this.txtOdoReading.TabIndex = 181;
+            this.txtOdoReading.Text = "12345";
+            // 
+            // label59
+            // 
+            this.label59.AutoSize = true;
+            this.label59.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label59.Location = new System.Drawing.Point(221, 166);
+            this.label59.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(19, 16);
+            this.label59.TabIndex = 180;
+            this.label59.Text = "Y:";
+            // 
+            // label60
+            // 
+            this.label60.AutoSize = true;
+            this.label60.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label60.Location = new System.Drawing.Point(174, 167);
+            this.label60.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(18, 16);
+            this.label60.TabIndex = 179;
+            this.label60.Text = "X:";
+            // 
+            // txtInfoTextFont
+            // 
+            this.txtInfoTextFont.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtInfoTextFont.Location = new System.Drawing.Point(265, 41);
+            this.txtInfoTextFont.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtInfoTextFont.Name = "txtInfoTextFont";
+            this.txtInfoTextFont.Size = new System.Drawing.Size(32, 22);
+            this.txtInfoTextFont.TabIndex = 177;
+            this.txtInfoTextFont.Text = "14";
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label58.Location = new System.Drawing.Point(264, 15);
+            this.label58.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(36, 16);
+            this.label58.TabIndex = 176;
+            this.label58.Text = "Font:";
+            // 
+            // txtOdometerY
+            // 
+            this.txtOdometerY.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtOdometerY.Location = new System.Drawing.Point(221, 191);
+            this.txtOdometerY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtOdometerY.Name = "txtOdometerY";
+            this.txtOdometerY.Size = new System.Drawing.Size(34, 22);
+            this.txtOdometerY.TabIndex = 175;
+            this.txtOdometerY.Text = "0";
+            // 
+            // txtOdometerX
+            // 
+            this.txtOdometerX.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtOdometerX.Location = new System.Drawing.Point(175, 191);
+            this.txtOdometerX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtOdometerX.Name = "txtOdometerX";
+            this.txtOdometerX.Size = new System.Drawing.Size(31, 22);
+            this.txtOdometerX.TabIndex = 174;
+            this.txtOdometerX.Text = "0";
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label57.Location = new System.Drawing.Point(60, 194);
+            this.label57.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(61, 16);
+            this.label57.TabIndex = 173;
+            this.label57.Text = "Location:";
+            // 
+            // txtInfoPanelY
+            // 
+            this.txtInfoPanelY.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtInfoPanelY.Location = new System.Drawing.Point(221, 41);
+            this.txtInfoPanelY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtInfoPanelY.Name = "txtInfoPanelY";
+            this.txtInfoPanelY.Size = new System.Drawing.Size(34, 22);
+            this.txtInfoPanelY.TabIndex = 172;
+            this.txtInfoPanelY.Text = "0";
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label55.Location = new System.Drawing.Point(221, 15);
+            this.label55.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(19, 16);
+            this.label55.TabIndex = 171;
+            this.label55.Text = "Y:";
+            // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label56.Location = new System.Drawing.Point(174, 16);
+            this.label56.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(18, 16);
+            this.label56.TabIndex = 170;
+            this.label56.Text = "X:";
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
+            this.label54.Location = new System.Drawing.Point(20, 166);
+            this.label54.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(135, 16);
+            this.label54.TabIndex = 169;
+            this.label54.Text = "Panel 1 Odometer:";
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
+            this.label52.Location = new System.Drawing.Point(22, 15);
+            this.label52.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(136, 16);
+            this.label52.TabIndex = 168;
+            this.label52.Text = "Panel 1 Info Panel:";
+            // 
+            // txtInfoPanelX
+            // 
+            this.txtInfoPanelX.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtInfoPanelX.Location = new System.Drawing.Point(174, 41);
+            this.txtInfoPanelX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtInfoPanelX.Name = "txtInfoPanelX";
+            this.txtInfoPanelX.Size = new System.Drawing.Size(32, 22);
+            this.txtInfoPanelX.TabIndex = 167;
+            this.txtInfoPanelX.Text = "0";
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label53.Location = new System.Drawing.Point(60, 41);
+            this.label53.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(63, 16);
+            this.label53.TabIndex = 166;
+            this.label53.Text = "Info Area:";
+            // 
+            // txtTripSize
+            // 
+            this.txtTripSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtTripSize.Location = new System.Drawing.Point(264, 86);
+            this.txtTripSize.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtTripSize.Name = "txtTripSize";
+            this.txtTripSize.Size = new System.Drawing.Size(32, 22);
+            this.txtTripSize.TabIndex = 295;
+            this.txtTripSize.Text = "14";
+            // 
+            // txtTripY
+            // 
+            this.txtTripY.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtTripY.Location = new System.Drawing.Point(221, 86);
+            this.txtTripY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtTripY.Name = "txtTripY";
+            this.txtTripY.Size = new System.Drawing.Size(32, 22);
+            this.txtTripY.TabIndex = 294;
+            this.txtTripY.Text = "0";
+            // 
+            // txtTripX
+            // 
+            this.txtTripX.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtTripX.Location = new System.Drawing.Point(174, 86);
+            this.txtTripX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtTripX.Name = "txtTripX";
+            this.txtTripX.Size = new System.Drawing.Size(32, 22);
+            this.txtTripX.TabIndex = 293;
+            this.txtTripX.Text = "0";
+            // 
+            // label61
+            // 
+            this.label61.AutoSize = true;
+            this.label61.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label61.Location = new System.Drawing.Point(60, 87);
+            this.label61.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(34, 16);
+            this.label61.TabIndex = 292;
+            this.label61.Text = "Trip:";
             // 
             // frmWizard
             // 
@@ -7300,7 +7614,8 @@
             this.BackColor = System.Drawing.Color.Turquoise;
             this.ClientSize = new System.Drawing.Size(1789, 950);
             this.ControlBox = false;
-            this.Controls.Add(this.panel6);
+            this.Controls.Add(this.pnlInfo);
+            this.Controls.Add(this.pnlSymbols);
             this.Controls.Add(this.btnQuit);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
@@ -7327,8 +7642,9 @@
             this.panel4.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
+            this.pnlSymbols.ResumeLayout(false);
+            this.pnlSymbols.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.brakes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Seat2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.door)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spanner)).EndInit();
@@ -7352,7 +7668,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.bonnet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seatbelts)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Seat1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.brakes)).EndInit();
+            this.pnlInfo.ResumeLayout(false);
+            this.pnlInfo.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -7738,7 +8055,7 @@
         private System.Windows.Forms.TextBox txtFuelCanOffset;
         private System.Windows.Forms.TextBox txtOilTCanOffset;
         private System.Windows.Forms.TextBox txtOilCanOffset;
-        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel pnlSymbols;
         private System.Windows.Forms.PictureBox door;
         private System.Windows.Forms.PictureBox spanner;
         private System.Windows.Forms.PictureBox temp;
@@ -7868,5 +8185,30 @@
         private System.Windows.Forms.TextBox txtSymBrakesX;
         private System.Windows.Forms.ComboBox cmbSymBrakes;
         private System.Windows.Forms.PictureBox brakes;
+        private System.Windows.Forms.Panel pnlInfo;
+        private System.Windows.Forms.Label label59;
+        private System.Windows.Forms.Label label60;
+        private System.Windows.Forms.TextBox txtInfoTextFont;
+        private System.Windows.Forms.Label label58;
+        private System.Windows.Forms.TextBox txtOdometerY;
+        private System.Windows.Forms.TextBox txtOdometerX;
+        private System.Windows.Forms.Label label57;
+        private System.Windows.Forms.TextBox txtInfoPanelY;
+        private System.Windows.Forms.Label label55;
+        private System.Windows.Forms.Label label56;
+        private System.Windows.Forms.Label label54;
+        private System.Windows.Forms.Label label52;
+        private System.Windows.Forms.TextBox txtInfoPanelX;
+        private System.Windows.Forms.Label label53;
+        private System.Windows.Forms.ComboBox cmbOdoMilesKM;
+        private System.Windows.Forms.TextBox txtOdoReading;
+        private System.Windows.Forms.TextBox txtEcoFont;
+        private System.Windows.Forms.TextBox txtEcoY;
+        private System.Windows.Forms.TextBox txtEcoX;
+        private System.Windows.Forms.Label label62;
+        private System.Windows.Forms.TextBox txtTripSize;
+        private System.Windows.Forms.TextBox txtTripY;
+        private System.Windows.Forms.TextBox txtTripX;
+        private System.Windows.Forms.Label label61;
     }
 }

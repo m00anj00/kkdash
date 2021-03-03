@@ -29,6 +29,7 @@ namespace kkdash
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGraphic1));
             this.pictureBG = new System.Windows.Forms.PictureBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.txtTopVal = new System.Windows.Forms.TextBox();
@@ -39,6 +40,10 @@ namespace kkdash
             this.pnlDirections = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.pnlSymbols = new System.Windows.Forms.Panel();
+            this.picEconomy = new System.Windows.Forms.PictureBox();
+            this.picTrip = new System.Windows.Forms.PictureBox();
+            this.picOdometer = new System.Windows.Forms.PictureBox();
+            this.Seat2 = new System.Windows.Forms.PictureBox();
             this.door = new System.Windows.Forms.PictureBox();
             this.spanner = new System.Windows.Forms.PictureBox();
             this.temp = new System.Windows.Forms.PictureBox();
@@ -61,10 +66,13 @@ namespace kkdash
             this.bonnet = new System.Windows.Forms.PictureBox();
             this.seatbelts = new System.Windows.Forms.PictureBox();
             this.Seat1 = new System.Windows.Forms.PictureBox();
-            this.Seat2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBG)).BeginInit();
             this.pnlDirections.SuspendLayout();
             this.pnlSymbols.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picEconomy)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picTrip)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picOdometer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Seat2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.door)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spanner)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.temp)).BeginInit();
@@ -87,7 +95,6 @@ namespace kkdash
             ((System.ComponentModel.ISupportInitialize)(this.bonnet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seatbelts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Seat1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Seat2)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBG
@@ -195,6 +202,9 @@ namespace kkdash
             // 
             // pnlSymbols
             // 
+            this.pnlSymbols.Controls.Add(this.picEconomy);
+            this.pnlSymbols.Controls.Add(this.picTrip);
+            this.pnlSymbols.Controls.Add(this.picOdometer);
             this.pnlSymbols.Controls.Add(this.Seat2);
             this.pnlSymbols.Controls.Add(this.door);
             this.pnlSymbols.Controls.Add(this.spanner);
@@ -220,8 +230,46 @@ namespace kkdash
             this.pnlSymbols.Controls.Add(this.Seat1);
             this.pnlSymbols.Location = new System.Drawing.Point(817, 65);
             this.pnlSymbols.Name = "pnlSymbols";
-            this.pnlSymbols.Size = new System.Drawing.Size(184, 386);
+            this.pnlSymbols.Size = new System.Drawing.Size(184, 545);
             this.pnlSymbols.TabIndex = 8;
+            // 
+            // picEconomy
+            // 
+            this.picEconomy.Image = ((System.Drawing.Image)(resources.GetObject("picEconomy.Image")));
+            this.picEconomy.Location = new System.Drawing.Point(27, 492);
+            this.picEconomy.Name = "picEconomy";
+            this.picEconomy.Size = new System.Drawing.Size(128, 34);
+            this.picEconomy.TabIndex = 26;
+            this.picEconomy.TabStop = false;
+            this.picEconomy.Click += new System.EventHandler(this.picEconomy_Click);
+            // 
+            // picTrip
+            // 
+            this.picTrip.Image = ((System.Drawing.Image)(resources.GetObject("picTrip.Image")));
+            this.picTrip.Location = new System.Drawing.Point(27, 441);
+            this.picTrip.Name = "picTrip";
+            this.picTrip.Size = new System.Drawing.Size(128, 34);
+            this.picTrip.TabIndex = 25;
+            this.picTrip.TabStop = false;
+            this.picTrip.Click += new System.EventHandler(this.picTrip_Click);
+            // 
+            // picOdometer
+            // 
+            this.picOdometer.Image = ((System.Drawing.Image)(resources.GetObject("picOdometer.Image")));
+            this.picOdometer.Location = new System.Drawing.Point(27, 392);
+            this.picOdometer.Name = "picOdometer";
+            this.picOdometer.Size = new System.Drawing.Size(128, 34);
+            this.picOdometer.TabIndex = 24;
+            this.picOdometer.TabStop = false;
+            this.picOdometer.Click += new System.EventHandler(this.picOdometer_Click);
+            // 
+            // Seat2
+            // 
+            this.Seat2.Location = new System.Drawing.Point(66, 332);
+            this.Seat2.Name = "Seat2";
+            this.Seat2.Size = new System.Drawing.Size(50, 40);
+            this.Seat2.TabIndex = 23;
+            this.Seat2.TabStop = false;
             // 
             // door
             // 
@@ -422,14 +470,6 @@ namespace kkdash
             this.Seat1.TabStop = false;
             this.Seat1.Click += new System.EventHandler(this.Seat1_Click);
             // 
-            // Seat2
-            // 
-            this.Seat2.Location = new System.Drawing.Point(66, 332);
-            this.Seat2.Name = "Seat2";
-            this.Seat2.Size = new System.Drawing.Size(50, 40);
-            this.Seat2.TabIndex = 23;
-            this.Seat2.TabStop = false;
-            // 
             // frmGraphic1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -451,6 +491,10 @@ namespace kkdash
             this.pnlDirections.ResumeLayout(false);
             this.pnlSymbols.ResumeLayout(false);
             this.pnlSymbols.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picEconomy)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picTrip)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picOdometer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Seat2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.door)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spanner)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.temp)).EndInit();
@@ -473,7 +517,6 @@ namespace kkdash
             ((System.ComponentModel.ISupportInitialize)(this.bonnet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seatbelts)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Seat1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Seat2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -514,5 +557,8 @@ namespace kkdash
         private System.Windows.Forms.PictureBox seatbelts;
         private System.Windows.Forms.PictureBox door;
         private System.Windows.Forms.PictureBox Seat2;
+        private System.Windows.Forms.PictureBox picEconomy;
+        private System.Windows.Forms.PictureBox picTrip;
+        private System.Windows.Forms.PictureBox picOdometer;
     }
 }

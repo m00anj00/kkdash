@@ -15,6 +15,24 @@ namespace kkdash
             Globals.isSaved2 = true;
             Globals.isSaved3 = true;
 
+            try
+            {
+                //Odo reading
+                using (StreamReader sr = new StreamReader(Globals.flocation + "\\ODO.txt"))
+                {
+                    int Lcount = 0;
+                    while (Lcount < 1)
+                    {
+                        Globals.OdoReading = sr.ReadLine();
+                        Lcount += 1;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No ODO.txt file found.  Odometer value is not real " + ex.Message);
+            }
+
             if (PanelNo == 1)
             {
                 try
@@ -64,36 +82,49 @@ namespace kkdash
                                     //Globals.p3connection = "p3connection" + Globals.SerCanP1P3 + "," + Globals.SerCanPortP1P3 + "," + Globals.SerCanSpeedP1P3 + "," + Globals.SerCanAddressP1P3 + "," + Globals.PanelIP3;
                                     Globals.SerCanP1P3 = items[1]; Globals.SerCanPortP1P3 = items[2]; Globals.SerCanSpeedP1P3 = items[3]; Globals.SerCanAddressP1P3 = items[4]; Globals.PanelIP3 = items[5];
                                 }
+                                if (items[0].ToLower() == "symbolsize")
+                                {
+                                    popSymbols0(items[1], items[2]);
+                                }
                                 if (items[0].ToLower() == "symbols1")
                                 {
                                     //           show1,      X1,      Y1,     GPIO1,    show2,      X2,       Y2,      GPIO2,    show3,     X3,      Y3,        GPIO3,     show4,      X4,        Y4,       GPIO4
                                     //sidelights, headlights, fullbeam, spotlights
-                                    popSymbols1(items[0], items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13], items[14], items[15]); 
+                                    popSymbols1(items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13], items[14], items[15], items[16]); 
                                 }
                                 if (items[0].ToLower() == "symbols2")
                                 {
                                     //foglight, bonnet, boot, door
-                                    popSymbols2(items[0], items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13], items[14], items[15]);
+                                    popSymbols2(items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13], items[14], items[15], items[16]);
                                 }
                                 if (items[0].ToLower() == "symbols3")
                                 {
                                     //fuel, brakes, temp, oil
-                                    popSymbols3(items[0], items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13], items[14], items[15]);
+                                    popSymbols3(items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13], items[14], items[15], items[16]);
                                 }
                                 if (items[0].ToLower() == "symbols4")
                                 {
                                     //tyre, spanner, demister, washer
-                                    popSymbols4(items[0], items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13], items[14], items[15]);
+                                    popSymbols4(items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13], items[14], items[15], items[16]);
                                 }
                                 if (items[0].ToLower() == "symbols5")
                                 {
                                     //hazards, indleft, indright, seatbelts
-                                    popSymbols5(items[0], items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13], items[14], items[15]);
+                                    popSymbols5(items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13], items[14], items[15], items[16]);
                                 }
                                 if (items[0].ToLower() == "symbols6")
                                 {
-                                    //wiperint, seat1, seat2
-                                    popSymbols6(items[0], items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11]);
+                                    //seat1, seat2, boot, battery
+                                    popSymbols6(items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13], items[14], items[15], items[16]);
+                                }
+                                if (items[0].ToLower() == "symbols7")
+                                {
+                                    //wiperint
+                                    popSymbols7(items[1], items[2], items[3], items[4]);
+                                }
+                                if (items[0].ToLower() == "infopanel")
+                                {
+                                    popInfo(items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12]);
                                 }
                             }
                         }
@@ -139,6 +170,42 @@ namespace kkdash
                                         Globals.User2name = items[2];
                                         Globals.User3name = items[3];
                                         Globals.User4name = items[4];
+                                    }
+                                    if (items[0].ToLower() == "symbols1")
+                                    {
+                                        //           show1,      X1,      Y1,     GPIO1,    show2,      X2,       Y2,      GPIO2,    show3,     X3,      Y3,        GPIO3,     show4,      X4,        Y4,       GPIO4
+                                        //sidelights, headlights, fullbeam, spotlights
+                                        popSymbols1(items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13], items[14], items[15], items[16]);
+                                    }
+                                    if (items[0].ToLower() == "symbols2")
+                                    {
+                                        //foglight, bonnet, boot, door
+                                        popSymbols2(items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13], items[14], items[15], items[16]);
+                                    }
+                                    if (items[0].ToLower() == "symbols3")
+                                    {
+                                        //fuel, brakes, temp, oil
+                                        popSymbols3(items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13], items[14], items[15], items[16]);
+                                    }
+                                    if (items[0].ToLower() == "symbols4")
+                                    {
+                                        //tyre, spanner, demister, washer
+                                        popSymbols4(items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13], items[14], items[15], items[16]);
+                                    }
+                                    if (items[0].ToLower() == "symbols5")
+                                    {
+                                        //hazards, indleft, indright, seatbelts
+                                        popSymbols5(items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13], items[14], items[15], items[16]);
+                                    }
+                                    if (items[0].ToLower() == "symbols6")
+                                    {
+                                        //seat1, seat2, boot, battery
+                                        popSymbols6(items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13], items[14], items[15], items[16]);
+                                    }
+                                    if (items[0].ToLower() == "symbols7")
+                                    {
+                                        //wiperint
+                                        popSymbols7(items[1], items[2], items[3], items[4]);
                                     }
                                 }
                             }
@@ -186,6 +253,42 @@ namespace kkdash
                                         Globals.User3name = items[3];
                                         Globals.User4name = items[4];
                                     }
+                                    if (items[0].ToLower() == "symbols1")
+                                    {
+                                        //           show1,      X1,      Y1,     GPIO1,    show2,      X2,       Y2,      GPIO2,    show3,     X3,      Y3,        GPIO3,     show4,      X4,        Y4,       GPIO4
+                                        //sidelights, headlights, fullbeam, spotlights
+                                        popSymbols1(items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13], items[14], items[15], items[16]);
+                                    }
+                                    if (items[0].ToLower() == "symbols2")
+                                    {
+                                        //foglight, bonnet, boot, door
+                                        popSymbols2(items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13], items[14], items[15], items[16]);
+                                    }
+                                    if (items[0].ToLower() == "symbols3")
+                                    {
+                                        //fuel, brakes, temp, oil
+                                        popSymbols3(items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13], items[14], items[15], items[16]);
+                                    }
+                                    if (items[0].ToLower() == "symbols4")
+                                    {
+                                        //tyre, spanner, demister, washer
+                                        popSymbols4(items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13], items[14], items[15], items[16]);
+                                    }
+                                    if (items[0].ToLower() == "symbols5")
+                                    {
+                                        //hazards, indleft, indright, seatbelts
+                                        popSymbols5(items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13], items[14], items[15], items[16]);
+                                    }
+                                    if (items[0].ToLower() == "symbols6")
+                                    {
+                                        //seat1, seat2, boot, battery
+                                        popSymbols6(items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13], items[14], items[15], items[16]);
+                                    }
+                                    if (items[0].ToLower() == "symbols7")
+                                    {
+                                        //wiperint
+                                        popSymbols7(items[1], items[2], items[3], items[4]);
+                                    }
                                 }
                             }
                         }
@@ -199,30 +302,37 @@ namespace kkdash
         }
 
 
+        //----------------------------------------------------------------------------InfoPanel---------------------------------------------------------------------------------
+        private static void popInfo(string X, string Y, string Font, string OdometerX, string OdometerY, string OdoReadingMilesKM, string EcoX, string EcoY, string EcoSize, string TripX, string TripY, string TripSize)
+        {
+            Globals.InfoPanelX = X;
+            Globals.InfoPanelY = Y;
+            Globals.InfoTextSize = Font;
+
+            Globals.OdometerX = OdometerX;
+            Globals.OdometerY = OdometerY;
+            Globals.OdoReadingMilesKM = OdoReadingMilesKM;
+            
+            Globals.EcoX = EcoX;
+            Globals.EcoY = EcoY;
+            Globals.EcoSize = EcoSize;
+
+            Globals.TripX = TripX;
+            Globals.TripY = TripY;
+            Globals.TripSize = TripSize;
+        }
+
+
         //----------------------------------------------------------------------------Symbols------------------------------------------------------------------------------------
+        private static void popSymbols0(string width, string height)
+        {
+            Globals.symWidth = width; Globals.symHeight = height;
+        }
+
         private static void popSymbols1(string show1, string X1, string Y1, string GPIO1, string show2, string X2, string Y2, string GPIO2, string show3, string X3, string Y3, string GPIO3, string show4, string X4, string Y4, string GPIO4)
         {
             //sidelights, headlights, fullbeam, spotlights
-            if (show1 == "N") { Globals.symSidelights = "N"; }
-            if (show1 == "1") { Globals.symSidelights = "Panel 1"; }
-            if (show1 == "2") { Globals.symSidelights = "Panel 2"; }
-            if (show1 == "3") { Globals.symSidelights = "Panel 3"; }
-
-            if (show2 == "N") { Globals.symHeadlights = "N"; }
-            if (show2 == "1") { Globals.symHeadlights = "Panel 1"; }
-            if (show2 == "2") { Globals.symHeadlights = "Panel 2"; }
-            if (show2 == "3") { Globals.symHeadlights = "Panel 3"; }
-
-            if (show3 == "N") { Globals.symFullbeam = "N"; }
-            if (show3 == "1") { Globals.symFullbeam = "Panel 1"; }
-            if (show3 == "2") { Globals.symFullbeam = "Panel 2"; }
-            if (show3 == "3") { Globals.symFullbeam = "Panel 3"; }
-
-            if (show4 == "N") { Globals.symSpotlights = "N"; }
-            if (show4 == "1") { Globals.symSpotlights = "Panel 1"; }
-            if (show4 == "2") { Globals.symSpotlights = "Panel 2"; }
-            if (show4 == "3") { Globals.symSpotlights = "Panel 3"; }
-
+            Globals.symSidelights = show1; Globals.symHeadlights = show2; Globals.symFullbeam = show3; Globals.symSpotlights = show4;
             Globals.symSidelightsX = X1; Globals.symSidelightsY = Y1; Globals.symSidelightsGPIO = GPIO1;
             Globals.symHeadlightsX = X2; Globals.symHeadlightsY = Y2; Globals.symHeadlightsGPIO = GPIO2;
             Globals.symFullbeamX = X3; Globals.symFullbeamY = Y3; Globals.symFullbeamGPIO = GPIO3;
@@ -232,26 +342,7 @@ namespace kkdash
         private static void popSymbols2(string show1, string X1, string Y1, string GPIO1, string show2, string X2, string Y2, string GPIO2, string show3, string X3, string Y3, string GPIO3, string show4, string X4, string Y4, string GPIO4)
         {
             //foglight, bonnet, boot, door
-            if (show1 == "N") { Globals.symFoglights = "N"; }
-            if (show1 == "1") { Globals.symFoglights = "Panel 1"; }
-            if (show1 == "2") { Globals.symFoglights = "Panel 2"; }
-            if (show1 == "3") { Globals.symFoglights = "Panel 3"; }
-
-            if (show2 == "N") { Globals.symBonnet = "N"; }
-            if (show2 == "1") { Globals.symBonnet = "Panel 1"; }
-            if (show2 == "2") { Globals.symBonnet = "Panel 2"; }
-            if (show2 == "3") { Globals.symBonnet = "Panel 3"; }
-
-            if (show3 == "N") { Globals.symBoot = "N"; }
-            if (show3 == "1") { Globals.symBoot = "Panel 1"; }
-            if (show3 == "2") { Globals.symBoot = "Panel 2"; }
-            if (show3 == "3") { Globals.symBoot = "Panel 3"; }
-
-            if (show4 == "N") { Globals.symDoor = "N"; }
-            if (show4 == "1") { Globals.symDoor = "Panel 1"; }
-            if (show4 == "2") { Globals.symDoor = "Panel 2"; }
-            if (show4 == "3") { Globals.symDoor = "Panel 3"; }
-
+            Globals.symFoglights = show1; Globals.symBonnet = show2; Globals.symBoot = show3; Globals.symDoor = show4;
             Globals.symFoglightsX = X1; Globals.symFoglightsY = Y1; Globals.symFoglightsGPIO = GPIO1;
             Globals.symBonnetX = X2; Globals.symBonnetY = Y2; Globals.symBonnetGPIO = GPIO2;
             Globals.symBootX = X3; Globals.symBootY = Y3; Globals.symBootGPIO = GPIO3;
@@ -261,26 +352,7 @@ namespace kkdash
         private static void popSymbols3(string show1, string X1, string Y1, string GPIO1, string show2, string X2, string Y2, string GPIO2, string show3, string X3, string Y3, string GPIO3, string show4, string X4, string Y4, string GPIO4)
         {
             //fuel, brakes, temp, oil
-            if (show1 == "N") { Globals.symFuel = "N"; }
-            if (show1 == "1") { Globals.symFuel = "Panel 1"; }
-            if (show1 == "2") { Globals.symFuel = "Panel 2"; }
-            if (show1 == "3") { Globals.symFuel = "Panel 3"; }
-
-            if (show2 == "N") { Globals.symBrakes = "N"; }
-            if (show2 == "1") { Globals.symBrakes = "Panel 1"; }
-            if (show2 == "2") { Globals.symBrakes = "Panel 2"; }
-            if (show2 == "3") { Globals.symBrakes = "Panel 3"; }
-
-            if (show3 == "N") { Globals.symTemp = "N"; }
-            if (show3 == "1") { Globals.symTemp = "Panel 1"; }
-            if (show3 == "2") { Globals.symTemp = "Panel 2"; }
-            if (show3 == "3") { Globals.symTemp = "Panel 3"; }
-
-            if (show4 == "N") { Globals.symOil = "N"; }
-            if (show4 == "1") { Globals.symOil = "Panel 1"; }
-            if (show4 == "2") { Globals.symOil = "Panel 2"; }
-            if (show4 == "3") { Globals.symOil = "Panel 3"; }
-
+            Globals.symFuel = show1; Globals.symBrakes = show2; Globals.symTemp = show3; Globals.symOil = show4;
             Globals.symFuelX = X1; Globals.symFuelY = Y1; Globals.symFuelGPIO = GPIO1;
             Globals.symBrakesX = X2; Globals.symBrakesY = Y2; Globals.symBrakesGPIO = GPIO2;
             Globals.symTempX = X3; Globals.symTempY = Y3; Globals.symTempGPIO = GPIO3;
@@ -290,26 +362,7 @@ namespace kkdash
         private static void popSymbols4(string show1, string X1, string Y1, string GPIO1, string show2, string X2, string Y2, string GPIO2, string show3, string X3, string Y3, string GPIO3, string show4, string X4, string Y4, string GPIO4)
         {
             //tyre, spanner, demister, washer
-            if (show1 == "N") { Globals.symTyre = "N"; }
-            if (show1 == "1") { Globals.symTyre = "Panel 1"; }
-            if (show1 == "2") { Globals.symTyre = "Panel 2"; }
-            if (show1 == "3") { Globals.symTyre = "Panel 3"; }
-
-            if (show2 == "N") { Globals.symSpanner = "N"; }
-            if (show2 == "1") { Globals.symSpanner = "Panel 1"; }
-            if (show2 == "2") { Globals.symSpanner = "Panel 2"; }
-            if (show2 == "3") { Globals.symSpanner = "Panel 3"; }
-
-            if (show3 == "N") { Globals.symDemister = "N"; }
-            if (show3 == "1") { Globals.symDemister = "Panel 1"; }
-            if (show3 == "2") { Globals.symDemister = "Panel 2"; }
-            if (show3 == "3") { Globals.symDemister = "Panel 3"; }
-
-            if (show4 == "N") { Globals.symWasher = "N"; }
-            if (show4 == "1") { Globals.symWasher = "Panel 1"; }
-            if (show4 == "2") { Globals.symWasher = "Panel 2"; }
-            if (show4 == "3") { Globals.symWasher = "Panel 3"; }
-
+            Globals.symTyre = show1; Globals.symSpanner = show2; Globals.symDemister = show3; Globals.symWasher = show4;
             Globals.symTyreX = X1; Globals.symTyreY = Y1; Globals.symTyreGPIO = GPIO1;
             Globals.symSpannerX = X2; Globals.symSpannerY = Y2; Globals.symSpannerGPIO = GPIO2;
             Globals.symDemisterX = X3; Globals.symDemisterY = Y3; Globals.symDemisterGPIO = GPIO3;
@@ -319,53 +372,29 @@ namespace kkdash
         private static void popSymbols5(string show1, string X1, string Y1, string GPIO1, string show2, string X2, string Y2, string GPIO2, string show3, string X3, string Y3, string GPIO3, string show4, string X4, string Y4, string GPIO4)
         {
             //hazards, indleft, indright, seatbelts
-            if (show1 == "N") { Globals.symHazards = "N"; }
-            if (show1 == "1") { Globals.symHazards = "Panel 1"; }
-            if (show1 == "2") { Globals.symHazards = "Panel 2"; }
-            if (show1 == "3") { Globals.symHazards = "Panel 3"; }
-
-            if (show2 == "N") { Globals.symIndLeft = "N"; }
-            if (show2 == "1") { Globals.symIndLeft = "Panel 1"; }
-            if (show2 == "2") { Globals.symIndLeft = "Panel 2"; }
-            if (show2 == "3") { Globals.symIndLeft = "Panel 3"; }
-
-            if (show3 == "N") { Globals.symIndRight = "N"; }
-            if (show3 == "1") { Globals.symIndRight = "Panel 1"; }
-            if (show3 == "2") { Globals.symIndRight = "Panel 2"; }
-            if (show3 == "3") { Globals.symIndRight = "Panel 3"; }
-
-            if (show4 == "N") { Globals.symSeatbelt = "N"; }
-            if (show4 == "1") { Globals.symSeatbelt = "Panel 1"; }
-            if (show4 == "2") { Globals.symSeatbelt = "Panel 2"; }
-            if (show4 == "3") { Globals.symSeatbelt = "Panel 3"; }
-
+            Globals.symHazards = show1; Globals.symIndLeft = show2; Globals.symIndRight = show3; Globals.symSeatbelt = show4;
             Globals.symHazardsX = X1; Globals.symHazardsY = Y1; Globals.symHazardsGPIO = GPIO1;
             Globals.symIndLeftX = X2; Globals.symIndLeftY = Y2; Globals.symIndLeftGPIO = GPIO2;
             Globals.symIndRightX = X3; Globals.symIndRightY = Y3; Globals.symIndRightGPIO = GPIO3;
             Globals.symSeatbeltX = X4; Globals.symSeatbeltY = Y4; Globals.symSeatbeltGPIO = GPIO4;
         }
 
-        private static void popSymbols6(string show1, string X1, string Y1, string GPIO1, string show2, string X2, string Y2, string GPIO2, string show3, string X3, string Y3, string GPIO3)
+        private static void popSymbols6(string show1, string X1, string Y1, string GPIO1, string show2, string X2, string Y2, string GPIO2, string show3, string X3, string Y3, string GPIO3, string show4, string X4, string Y4, string GPIO4)
         {
-            //wiperint, seat1, seat2
-            if (show1 == "N") { Globals.symSeatRight = "N"; }
-            if (show1 == "1") { Globals.symSeatRight = "Panel 1"; }
-            if (show1 == "2") { Globals.symSeatRight = "Panel 2"; }
-            if (show1 == "3") { Globals.symSeatRight = "Panel 3"; }
-
-            if (show2 == "N") { Globals.symSeatLeft = "N"; }
-            if (show2 == "1") { Globals.symSeatLeft = "Panel 1"; }
-            if (show2 == "2") { Globals.symSeatLeft = "Panel 2"; }
-            if (show2 == "3") { Globals.symSeatLeft = "Panel 3"; }
-
-            if (show3 == "N") { Globals.symBoot = "N"; }
-            if (show3 == "1") { Globals.symBoot = "Panel 1"; }
-            if (show3 == "2") { Globals.symBoot = "Panel 2"; }
-            if (show3 == "3") { Globals.symBoot = "Panel 3"; }
-
+            //seatright, seatleft, boot, battery
+            Globals.symSeatRight = show1; Globals.symSeatLeft = show2; Globals.symBoot = show3; Globals.symBattery = show4;
             Globals.symSeatRightX = X1; Globals.symSeatRightY = Y1; Globals.symSeatRightGPIO = GPIO1;
             Globals.symSeatLeftX = X2; Globals.symSeatLeftY = Y2; Globals.symSeatLeftGPIO = GPIO2;
             Globals.symBootX = X3; Globals.symBootY = Y3; Globals.symBootGPIO = GPIO3;
+            Globals.symBatteryX = X4; Globals.symBatteryY = Y4; Globals.symBatteryGPIO = GPIO4;
+
+        }
+
+        private static void popSymbols7(string show1, string X1, string Y1, string GPIO1)
+        {
+            //wiperint
+            Globals.symWiperInt = show1;
+            Globals.symWiperIntX = X1; Globals.symWiperIntY = Y1; Globals.symWiperIntGPIO = GPIO1;
         }
 
         //--------------------------------------------------------------------------set the panel according to the gauge / text box-----------------------------------------------------------------

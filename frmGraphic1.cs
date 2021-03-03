@@ -71,7 +71,7 @@ namespace kkdash
                     pnlSymbols.Top = 50;
 
                     //get the symbol icons
-                    populateSymbols("Read");
+                    populateSymbols("clear");
                     //if a label is clicked it changes colour.  a new label states each action sequence.
 
                 }
@@ -93,57 +93,104 @@ namespace kkdash
             {
                 if (Globals.symSeatLeft == "1") { Seat1.Image = Image.FromFile(Globals.flocation + "\\symbols\\seats\\seat1-3.png"); Seat1.SizeMode = PictureBoxSizeMode.StretchImage; }
                 else { Seat1.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                Seat1.Width = Int32.Parse (Globals.symWidth); Seat1.Height = Int32.Parse(Globals.symHeight);
+
                 if (Globals.symSeatRight == "1") { Seat2.Image = Image.FromFile(Globals.flocation + "\\symbols\\seats\\seat2-3.png"); Seat1.SizeMode = PictureBoxSizeMode.StretchImage; }
                 else { Seat2.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                Seat2.Width = Int32.Parse(Globals.symWidth); Seat2.Height = Int32.Parse(Globals.symHeight);
+
                 if (Globals.symDoor == "1") { door.Image = Image.FromFile(Globals.flocation + "\\symbols\\door\\both.png"); door.SizeMode = PictureBoxSizeMode.StretchImage; }
                 else { door.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                door.Width = Int32.Parse(Globals.symWidth); door.Height = Int32.Parse(Globals.symHeight);
+
                 if (Globals.symBonnet == "1") { bonnet.Image = Image.FromFile(Globals.flocation + "\\symbols\\door\\bonnet.png"); bonnet.SizeMode = PictureBoxSizeMode.StretchImage; }
                 else { bonnet.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                bonnet.Width = Int32.Parse(Globals.symWidth); bonnet.Height = Int32.Parse(Globals.symHeight);
+
                 if (Globals.symBoot == "1") { boot.Image = Image.FromFile(Globals.flocation + "\\symbols\\door\\boot.png"); boot.SizeMode = PictureBoxSizeMode.StretchImage; }
                 else { boot.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                boot.Width = Int32.Parse(Globals.symWidth); boot.Height = Int32.Parse(Globals.symHeight);
+
                 if (Globals.symDemister == "1") { demister.Image = Image.FromFile(Globals.flocation + "\\symbols\\info\\demister.png"); demister.SizeMode = PictureBoxSizeMode.StretchImage; }
                 else { demister.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                demister.Width = Int32.Parse(Globals.symWidth); demister.Height = Int32.Parse(Globals.symHeight);
+
                 if (Globals.symBattery == "1") { battery.Image = Image.FromFile(Globals.flocation + "\\symbols\\info\\battery.png"); battery.SizeMode = PictureBoxSizeMode.StretchImage; }
                 else { battery.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                battery.Width = Int32.Parse(Globals.symWidth); battery.Height = Int32.Parse(Globals.symHeight);
+
                 if (Globals.symFuel == "1") { fuel.Image = Image.FromFile(Globals.flocation + "\\symbols\\info\\fuel.png"); fuel.SizeMode = PictureBoxSizeMode.StretchImage; }
                 else { fuel.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                fuel.Width = Int32.Parse(Globals.symWidth); fuel.Height = Int32.Parse(Globals.symHeight);
+
                 if (Globals.symOil == "1") { oil.Image = Image.FromFile(Globals.flocation + "\\symbols\\info\\oil.png"); oil.SizeMode = PictureBoxSizeMode.StretchImage; }
                 else { oil.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                oil.Width = Int32.Parse(Globals.symWidth); oil.Height = Int32.Parse(Globals.symHeight);
+
                 if (Globals.symTyre == "1") { tyre.Image = Image.FromFile(Globals.flocation + "\\symbols\\info\\tyre.png"); tyre.SizeMode = PictureBoxSizeMode.StretchImage; }
                 else { tyre.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                tyre.Width = Int32.Parse(Globals.symWidth); tyre.Height = Int32.Parse(Globals.symHeight);
+
                 if (Globals.symWasher == "1") { washer.Image = Image.FromFile(Globals.flocation + "\\symbols\\info\\washer.png"); washer.SizeMode = PictureBoxSizeMode.StretchImage; }
                 else { washer.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                washer.Width = Int32.Parse(Globals.symWidth); washer.Height = Int32.Parse(Globals.symHeight);
+
                 if (Globals.symWiperInt == "1") { wiperint.Image = Image.FromFile(Globals.flocation + "\\symbols\\info\\wiper-int.png"); wiperint.SizeMode = PictureBoxSizeMode.StretchImage; }
                 else { wiperint.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                wiperint.Width = Int32.Parse(Globals.symWidth); wiperint.Height = Int32.Parse(Globals.symHeight);
+
                 if (Globals.symIndLeft == "1") { indleft.Image = Image.FromFile(Globals.flocation + "\\symbols\\indicators\\ind-left.png"); indleft.SizeMode = PictureBoxSizeMode.StretchImage; }
                 else { indleft.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                indleft.Width = Int32.Parse(Globals.symWidth); indleft.Height = Int32.Parse(Globals.symHeight);
+
                 if (Globals.symIndLeft == "1") { indright.Image = Image.FromFile(Globals.flocation + "\\symbols\\indicators\\ind-right.png"); indright.SizeMode = PictureBoxSizeMode.StretchImage; }
                 else { indright.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                indright.Width = Int32.Parse(Globals.symWidth); indright.Height = Int32.Parse(Globals.symHeight);
+
                 if (Globals.symHazards == "1") { hazards.Image = Image.FromFile(Globals.flocation + "\\symbols\\hazard\\hazards-on.png"); hazards.SizeMode = PictureBoxSizeMode.StretchImage; }
                 else { hazards.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                hazards.Width = Int32.Parse(Globals.symWidth); hazards.Height = Int32.Parse(Globals.symHeight);
+
                 if (Globals.symSpanner == "1") { spanner.Image = Image.FromFile(Globals.flocation + "\\symbols\\hazard\\spanner.png"); spanner.SizeMode = PictureBoxSizeMode.StretchImage; }
                 else { spanner.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                spanner.Width = Int32.Parse(Globals.symWidth); spanner.Height = Int32.Parse(Globals.symHeight); 
+
                 if (Globals.symTemp == "1") { temp.Image = Image.FromFile(Globals.flocation + "\\symbols\\hazard\\temp.png"); temp.SizeMode = PictureBoxSizeMode.StretchImage; }
                 else { temp.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                temp.Width = Int32.Parse(Globals.symWidth); temp.Height = Int32.Parse(Globals.symHeight);
+                
                 if (Globals.symSeatbelt == "1") { seatbelts.Image = Image.FromFile(Globals.flocation + "\\symbols\\seatbelts\\all.png"); seatbelts.SizeMode = PictureBoxSizeMode.StretchImage; }
                 else { seatbelts.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                seatbelts.Width = Int32.Parse(Globals.symWidth); seatbelts.Height = Int32.Parse(Globals.symHeight);
+
                 if (Globals.symSidelights == "1") { sidelight.Image = Image.FromFile(Globals.flocation + "\\symbols\\lights\\sidelights.png"); sidelight.SizeMode = PictureBoxSizeMode.StretchImage; }
                 else { sidelight.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                sidelight.Width = Int32.Parse(Globals.symWidth); sidelight.Height = Int32.Parse(Globals.symHeight);
+
                 if (Globals.symHeadlights == "1") { highbeam.Image = Image.FromFile(Globals.flocation + "\\symbols\\lights\\headlights.png"); highbeam.SizeMode = PictureBoxSizeMode.StretchImage; }
                 else { highbeam.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                highbeam.Width = Int32.Parse(Globals.symWidth); highbeam.Height = Int32.Parse(Globals.symHeight);
+
                 if (Globals.symFullbeam == "1") { fullbeam.Image = Image.FromFile(Globals.flocation + "\\symbols\\lights\\fullbeam.png"); fullbeam.SizeMode = PictureBoxSizeMode.StretchImage; }
                 else { fullbeam.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                fullbeam.Width = Int32.Parse(Globals.symWidth); fullbeam.Height = Int32.Parse(Globals.symHeight);
+
                 if (Globals.symSpotlights == "1") { spotlight.Image = Image.FromFile(Globals.flocation + "\\symbols\\lights\\spotlights.png"); spotlight.SizeMode = PictureBoxSizeMode.StretchImage; }
                 else { spotlight.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                spotlight.Width = Int32.Parse(Globals.symWidth); spotlight.Height = Int32.Parse(Globals.symHeight);
+
                 if (Globals.symFoglights == "1") { foglight.Image = Image.FromFile(Globals.flocation + "\\symbols\\lights\\foglight.png"); foglight.SizeMode = PictureBoxSizeMode.StretchImage; }
                 else { foglight.Image = Image.FromFile(Globals.flocation + "\\symbols\\none.png"); }
+                foglight.Width = Int32.Parse(Globals.symWidth); foglight.Height = Int32.Parse(Globals.symHeight);
             }
 
             if (ClearReadSave == "read")
             {
+
             }
             if (ClearReadSave == "save")
             {
+
             }
 
         }
@@ -1540,6 +1587,21 @@ public void finaliseText()
         }
 
         private void Seat1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void picOdometer_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void picTrip_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void picEconomy_Click(object sender, EventArgs e)
         {
 
         }

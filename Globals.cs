@@ -32,6 +32,32 @@
         public static string p2DispHeight { get; set; }
         public static string p3DispHeight { get; set; }
 
+        //Odometer
+        public static string OdometerX { get; set; }
+        public static string OdometerY { get; set; }
+        public static string OdoReading { get; set; }
+        public static string OdoReadingMilesKM { get; set; }
+
+        //Economy
+        public static string EconomyX { get; set; }
+        public static string EconomyY { get; set; }
+        public static string EconomySize { get; set; }
+
+        //Trip
+        public static string TripX { get; set; }
+        public static string TripY { get; set; }
+        public static string TripSize { get; set; }
+
+        //Infopanel
+        public static string InfoPanelX { get; set; }
+        public static string InfoPanelY { get; set; }
+        public static string InfoTextSize { get; set; }
+
+        //eco
+        public static string EcoX { get; set; }
+        public static string EcoY { get; set; }
+        public static string EcoSize { get; set; }
+
         //Symbols
         public static string symWidth { get; set; }
         public static string symHeight { get; set; }
